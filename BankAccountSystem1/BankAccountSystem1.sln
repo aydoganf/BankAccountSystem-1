@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AydoganFBankBussiness", "AydoganFBankBussiness\AydoganFBankBussiness.csproj", "{267803A9-ACA6-41D1-A960-C6DBEC271A14}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bussiness", "Bussiness", "{652ACAE4-BD8A-4927-B761-4F76BEFB0606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AydoganFBank.AccountBussiness", "AydoganFBank.AccountBussiness\AydoganFBank.AccountBussiness.csproj", "{42A39BC9-2A2F-4231-B4F8-D2A86DA79B84}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{343B396C-3283-4E0F-A6B4-E364EE79F0EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AydoganFBank.Service", "Service\AydoganFBank.Service\AydoganFBank.Service.csproj", "{5F744FEC-883C-41DB-8D06-067B89AC26C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AydoganFBank.AccountManagement", "Bussiness\AydoganFBank.AccountManagement\AydoganFBank.AccountManagement.csproj", "{D85F4C16-ED1B-413C-9656-F0B4A3002753}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{4F0AA3C2-498A-4C4C-914B-B6286049BDAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aydoganfbank.web.api", "API\aydoganfbank.web.api\aydoganfbank.web.api.csproj", "{A38A6804-8884-45AF-A76D-84BDF3EC9D25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +21,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{267803A9-ACA6-41D1-A960-C6DBEC271A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{267803A9-ACA6-41D1-A960-C6DBEC271A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{267803A9-ACA6-41D1-A960-C6DBEC271A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{267803A9-ACA6-41D1-A960-C6DBEC271A14}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42A39BC9-2A2F-4231-B4F8-D2A86DA79B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42A39BC9-2A2F-4231-B4F8-D2A86DA79B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42A39BC9-2A2F-4231-B4F8-D2A86DA79B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42A39BC9-2A2F-4231-B4F8-D2A86DA79B84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F744FEC-883C-41DB-8D06-067B89AC26C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F744FEC-883C-41DB-8D06-067B89AC26C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F744FEC-883C-41DB-8D06-067B89AC26C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F744FEC-883C-41DB-8D06-067B89AC26C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D85F4C16-ED1B-413C-9656-F0B4A3002753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D85F4C16-ED1B-413C-9656-F0B4A3002753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D85F4C16-ED1B-413C-9656-F0B4A3002753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D85F4C16-ED1B-413C-9656-F0B4A3002753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38A6804-8884-45AF-A76D-84BDF3EC9D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38A6804-8884-45AF-A76D-84BDF3EC9D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38A6804-8884-45AF-A76D-84BDF3EC9D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38A6804-8884-45AF-A76D-84BDF3EC9D25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F744FEC-883C-41DB-8D06-067B89AC26C4} = {343B396C-3283-4E0F-A6B4-E364EE79F0EC}
+		{D85F4C16-ED1B-413C-9656-F0B4A3002753} = {652ACAE4-BD8A-4927-B761-4F76BEFB0606}
+		{A38A6804-8884-45AF-A76D-84BDF3EC9D25} = {4F0AA3C2-498A-4C4C-914B-B6286049BDAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1A5E257-73E3-44F0-B9AF-E5DD83594CDE}
