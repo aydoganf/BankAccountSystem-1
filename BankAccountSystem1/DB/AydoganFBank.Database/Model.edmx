@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="OwnerType" Type="int" Nullable="false" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountTypeId" Type="int" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountTransaction">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromAccountId" Type="int" Nullable="false" />
+          <Property Name="ToAccountId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="TransactionStatusId" Type="int" Nullable="false" />
+          <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="OwnerType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="AccountTypeId" />
+          </Key>
+          <Property Name="AccountTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ResponsablePersonId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdentityNumber" Type="nvarchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionOrder">
+          <Key>
+            <PropertyRef Name="TransactionOrderId" />
+          </Key>
+          <Property Name="TransactionOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionTypeId" Type="int" Nullable="false" />
+          <Property Name="OrderDescription" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="OperationDate" Type="datetime" Nullable="false" />
+          <Property Name="FromAccountId" Type="int" Nullable="false" />
+          <Property Name="ToAccountId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionStatus">
+          <Key>
+            <PropertyRef Name="TransactionStatusId" />
+          </Key>
+          <Property Name="TransactionStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StatusKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TransactionTypeId" />
+          </Key>
+          <Property Name="TransactionTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Account_AccountType">
+          <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountType">
+              <PropertyRef Name="AccountTypeId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="AccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTransaction_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="FromAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTransaction_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="ToAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTransaction_TransactionStatus">
+          <End Role="TransactionStatus" Type="Self.TransactionStatus" Multiplicity="1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionStatus">
+              <PropertyRef Name="TransactionStatusId" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="TransactionStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTransaction_TransactionType">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="TransactionTypeId" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="TransactionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="ResponsablePersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionOrder_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="TransactionOrder">
+              <PropertyRef Name="FromAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionOrder_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="TransactionOrder">
+              <PropertyRef Name="ToAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionOrder_TransactionType">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="TransactionTypeId" />
+            </Principal>
+            <Dependent Role="TransactionOrder">
+              <PropertyRef Name="TransactionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionOrder" EntityType="Self.TransactionOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_AccountType" Association="Self.FK_Account_AccountType">
+            <End Role="AccountType" EntitySet="AccountType" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTransaction_Account" Association="Self.FK_AccountTransaction_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTransaction_Account1" Association="Self.FK_AccountTransaction_Account1">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTransaction_TransactionStatus" Association="Self.FK_AccountTransaction_TransactionStatus">
+            <End Role="TransactionStatus" EntitySet="TransactionStatus" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTransaction_TransactionType" Association="Self.FK_AccountTransaction_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Person" Association="Self.FK_Company_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionOrder_Account" Association="Self.FK_TransactionOrder_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionOrder_Account1" Association="Self.FK_TransactionOrder_Account1">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionOrder_TransactionType" Association="Self.FK_TransactionOrder_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerType" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="AccountType" Relationship="Self.FK_Account_AccountType" FromRole="Account" ToRole="AccountType" />
+          <NavigationProperty Name="AccountTransaction" Relationship="Self.FK_AccountTransaction_Account" FromRole="Account" ToRole="AccountTransaction" />
+          <NavigationProperty Name="AccountTransaction1" Relationship="Self.FK_AccountTransaction_Account1" FromRole="Account" ToRole="AccountTransaction" />
+          <NavigationProperty Name="TransactionOrder" Relationship="Self.FK_TransactionOrder_Account" FromRole="Account" ToRole="TransactionOrder" />
+          <NavigationProperty Name="TransactionOrder1" Relationship="Self.FK_TransactionOrder_Account1" FromRole="Account" ToRole="TransactionOrder" />
+        </EntityType>
+        <EntityType Name="AccountTransaction">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromAccountId" Type="Int32" Nullable="false" />
+          <Property Name="ToAccountId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionStatusId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FromAccount" Relationship="Self.FK_AccountTransaction_Account" FromRole="AccountTransaction" ToRole="Account" />
+          <NavigationProperty Name="ToAccount" Relationship="Self.FK_AccountTransaction_Account1" FromRole="AccountTransaction" ToRole="Account" />
+          <NavigationProperty Name="TransactionStatus" Relationship="Self.FK_AccountTransaction_TransactionStatus" FromRole="AccountTransaction" ToRole="TransactionStatus" />
+          <NavigationProperty Name="TransactionType" Relationship="Self.FK_AccountTransaction_TransactionType" FromRole="AccountTransaction" ToRole="TransactionType" />
+        </EntityType>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="AccountTypeId" />
+          </Key>
+          <Property Name="AccountTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Account_AccountType" FromRole="AccountType" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Model.FK_Company_Person" FromRole="Person" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="TransactionOrder">
+          <Key>
+            <PropertyRef Name="TransactionOrderId" />
+          </Key>
+          <Property Name="TransactionOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OperationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FromAccountId" Type="Int32" Nullable="false" />
+          <Property Name="ToAccountId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="FromAccount" Relationship="Self.FK_TransactionOrder_Account" FromRole="TransactionOrder" ToRole="Account" />
+          <NavigationProperty Name="ToAccount" Relationship="Self.FK_TransactionOrder_Account1" FromRole="TransactionOrder" ToRole="Account" />
+          <NavigationProperty Name="TransactionType" Relationship="Self.FK_TransactionOrder_TransactionType" FromRole="TransactionOrder" ToRole="TransactionType" />
+        </EntityType>
+        <EntityType Name="TransactionStatus">
+          <Key>
+            <PropertyRef Name="TransactionStatusId" />
+          </Key>
+          <Property Name="TransactionStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AccountTransaction" Relationship="Self.FK_AccountTransaction_TransactionStatus" FromRole="TransactionStatus" ToRole="AccountTransaction" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TransactionTypeId" />
+          </Key>
+          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AccountTransaction" Relationship="Self.FK_AccountTransaction_TransactionType" FromRole="TransactionType" ToRole="AccountTransaction" />
+          <NavigationProperty Name="TransactionOrder" Relationship="Self.FK_TransactionOrder_TransactionType" FromRole="TransactionType" ToRole="TransactionOrder" />
+        </EntityType>
+        <Association Name="FK_Account_AccountType">
+          <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountType">
+              <PropertyRef Name="AccountTypeId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="AccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTransaction_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="FromAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTransaction_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="ToAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionOrder_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="TransactionOrder">
+              <PropertyRef Name="FromAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionOrder_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="TransactionOrder">
+              <PropertyRef Name="ToAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTransaction_TransactionStatus">
+          <End Role="TransactionStatus" Type="Self.TransactionStatus" Multiplicity="1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionStatus">
+              <PropertyRef Name="TransactionStatusId" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="TransactionStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTransaction_TransactionType">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="TransactionTypeId" />
+            </Principal>
+            <Dependent Role="AccountTransaction">
+              <PropertyRef Name="TransactionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionOrder_TransactionType">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="TransactionTypeId" />
+            </Principal>
+            <Dependent Role="TransactionOrder">
+              <PropertyRef Name="TransactionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AydoganFBankDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" />
+          <EntitySet Name="AccountType" EntityType="Self.AccountType" />
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="TransactionOrder" EntityType="Self.TransactionOrder" />
+          <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" />
+          <AssociationSet Name="FK_Account_AccountType" Association="Self.FK_Account_AccountType">
+            <End Role="AccountType" EntitySet="AccountType" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTransaction_Account" Association="Self.FK_AccountTransaction_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTransaction_Account1" Association="Self.FK_AccountTransaction_Account1">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionOrder_Account" Association="Self.FK_TransactionOrder_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionOrder_Account1" Association="Self.FK_TransactionOrder_Account1">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTransaction_TransactionStatus" Association="Self.FK_AccountTransaction_TransactionStatus">
+            <End Role="TransactionStatus" EntitySet="TransactionStatus" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTransaction_TransactionType" Association="Self.FK_AccountTransaction_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionOrder_TransactionType" Association="Self.FK_TransactionOrder_TransactionType">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
+          </AssociationSet>
+          <EntitySet Name="Company" EntityType="Model.Company" />
+          <AssociationSet Name="FK_Company_Person" Association="Model.FK_Company_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ResponsablePersonId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Person" Relationship="Model.FK_Company_Person" FromRole="Company" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK_Company_Person">
+          <End Type="Model.Person" Role="Person" Multiplicity="1" />
+          <End Type="Model.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="ResponsablePersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="AydoganFBankDbContext">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="Model.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountTransaction">
+            <EntityTypeMapping TypeName="Model.AccountTransaction">
+              <MappingFragment StoreEntitySet="AccountTransaction">
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="FromAccountId" ColumnName="FromAccountId" />
+                <ScalarProperty Name="ToAccountId" ColumnName="ToAccountId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+                <ScalarProperty Name="TransactionStatusId" ColumnName="TransactionStatusId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountType">
+            <EntityTypeMapping TypeName="Model.AccountType">
+              <MappingFragment StoreEntitySet="AccountType">
+                <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeKey" ColumnName="TypeKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="Model.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionOrder">
+            <EntityTypeMapping TypeName="Model.TransactionOrder">
+              <MappingFragment StoreEntitySet="TransactionOrder">
+                <ScalarProperty Name="TransactionOrderId" ColumnName="TransactionOrderId" />
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+                <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
+                <ScalarProperty Name="FromAccountId" ColumnName="FromAccountId" />
+                <ScalarProperty Name="ToAccountId" ColumnName="ToAccountId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionStatus">
+            <EntityTypeMapping TypeName="Model.TransactionStatus">
+              <MappingFragment StoreEntitySet="TransactionStatus">
+                <ScalarProperty Name="TransactionStatusId" ColumnName="TransactionStatusId" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusKey" ColumnName="StatusKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionType">
+            <EntityTypeMapping TypeName="Model.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeKey" ColumnName="TypeKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="Model.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ResponsablePersonId" ColumnName="ResponsablePersonId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
