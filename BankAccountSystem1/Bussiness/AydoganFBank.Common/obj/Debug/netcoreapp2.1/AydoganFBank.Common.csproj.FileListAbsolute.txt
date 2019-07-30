@@ -1,0 +1,8 @@
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Common\bin\Debug\netcoreapp2.1\AydoganFBank.Common.deps.json
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Common\bin\Debug\netcoreapp2.1\AydoganFBank.Common.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Common\bin\Debug\netcoreapp2.1\AydoganFBank.Common.pdb
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Common\obj\Debug\netcoreapp2.1\AydoganFBank.Common.csproj.CoreCompileInputs.cache
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Common\obj\Debug\netcoreapp2.1\AydoganFBank.Common.AssemblyInfoInputs.cache
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Common\obj\Debug\netcoreapp2.1\AydoganFBank.Common.AssemblyInfo.cs
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Common\obj\Debug\netcoreapp2.1\AydoganFBank.Common.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Common\obj\Debug\netcoreapp2.1\AydoganFBank.Common.pdb

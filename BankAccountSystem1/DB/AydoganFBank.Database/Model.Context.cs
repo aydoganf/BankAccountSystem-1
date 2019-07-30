@@ -28,10 +28,10 @@ namespace AydoganFBank.Database
         public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<AccountTransaction> AccountTransaction { get; set; }
         public virtual DbSet<AccountType> AccountType { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<TransactionOrder> TransactionOrder { get; set; }
         public virtual DbSet<TransactionStatus> TransactionStatus { get; set; }
         public virtual DbSet<TransactionType> TransactionType { get; set; }
-        public virtual DbSet<Company> Company { get; set; }
     }
 }

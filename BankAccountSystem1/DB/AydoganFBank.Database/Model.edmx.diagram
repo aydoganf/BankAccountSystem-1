@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="201c1f0933da4c90bcde31a2c95151c8" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Account" Width="1.875" PointX="2.625" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.AccountTransaction" Width="2" PointX="5.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.AccountType" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Person" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TransactionOrder" Width="2.125" PointX="8.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TransactionStatus" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.TransactionType" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_Account_AccountType" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_AccountTransaction_Account" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_AccountTransaction_Account1" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_TransactionOrder_Account" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_TransactionOrder_Account1" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_AccountTransaction_TransactionStatus" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_AccountTransaction_TransactionType" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_TransactionOrder_TransactionType" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.Company" Width="1.5" PointX="8" PointY="8" />
-        <AssociationConnector Association="Model.FK_Company_Person" />
+      <Diagram DiagramId="108bd1fb95b948c0aee192c860832420" Name="Diagram1">
+        <EntityTypeShape EntityType="AydoganFBankModel.Account" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AydoganFBankModel.AccountTransaction" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AydoganFBankModel.AccountType" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AydoganFBankModel.Company" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AydoganFBankModel.Person" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AydoganFBankModel.TransactionOrder" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AydoganFBankModel.TransactionStatus" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AydoganFBankModel.TransactionType" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="AydoganFBankModel.FK_Account_AccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="AydoganFBankModel.FK_AccountTransaction_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="AydoganFBankModel.FK_AccountTransaction_Account1" ManuallyRouted="false" />
+        <AssociationConnector Association="AydoganFBankModel.FK_TransactionOrder_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="AydoganFBankModel.FK_TransactionOrder_Account1" ManuallyRouted="false" />
+        <AssociationConnector Association="AydoganFBankModel.FK_AccountTransaction_TransactionStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="AydoganFBankModel.FK_AccountTransaction_TransactionType" ManuallyRouted="false" />
+        <AssociationConnector Association="AydoganFBankModel.FK_Company_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="AydoganFBankModel.FK_TransactionOrder_TransactionType" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

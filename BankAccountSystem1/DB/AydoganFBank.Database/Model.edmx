@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AydoganFBankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="AccountId" />
@@ -195,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ModelStoreContainer">
+        <EntityContainer Name="AydoganFBankModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
@@ -241,10 +241,11 @@
             <End Role="TransactionOrder" EntitySet="TransactionOrder" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AydoganFBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="AccountId" />
@@ -274,8 +275,8 @@
           <Property Name="TransactionStatusId" Type="Int32" Nullable="false" />
           <Property Name="OwnerId" Type="Int32" Nullable="false" />
           <Property Name="OwnerType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FromAccount" Relationship="Self.FK_AccountTransaction_Account" FromRole="AccountTransaction" ToRole="Account" />
-          <NavigationProperty Name="ToAccount" Relationship="Self.FK_AccountTransaction_Account1" FromRole="AccountTransaction" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AccountTransaction_Account" FromRole="AccountTransaction" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK_AccountTransaction_Account1" FromRole="AccountTransaction" ToRole="Account" />
           <NavigationProperty Name="TransactionStatus" Relationship="Self.FK_AccountTransaction_TransactionStatus" FromRole="AccountTransaction" ToRole="TransactionStatus" />
           <NavigationProperty Name="TransactionType" Relationship="Self.FK_AccountTransaction_TransactionType" FromRole="AccountTransaction" ToRole="TransactionType" />
         </EntityType>
@@ -288,6 +289,17 @@
           <Property Name="TypeKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Account_AccountType" FromRole="AccountType" ToRole="Account" />
         </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResponsablePersonId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Company_Person" FromRole="Company" ToRole="Person" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="PersonId" />
@@ -297,7 +309,7 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdentityNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Company" Relationship="Model.FK_Company_Person" FromRole="Person" ToRole="Company" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Company_Person" FromRole="Person" ToRole="Company" />
         </EntityType>
         <EntityType Name="TransactionOrder">
           <Key>
@@ -311,8 +323,8 @@
           <Property Name="FromAccountId" Type="Int32" Nullable="false" />
           <Property Name="ToAccountId" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <NavigationProperty Name="FromAccount" Relationship="Self.FK_TransactionOrder_Account" FromRole="TransactionOrder" ToRole="Account" />
-          <NavigationProperty Name="ToAccount" Relationship="Self.FK_TransactionOrder_Account1" FromRole="TransactionOrder" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_TransactionOrder_Account" FromRole="TransactionOrder" ToRole="Account" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK_TransactionOrder_Account1" FromRole="TransactionOrder" ToRole="Account" />
           <NavigationProperty Name="TransactionType" Relationship="Self.FK_TransactionOrder_TransactionType" FromRole="TransactionOrder" ToRole="TransactionType" />
         </EntityType>
         <EntityType Name="TransactionStatus">
@@ -418,6 +430,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Company_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="ResponsablePersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TransactionOrder_TransactionType">
           <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
           <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
@@ -434,6 +458,7 @@
           <EntitySet Name="Account" EntityType="Self.Account" />
           <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" />
           <EntitySet Name="AccountType" EntityType="Self.AccountType" />
+          <EntitySet Name="Company" EntityType="Self.Company" />
           <EntitySet Name="Person" EntityType="Self.Person" />
           <EntitySet Name="TransactionOrder" EntityType="Self.TransactionOrder" />
           <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" />
@@ -466,47 +491,23 @@
             <End Role="TransactionType" EntitySet="TransactionType" />
             <End Role="AccountTransaction" EntitySet="AccountTransaction" />
           </AssociationSet>
+          <AssociationSet Name="FK_Company_Person" Association="Self.FK_Company_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
           <AssociationSet Name="FK_TransactionOrder_TransactionType" Association="Self.FK_TransactionOrder_TransactionType">
             <End Role="TransactionType" EntitySet="TransactionType" />
             <End Role="TransactionOrder" EntitySet="TransactionOrder" />
           </AssociationSet>
-          <EntitySet Name="Company" EntityType="Model.Company" />
-          <AssociationSet Name="FK_Company_Person" Association="Model.FK_Company_Person">
-            <End Role="Person" EntitySet="Person" />
-            <End Role="Company" EntitySet="Company" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="ResponsablePersonId" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Person" Relationship="Model.FK_Company_Person" FromRole="Company" ToRole="Person" />
-        </EntityType>
-        <Association Name="FK_Company_Person">
-          <End Type="Model.Person" Role="Person" Multiplicity="1" />
-          <End Type="Model.Company" Role="Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="PersonId" />
-            </Principal>
-            <Dependent Role="Company">
-              <PropertyRef Name="ResponsablePersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="AydoganFBankDbContext">
+        <EntityContainerMapping StorageEntityContainer="AydoganFBankModelStoreContainer" CdmEntityContainer="AydoganFBankDbContext">
           <EntitySetMapping Name="Account">
-            <EntityTypeMapping TypeName="Model.Account">
+            <EntityTypeMapping TypeName="AydoganFBankModel.Account">
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
@@ -518,7 +519,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AccountTransaction">
-            <EntityTypeMapping TypeName="Model.AccountTransaction">
+            <EntityTypeMapping TypeName="AydoganFBankModel.AccountTransaction">
               <MappingFragment StoreEntitySet="AccountTransaction">
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
                 <ScalarProperty Name="FromAccountId" ColumnName="FromAccountId" />
@@ -533,7 +534,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AccountType">
-            <EntityTypeMapping TypeName="Model.AccountType">
+            <EntityTypeMapping TypeName="AydoganFBankModel.AccountType">
               <MappingFragment StoreEntitySet="AccountType">
                 <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
@@ -541,8 +542,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="AydoganFBankModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ResponsablePersonId" ColumnName="ResponsablePersonId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Person">
-            <EntityTypeMapping TypeName="Model.Person">
+            <EntityTypeMapping TypeName="AydoganFBankModel.Person">
               <MappingFragment StoreEntitySet="Person">
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -553,7 +565,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TransactionOrder">
-            <EntityTypeMapping TypeName="Model.TransactionOrder">
+            <EntityTypeMapping TypeName="AydoganFBankModel.TransactionOrder">
               <MappingFragment StoreEntitySet="TransactionOrder">
                 <ScalarProperty Name="TransactionOrderId" ColumnName="TransactionOrderId" />
                 <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
@@ -567,7 +579,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TransactionStatus">
-            <EntityTypeMapping TypeName="Model.TransactionStatus">
+            <EntityTypeMapping TypeName="AydoganFBankModel.TransactionStatus">
               <MappingFragment StoreEntitySet="TransactionStatus">
                 <ScalarProperty Name="TransactionStatusId" ColumnName="TransactionStatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
@@ -576,22 +588,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TransactionType">
-            <EntityTypeMapping TypeName="Model.TransactionType">
+            <EntityTypeMapping TypeName="AydoganFBankModel.TransactionType">
               <MappingFragment StoreEntitySet="TransactionType">
                 <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="TypeKey" ColumnName="TypeKey" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Company">
-            <EntityTypeMapping TypeName="Model.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ResponsablePersonId" ColumnName="ResponsablePersonId" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
