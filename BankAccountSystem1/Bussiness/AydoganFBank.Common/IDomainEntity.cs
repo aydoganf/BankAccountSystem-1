@@ -7,5 +7,8 @@ namespace AydoganFBank.Common
     public interface IDomainEntity
     {
         int Id { get; }
+
+        void Insert(bool forceToınsertDb = true);
+        void Save();
     }
 }

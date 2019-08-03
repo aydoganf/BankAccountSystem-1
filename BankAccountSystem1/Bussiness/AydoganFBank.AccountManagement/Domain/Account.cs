@@ -32,19 +32,22 @@ namespace AydoganFBank.AccountManagement.Domain
 
         int IDomainEntity.Id => AccountId;
 
-        internal AccountDomainEntity With(AccountTypeDomainEntity accountType, IAccountOwner accountOwner)
+        public AccountDomainEntity With(AccountTypeDomainEntity accountType, IAccountOwner accountOwner)
         {
             AccountType = accountType;
             AccountOwner = accountOwner;
             return this;
         }
 
-        internal void Insert()
+        public void Insert(bool forceToInsertDb = true)
         {
-            accountRepository.InsertEntity(this);
+            // calculate new account number
+            string accountNumber = accountRepository.GetNextAccountNumber();
+            AccountNumber = accountNumber;
+            accountRepository.InsertEntity(this, forceToInsertDb);
         }
 
-        internal void Save()
+        public void Save()
         {
             accountRepository.UpdateEntity(this);
         }
@@ -60,10 +63,11 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class AccountRepository : Repository<AccountDomainEntity, Account>,
+    public class AccountRepository : OrderedQueryRepository<AccountDomainEntity, Account>,
         IAccountRepository,
         IDomainObjectBuilderRepository<AccountDomainEntity, Account>
     {
+        private const int ACCOUNT_NUMBER_START = 1000000;
         private readonly IDomainEntityBuilder<AccountTypeDomainEntity, AccountType> accountTypeDomainEntityBuilder;
         private readonly IPersonRepository personRepository;
 
@@ -92,6 +96,9 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public override AccountDomainEntity MapToDomainObject(Account account)
         {
+            if (account == null)
+                return null;
+
             var domainEntity = coreContext.New<AccountDomainEntity>();
             domainEntity.AccountId = account.AccountId;
             domainEntity.AccountNumber = account.AccountNumber;
@@ -105,6 +112,9 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public override void MapToDomainObject(AccountDomainEntity domainEntity, Account dbEntity)
         {
+            if (dbEntity == null)
+                return;
+
             domainEntity.AccountId = dbEntity.AccountId;
             domainEntity.AccountNumber = dbEntity.AccountNumber;
             domainEntity.AccountType = accountTypeDomainEntityBuilder.MapToDomainObject(dbEntity.AccountType);
@@ -143,7 +153,7 @@ namespace AydoganFBank.AccountManagement.Domain
                 ToList();
         }
 
-        public List<AccountDomainEntity> GetLisyByCompany(Company company)
+        public List<AccountDomainEntity> GetLisyByCompany(CompanyDomainEntity company)
         {
             return GetListBy(a => a.OwnerType == (int)AccountOwnerType.Company && a.OwnerId == company.CompanyId).
                 ToList();
@@ -153,11 +163,19 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return dbContext.Account.FirstOrDefault(a => a.AccountId == id);
         }
+
+        public string GetNextAccountNumber()
+        {
+            var lastAccount = GetLastBy(a => a.AccountNumber);
+            int nextAccountNumber = lastAccount != null ? Convert.ToInt32(lastAccount.AccountNumber) + 1 : ACCOUNT_NUMBER_START;
+            return nextAccountNumber.ToString();
+        }
     }
 
     public interface IAccountRepository : IRepository<AccountDomainEntity>        
     {
+        string GetNextAccountNumber();
         List<AccountDomainEntity> GetListByPerson(PersonDomainEntity person);
-        List<AccountDomainEntity> GetLisyByCompany(Company company);
+        List<AccountDomainEntity> GetLisyByCompany(CompanyDomainEntity company);
     }
 }

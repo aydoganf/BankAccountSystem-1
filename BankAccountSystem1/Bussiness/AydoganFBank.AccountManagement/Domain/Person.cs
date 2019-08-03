@@ -42,9 +42,9 @@ namespace AydoganFBank.AccountManagement.Domain
             return this;
         }
 
-        public void Insert()
+        public void Insert(bool forceToInsertDb = true)
         {
-            personRepository.InsertEntity(this, true);
+            personRepository.InsertEntity(this, forceToInsertDb);
         }
 
         public void Save()

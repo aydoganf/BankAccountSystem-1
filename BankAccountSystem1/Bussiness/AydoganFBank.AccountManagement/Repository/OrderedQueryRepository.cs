@@ -56,6 +56,21 @@ namespace AydoganFBank.AccountManagement.Repository
                     .ThenBy(ascendingOrderThen2));
         }
 
+        protected TDomainEntity GetLastBy<TOrder>(
+            Expression<Func<TDbEntity, TOrder>> descendingOrder)
+        {
+            return MapToDomainObject(
+                dbContext.Set<TDbEntity>().OrderByDescending(descendingOrder).FirstOrDefault());
+        }
+
+        protected TDomainEntity GetLastBy<TOrder>(
+            Expression<Func<TDbEntity, bool>> predicate,
+            Expression<Func<TDbEntity, TOrder>> descendingOrder)
+        {
+            return MapToDomainObject(
+                dbContext.Set<TDbEntity>().Where(predicate).OrderByDescending(descendingOrder).FirstOrDefault());
+        }
+
         protected IEnumerable<TDomainEntity> GetOrderedDescListBy<TOrder>(
             Expression<Func<TDbEntity, bool>> predicate,
             Expression<Func<TDbEntity, TOrder>> descendingOrder)
