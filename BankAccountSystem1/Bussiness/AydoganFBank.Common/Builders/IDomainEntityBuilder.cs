@@ -9,6 +9,7 @@ namespace AydoganFBank.Common.Builders
         where TDbEntity : class
     {
         TDomainEntity MapToDomainObject(TDbEntity entity);
+        void MapToDomainObject(TDomainEntity domainEntity, TDbEntity entity);
 
         IEnumerable<TDomainEntity> MapToDomainObjectList(IEnumerable<TDbEntity> entities);
     }

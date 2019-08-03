@@ -6,5 +6,6 @@ namespace AydoganFBank.Common
 {
     public interface IDomainEntity
     {
+        int Id { get; }
     }
 }
