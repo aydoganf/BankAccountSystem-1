@@ -24,8 +24,8 @@ namespace AydoganFBank.Database
         public int OwnerId { get; set; }
         public int OwnerType { get; set; }
     
-        public virtual Account Account { get; set; }
-        public virtual Account Account1 { get; set; }
+        public virtual Account FromAccount { get; set; }
+        public virtual Account ToAccount { get; set; }
         public virtual TransactionStatus TransactionStatus { get; set; }
         public virtual TransactionType TransactionType { get; set; }
     }

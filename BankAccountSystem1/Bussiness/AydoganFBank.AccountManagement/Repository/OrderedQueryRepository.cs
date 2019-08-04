@@ -24,33 +24,33 @@ namespace AydoganFBank.AccountManagement.Repository
         }
 
         protected IEnumerable<TDomainEntity> GetOrderedAscListBy<TOrder>(
-            Expression<Func<TDbEntity, bool>> predicate,
+            Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder>> ascendingOrder)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(predicate)
+                    dbContext.Set<TDbEntity>().Where(whereCondition)
                     .OrderBy(ascendingOrder));
         }
 
         protected IEnumerable<TDomainEntity> GetOrderedAscListBy<TOrder1, TOrder2>(
-            Expression<Func<TDbEntity, bool>> predicate,
+            Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder1>> ascendingOrder,
             Expression<Func<TDbEntity, TOrder2>> ascendingOrderThen)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(predicate)
+                    dbContext.Set<TDbEntity>().Where(whereCondition)
                     .OrderBy(ascendingOrder)
                     .ThenBy(ascendingOrderThen));
         }
 
         protected IEnumerable<TDomainEntity> GetOrderedAscListBy<TOrder1, TOrder2, TOrder3>(
-            Expression<Func<TDbEntity, bool>> predicate,
+            Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder1>> ascendingOrder,
             Expression<Func<TDbEntity, TOrder2>> ascendingOrderThen1,
             Expression<Func<TDbEntity, TOrder3>> ascendingOrderThen2)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(predicate)
+                    dbContext.Set<TDbEntity>().Where(whereCondition)
                     .OrderBy(ascendingOrder)
                     .ThenBy(ascendingOrderThen1)
                     .ThenBy(ascendingOrderThen2));
@@ -64,40 +64,57 @@ namespace AydoganFBank.AccountManagement.Repository
         }
 
         protected TDomainEntity GetLastBy<TOrder>(
-            Expression<Func<TDbEntity, bool>> predicate,
+            Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder>> descendingOrder)
         {
             return MapToDomainObject(
-                dbContext.Set<TDbEntity>().Where(predicate).OrderByDescending(descendingOrder).FirstOrDefault());
+                dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descendingOrder).FirstOrDefault());
+        }
+
+        protected IEnumerable<TDomainEntity> GetLastItemCountListBy<TOrder>(
+            Expression<Func<TDbEntity, TOrder>> descedingOrder,
+            int itemCount)
+        {
+            return MapToDomainObjectList(
+                dbContext.Set<TDbEntity>().OrderByDescending(descedingOrder).Take(itemCount));
+        }
+
+        protected IEnumerable<TDomainEntity> GetLastItemCountListBy<TOrder>(
+            Expression<Func<TDbEntity, bool>> whereCondition,
+            Expression<Func<TDbEntity, TOrder>> descedingOrder,
+            int itemCount)
+        {
+            return MapToDomainObjectList(
+                dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descedingOrder).Take(itemCount));
         }
 
         protected IEnumerable<TDomainEntity> GetOrderedDescListBy<TOrder>(
-            Expression<Func<TDbEntity, bool>> predicate,
+            Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder>> descendingOrder)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(predicate).OrderByDescending(descendingOrder));
+                    dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descendingOrder));
         }
 
         protected IEnumerable<TDomainEntity> GetOrderedDescListBy<TOrder1, TOrder2>(
-            Expression<Func<TDbEntity, bool>> predicate,
+            Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder1>> descendingOrder1,
             Expression<Func<TDbEntity, TOrder1>> descendingOrder2)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(predicate)
+                    dbContext.Set<TDbEntity>().Where(whereCondition)
                     .OrderByDescending(descendingOrder1)
                     .ThenByDescending(descendingOrder2));
         }
 
         protected IEnumerable<TDomainEntity> GetOrderedDescListBy<TOrder1, TOrder2, TOrder3>(
-            Expression<Func<TDbEntity, bool>> predicate,
+            Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder1>> descendingOrder1,
             Expression<Func<TDbEntity, TOrder1>> descendingOrder2,
             Expression<Func<TDbEntity, TOrder1>> descendingOrder3)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(predicate)
+                    dbContext.Set<TDbEntity>().Where(whereCondition)
                     .OrderByDescending(descendingOrder1)
                     .ThenByDescending(descendingOrder2)
                     .ThenByDescending(descendingOrder3));

@@ -1,6 +1,6 @@
 ﻿using AydoganFBank.Common;
 
-namespace AydoganFBank.AccountManagement.Domain
+namespace AydoganFBank.AccountManagement.Repository
 {
     public interface IRepository<TDomainEntity> 
         where TDomainEntity : IDomainEntity

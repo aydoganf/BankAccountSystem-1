@@ -8,7 +8,15 @@ namespace AydoganFBank.Common
     {
         int Id { get; }
 
-        void Insert(bool forceToınsertDb = true);
+        /// <summary>
+        /// Inserts the domain entity to db
+        /// </summary>
+        /// <param name="forceToInsertDb">if it is true, entity will be inserted immediately</param>
+        void Insert(bool forceToInsertDb = true);
+
+        /// <summary>
+        /// Updates the domain entity
+        /// </summary>
         void Save();
     }
 }

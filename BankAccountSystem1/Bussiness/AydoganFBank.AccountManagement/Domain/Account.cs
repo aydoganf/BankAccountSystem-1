@@ -11,7 +11,7 @@ using System.Linq;
 namespace AydoganFBank.AccountManagement.Domain
 {
 
-    public class AccountDomainEntity : IDomainEntity
+    public class AccountDomainEntity : IDomainEntity, ITransactionOwner
     {
         #region IoC
         private readonly IAccountRepository accountRepository;
@@ -23,8 +23,6 @@ namespace AydoganFBank.AccountManagement.Domain
         #endregion
 
         public int AccountId { get; set; }
-        //public AccountOwnerType OwnerType { get; set; }
-        //public int OwnerId { get; set; }
         public string AccountNumber { get; set; }
         public AccountTypeDomainEntity AccountType { get; set; }
         public decimal Balance { get; set; }
@@ -32,7 +30,12 @@ namespace AydoganFBank.AccountManagement.Domain
 
         int IDomainEntity.Id => AccountId;
 
-        public AccountDomainEntity With(AccountTypeDomainEntity accountType, IAccountOwner accountOwner)
+        int ITransactionOwner.OwnerId => AccountId;
+        TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.Account;
+
+        public AccountDomainEntity With(
+            AccountTypeDomainEntity accountType, 
+            IAccountOwner accountOwner)
         {
             AccountType = accountType;
             AccountOwner = accountOwner;
@@ -63,31 +66,39 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class AccountRepository : OrderedQueryRepository<AccountDomainEntity, Account>,
+    public class AccountRepository : 
+        OrderedQueryRepository<AccountDomainEntity, Account>,
         IAccountRepository,
         IDomainObjectBuilderRepository<AccountDomainEntity, Account>
     {
         private const int ACCOUNT_NUMBER_START = 1000000;
-        private readonly IDomainEntityBuilder<AccountTypeDomainEntity, AccountType> accountTypeDomainEntityBuilder;
         private readonly IPersonRepository personRepository;
+        private readonly ICompanyRepository companyRepository;
+        private readonly IAccountTypeRepository accountTypeRepository;
 
         public AccountRepository(
             ICoreContext coreContext, 
             AydoganFBankDbContext dbContext,
-            IDomainEntityBuilder<AccountTypeDomainEntity, AccountType> accountTypeDomainEntityBuilder,
-            IPersonRepository personRepository) 
+            IPersonRepository personRepository,
+            ICompanyRepository companyRepository,
+            IAccountTypeRepository accountTypeRepository) 
             : base(coreContext, dbContext, null, null)
         {
             this.personRepository = personRepository;
-            this.accountTypeDomainEntityBuilder = accountTypeDomainEntityBuilder;
+            this.companyRepository = companyRepository;
+            this.accountTypeRepository = accountTypeRepository;
         }
 
         private IAccountOwner GetAccountOwner(Account account)
         {
             IAccountOwner accountOwner = null;
-            if (account.OwnerType == (int)AccountOwnerType.Person)
+            if (account.OwnerType == AccountOwnerType.Person.ToInt())
             {
                 accountOwner = personRepository.GetById(account.OwnerId);
+            }
+            else if (account.OwnerType == AccountOwnerType.Company.ToInt())
+            {
+                accountOwner = companyRepository.GetById(account.OwnerId);
             }
             return accountOwner;
         }
@@ -100,13 +111,7 @@ namespace AydoganFBank.AccountManagement.Domain
                 return null;
 
             var domainEntity = coreContext.New<AccountDomainEntity>();
-            domainEntity.AccountId = account.AccountId;
-            domainEntity.AccountNumber = account.AccountNumber;
-            domainEntity.AccountType = accountTypeDomainEntityBuilder.MapToDomainObject(account.AccountType);
-            domainEntity.Balance = account.Balance;
-            //domainEntity.OwnerId = account.OwnerId;
-            //domainEntity.OwnerType = Enum.Parse<AccountOwnerType>(account.OwnerType.ToString());
-            domainEntity.AccountOwner = GetAccountOwner(account);
+            MapToDomainObject(domainEntity, account);
             return domainEntity;
         }
 
@@ -117,7 +122,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
             domainEntity.AccountId = dbEntity.AccountId;
             domainEntity.AccountNumber = dbEntity.AccountNumber;
-            domainEntity.AccountType = accountTypeDomainEntityBuilder.MapToDomainObject(dbEntity.AccountType);
+            domainEntity.AccountType = accountTypeRepository.GetById(dbEntity.AccountTypeId);
             domainEntity.Balance = dbEntity.Balance;
             domainEntity.AccountOwner = GetAccountOwner(dbEntity);
         }
@@ -144,18 +149,24 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public override AccountDomainEntity GetById(int id)
         {
-            return base.GetFirstBy(a => a.AccountId == id);
+            return MapToDomainObject(GetDbEntityById(id));
         }
 
         public List<AccountDomainEntity> GetListByPerson(PersonDomainEntity person)
         {
-            return GetListBy(a => a.OwnerType == (int)AccountOwnerType.Person && a.OwnerId == person.PersonId).
+            return GetListBy(
+                a => 
+                    a.OwnerType == AccountOwnerType.Person.ToInt() && a.OwnerId == person.PersonId
+                    ).
                 ToList();
         }
 
         public List<AccountDomainEntity> GetLisyByCompany(CompanyDomainEntity company)
         {
-            return GetListBy(a => a.OwnerType == (int)AccountOwnerType.Company && a.OwnerId == company.CompanyId).
+            return GetListBy(
+                a => 
+                    a.OwnerType == AccountOwnerType.Company.ToInt() && a.OwnerId == company.CompanyId
+                    ).
                 ToList();
         }
 
