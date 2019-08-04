@@ -1,0 +1,14 @@
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.deps.json
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.runtimeconfig.json
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.runtimeconfig.dev.json
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.pdb
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.csprojAssemblyReference.cache
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.csproj.CoreCompileInputs.cache
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.RazorAssemblyInfo.cache
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.RazorAssemblyInfo.cs
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.AssemblyInfoInputs.cache
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.AssemblyInfo.cs
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.RazorTargetAssemblyInfo.cache
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.pdb

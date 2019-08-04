@@ -22,14 +22,14 @@ namespace AydoganFBank.AccountManagement.Repository
 
         public Repository(
             ICoreContext coreContext,
-            AydoganFBankDbContext dbContext,
             IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder,
             IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper)
         {
             this.coreContext = coreContext;
-            this.dbContext = dbContext;
             this.domainEntityBuilder = domainEntityBuilder;
             this.dbEntityMapper = dbEntityMapper;
+
+            dbContext = this.coreContext.DBContext;
         }
 
         public virtual TDomainEntity MapToDomainObject(TDbEntity dbEntity)

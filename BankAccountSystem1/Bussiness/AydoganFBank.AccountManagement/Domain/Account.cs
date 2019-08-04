@@ -2,6 +2,7 @@
 using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
 using AydoganFBank.Common.Builders;
+using AydoganFBank.Common.Exception;
 using AydoganFBank.Common.IoC;
 using AydoganFBank.Database;
 using System;
@@ -37,8 +38,8 @@ namespace AydoganFBank.AccountManagement.Domain
             AccountTypeDomainEntity accountType, 
             IAccountOwner accountOwner)
         {
-            AccountType = accountType;
-            AccountOwner = accountOwner;
+            AccountType = accountType ?? throw new CommonException.RequiredParameterMissingException(nameof(accountType));
+            AccountOwner = accountOwner ?? throw new CommonException.RequiredParameterMissingException(nameof(accountType));
             return this;
         }
 
@@ -57,12 +58,20 @@ namespace AydoganFBank.AccountManagement.Domain
 
         internal void Deposit(decimal amount)
         {
+            if (amount <= 0)
+                throw new AccountManagementException.DepositAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
+
             Balance += amount;
+            Save();
         }
 
         internal void Withdraw(decimal amount)
         {
+            if (amount <= 0)
+                throw new AccountManagementException.WithdrawAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
+
             Balance -= amount;
+            Save();
         }
     }
 
@@ -77,12 +86,11 @@ namespace AydoganFBank.AccountManagement.Domain
         private readonly IAccountTypeRepository accountTypeRepository;
 
         public AccountRepository(
-            ICoreContext coreContext, 
-            AydoganFBankDbContext dbContext,
+            ICoreContext coreContext,
             IPersonRepository personRepository,
             ICompanyRepository companyRepository,
             IAccountTypeRepository accountTypeRepository) 
-            : base(coreContext, dbContext, null, null)
+            : base(coreContext, null, null)
         {
             this.personRepository = personRepository;
             this.companyRepository = companyRepository;
@@ -181,6 +189,12 @@ namespace AydoganFBank.AccountManagement.Domain
             int nextAccountNumber = lastAccount != null ? Convert.ToInt32(lastAccount.AccountNumber) + 1 : ACCOUNT_NUMBER_START;
             return nextAccountNumber.ToString();
         }
+
+        public AccountDomainEntity GetByAccountNumber(string accountNumber)
+        {
+            return GetFirstBy(
+                a => a.AccountNumber == accountNumber);
+        }
     }
 
     public interface IAccountRepository : IRepository<AccountDomainEntity>        
@@ -188,5 +202,6 @@ namespace AydoganFBank.AccountManagement.Domain
         string GetNextAccountNumber();
         List<AccountDomainEntity> GetListByPerson(PersonDomainEntity person);
         List<AccountDomainEntity> GetLisyByCompany(CompanyDomainEntity company);
+        AccountDomainEntity GetByAccountNumber(string accountNumber);
     }
 }

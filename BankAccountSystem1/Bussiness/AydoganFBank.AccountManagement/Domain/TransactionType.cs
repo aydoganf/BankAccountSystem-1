@@ -49,11 +49,10 @@ namespace AydoganFBank.AccountManagement.Domain
         ITransactionTypeRepository
     {
         public TransactionTypeRepository(
-            ICoreContext coreContext, 
-            AydoganFBankDbContext dbContext, 
+            ICoreContext coreContext,
             IDomainEntityBuilder<TransactionTypeDomainEntity, TransactionType> domainEntityBuilder, 
             IDbEntityMapper<TransactionType, TransactionTypeDomainEntity> dbEntityMapper) 
-            : base(coreContext, dbContext, domainEntityBuilder, dbEntityMapper)
+            : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
 

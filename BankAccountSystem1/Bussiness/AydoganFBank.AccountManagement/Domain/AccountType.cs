@@ -52,11 +52,10 @@ namespace AydoganFBank.AccountManagement.Domain
         IAccountTypeRepository
     {
         public AccountTypeRepository(
-            ICoreContext coreContext, 
-            AydoganFBankDbContext dbContext, 
+            ICoreContext coreContext,  
             IDomainEntityBuilder<AccountTypeDomainEntity, AccountType> domainEntityBuilder, 
             IDbEntityMapper<AccountType, AccountTypeDomainEntity> dbEntityMapper) 
-            : base(coreContext, dbContext, domainEntityBuilder, dbEntityMapper)
+            : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
 
@@ -69,10 +68,17 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return dbContext.AccountType.FirstOrDefault(at => at.AccountTypeId == id);
         }
+
+        public AccountTypeDomainEntity GetByKey(string typeKey)
+        {
+            return GetFirstBy(
+                at =>
+                    at.TypeKey == typeKey);
+        }
     }
 
     public interface IAccountTypeRepository : IRepository<AccountTypeDomainEntity>
     {
-
+        AccountTypeDomainEntity GetByKey(string typeKey);
     }
 }

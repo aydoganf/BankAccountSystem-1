@@ -74,11 +74,10 @@ namespace AydoganFBank.AccountManagement.Domain
         
         public AccountTransactionRepository(
             ICoreContext coreContext,
-            AydoganFBankDbContext dbContext,
             ITransactionStatusRepository transactionStatusRepository,
             ITransactionTypeRepository transactionTypeRepository,
             IAccountRepository accountRepository,
-            ITransactionOrderRepository transactionOrderRepository) : base(coreContext, dbContext, null, null)
+            ITransactionOrderRepository transactionOrderRepository) : base(coreContext, null, null)
         {
             this.transactionStatusRepository = transactionStatusRepository;
             this.transactionTypeRepository = transactionTypeRepository;

@@ -15,11 +15,10 @@ namespace AydoganFBank.AccountManagement.Repository
         where TDbEntity : class
     {
         public OrderedQueryRepository(
-            ICoreContext coreContext, 
-            AydoganFBankDbContext dbContext, 
+            ICoreContext coreContext,
             IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder, 
             IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper) 
-            : base(coreContext, dbContext, domainEntityBuilder, dbEntityMapper)
+            : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
 

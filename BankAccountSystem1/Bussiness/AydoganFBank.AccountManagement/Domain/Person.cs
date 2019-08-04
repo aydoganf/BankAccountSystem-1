@@ -2,6 +2,7 @@
 using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
 using AydoganFBank.Common.Builders;
+using AydoganFBank.Common.Exception;
 using AydoganFBank.Common.IoC;
 using AydoganFBank.Database;
 using System.Collections.Generic;
@@ -38,17 +39,32 @@ namespace AydoganFBank.AccountManagement.Domain
             string emailAddress, 
             string identityNumber)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            EmailAddress = emailAddress;
-            IdentityNumber = identityNumber;
-            Insert();
+            FirstName = firstName ?? throw new CommonException.RequiredParameterMissingException(nameof(firstName));
+            LastName = lastName ?? throw new CommonException.RequiredParameterMissingException(nameof(lastName));
+            EmailAddress = emailAddress ?? throw new CommonException.RequiredParameterMissingException(nameof(emailAddress));
+            IdentityNumber = identityNumber ?? throw new CommonException.RequiredParameterMissingException(nameof(identityNumber));
             return this;
         }
 
         public void Insert(bool forceToInsertDb = true)
         {
+            var person = personRepository.GetByIdentityNumber(IdentityNumber);
+            if (person != null)
+                throw new AccountManagementException.PersonAlreadyExistWithTheGivenIdentityNumberException(string.Format("{0} = {1}", nameof(IdentityNumber), IdentityNumber));
+
             personRepository.InsertEntity(this, forceToInsertDb);
+        }
+
+        public void SetLastname(string lastName)
+        {
+            LastName = lastName;
+            Save();
+        }
+
+        public void SetEmail(string emailAddress)
+        {
+            EmailAddress = emailAddress;
+            Save();
         }
 
         public void Save()
@@ -63,10 +79,9 @@ namespace AydoganFBank.AccountManagement.Domain
     {
         public PersonRepository(
             ICoreContext coreContext,
-            AydoganFBankDbContext dbContext,
             IDomainEntityBuilder<PersonDomainEntity, Person> domainEntityBuilder,
             IDbEntityMapper<Person, PersonDomainEntity> dbEntityMapper) 
-            : base (coreContext, dbContext, domainEntityBuilder, dbEntityMapper)
+            : base (coreContext, domainEntityBuilder, dbEntityMapper)
         {            
         }
 

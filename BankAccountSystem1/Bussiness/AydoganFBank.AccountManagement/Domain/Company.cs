@@ -8,6 +8,7 @@ using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
 using System.Linq;
 using AydoganFBank.AccountManagement.Api;
+using AydoganFBank.Common.Exception;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -39,10 +40,10 @@ namespace AydoganFBank.AccountManagement.Domain
             string address, 
             string phoneNumber)
         {
-            CompanyName = companyName;
-            ResponsablePerson = responsablePerson;
-            Address = address;
-            PhoneNumber = phoneNumber;
+            CompanyName = companyName ?? throw new CommonException.RequiredParameterMissingException(nameof(companyName));
+            ResponsablePerson = responsablePerson ?? throw new CommonException.RequiredParameterMissingException(nameof(responsablePerson));
+            Address = address ?? throw new CommonException.RequiredParameterMissingException(nameof(address));
+            PhoneNumber = phoneNumber ?? throw new CommonException.RequiredParameterMissingException(nameof(phoneNumber));
             return this;
         }
 
@@ -55,6 +56,18 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             companyRepository.UpdateEntity(this);
         }
+
+        public void SetAddress(string address)
+        {
+            Address = address;
+            Save();
+        }
+
+        public void SetPhoneNumber(string phoneNumber)
+        {
+            PhoneNumber = phoneNumber;
+            Save();
+        }
     }
 
     public class CompanyRepository : 
@@ -62,11 +75,10 @@ namespace AydoganFBank.AccountManagement.Domain
         ICompanyRepository
     {
         public CompanyRepository(
-            ICoreContext coreContext, 
-            AydoganFBankDbContext dbContext, 
+            ICoreContext coreContext,
             IDomainEntityBuilder<CompanyDomainEntity, Company> domainEntityBuilder, 
             IDbEntityMapper<Company, CompanyDomainEntity> dbEntityMapper) 
-            : base(coreContext, dbContext, domainEntityBuilder, dbEntityMapper)
+            : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
 

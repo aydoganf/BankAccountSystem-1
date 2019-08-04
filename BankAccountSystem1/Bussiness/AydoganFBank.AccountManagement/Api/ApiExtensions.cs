@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AydoganFBank.AccountManagement.Repository;
+using AydoganFBank.Common;
+using AydoganFBank.Common.IoC;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
