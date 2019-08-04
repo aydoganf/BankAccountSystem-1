@@ -32,7 +32,11 @@ namespace AydoganFBank.AccountManagement.Domain
 
         int IDomainEntity.Id => PersonId;
 
-        public PersonDomainEntity With(string firstName, string lastName, string emailAddress, string identityNumber)
+        public PersonDomainEntity With(
+            string firstName, 
+            string lastName, 
+            string emailAddress, 
+            string identityNumber)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -53,7 +57,8 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class PersonRepository : OrderedQueryRepository<PersonDomainEntity, Person>, 
+    public class PersonRepository : 
+        OrderedQueryRepository<PersonDomainEntity, Person>, 
         IPersonRepository
     {
         public PersonRepository(
@@ -72,18 +77,18 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public override PersonDomainEntity GetById(int id)
         {
-            return GetFirstBy(p => p.PersonId == id);
+            return MapToDomainObject(GetDbEntityById(id));
         }
 
-        public List<PersonDomainEntity> GetPersonListByCompany(Company company)
+        public PersonDomainEntity GetByIdentityNumber(string identityNumber)
         {
-            return GetOrderedAscListBy(p => p.Company == company, p => p.FirstName, p => p.LastName)
-                .ToList();
+            return GetFirstBy(
+                p => p.IdentityNumber == identityNumber);
         }
     }
 
     public interface IPersonRepository : IRepository<PersonDomainEntity>
     {
-        List<PersonDomainEntity> GetPersonListByCompany(Company company);
+        PersonDomainEntity GetByIdentityNumber(string identityNumber);
     }
 }

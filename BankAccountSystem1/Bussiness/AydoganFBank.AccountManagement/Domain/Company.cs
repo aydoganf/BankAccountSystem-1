@@ -7,10 +7,11 @@ using AydoganFBank.Database;
 using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
 using System.Linq;
+using AydoganFBank.AccountManagement.Api;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CompanyDomainEntity : IDomainEntity
+    public class CompanyDomainEntity : IDomainEntity, IAccountOwner
     {
         #region IoC
         private readonly ICompanyRepository companyRepository;
@@ -29,7 +30,14 @@ namespace AydoganFBank.AccountManagement.Domain
 
         int IDomainEntity.Id => CompanyId;
 
-        public CompanyDomainEntity With(string companyName, PersonDomainEntity responsablePerson, string address, string phoneNumber)
+        AccountOwnerType IAccountOwner.OwnerType => AccountOwnerType.Company;
+        int IAccountOwner.OwnerId => CompanyId;
+
+        public CompanyDomainEntity With(
+            string companyName, 
+            PersonDomainEntity responsablePerson, 
+            string address, 
+            string phoneNumber)
         {
             CompanyName = companyName;
             ResponsablePerson = responsablePerson;
@@ -49,7 +57,9 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class CompanyRepository : Repository<CompanyDomainEntity, Company>, ICompanyRepository
+    public class CompanyRepository : 
+        Repository<CompanyDomainEntity, Company>, 
+        ICompanyRepository
     {
         public CompanyRepository(
             ICoreContext coreContext, 

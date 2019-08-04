@@ -1,0 +1,67 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "5311b4121a5459e06abe1080b1fb9f93a5075bd4"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "AydoganFBank.AccountManagement/1.0.0": {
+        "dependencies": {
+          "AydoganFBank.Common": "1.0.0",
+          "AydoganFBank.Database": "1.0.0",
+          "EntityFramework": "6.2.0"
+        },
+        "runtime": {
+          "AydoganFBank.AccountManagement.dll": {}
+        }
+      },
+      "EntityFramework/6.2.0": {
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.2.61023.0"
+          },
+          "lib/net45/EntityFramework.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.2.61023.0"
+          }
+        }
+      },
+      "AydoganFBank.Common/1.0.0": {
+        "runtime": {
+          "AydoganFBank.Common.dll": {}
+        }
+      },
+      "AydoganFBank.Database/1.0.0": {
+        "runtime": {
+          "AydoganFBank.Database.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AydoganFBank.AccountManagement/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EntityFramework/6.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ptGyXOf26qLrtn+2doAmylIlCxOnBJANwlyyLrXDmqIk9O18IzLWHyxDwwAyhgXkxmbiaA0WNpRy67WRReInBw==",
+      "path": "entityframework/6.2.0",
+      "hashPath": "entityframework.6.2.0.nupkg.sha512"
+    },
+    "AydoganFBank.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AydoganFBank.Database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
