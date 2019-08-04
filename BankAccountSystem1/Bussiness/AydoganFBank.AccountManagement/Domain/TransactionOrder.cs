@@ -87,6 +87,9 @@ namespace AydoganFBank.AccountManagement.Domain
         #region Mapping overrides
         public override TransactionOrderDomainEntity MapToDomainObject(TransactionOrder dbEntity)
         {
+            if (dbEntity == null)
+                return null;
+
             var domainEntity = coreContext.New<TransactionOrderDomainEntity>();
             MapToDomainObject(domainEntity, dbEntity);
             return domainEntity;
@@ -94,6 +97,9 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public override void MapToDomainObject(TransactionOrderDomainEntity domainEntity, TransactionOrder dbEntity)
         {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
             domainEntity.Amount = dbEntity.Amount;
             domainEntity.CreateDate = dbEntity.CreateDate;
             domainEntity.FromAccount = accountRepository.GetById(dbEntity.FromAccountId);

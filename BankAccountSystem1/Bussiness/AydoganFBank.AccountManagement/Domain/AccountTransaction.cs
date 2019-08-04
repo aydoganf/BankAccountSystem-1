@@ -113,6 +113,9 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public override void MapToDomainObject(AccountTransactionDomainEntity domainEntity, AccountTransaction dbEntity)
         {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
             domainEntity.Amount = dbEntity.Amount;
             domainEntity.FromAccount = accountRepository.GetById(dbEntity.FromAccountId);
             domainEntity.ToAccount = accountRepository.GetById(dbEntity.ToAccountId);

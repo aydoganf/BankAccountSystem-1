@@ -117,7 +117,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public override void MapToDomainObject(AccountDomainEntity domainEntity, Account dbEntity)
         {
-            if (dbEntity == null)
+            if (domainEntity == null || dbEntity == null)
                 return;
 
             domainEntity.AccountId = dbEntity.AccountId;
