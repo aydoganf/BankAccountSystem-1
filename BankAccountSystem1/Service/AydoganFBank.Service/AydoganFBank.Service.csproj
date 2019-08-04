@@ -1,7 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Message\Input\" />
+    <Folder Include="Message\Data\" />
+    <Folder Include="Message\Response\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bussiness\AydoganFBank.AccountManagement\AydoganFBank.AccountManagement.csproj" />
+  </ItemGroup>
 
 </Project>
