@@ -11,7 +11,7 @@ using System.Text;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class AccountTransactionDomainEntity : IDomainEntity
+    public class AccountTransactionDomainEntity : IDomainEntity, ITransactionTypeOwner, ITransactionStatusOwner
     {
         #region IoC
         private readonly IAccountTransactionRepository accountTransactionRepository;
@@ -27,18 +27,18 @@ namespace AydoganFBank.AccountManagement.Domain
         public AccountDomainEntity ToAccount { get; set; }
         public decimal Amount { get; set; }
         public DateTime TransactionDate { get; set; }
-        public TransactionTypeDomainEntity TransactionType { get; set; }
-        public TransactionStatusDomainEntity TransactionStatus { get; set; }
         public ITransactionOwner TransactionOwner { get; set; }
 
         int IDomainEntity.Id => TransactionId;
+        public ITransactionTypeInfo TransactionType { get; set; }
+        public ITransactionStatusInfo TransactionStatus { get; set; }
 
         public AccountTransactionDomainEntity With(
             AccountDomainEntity fromAccount, 
             AccountDomainEntity toAccount, 
             decimal amount,
-            TransactionTypeDomainEntity transactionType,
-            TransactionStatusDomainEntity transactionStatus,
+            ITransactionTypeInfo transactionType,
+            ITransactionStatusInfo transactionStatus,
             ITransactionOwner transactionOwner)
         {
             FromAccount = fromAccount;
@@ -60,6 +60,11 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             accountTransactionRepository.UpdateEntity(this);
         }
+
+        public ITransactionStatusInfo DoTransaction()
+        {
+            throw new NotImplementedException();
+        } 
     }
 
     public class AccountTransactionRepository : 

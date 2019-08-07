@@ -41,6 +41,7 @@ namespace AydoganFBank.AccountManagement.Builder
             domainEntity.CompanyName = entity.CompanyName;
             domainEntity.PhoneNumber = entity.PhoneNumber;
             domainEntity.ResponsablePerson = personDomainEntityBuilder.MapToDomainObject(entity.Person);
+            domainEntity.TaxNumber = entity.TaxNumber;
         }
 
         public IEnumerable<CompanyDomainEntity> MapToDomainObjectList(IEnumerable<Company> entities)
@@ -62,6 +63,7 @@ namespace AydoganFBank.AccountManagement.Builder
             dbEntity.CompanyName = domainEntity.CompanyName;
             dbEntity.PhoneNumber = domainEntity.PhoneNumber;
             dbEntity.ResponsablePersonId = domainEntity.ResponsablePerson.PersonId;
+            dbEntity.TaxNumber = domainEntity.TaxNumber;
         }
     }
 }

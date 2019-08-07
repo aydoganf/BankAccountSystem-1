@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AydoganFBank.Common.Exception
+namespace AydoganFBank.AccountManagement
 {
-    public class AccountManagementException : ServiceException
+    public class AccountManagementException : Common.Exception.ServiceException
     {
         private static int ExceptionBlockInit = 20000;
 
@@ -14,7 +14,7 @@ namespace AydoganFBank.Common.Exception
 
         public class DepositAmountCanNotBeZeroOrNegativeException : AccountManagementException
         {
-            public DepositAmountCanNotBeZeroOrNegativeException(string message) 
+            public DepositAmountCanNotBeZeroOrNegativeException(string message)
                 : base(1, string.Format("Deposit amount can not be zero or negative: {0}", message))
             {
             }
@@ -22,7 +22,7 @@ namespace AydoganFBank.Common.Exception
 
         public class WithdrawAmountCanNotBeZeroOrNegativeException : AccountManagementException
         {
-            public WithdrawAmountCanNotBeZeroOrNegativeException(string message) 
+            public WithdrawAmountCanNotBeZeroOrNegativeException(string message)
                 : base(2, string.Format("Withdraw amount can not be zero or negative:{0}", message))
             {
             }
@@ -30,8 +30,16 @@ namespace AydoganFBank.Common.Exception
 
         public class PersonAlreadyExistWithTheGivenIdentityNumberException : AccountManagementException
         {
-            public PersonAlreadyExistWithTheGivenIdentityNumberException(string message) 
+            public PersonAlreadyExistWithTheGivenIdentityNumberException(string message)
                 : base(3, string.Format("Person already exist with the given identity number: {0}", message))
+            {
+            }
+        }
+
+        public class CompanyAlreadyExistWithTheGivenTaxNumberException : AccountManagementException
+        {
+            public CompanyAlreadyExistWithTheGivenTaxNumberException(string message) 
+                : base(4, string.Format("Company already exist with the given tax number: {0}", message))
             {
             }
         }

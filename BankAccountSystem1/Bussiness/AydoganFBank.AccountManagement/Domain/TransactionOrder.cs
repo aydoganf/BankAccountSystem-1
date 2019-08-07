@@ -11,7 +11,7 @@ using System.Text;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionOrderDomainEntity : IDomainEntity, ITransactionOwner
+    public class TransactionOrderDomainEntity : IDomainEntity, ITransactionOwner, ITransactionTypeOwner
     {
         #region IoC
         private readonly ITransactionOrderRepository transactionOrderRepository;
@@ -23,7 +23,6 @@ namespace AydoganFBank.AccountManagement.Domain
         #endregion
 
         public int TransactionOrderId { get; set; }
-        public TransactionTypeDomainEntity TransactionType { get; set; }
         public string OrderDesctiption { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime OperationDate { get; set; }
@@ -32,12 +31,13 @@ namespace AydoganFBank.AccountManagement.Domain
         public decimal Amount { get; set; }
 
         int IDomainEntity.Id => TransactionOrderId;
-
         int ITransactionOwner.OwnerId => TransactionOrderId;
         TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.TransactionOrder;
+        public ITransactionTypeInfo TransactionType { get; set; }
+
 
         public TransactionOrderDomainEntity With(
-            TransactionTypeDomainEntity transactionType, 
+            ITransactionTypeInfo transactionType, 
             string orderDescription,
             DateTime operationDate,
             AccountDomainEntity fromAccount,
@@ -140,10 +140,27 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return dbContext.TransactionOrder.FirstOrDefault(to => to.TransactionOrderId == id);
         }
+
+        public List<TransactionOrderDomainEntity> GetListByFromAccount(AccountDomainEntity fromAccount)
+        {
+            return GetListBy(
+                to =>
+                    to.FromAccountId == fromAccount.AccountId)
+                .ToList();
+        }
+
+        public List<TransactionOrderDomainEntity> GetListByOperationDate(DateTime operationDate)
+        {
+            return GetListBy(
+                to =>
+                    to.OperationDate == operationDate)
+                .ToList();
+        }
     }
 
     public interface ITransactionOrderRepository : IRepository<TransactionOrderDomainEntity>
     {
-
+        List<TransactionOrderDomainEntity> GetListByFromAccount(AccountDomainEntity fromAccount);
+        List<TransactionOrderDomainEntity> GetListByOperationDate(DateTime operationDate);
     }
 }

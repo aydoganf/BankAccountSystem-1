@@ -1,4 +1,5 @@
-﻿using AydoganFBank.AccountManagement.Repository;
+﻿using AydoganFBank.AccountManagement.Api;
+using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
 using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
@@ -8,7 +9,7 @@ using TransactionStatus = AydoganFBank.Database.TransactionStatus;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionStatusDomainEntity : IDomainEntity
+    public class TransactionStatusDomainEntity : IDomainEntity, ITransactionStatusInfo
     {
         #region IoC
         private readonly ITransactionStatusRepository transactionStatusRepository;
@@ -19,8 +20,8 @@ namespace AydoganFBank.AccountManagement.Domain
         }
         #endregion
 
-        public int StatusId { get; set; }
         public string StatusName { get; set; }
+        public int StatusId { get; set; }
         public string StatusKey { get; set; }
 
         int IDomainEntity.Id => StatusId;

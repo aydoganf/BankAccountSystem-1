@@ -1,4 +1,5 @@
-﻿using AydoganFBank.AccountManagement.Repository;
+﻿using AydoganFBank.AccountManagement.Api;
+using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
 using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionTypeDomainEntity : IDomainEntity
+    public class TransactionTypeDomainEntity : IDomainEntity, ITransactionTypeInfo
     {
         #region IoC
         private readonly ITransactionTypeRepository transactionTypeRepository;

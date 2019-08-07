@@ -15,10 +15,14 @@ namespace AydoganFBank.AccountManagement.Domain
     public class AccountDomainEntity : IDomainEntity, ITransactionOwner
     {
         #region IoC
+        private readonly ICoreContext coreContext;
         private readonly IAccountRepository accountRepository;
 
-        public AccountDomainEntity(IAccountRepository accountRepository)
+        public AccountDomainEntity(
+            ICoreContext coreContext,
+            IAccountRepository accountRepository)
         {
+            this.coreContext = coreContext;
             this.accountRepository = accountRepository;
         }
         #endregion
@@ -56,22 +60,49 @@ namespace AydoganFBank.AccountManagement.Domain
             accountRepository.UpdateEntity(this);
         }
 
-        internal void Deposit(decimal amount)
+        internal bool Deposit(decimal amount)
         {
+            if (amount <= 0)
+                throw new AccountManagementException.DepositAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
+
+            Balance += amount;            
+            Save();
+            return true;
+        }
+
+        internal bool Deposit(decimal amount, bool forceToUpdateDb)
+        {
+            if (forceToUpdateDb == false)
+                return Deposit(amount);
+
             if (amount <= 0)
                 throw new AccountManagementException.DepositAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
 
             Balance += amount;
             Save();
+            return true;
         }
 
-        internal void Withdraw(decimal amount)
+        internal bool Withdraw(decimal amount)
         {
             if (amount <= 0)
                 throw new AccountManagementException.WithdrawAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
 
             Balance -= amount;
+            return true;
+        }
+
+        internal bool Withdraw(decimal amount, bool forceToUpdateDb)
+        {
+            if (forceToUpdateDb == false)
+                return Withdraw(amount);
+
+            if (amount <= 0)
+                throw new AccountManagementException.WithdrawAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
+
+            Balance -= amount;
             Save();
+            return true;
         }
     }
 
