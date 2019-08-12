@@ -37,6 +37,8 @@ namespace AydoganFBank.AccountManagement.Domain
 
         int ITransactionOwner.OwnerId => AccountId;
         TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.Account;
+        string ITransactionOwner.TransactionDetailDisplayName => AccountOwner.DisplayName;
+        string ITransactionOwner.AssetsUnit => AccountType.AssetsUnit;
 
         public AccountDomainEntity With(
             AccountTypeDomainEntity accountType, 
@@ -60,49 +62,56 @@ namespace AydoganFBank.AccountManagement.Domain
             accountRepository.UpdateEntity(this);
         }
 
-        internal bool Deposit(decimal amount)
+        internal bool Deposit(decimal amount, bool forceToUpdateDb = true)
         {
-            if (amount <= 0)
-                throw new AccountManagementException.DepositAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
-
-            Balance += amount;            
-            Save();
-            return true;
-        }
-
-        internal bool Deposit(decimal amount, bool forceToUpdateDb)
-        {
-            if (forceToUpdateDb == false)
-                return Deposit(amount);
-
             if (amount <= 0)
                 throw new AccountManagementException.DepositAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
 
             Balance += amount;
-            Save();
+            if(forceToUpdateDb)
+                Save();
             return true;
         }
 
-        internal bool Withdraw(decimal amount)
+        internal bool Withdraw(decimal amount, bool forceToUpdateDb = true)
         {
             if (amount <= 0)
                 throw new AccountManagementException.WithdrawAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
 
-            Balance -= amount;
-            return true;
-        }
+            if (amount > Balance)
+                throw new AccountManagementException.AccountHasNotEnoughBalanceForWithdrawAmount(string.Format("{0} = {1}", nameof(amount), amount));
 
-        internal bool Withdraw(decimal amount, bool forceToUpdateDb)
-        {
+            Balance -= amount;
             if (forceToUpdateDb == false)
-                return Withdraw(amount);
-
-            if (amount <= 0)
-                throw new AccountManagementException.WithdrawAmountCanNotBeZeroOrNegativeException(string.Format("{0} = {1}", nameof(amount), amount));
-
-            Balance -= amount;
-            Save();
+                Save();
             return true;
+        }
+
+        public List<AccountTransactionDomainEntity> GetLastIncomingDateRangeAccountTransactionList(
+            DateTime startDate,
+            DateTime endDate)
+        {
+            return coreContext
+                .Query<IAccountTransactionRepository>()
+                .GetLastIncomingDateRangeListByTransactionOwner(this, startDate, endDate);
+        }
+
+        public List<AccountTransactionDomainEntity> GetLastOutgoingDateRangeAccountTransactionList(
+            DateTime startDate,
+            DateTime endDate)
+        {
+            return coreContext
+                .Query<IAccountTransactionRepository>()
+                .GetLastOutgoingDateRangeListByTransactionOwner(this, startDate, endDate);
+        }
+
+        public List<AccountTransactionDomainEntity> GetLastDateRangeAccountTransactionList(
+            DateTime startDate,
+            DateTime endDate)
+        {
+            return coreContext
+                .Query<IAccountTransactionRepository>()
+                .GetLastDateRangeListByTransactionOwner(this, startDate, endDate);
         }
     }
 

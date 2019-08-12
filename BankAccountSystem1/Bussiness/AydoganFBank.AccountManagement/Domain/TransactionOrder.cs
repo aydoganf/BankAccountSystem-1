@@ -11,13 +11,21 @@ using System.Text;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionOrderDomainEntity : IDomainEntity, ITransactionOwner, ITransactionTypeOwner
+    public class TransactionOrderDomainEntity : 
+        IDomainEntity, 
+        ITransactionOwner, 
+        ITransactionTypeOwner, 
+        ITransactionStatusOwner
     {
         #region IoC
         private readonly ITransactionOrderRepository transactionOrderRepository;
+        private readonly ICoreContext coreContext;
 
-        public TransactionOrderDomainEntity(ITransactionOrderRepository transactionOrderRepository)
+        public TransactionOrderDomainEntity(
+            ICoreContext coreContext,
+            ITransactionOrderRepository transactionOrderRepository)
         {
+            this.coreContext = coreContext;
             this.transactionOrderRepository = transactionOrderRepository;
         }
         #endregion
@@ -33,8 +41,11 @@ namespace AydoganFBank.AccountManagement.Domain
         int IDomainEntity.Id => TransactionOrderId;
         int ITransactionOwner.OwnerId => TransactionOrderId;
         TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.TransactionOrder;
-        public ITransactionTypeInfo TransactionType { get; set; }
+        string ITransactionOwner.TransactionDetailDisplayName => throw new NotImplementedException();
+        string ITransactionOwner.AssetsUnit => ((ITransactionOwner)ToAccount).AssetsUnit;
 
+        public ITransactionTypeInfo TransactionType { get; set; }
+        public ITransactionStatusInfo TransactionOrderStatus { get; set; }
 
         public TransactionOrderDomainEntity With(
             ITransactionTypeInfo transactionType, 
@@ -42,7 +53,8 @@ namespace AydoganFBank.AccountManagement.Domain
             DateTime operationDate,
             AccountDomainEntity fromAccount,
             AccountDomainEntity toAccount,
-            decimal amount)
+            decimal amount,
+            ITransactionStatusInfo transactionOrderStatus)
         {
             TransactionType = transactionType;
             OrderDesctiption = orderDescription;
@@ -51,6 +63,7 @@ namespace AydoganFBank.AccountManagement.Domain
             FromAccount = fromAccount;
             ToAccount = toAccount;
             Amount = amount;
+            TransactionOrderStatus = transactionOrderStatus;
             return this;
         }
 
@@ -63,6 +76,13 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             transactionOrderRepository.UpdateEntity(this);
         }
+
+        public void SetStatus(TransactionStatusEnum transactionStatus)
+        {
+            TransactionOrderStatus = coreContext
+                .Query<ITransactionStatusRepository>()
+                .GetByKey(transactionStatus.ToString());
+        }
     }
 
     public class TransactionOrderRepository :
@@ -72,15 +92,18 @@ namespace AydoganFBank.AccountManagement.Domain
     {
         private readonly IAccountRepository accountRepository;
         private readonly ITransactionTypeRepository transactionTypeRepository;
+        private readonly ITransactionStatusRepository transactionStatusRepository;
 
         public TransactionOrderRepository(
             ICoreContext coreContext,
             IAccountRepository accountRepository,
-            ITransactionTypeRepository transactionTypeRepository) 
+            ITransactionTypeRepository transactionTypeRepository,
+            ITransactionStatusRepository transactionStatusRepository) 
             : base(coreContext, null, null)
         {
             this.accountRepository = accountRepository;
             this.transactionTypeRepository = transactionTypeRepository;
+            this.transactionStatusRepository = transactionStatusRepository;
         }
 
         #region Mapping overrides
@@ -107,6 +130,7 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.ToAccount = accountRepository.GetById(dbEntity.ToAccountId);
             domainEntity.TransactionOrderId = dbEntity.TransactionOrderId;
             domainEntity.TransactionType = transactionTypeRepository.GetById(dbEntity.TransactionTypeId);
+            domainEntity.TransactionOrderStatus = transactionStatusRepository.GetById(dbEntity.TransactionOrderStatusId);
         }
 
         public override IEnumerable<TransactionOrderDomainEntity> MapToDomainObjectList(IEnumerable<TransactionOrder> dbEntities)
@@ -128,6 +152,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.OrderDescription = domainEntity.OrderDesctiption;
             dbEntity.ToAccountId = domainEntity.ToAccount.AccountId;
             dbEntity.TransactionTypeId = domainEntity.TransactionType.TypeId;
+            dbEntity.TransactionOrderStatusId = domainEntity.TransactionOrderStatus.StatusId;
         }
         #endregion
 
@@ -143,9 +168,15 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public List<TransactionOrderDomainEntity> GetListByFromAccount(AccountDomainEntity fromAccount)
         {
+            List<int> statusList = new List<int>()
+            {
+                TransactionStatusEnum.Created.ToInt(),
+                TransactionStatusEnum.Pending.ToInt()
+            };
+
             return GetListBy(
                 to =>
-                    to.FromAccountId == fromAccount.AccountId)
+                    to.FromAccountId == fromAccount.AccountId && statusList.Contains(to.TransactionOrderStatusId))
                 .ToList();
         }
 
@@ -156,11 +187,46 @@ namespace AydoganFBank.AccountManagement.Domain
                     to.OperationDate == operationDate)
                 .ToList();
         }
+
+        public List<TransactionOrderDomainEntity> GetUncompletedListByOperationDate(DateTime operationDate)
+        {
+            List<int> statusList = new List<int>()
+            {
+                TransactionStatusEnum.Created.ToInt(),
+                TransactionStatusEnum.Pending.ToInt()
+            };
+
+            return GetListBy(
+                to =>
+                    to.OperationDate == operationDate && statusList.Contains(to.TransactionOrderStatusId))
+                .ToList();
+        }
+
     }
 
     public interface ITransactionOrderRepository : IRepository<TransactionOrderDomainEntity>
     {
+        /// <summary>
+        /// Gets the Created or Pending Transaction orders related with given account
+        /// </summary>
+        /// <param name="fromAccount">related Account</param>
+        /// <returns></returns>
         List<TransactionOrderDomainEntity> GetListByFromAccount(AccountDomainEntity fromAccount);
+
+        /// <summary>
+        /// Gets the all TransactionOrders 
+        /// which will be operated on given date
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <returns></returns>
         List<TransactionOrderDomainEntity> GetListByOperationDate(DateTime operationDate);
+
+        /// <summary>
+        /// Gets the Created or Pending state TransactionOrders 
+        /// which will be operated on given date.
+        /// </summary>
+        /// <param name="operationDate">operation date</param>
+        /// <returns></returns>
+        List<TransactionOrderDomainEntity> GetUncompletedListByOperationDate(DateTime operationDate);
     }
 }

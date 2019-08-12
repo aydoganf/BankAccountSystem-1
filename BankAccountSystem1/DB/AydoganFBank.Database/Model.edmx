@@ -273,12 +273,17 @@
           <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
           <Property Name="TransactionStatusId" Type="Int32" Nullable="false" />
-          <Property Name="OwnerId" Type="Int32" Nullable="false" />
-          <Property Name="OwnerType" Type="Int32" Nullable="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="true" />
+          <Property Name="OwnerType" Type="Int32" Nullable="true" />
           <NavigationProperty Name="FromAccount" Relationship="Self.FK_AccountTransaction_Account" FromRole="AccountTransaction" ToRole="Account" />
           <NavigationProperty Name="ToAccount" Relationship="Self.FK_AccountTransaction_Account1" FromRole="AccountTransaction" ToRole="Account" />
           <NavigationProperty Name="TransactionStatus" Relationship="Self.FK_AccountTransaction_TransactionStatus" FromRole="AccountTransaction" ToRole="TransactionStatus" />
           <NavigationProperty Name="TransactionType" Relationship="Self.FK_AccountTransaction_TransactionType" FromRole="AccountTransaction" ToRole="TransactionType" />
+          <Property Name="FromOwnerType" Type="Int32" Nullable="true" />
+          <Property Name="FromOwnerId" Type="Int32" Nullable="true" />
+          <Property Name="ToOwnerType" Type="Int32" Nullable="true" />
+          <Property Name="ToOwnerId" Type="Int32" Nullable="true" />
+          <Property Name="Description" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="AccountType">
           <Key>
@@ -327,6 +332,7 @@
           <NavigationProperty Name="FromAccount" Relationship="Self.FK_TransactionOrder_Account" FromRole="TransactionOrder" ToRole="Account" />
           <NavigationProperty Name="ToAccount" Relationship="Self.FK_TransactionOrder_Account1" FromRole="TransactionOrder" ToRole="Account" />
           <NavigationProperty Name="TransactionType" Relationship="Self.FK_TransactionOrder_TransactionType" FromRole="TransactionOrder" ToRole="TransactionType" />
+          <Property Name="TransactionOrderStatusId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TransactionStatus">
           <Key>

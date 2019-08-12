@@ -70,34 +70,51 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<IAccountRepository>().GetByAccountNumber(accountNumber);
         }
         
-        public AccountDomainEntity DepositToAccount(int accountId, decimal amount)
+        public void WithdrawMoneyFromOwn(int accountId, decimal amount)
         {
-            var account = coreContext.Query<IAccountRepository>().GetById(accountId);
-            return DepositToAccount(account, amount);
-        }
+            AccountTransactionDomainEntity transaction = null;
+            AccountDomainEntity account = null;
+            bool isWithdrawOK = false;
 
-        public AccountDomainEntity DepositToAccount(string accountNumber, decimal amount)
-        {
-            var account = GetAccountByAccountNumber(accountNumber);
-            return DepositToAccount(account, amount);
-        }
+            try
+            {
+                account = GetAccountById(accountId);
+                var transactionType = coreContext.Query<ITransactionTypeRepository>()
+                    .GetByKey(TransactionTypeEnum.AccountItself.ToString());
 
-        public AccountDomainEntity WithdrawFromAccount(int accountId, decimal amount)
-        {
-            var account = GetAccountById(accountId);
-            return WithdrawFromAccount(account, amount);
-        }
+                var transactionStatus = coreContext.Query<ITransactionStatusRepository>()
+                    .GetByKey(TransactionStatusEnum.InProgress.ToString());
 
-        public AccountDomainEntity WithdrawFromAccount(string accountNumber, decimal amount)
-        {
-            var account = GetAccountByAccountNumber(accountNumber);
-            return WithdrawFromAccount(account, amount);
+                transaction = coreContext
+                    .New<AccountTransactionDomainEntity>()
+                    .With(account, null, amount, transactionType, transactionStatus, account);
+
+                transaction.Insert();
+
+                isWithdrawOK = account.Withdraw(amount);
+
+                transaction.TransactionOrderStatus = coreContext
+                    .Query<ITransactionStatusRepository>()
+                    .GetByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.Save();
+            }
+            catch (Exception)
+            {
+                if (transaction != null && isWithdrawOK == false)
+                {
+                    transaction.TransactionOrderStatus = coreContext
+                    .Query<ITransactionStatusRepository>()
+                    .GetByKey(TransactionStatusEnum.Failed.ToString());
+                    transaction.Save();
+                }
+            }
         }
 
         public AccountDomainEntity DepositToOwnAccount(int accountId, decimal amount)
         {
             AccountTransactionDomainEntity transaction = null;
             AccountDomainEntity account = null;
+            bool isDepositOk = false;
             try
             {
                 account = GetAccountById(accountId);
@@ -108,21 +125,21 @@ namespace AydoganFBank.AccountManagement.Managers
                     .GetByKey(TransactionStatusEnum.InProgress.ToString());
 
                 transaction = coreContext.New<AccountTransactionDomainEntity>()
-                    .With(account, account, amount, transactionType, transactionStatus, account);
+                    .With(null, account, amount, transactionType, transactionStatus, account);
 
                 transaction.Insert();
-                account.Deposit(amount);
+                isDepositOk = account.Deposit(amount);
 
-                transaction.TransactionStatus = coreContext
+                transaction.TransactionOrderStatus = coreContext
                     .Query<ITransactionStatusRepository>()
                     .GetByKey(TransactionStatusEnum.Succeeded.ToString());
                 transaction.Save();
             }
             catch (Exception)
             {
-                if (transaction != null)
+                if (transaction != null && isDepositOk == false)
                 {
-                    transaction.TransactionStatus = coreContext
+                    transaction.TransactionOrderStatus = coreContext
                     .Query<ITransactionStatusRepository>()
                     .GetByKey(TransactionStatusEnum.Failed.ToString());
                     transaction.Save();
@@ -132,12 +149,18 @@ namespace AydoganFBank.AccountManagement.Managers
             return account;
         }
 
+        /// <summary>
+        /// Does money transfer from one account to another account with given TransactionType
+        /// </summary>
+        /// <param name="fromAccount"></param>
+        /// <param name="toAccount"></param>
+        /// <param name="amount"></param>
+        /// <param name="transactionTypeEnum"></param>
         public void TransferMoney(
             AccountDomainEntity fromAccount, 
             AccountDomainEntity toAccount, 
             decimal amount, 
-            TransactionTypeEnum transactionTypeEnum,
-            ITransactionOwner transactionOwner)
+            TransactionTypeEnum transactionTypeEnum)
         {
             AccountTransactionDomainEntity transaction = null;
             bool isWithdrawOk = false;
@@ -155,12 +178,16 @@ namespace AydoganFBank.AccountManagement.Managers
 
                 transaction = coreContext
                     .New<AccountTransactionDomainEntity>()
-                    .With(fromAccount, toAccount, amount, transactionType, transactionStatus, transactionOwner);
+                    .With(fromAccount, toAccount, amount, transactionType, transactionStatus, null);
+                transaction.Insert();
 
                 isWithdrawOk = fromAccount.Withdraw(amount, false);
                 isDepositOk = toAccount.Deposit(amount, false);
 
-
+                transaction.TransactionOrderStatus = coreContext
+                    .Query<ITransactionStatusRepository>()
+                    .GetByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.Save();
             }
             catch (Exception)
             {
@@ -168,7 +195,12 @@ namespace AydoganFBank.AccountManagement.Managers
                 {
                     if (isWithdrawOk && isDepositOk == false)
                     {
+                        fromAccount.Deposit(amount);
+                        transaction.TransactionOrderStatus = coreContext
+                            .Query<ITransactionStatusRepository>()
+                            .GetByKey(TransactionStatusEnum.Failed.ToString());
 
+                        transaction.Save();
                     }
                 }
             }
@@ -178,42 +210,6 @@ namespace AydoganFBank.AccountManagement.Managers
         #endregion
 
         #region AccountTransaction
-
-        public List<AccountTransactionDomainEntity> GetLastAccountTransactionListByAccount(int accountId, int itemCount)
-        {
-            var account = GetAccountById(accountId);
-            return coreContext.Query<IAccountTransactionRepository>().GetLastListByAccount(account, itemCount);
-        }
-
-        public List<AccountTransactionDomainEntity> GetLastIncomingAccountTransactionListByAccount(int accountId, int itemCount)
-        {
-            var account = GetAccountById(accountId);
-            return coreContext.Query<IAccountTransactionRepository>().GetLastIncomingListByAccount(account, itemCount);
-        }
-
-        public List<AccountTransactionDomainEntity> GetLastOutgoingAccountTransactionListByAccount(int accountId, int itemCount)
-        {
-            var account = GetAccountById(accountId);
-            return coreContext.Query<IAccountTransactionRepository>().GetLastOutgoingListByAccount(account, itemCount);
-        }
-
-        public List<AccountTransactionDomainEntity> GetLastDateRangeAccountTransactionListByAccount(int accountId, DateTime startDate, DateTime endDate)
-        {
-            var account = GetAccountById(accountId);
-            return coreContext.Query<IAccountTransactionRepository>().GetLastDateRangeListByAccount(account, startDate, endDate);
-        }
-
-        public List<AccountTransactionDomainEntity> GetLastIncomingDateRangeAccountTransactionListByAccount(int accountId, DateTime startDate, DateTime endDate)
-        {
-            var account = GetAccountById(accountId);
-            return coreContext.Query<IAccountTransactionRepository>().GetLastIncomingDateRangeListByAccount(account, startDate, endDate);
-        }
-
-        public List<AccountTransactionDomainEntity> GetLastOutgoingDateRangeAccountTransactionListByAccount(int accountId, DateTime startDate, DateTime endDate)
-        {
-            var account = GetAccountById(accountId);
-            return coreContext.Query<IAccountTransactionRepository>().GetLastOutgoingDateRangeListByAccount(account, startDate, endDate);
-        }
         #endregion
 
         #region Person
@@ -365,7 +361,40 @@ namespace AydoganFBank.AccountManagement.Managers
         #endregion
 
         #region TransactionOrder
+        public List<TransactionOrderDomainEntity> GetTransactionOrderListByAccount(int accountId)
+        {
+            AccountDomainEntity account = GetAccountById(accountId);
 
+            return coreContext.Query<ITransactionOrderRepository>().GetListByFromAccount(account);
+        }
+
+        public List<TransactionOrderDomainEntity> GetAllTransactionOrders(DateTime operationDate)
+        {
+            return coreContext.Query<ITransactionOrderRepository>().GetListByOperationDate(operationDate);
+        }
+
+        public List<TransactionOrderDomainEntity> GetUncompletedTransactionOrders(DateTime operationDate)
+        {
+            return coreContext.Query<ITransactionOrderRepository>().GetUncompletedListByOperationDate(operationDate);
+        }
+
+        internal void DoTransactionOrder(TransactionOrderDomainEntity transactionOrder)
+        {
+            try
+            {
+                TransferMoney(
+                    transactionOrder.FromAccount,
+                    transactionOrder.ToAccount,
+                    transactionOrder.Amount,
+                    TransactionTypeEnum.FromAccountToAccount);
+
+                transactionOrder.SetStatus(TransactionStatusEnum.Succeeded);
+            }
+            catch (Exception)
+            {
+                transactionOrder.SetStatus(TransactionStatusEnum.Failed);
+            }
+        }
         #endregion
     }
 }

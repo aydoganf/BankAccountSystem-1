@@ -10,6 +10,7 @@ namespace AydoganFBank.AccountManagement.Api
         Pending,
         InProgress,
         Failed,
-        Succeeded
+        Succeeded,
+        Canceled
     }
 }

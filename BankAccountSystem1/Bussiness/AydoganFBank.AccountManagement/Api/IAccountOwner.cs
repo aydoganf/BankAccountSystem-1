@@ -4,5 +4,6 @@
     {
         AccountOwnerType OwnerType { get; }
         int OwnerId { get; }
+        string DisplayName { get; }
     }
 }

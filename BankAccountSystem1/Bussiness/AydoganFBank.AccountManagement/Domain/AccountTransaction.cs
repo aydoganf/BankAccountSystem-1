@@ -23,30 +23,33 @@ namespace AydoganFBank.AccountManagement.Domain
         #endregion
 
         public int TransactionId { get; set; }
-        public AccountDomainEntity FromAccount { get; set; }
-        public AccountDomainEntity ToAccount { get; set; }
         public decimal Amount { get; set; }
         public DateTime TransactionDate { get; set; }
+        public ITransactionOwner FromTransactionOwner { get; set; }
+        public ITransactionOwner ToTransactionOwner { get; set; }
         public ITransactionOwner TransactionOwner { get; set; }
+        public string Description { get; set; }
 
         int IDomainEntity.Id => TransactionId;
         public ITransactionTypeInfo TransactionType { get; set; }
-        public ITransactionStatusInfo TransactionStatus { get; set; }
+        public ITransactionStatusInfo TransactionOrderStatus { get; set; }
 
         public AccountTransactionDomainEntity With(
-            AccountDomainEntity fromAccount, 
-            AccountDomainEntity toAccount, 
+            ITransactionOwner from, 
+            ITransactionOwner to, 
             decimal amount,
             ITransactionTypeInfo transactionType,
             ITransactionStatusInfo transactionStatus,
-            ITransactionOwner transactionOwner)
+            ITransactionOwner transactionOwner,
+            string description)
         {
-            FromAccount = fromAccount;
-            ToAccount = toAccount;
             Amount = amount;
             TransactionType = transactionType;
-            TransactionStatus = transactionStatus;
+            TransactionOrderStatus = transactionStatus;
+            FromTransactionOwner = from;
+            ToTransactionOwner = to;
             TransactionOwner = transactionOwner;
+            Description = description;
             return this;
         }
 
@@ -60,11 +63,6 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             accountTransactionRepository.UpdateEntity(this);
         }
-
-        public ITransactionStatusInfo DoTransaction()
-        {
-            throw new NotImplementedException();
-        } 
     }
 
     public class AccountTransactionRepository : 
@@ -90,16 +88,19 @@ namespace AydoganFBank.AccountManagement.Domain
             this.transactionOrderRepository = transactionOrderRepository;
         }
 
-        private ITransactionOwner GetTransactionOwner(AccountTransaction accountTransaction)
+        private ITransactionOwner GetTransactionOwner(int? ownerType, int? ownerId)
         {
+            if (ownerType == null || ownerId == null)
+                return null;
+
             ITransactionOwner transactionOwner = null;
-            if (accountTransaction.OwnerType == TransactionOwnerType.Account.ToInt())
+            if (ownerType == TransactionOwnerType.Account.ToInt())
             {
-                transactionOwner = accountRepository.GetById(accountTransaction.OwnerId);
+                transactionOwner = accountRepository.GetById(ownerId.Value);
             }
-            else if (accountTransaction.OwnerType == TransactionOwnerType.TransactionOrder.ToInt())
+            else if (ownerType == TransactionOwnerType.TransactionOrder.ToInt())
             {
-                transactionOwner = transactionOrderRepository.GetById(accountTransaction.OwnerId);
+                transactionOwner = transactionOrderRepository.GetById(ownerId.Value);
             }
             return transactionOwner;
         }
@@ -121,13 +122,13 @@ namespace AydoganFBank.AccountManagement.Domain
                 return;
 
             domainEntity.Amount = dbEntity.Amount;
-            domainEntity.FromAccount = accountRepository.GetById(dbEntity.FromAccountId);
-            domainEntity.ToAccount = accountRepository.GetById(dbEntity.ToAccountId);
             domainEntity.TransactionDate = dbEntity.TransactionDate;
             domainEntity.TransactionId = dbEntity.TransactionId;
-            domainEntity.TransactionOwner = GetTransactionOwner(dbEntity);
-            domainEntity.TransactionStatus = transactionStatusRepository.GetById(dbEntity.TransactionStatusId);
+            domainEntity.FromTransactionOwner = GetTransactionOwner(dbEntity.FromOwnerType, dbEntity.FromOwnerId);
+            domainEntity.ToTransactionOwner = GetTransactionOwner(dbEntity.ToOwnerType, dbEntity.ToOwnerId);
+            domainEntity.TransactionOrderStatus = transactionStatusRepository.GetById(dbEntity.TransactionStatusId);
             domainEntity.TransactionType = transactionTypeRepository.GetById(dbEntity.TransactionTypeId);
+            domainEntity.Description = dbEntity.Description;
         }
 
         public override IEnumerable<AccountTransactionDomainEntity> MapToDomainObjectList(IEnumerable<AccountTransaction> dbEntities)
@@ -142,14 +143,17 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public override void MapToDbEntity(AccountTransactionDomainEntity domainEntity, AccountTransaction dbEntity)
         {
-            dbEntity.FromAccountId = domainEntity.FromAccount.AccountId;
-            dbEntity.ToAccountId = domainEntity.ToAccount.AccountId;
             dbEntity.Amount = domainEntity.Amount;
-            dbEntity.OwnerId = domainEntity.TransactionOwner.OwnerId;
-            dbEntity.OwnerType = (int)domainEntity.TransactionOwner.OwnerType;
             dbEntity.TransactionDate = domainEntity.TransactionDate;
-            dbEntity.TransactionStatusId = domainEntity.TransactionStatus.StatusId;
+            dbEntity.TransactionStatusId = domainEntity.TransactionOrderStatus.StatusId;
             dbEntity.TransactionTypeId = domainEntity.TransactionType.TypeId;
+            dbEntity.FromOwnerType = domainEntity.FromTransactionOwner?.OwnerType.ToInt();
+            dbEntity.FromOwnerId = domainEntity.FromTransactionOwner?.OwnerId;
+            dbEntity.ToOwnerType = domainEntity.ToTransactionOwner?.OwnerType.ToInt();
+            dbEntity.ToOwnerId = domainEntity.ToTransactionOwner?.OwnerId;
+            dbEntity.OwnerType = domainEntity.TransactionOwner?.OwnerType.ToInt();
+            dbEntity.OwnerId = domainEntity.TransactionOwner?.OwnerId;
+            dbEntity.Description = domainEntity.Description;
         }
         #endregion
 
@@ -163,138 +167,145 @@ namespace AydoganFBank.AccountManagement.Domain
             return dbContext.AccountTransaction.FirstOrDefault(at => at.TransactionId == id);
         }
 
-        /// <summary>
-        /// Returns the ordered by TransactionDate descendingly 
-        /// AccountTransaction list related with the given account and has given item count
-        /// </summary>
-        /// <param name="account">related Account</param>
-        /// <param name="itemCount">represents the AccountTransaction count will be retrieved</param>
-        /// <returns></returns>
-        public List<AccountTransactionDomainEntity> GetLastListByAccount(
-            AccountDomainEntity account, 
+
+        
+        public List<AccountTransactionDomainEntity> GetLastListByTransactionOwner(
+            ITransactionOwner transactionOwner,
             int itemCount = 15)
         {
             return GetLastItemCountListBy(
-                at => 
-                    (at.FromAccountId == account.AccountId || at.ToAccountId == account.AccountId),
-                at => 
-                    at.TransactionDate, 
-                itemCount)
-                .ToList();
-        }
-
-        /// <summary>
-        /// Returns the ordered by TransactionDate descendingly incoming way
-        /// AccountTransaction list related with the given account and has given item count
-        /// </summary>
-        /// <param name="account">Account with transaction entry</param>
-        /// <param name="itemCount">represents the AccountTransaction count will be retrieved</param>
-        /// <returns></returns>
-        public List<AccountTransactionDomainEntity> GetLastIncomingListByAccount(
-            AccountDomainEntity account, 
-            int itemCount)
-        {
-            return GetLastItemCountListBy(
-                at => 
-                    at.ToAccountId == account.AccountId,
-                at => 
+                at =>
+                    ((at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId) ||
+                    (at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId)),
+                at =>
                     at.TransactionDate,
                 itemCount)
                 .ToList();
         }
 
-        /// <summary>
-        /// Returns the ordered by TransactionDate descendingly outgoing way
-        /// AccountTransaction list related with the given account and has given item count
-        /// </summary>
-        /// <param name="account">Account with transaction outgoing</param>
-        /// <param name="itemCount">represents the AccountTransaction count will be retrieved</param>
-        /// <returns></returns>
-        public List<AccountTransactionDomainEntity> GetLastOutgoingListByAccount(
-            AccountDomainEntity account, 
+        
+        public List<AccountTransactionDomainEntity> GetLastIncomingListByTransactionOwner(
+            ITransactionOwner transactionOwner,
             int itemCount)
         {
             return GetLastItemCountListBy(
-                at => 
-                    at.FromAccountId == account.AccountId,
-                at => 
+                at =>
+                    at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId,
+                at =>
                     at.TransactionDate,
                 itemCount)
                 .ToList();
         }
-
-        /// <summary>
-        /// Returns the limited to given date ranges and ordered by TransactionDate descendingly
-        /// AccountTransaction list related with the given account
-        /// </summary>
-        /// <param name="account">related Account</param>
-        /// <param name="startDate">start date limit of transaction</param>
-        /// <param name="endDate">end date limit of transaction</param>
-        /// <returns></returns>
-        public List<AccountTransactionDomainEntity> GetLastDateRangeListByAccount(
-            AccountDomainEntity account, 
-            DateTime startDate, 
-            DateTime endDate)
-        {
-            return GetOrderedDescListBy(
-                at => 
-                    (at.FromAccountId == account.AccountId || at.ToAccountId == account.AccountId) 
-                    && at.TransactionDate >= startDate && at.TransactionDate <= endDate,
-                at => 
-                    at.TransactionDate)
-                .ToList();
-        }
-
-        /// <summary>
-        /// Returns the limited to given date ranges and ordered by TransactionDate descendingly incoming way
-        /// AccountTransaction list related with the given account
-        /// </summary>
-        /// <param name="account">Account with transaction entry</param>
-        /// <param name="startDate">start date limit of transaction</param>
-        /// <param name="endDate">end date limit of transaction</param>
-        /// <returns></returns>
-        public List<AccountTransactionDomainEntity> GetLastIncomingDateRangeListByAccount(
-            AccountDomainEntity account,
+        
+        public List<AccountTransactionDomainEntity> GetLastDateRangeListByTransactionOwner(
+            ITransactionOwner transactionOwner,
             DateTime startDate,
             DateTime endDate)
         {
             return GetOrderedDescListBy(
-                at => 
-                    at.ToAccountId == account.AccountId && at.TransactionDate >= startDate && at.TransactionDate <= endDate,
-                at => 
+                at =>
+                    ((at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId) ||
+                    (at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId)),
+                at =>
                     at.TransactionDate)
                 .ToList();
         }
-
-        /// <summary>
-        /// Returns the limited to given date ranges and ordered by TransactionDate descendingly outgoing way
-        /// AccountTransaction list related with the given account
-        /// </summary>
-        /// <param name="account">Account with transaction outgoing</param>
-        /// <param name="startDate">start date limit of transaction</param>
-        /// <param name="endDate">end date limit of transaction</param>
-        /// <returns></returns>
-        public List<AccountTransactionDomainEntity> GetLastOutgoingDateRangeListByAccount(
-            AccountDomainEntity account,
+        
+        public List<AccountTransactionDomainEntity> GetLastIncomingDateRangeListByTransactionOwner(
+            ITransactionOwner transactionOwner,
             DateTime startDate,
             DateTime endDate)
         {
             return GetOrderedDescListBy(
-                at => 
-                    at.FromAccountId == account.AccountId && at.TransactionDate >= startDate && at.TransactionDate <= endDate,
-                at => 
+                at =>
+                    at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId,
+                at =>
                     at.TransactionDate)
+                .ToList();
+        }
+        
+        public List<AccountTransactionDomainEntity> GetLastOutgoingDateRangeListByTransactionOwner(
+            ITransactionOwner transactionOwner,
+            DateTime starDate,
+            DateTime endDate)
+        {
+            return GetOrderedDescListBy(
+                at =>
+                    at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId,
+                at =>
+                    at.TransactionDate)
+                .ToList();
+        }
+        
+        public List<AccountTransactionDomainEntity> GetLastOutgoingListByTransactionOwner(ITransactionOwner transactionOwner, int itemCount)
+        {
+            return GetLastItemCountListBy(
+                at =>
+                    at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId,
+                at =>
+                    at.TransactionDate,
+                itemCount)
                 .ToList();
         }
     }
 
     public interface IAccountTransactionRepository : IRepository<AccountTransactionDomainEntity>
     {
-        List<AccountTransactionDomainEntity> GetLastListByAccount(AccountDomainEntity account, int itemCount = 15);
-        List<AccountTransactionDomainEntity> GetLastIncomingListByAccount(AccountDomainEntity account, int itemCount);
-        List<AccountTransactionDomainEntity> GetLastOutgoingListByAccount(AccountDomainEntity account, int itemCount);
-        List<AccountTransactionDomainEntity> GetLastDateRangeListByAccount(AccountDomainEntity account, DateTime startDate, DateTime endDate);
-        List<AccountTransactionDomainEntity> GetLastIncomingDateRangeListByAccount(AccountDomainEntity account, DateTime startDate, DateTime endDate);
-        List<AccountTransactionDomainEntity> GetLastOutgoingDateRangeListByAccount(AccountDomainEntity account, DateTime startDate, DateTime endDate);
+        /// <summary>
+        /// Returns the ordered by TransactionDate descendingly 
+        /// AccountTransaction list related with the given ITransactionOwner and has given item count
+        /// </summary>
+        /// <param name="transactionOwner">related transactionOwner</param>
+        /// <param name="itemCount">represents the AccountTransaction count will be retrieved</param>
+        /// <returns></returns>
+        List<AccountTransactionDomainEntity> GetLastListByTransactionOwner(ITransactionOwner transactionOwner, int itemCount = 15);
+
+        /// <summary>
+        /// Returns the ordered by TransactionDate descendingly incoming way
+        /// AccountTransaction list related with the given ITransactionOwner and has given item count
+        /// </summary>
+        /// <param name="transactionOwner">TransactionOwner with transaction entry</param>
+        /// <param name="itemCount">represents the AccountTransaction count will be retrieved</param>
+        /// <returns></returns>
+        List<AccountTransactionDomainEntity> GetLastIncomingListByTransactionOwner(ITransactionOwner transactionOwner, int itemCount);
+
+        /// <summary>
+        /// Returns the ordered by TransactionDate descendingly outgoing way
+        /// AccountTransaction list related with the given ITransactionOwner and has given item count
+        /// </summary>
+        /// <param name="transactionOwner">TransactionOwner with transaction outgoing</param>
+        /// <param name="itemCount">represents the AccountTransaction count will be retrieved</param>
+        /// <returns></returns>
+        List<AccountTransactionDomainEntity> GetLastOutgoingListByTransactionOwner(ITransactionOwner transactionOwner, int itemCount);
+
+        /// <summary>
+        /// Returns the limited to given date ranges and ordered by TransactionDate descendingly
+        /// AccountTransaction list related with the given ITransactionOwner
+        /// </summary>
+        /// <param name="transactionOwner">related ITransactionOwner</param>
+        /// <param name="startDate">start date limit of transaction</param>
+        /// <param name="endDate">end date limit of transaction</param>
+        /// <returns></returns>
+        List<AccountTransactionDomainEntity> GetLastDateRangeListByTransactionOwner(ITransactionOwner transactionOwner, DateTime startDate, DateTime endDate);
+
+        /// <summary>
+        /// Returns the limited to given date ranges and ordered by TransactionDate descendingly incoming way
+        /// AccountTransaction list related with the given ITransactionOwner
+        /// </summary>
+        /// <param name="transactionOwner">ITransactionOwner with transaction entry</param>
+        /// <param name="startDate">start date limit of transaction</param>
+        /// <param name="endDate">end date limit of transaction</param>
+        /// <returns></returns>
+        List<AccountTransactionDomainEntity> GetLastIncomingDateRangeListByTransactionOwner(ITransactionOwner transactionOwner, DateTime startDate, DateTime endDate);
+
+        /// <summary>
+        /// Returns the limited to given date ranges and ordered by TransactionDate descendingly outgoing way
+        /// AccountTransaction list related with the given ITransactionOwner
+        /// </summary>
+        /// <param name="transactionOwner">ITransactionOwner with transaction outgoing</param>
+        /// <param name="starDate">start date limit of transaction</param>
+        /// <param name="endDate">end date limit of transaction</param>
+        /// <returns></returns>
+        List<AccountTransactionDomainEntity> GetLastOutgoingDateRangeListByTransactionOwner(ITransactionOwner transactionOwner, DateTime startDate, DateTime endDate);
     }
 }

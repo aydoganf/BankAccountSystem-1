@@ -22,6 +22,7 @@ namespace AydoganFBank.Database
         public int FromAccountId { get; set; }
         public int ToAccountId { get; set; }
         public decimal Amount { get; set; }
+        public int TransactionOrderStatusId { get; set; }
     
         public virtual Account FromAccount { get; set; }
         public virtual Account ToAccount { get; set; }

@@ -24,6 +24,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public int AccountTypeId { get; set; }
         public string AccountTypeName { get; set; }
         public string AccountTypeKey { get; set; }
+        public string AssetsUnit { get; set; }
 
         int IDomainEntity.Id => AccountTypeId;
 

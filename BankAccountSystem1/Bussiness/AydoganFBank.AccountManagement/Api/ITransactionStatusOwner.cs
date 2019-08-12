@@ -6,6 +6,6 @@ namespace AydoganFBank.AccountManagement.Api
 {
     public interface ITransactionStatusOwner
     {
-        ITransactionStatusInfo TransactionStatus { get; set; }
+        ITransactionStatusInfo TransactionOrderStatus { get; set; }
     }
 }

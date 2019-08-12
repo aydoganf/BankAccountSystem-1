@@ -21,8 +21,13 @@ namespace AydoganFBank.Database
         public System.DateTime TransactionDate { get; set; }
         public int TransactionTypeId { get; set; }
         public int TransactionStatusId { get; set; }
-        public int OwnerId { get; set; }
-        public int OwnerType { get; set; }
+        public Nullable<int> OwnerId { get; set; }
+        public Nullable<int> OwnerType { get; set; }
+        public Nullable<int> FromOwnerType { get; set; }
+        public Nullable<int> FromOwnerId { get; set; }
+        public Nullable<int> ToOwnerType { get; set; }
+        public Nullable<int> ToOwnerId { get; set; }
+        public string Description { get; set; }
     
         public virtual Account FromAccount { get; set; }
         public virtual Account ToAccount { get; set; }

@@ -43,5 +43,13 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class AccountHasNotEnoughBalanceForWithdrawAmount : AccountManagementException
+        {
+            public AccountHasNotEnoughBalanceForWithdrawAmount(string message)
+                : base(5, string.Format("Account has not enough balance for withdraw amount: {0}", message))
+            {
+            }
+        }
     }
 }

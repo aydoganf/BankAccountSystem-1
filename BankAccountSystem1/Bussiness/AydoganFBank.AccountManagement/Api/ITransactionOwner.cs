@@ -8,5 +8,7 @@ namespace AydoganFBank.AccountManagement.Api
     {
         int OwnerId { get; }
         TransactionOwnerType OwnerType { get; }
+        string TransactionDetailDisplayName { get; }
+        string AssetsUnit { get; }
     }
 }
