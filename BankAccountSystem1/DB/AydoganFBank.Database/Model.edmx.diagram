@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="AydoganFBankModel.Company" Width="2.5" PointX="8" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="AydoganFBankModel.Person" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="AydoganFBankModel.TransactionOrder" Width="2.75" PointX="8.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AydoganFBankModel.TransactionStatus" Width="2" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AydoganFBankModel.TransactionStatus" Width="2" PointX="4.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="AydoganFBankModel.TransactionType" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
         <AssociationConnector Association="AydoganFBankModel.FK_Account_AccountType" ManuallyRouted="false" />
         <AssociationConnector Association="AydoganFBankModel.FK_AccountTransaction_Account" ManuallyRouted="false" />
@@ -22,6 +22,10 @@
         <AssociationConnector Association="AydoganFBankModel.FK_AccountTransaction_TransactionType" ManuallyRouted="false" />
         <AssociationConnector Association="AydoganFBankModel.FK_Company_Person" ManuallyRouted="false" />
         <AssociationConnector Association="AydoganFBankModel.FK_TransactionOrder_TransactionType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AydoganFBankModel.TransactionDetail" Width="2" PointX="0.875" PointY="6.625" />
+        <EntityTypeShape EntityType="AydoganFBankModel.CreditCard" Width="1.75" PointX="1" PointY="9.25" />
+        <EntityTypeShape EntityType="AydoganFBankModel.CreditCardExtre" Width="1.5" PointX="2.75" PointY="12.5" />
+        <EntityTypeShape EntityType="AydoganFBankModel.CreditCardPayment" Width="1.75" PointX="4.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

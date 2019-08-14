@@ -51,5 +51,13 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class CreditCardHasNotEnoughLimit : AccountManagementException
+        {
+            public CreditCardHasNotEnoughLimit(string message) 
+                : base(6, string.Format("Credit card has not enough limit for payment amount: {0}", message))
+            {
+            }
+        }
     }
 }

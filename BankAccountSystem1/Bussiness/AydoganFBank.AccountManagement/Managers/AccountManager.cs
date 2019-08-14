@@ -70,7 +70,7 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<IAccountRepository>().GetByAccountNumber(accountNumber);
         }
         
-        public void WithdrawMoneyFromOwn(int accountId, decimal amount)
+        public AccountDomainEntity WithdrawMoneyFromOwn(int accountId, decimal amount)
         {
             AccountTransactionDomainEntity transaction = null;
             AccountDomainEntity account = null;
@@ -79,11 +79,9 @@ namespace AydoganFBank.AccountManagement.Managers
             try
             {
                 account = GetAccountById(accountId);
-                var transactionType = coreContext.Query<ITransactionTypeRepository>()
-                    .GetByKey(TransactionTypeEnum.AccountItself.ToString());
+                var transactionType = GetTransactionTypeByKey(TransactionTypeEnum.AccountItself.ToString());
 
-                var transactionStatus = coreContext.Query<ITransactionStatusRepository>()
-                    .GetByKey(TransactionStatusEnum.InProgress.ToString());
+                var transactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.InProgress.ToString());
 
                 transaction = coreContext
                     .New<AccountTransactionDomainEntity>()
@@ -93,21 +91,21 @@ namespace AydoganFBank.AccountManagement.Managers
 
                 isWithdrawOK = account.Withdraw(amount);
 
-                transaction.TransactionOrderStatus = coreContext
-                    .Query<ITransactionStatusRepository>()
-                    .GetByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
                 transaction.Save();
+                var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.Out);
+                transactionDetail.Insert();
             }
             catch (Exception)
             {
                 if (transaction != null && isWithdrawOK == false)
                 {
-                    transaction.TransactionOrderStatus = coreContext
-                    .Query<ITransactionStatusRepository>()
-                    .GetByKey(TransactionStatusEnum.Failed.ToString());
+                    transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
                     transaction.Save();
                 }
             }
+
+            return account;
         }
 
         public AccountDomainEntity DepositToOwnAccount(int accountId, decimal amount)
@@ -118,11 +116,9 @@ namespace AydoganFBank.AccountManagement.Managers
             try
             {
                 account = GetAccountById(accountId);
-                var transactionType = coreContext.Query<ITransactionTypeRepository>()
-                    .GetByKey(TransactionTypeEnum.AccountItself.ToString());
+                var transactionType = GetTransactionTypeByKey(TransactionTypeEnum.AccountItself.ToString());
 
-                var transactionStatus = coreContext.Query<ITransactionStatusRepository>()
-                    .GetByKey(TransactionStatusEnum.InProgress.ToString());
+                var transactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.InProgress.ToString());
 
                 transaction = coreContext.New<AccountTransactionDomainEntity>()
                     .With(null, account, amount, transactionType, transactionStatus, account);
@@ -130,18 +126,17 @@ namespace AydoganFBank.AccountManagement.Managers
                 transaction.Insert();
                 isDepositOk = account.Deposit(amount);
 
-                transaction.TransactionOrderStatus = coreContext
-                    .Query<ITransactionStatusRepository>()
-                    .GetByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
                 transaction.Save();
+
+                var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.In);
+                transactionDetail.Insert();
             }
             catch (Exception)
             {
                 if (transaction != null && isDepositOk == false)
                 {
-                    transaction.TransactionOrderStatus = coreContext
-                    .Query<ITransactionStatusRepository>()
-                    .GetByKey(TransactionStatusEnum.Failed.ToString());
+                    transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
                     transaction.Save();
                 }
             }
@@ -168,26 +163,25 @@ namespace AydoganFBank.AccountManagement.Managers
 
             try
             {
-                var transactionType = coreContext
-                    .Query<ITransactionTypeRepository>()
-                    .GetByKey(transactionTypeEnum.ToString());
+                var transactionType = GetTransactionTypeByKey(transactionTypeEnum.ToString());
 
-                var transactionStatus = coreContext
-                    .Query<ITransactionStatusRepository>()
-                    .GetByKey(TransactionStatusEnum.InProgress.ToString());
+                var transactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.InProgress.ToString());
 
-                transaction = coreContext
-                    .New<AccountTransactionDomainEntity>()
+                transaction = coreContext.New<AccountTransactionDomainEntity>()
                     .With(fromAccount, toAccount, amount, transactionType, transactionStatus, null);
                 transaction.Insert();
 
                 isWithdrawOk = fromAccount.Withdraw(amount, false);
                 isDepositOk = toAccount.Deposit(amount, false);
 
-                transaction.TransactionOrderStatus = coreContext
-                    .Query<ITransactionStatusRepository>()
-                    .GetByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
                 transaction.Save();
+
+                var transactionDetailIn = transaction.CreateTransactionDetail(TransactionDirection.In);
+                transactionDetailIn.Insert();
+
+                var transactionDetailOut = transaction.CreateTransactionDetail(TransactionDirection.Out);
+                transactionDetailOut.Insert();
             }
             catch (Exception)
             {
@@ -196,9 +190,7 @@ namespace AydoganFBank.AccountManagement.Managers
                     if (isWithdrawOk && isDepositOk == false)
                     {
                         fromAccount.Deposit(amount);
-                        transaction.TransactionOrderStatus = coreContext
-                            .Query<ITransactionStatusRepository>()
-                            .GetByKey(TransactionStatusEnum.Failed.ToString());
+                        transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
 
                         transaction.Save();
                     }

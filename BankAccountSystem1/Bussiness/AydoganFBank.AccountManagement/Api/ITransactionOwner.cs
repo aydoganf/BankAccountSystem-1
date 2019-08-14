@@ -11,4 +11,8 @@ namespace AydoganFBank.AccountManagement.Api
         string TransactionDetailDisplayName { get; }
         string AssetsUnit { get; }
     }
+
+    public interface ITransactionOwnerWithDetails : ITransactionOwner
+    {
+    }
 }

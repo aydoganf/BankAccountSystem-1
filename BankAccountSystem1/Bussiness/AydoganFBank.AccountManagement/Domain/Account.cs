@@ -12,7 +12,10 @@ using System.Linq;
 namespace AydoganFBank.AccountManagement.Domain
 {
 
-    public class AccountDomainEntity : IDomainEntity, ITransactionOwner
+    public class AccountDomainEntity : 
+        IDomainEntity, 
+        ITransactionOwner,
+        ICreditCardOwner
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -39,6 +42,10 @@ namespace AydoganFBank.AccountManagement.Domain
         TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.Account;
         string ITransactionOwner.TransactionDetailDisplayName => AccountOwner.DisplayName;
         string ITransactionOwner.AssetsUnit => AccountType.AssetsUnit;
+
+        int ICreditCardOwner.OwnerId => AccountId;
+        CreditCardOwnerType ICreditCardOwner.CreditCardOwnerType => CreditCardOwnerType.Account;
+        string ICreditCardOwner.AssetsUnit => AccountType.AssetsUnit;
 
         public AccountDomainEntity With(
             AccountTypeDomainEntity accountType, 

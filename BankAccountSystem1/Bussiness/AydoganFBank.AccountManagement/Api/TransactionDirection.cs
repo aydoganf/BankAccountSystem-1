@@ -1,12 +1,8 @@
 ﻿namespace AydoganFBank.AccountManagement.Api
 {
-
-    internal static partial class ApiUtils
+    public enum TransactionDirection
     {
-        public enum TransactionDirection
-        {
-            In,
-            Out
-        }
+        In = 1,
+        Out
     }
 }

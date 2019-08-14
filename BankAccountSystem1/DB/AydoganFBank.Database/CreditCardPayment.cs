@@ -12,16 +12,14 @@ namespace AydoganFBank.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Company
+    public partial class CreditCardPayment
     {
-        public int CompanyId { get; set; }
-        public string CompanyName { get; set; }
-        public int ResponsablePersonId { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
-        public string TaxNumber { get; set; }
-        public int AccountId { get; set; }
-    
-        public virtual Person Person { get; set; }
+        public int CreditCardPaymentId { get; set; }
+        public int InstalmentIndex { get; set; }
+        public decimal Amount { get; set; }
+        public string Description { get; set; }
+        public System.DateTime CreateDate { get; set; }
+        public System.DateTime InstalmentDate { get; set; }
+        public int AccountTransactionId { get; set; }
     }
 }

@@ -24,13 +24,28 @@ namespace AydoganFBank.AccountManagement.Api
         {
             return Convert.ToInt32(transactionStatus);
         }
+
+        public static int ToInt(this TransactionDirection transactionDirection)
+        {
+            return Convert.ToInt32(transactionDirection);
+        }
+
+        public static int ToInt(this CreditCardOwnerType creditCardOwnerType)
+        {
+            return Convert.ToInt32(creditCardOwnerType);
+        }
+
+        public static string ToFormattedString(this DateTime dateTime)
+        {
+            return dateTime.ToString("dd.MM.yyyy HH:mm:ss");
+        }
     }
 
     internal static partial class ApiUtils
     {
-        public static string GenerateTransactionMessage(
+        public static string GenerateTransactionDescription(
             TransactionDirection transactionDirection, 
-            ITransactionOwner from, 
+            ITransactionOwner from,
             ITransactionOwner to, 
             decimal amount
             )

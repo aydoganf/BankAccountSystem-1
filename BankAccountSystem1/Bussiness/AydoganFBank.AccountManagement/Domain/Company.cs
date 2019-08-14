@@ -12,7 +12,10 @@ using AydoganFBank.Common.Exception;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CompanyDomainEntity : IDomainEntity, IAccountOwner
+    public class CompanyDomainEntity : 
+        IDomainEntity, 
+        IAccountOwner, 
+        ICreditCardOwner
     {
         #region IoC
         private readonly ICompanyRepository companyRepository;
@@ -29,24 +32,33 @@ namespace AydoganFBank.AccountManagement.Domain
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string TaxNumber { get; set; }
+        public AccountDomainEntity Account { get; set; }
+
 
         int IDomainEntity.Id => CompanyId;
 
         AccountOwnerType IAccountOwner.OwnerType => AccountOwnerType.Company;
         int IAccountOwner.OwnerId => CompanyId;
+        string IAccountOwner.DisplayName => CompanyName;
+
+        int ICreditCardOwner.OwnerId => CompanyId;
+        CreditCardOwnerType ICreditCardOwner.CreditCardOwnerType => CreditCardOwnerType.Company;
+        string ICreditCardOwner.AssetsUnit => Account.AccountType.AssetsUnit;
 
         public CompanyDomainEntity With(
             string companyName, 
             PersonDomainEntity responsablePerson, 
             string address, 
             string phoneNumber,
-            string taxNumber)
+            string taxNumber,
+            AccountDomainEntity account)
         {
             CompanyName = companyName ?? throw new CommonException.RequiredParameterMissingException(nameof(companyName));
             ResponsablePerson = responsablePerson ?? throw new CommonException.RequiredParameterMissingException(nameof(responsablePerson));
             Address = address ?? throw new CommonException.RequiredParameterMissingException(nameof(address));
             PhoneNumber = phoneNumber ?? throw new CommonException.RequiredParameterMissingException(nameof(phoneNumber));
             TaxNumber = taxNumber ?? throw new CommonException.RequiredParameterMissingException(nameof(taxNumber));
+            Account = account ?? throw new CommonException.RequiredParameterMissingException(nameof(account));
             return this;
         }
 

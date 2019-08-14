@@ -14,10 +14,14 @@ namespace AydoganFBank.AccountManagement.Domain
     public class AccountTransactionDomainEntity : IDomainEntity, ITransactionTypeOwner, ITransactionStatusOwner
     {
         #region IoC
+        private readonly ICoreContext coreContext;
         private readonly IAccountTransactionRepository accountTransactionRepository;
 
-        public AccountTransactionDomainEntity(IAccountTransactionRepository accountTransactionRepository)
+        public AccountTransactionDomainEntity(
+            ICoreContext coreContext,
+            IAccountTransactionRepository accountTransactionRepository)
         {
+            this.coreContext = coreContext;
             this.accountTransactionRepository = accountTransactionRepository;
         }
         #endregion
@@ -28,20 +32,18 @@ namespace AydoganFBank.AccountManagement.Domain
         public ITransactionOwner FromTransactionOwner { get; set; }
         public ITransactionOwner ToTransactionOwner { get; set; }
         public ITransactionOwner TransactionOwner { get; set; }
-        public string Description { get; set; }
 
         int IDomainEntity.Id => TransactionId;
         public ITransactionTypeInfo TransactionType { get; set; }
         public ITransactionStatusInfo TransactionOrderStatus { get; set; }
 
         public AccountTransactionDomainEntity With(
-            ITransactionOwner from, 
+            ITransactionOwner from,
             ITransactionOwner to, 
             decimal amount,
             ITransactionTypeInfo transactionType,
             ITransactionStatusInfo transactionStatus,
-            ITransactionOwner transactionOwner,
-            string description)
+            ITransactionOwner transactionOwner)
         {
             Amount = amount;
             TransactionType = transactionType;
@@ -49,7 +51,6 @@ namespace AydoganFBank.AccountManagement.Domain
             FromTransactionOwner = from;
             ToTransactionOwner = to;
             TransactionOwner = transactionOwner;
-            Description = description;
             return this;
         }
 
@@ -62,6 +63,23 @@ namespace AydoganFBank.AccountManagement.Domain
         public void Save()
         {
             accountTransactionRepository.UpdateEntity(this);
+        }
+
+        public TransactionDetailDomainEntity CreateTransactionDetail(TransactionDirection transactionDirection)
+        {
+            string description = ApiUtils.GenerateTransactionDescription(
+                transactionDirection, FromTransactionOwner, ToTransactionOwner, Amount);
+
+            if (transactionDirection == TransactionDirection.In)
+            {
+                return coreContext.New<TransactionDetailDomainEntity>()
+                    .With(description, TransactionDate, this, ToTransactionOwner, transactionDirection);
+            }
+            else
+            {
+                return coreContext.New<TransactionDetailDomainEntity>()
+                    .With(description, TransactionDate, this, FromTransactionOwner, transactionDirection);
+            }
         }
     }
 
@@ -128,7 +146,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.ToTransactionOwner = GetTransactionOwner(dbEntity.ToOwnerType, dbEntity.ToOwnerId);
             domainEntity.TransactionOrderStatus = transactionStatusRepository.GetById(dbEntity.TransactionStatusId);
             domainEntity.TransactionType = transactionTypeRepository.GetById(dbEntity.TransactionTypeId);
-            domainEntity.Description = dbEntity.Description;
         }
 
         public override IEnumerable<AccountTransactionDomainEntity> MapToDomainObjectList(IEnumerable<AccountTransaction> dbEntities)
@@ -153,7 +170,6 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.ToOwnerId = domainEntity.ToTransactionOwner?.OwnerId;
             dbEntity.OwnerType = domainEntity.TransactionOwner?.OwnerType.ToInt();
             dbEntity.OwnerId = domainEntity.TransactionOwner?.OwnerId;
-            dbEntity.Description = domainEntity.Description;
         }
         #endregion
 

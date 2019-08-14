@@ -283,7 +283,6 @@
           <Property Name="FromOwnerId" Type="Int32" Nullable="true" />
           <Property Name="ToOwnerType" Type="Int32" Nullable="true" />
           <Property Name="ToOwnerId" Type="Int32" Nullable="true" />
-          <Property Name="Description" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="AccountType">
           <Key>
@@ -305,6 +304,7 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Company_Person" FromRole="Company" ToRole="Person" />
           <Property Name="TaxNumber" Type="String" FixedLength="false" MaxLength="50" Unicode="true" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -506,7 +506,63 @@
             <End Role="TransactionType" EntitySet="TransactionType" />
             <End Role="TransactionOrder" EntitySet="TransactionOrder" />
           </AssociationSet>
+          <EntitySet Name="TransactionDetail" EntityType="AydoganFBankModel.TransactionDetail" />
+          <EntitySet Name="CreditCard" EntityType="AydoganFBankModel.CreditCard" />
+          <EntitySet Name="CreditCardExtre" EntityType="AydoganFBankModel.CreditCardExtre" />
+          <EntitySet Name="CreditCardPayment" EntityType="AydoganFBankModel.CreditCardPayment" />
         </EntityContainer>
+        <EntityType Name="TransactionDetail">
+          <Key>
+            <PropertyRef Name="TransactionDetailId" />
+          </Key>
+          <Property Name="TransactionDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="TransactionDirection" Type="Int32" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditCard">
+          <Key>
+            <PropertyRef Name="CreditCardId" />
+          </Key>
+          <Property Name="CreditCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreditCardNumber" Type="String" Nullable="false" />
+          <Property Name="Limit" Type="Decimal" Nullable="false" />
+          <Property Name="ExtreDay" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="ValidMonth" Type="String" Nullable="false" />
+          <Property Name="ValidYear" Type="String" Nullable="false" />
+          <Property Name="SecurityCode" Type="String" Nullable="false" />
+          <Property Name="IsInternetUsageOpen" Type="Boolean" Nullable="false" />
+          <Property Name="OwnerType" Type="Int32" Nullable="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditCardExtre">
+          <Key>
+            <PropertyRef Name="CreditCardExtreId" />
+          </Key>
+          <Property Name="CreditCardExtreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreditCardId" Type="Int32" Nullable="false" />
+          <Property Name="Month" Type="Int32" Nullable="false" />
+          <Property Name="MonthName" Type="String" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="TotalPayment" Type="Decimal" Nullable="false" />
+          <Property Name="MinPayment" Type="Decimal" Nullable="false" />
+          <Property Name="IsDischarged" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditCardPayment">
+          <Key>
+            <PropertyRef Name="CreditCardPaymentId" />
+          </Key>
+          <Property Name="CreditCardPaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstalmentIndex" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <Property Name="InstalmentDate" Type="DateTime" Nullable="false" />
+          <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

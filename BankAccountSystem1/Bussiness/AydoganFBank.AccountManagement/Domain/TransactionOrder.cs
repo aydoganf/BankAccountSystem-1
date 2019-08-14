@@ -38,14 +38,15 @@ namespace AydoganFBank.AccountManagement.Domain
         public AccountDomainEntity ToAccount { get; set; }
         public decimal Amount { get; set; }
 
-        int IDomainEntity.Id => TransactionOrderId;
-        int ITransactionOwner.OwnerId => TransactionOrderId;
-        TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.TransactionOrder;
-        string ITransactionOwner.TransactionDetailDisplayName => throw new NotImplementedException();
-        string ITransactionOwner.AssetsUnit => ((ITransactionOwner)ToAccount).AssetsUnit;
-
         public ITransactionTypeInfo TransactionType { get; set; }
         public ITransactionStatusInfo TransactionOrderStatus { get; set; }
+
+        int IDomainEntity.Id => TransactionOrderId;
+        int ITransactionOwner.OwnerId => TransactionOrderId;
+        string ITransactionOwner.TransactionDetailDisplayName => string.Format("{0} - Transaction order", OperationDate.ToFormattedString());
+        string ITransactionOwner.AssetsUnit => ((ITransactionOwner)ToAccount).AssetsUnit;
+        TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.TransactionOrder;
+
 
         public TransactionOrderDomainEntity With(
             ITransactionTypeInfo transactionType, 
