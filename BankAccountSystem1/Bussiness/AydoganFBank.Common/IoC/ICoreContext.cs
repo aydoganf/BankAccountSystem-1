@@ -1,4 +1,5 @@
-﻿using AydoganFBank.Database;
+﻿using AydoganFBank.Common.Repository;
+using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,7 @@ namespace AydoganFBank.Common.IoC
 
         T New<T>();
 
-        T Query<T>();
+        T Query<T>() where T : IQueryRepository;
 
         //ICoreContext WithNewContext();
     }

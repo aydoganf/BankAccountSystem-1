@@ -33,7 +33,7 @@ namespace AydoganFBank.AccountManagement.Builder
 
         public void MapToDomainObject(TransactionDetailDomainEntity domainEntity, TransactionDetail entity)
         {
-            if (entity == null)
+            if (domainEntity == null || entity == null)
                 return;
 
             domainEntity.TransactionOwner = coreContext.Query<IAccountRepository>().GetById(entity.AccountId);

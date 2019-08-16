@@ -17,17 +17,19 @@ namespace AydoganFBank.AccountManagement.Builder
 
         public PersonDomainEntity MapToDomainObject(Person entity)
         {
+            if (entity == null)
+                return null;
+
             var domainEntity = coreContext.New<PersonDomainEntity>();
-            domainEntity.PersonId = entity.PersonId;
-            domainEntity.EmailAddress = entity.EmailAddress;
-            domainEntity.FirstName = entity.FirstName;
-            domainEntity.IdentityNumber = entity.IdentityNumber;
-            domainEntity.LastName = entity.LastName;
+            MapToDomainObject(domainEntity, entity);
             return domainEntity;
         }
 
         public void MapToDomainObject(PersonDomainEntity domainEntity, Person entity)
         {
+            if (domainEntity == null || entity == null)
+                return;
+
             domainEntity.PersonId = entity.PersonId;
             domainEntity.EmailAddress = entity.EmailAddress;
             domainEntity.FirstName = entity.FirstName;

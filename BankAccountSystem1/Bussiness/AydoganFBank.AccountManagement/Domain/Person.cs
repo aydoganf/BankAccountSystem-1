@@ -1,11 +1,10 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
 using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.Exception;
 using AydoganFBank.Common.IoC;
+using AydoganFBank.Common.Repository;
 using AydoganFBank.Database;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
@@ -30,8 +29,19 @@ namespace AydoganFBank.AccountManagement.Domain
 
         AccountOwnerType IAccountOwner.OwnerType => AccountOwnerType.Person;
         int IAccountOwner.OwnerId => PersonId;
+        string IAccountOwner.DisplayName => FullName;
 
         int IDomainEntity.Id => PersonId;
+
+        #region Calculated properties
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", FirstName, LastName);
+            }
+        }
+        #endregion
 
         public PersonDomainEntity With(
             string firstName, 

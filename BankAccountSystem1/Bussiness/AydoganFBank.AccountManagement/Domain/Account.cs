@@ -1,9 +1,9 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
 using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.Exception;
 using AydoganFBank.Common.IoC;
+using AydoganFBank.Common.Repository;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
@@ -128,20 +128,10 @@ namespace AydoganFBank.AccountManagement.Domain
         IDomainObjectBuilderRepository<AccountDomainEntity, Account>
     {
         private const int ACCOUNT_NUMBER_START = 1000000;
-        private readonly IPersonRepository personRepository;
-        private readonly ICompanyRepository companyRepository;
-        private readonly IAccountTypeRepository accountTypeRepository;
 
-        public AccountRepository(
-            ICoreContext coreContext,
-            IPersonRepository personRepository,
-            ICompanyRepository companyRepository,
-            IAccountTypeRepository accountTypeRepository) 
+        public AccountRepository(ICoreContext coreContext) 
             : base(coreContext, null, null)
         {
-            this.personRepository = personRepository;
-            this.companyRepository = companyRepository;
-            this.accountTypeRepository = accountTypeRepository;
         }
 
         private IAccountOwner GetAccountOwner(Account account)
@@ -149,11 +139,11 @@ namespace AydoganFBank.AccountManagement.Domain
             IAccountOwner accountOwner = null;
             if (account.OwnerType == AccountOwnerType.Person.ToInt())
             {
-                accountOwner = personRepository.GetById(account.OwnerId);
+                accountOwner = coreContext.Query<IPersonRepository>().GetById(account.OwnerId);
             }
             else if (account.OwnerType == AccountOwnerType.Company.ToInt())
             {
-                accountOwner = companyRepository.GetById(account.OwnerId);
+                accountOwner = coreContext.Query<ICompanyRepository>().GetById(account.OwnerId);
             }
             return accountOwner;
         }
@@ -177,7 +167,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
             domainEntity.AccountId = dbEntity.AccountId;
             domainEntity.AccountNumber = dbEntity.AccountNumber;
-            domainEntity.AccountType = accountTypeRepository.GetById(dbEntity.AccountTypeId);
+            domainEntity.AccountType = coreContext.Query<IAccountTypeRepository>().GetById(dbEntity.AccountTypeId);
             domainEntity.Balance = dbEntity.Balance;
             domainEntity.AccountOwner = GetAccountOwner(dbEntity);
         }

@@ -1,17 +1,16 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
+using AydoganFBank.Common.Repository;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class AccountTransactionDomainEntity : IDomainEntity, ITransactionTypeOwner, ITransactionStatusOwner
+    public class AccountTransactionDomainEntity : 
+        IDomainEntity, ITransactionTypeOwner, ITransactionStatusOwner, ITransactionInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -35,7 +34,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
         int IDomainEntity.Id => TransactionId;
         public ITransactionTypeInfo TransactionType { get; set; }
-        public ITransactionStatusInfo TransactionOrderStatus { get; set; }
+        public ITransactionStatusInfo TransactionStatus { get; set; }
 
         public AccountTransactionDomainEntity With(
             ITransactionOwner from,
@@ -47,7 +46,7 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             Amount = amount;
             TransactionType = transactionType;
-            TransactionOrderStatus = transactionStatus;
+            TransactionStatus = transactionStatus;
             FromTransactionOwner = from;
             ToTransactionOwner = to;
             TransactionOwner = transactionOwner;
@@ -88,22 +87,8 @@ namespace AydoganFBank.AccountManagement.Domain
         IAccountTransactionRepository,
         IDomainObjectBuilderRepository<AccountTransactionDomainEntity, AccountTransaction>
     {
-        private readonly IAccountRepository accountRepository;
-        private readonly ITransactionStatusRepository transactionStatusRepository;
-        private readonly ITransactionTypeRepository transactionTypeRepository;
-        private readonly ITransactionOrderRepository transactionOrderRepository;
-        
-        public AccountTransactionRepository(
-            ICoreContext coreContext,
-            ITransactionStatusRepository transactionStatusRepository,
-            ITransactionTypeRepository transactionTypeRepository,
-            IAccountRepository accountRepository,
-            ITransactionOrderRepository transactionOrderRepository) : base(coreContext, null, null)
+        public AccountTransactionRepository(ICoreContext coreContext) : base(coreContext, null, null)
         {
-            this.transactionStatusRepository = transactionStatusRepository;
-            this.transactionTypeRepository = transactionTypeRepository;
-            this.accountRepository = accountRepository;
-            this.transactionOrderRepository = transactionOrderRepository;
         }
 
         private ITransactionOwner GetTransactionOwner(int? ownerType, int? ownerId)
@@ -114,11 +99,11 @@ namespace AydoganFBank.AccountManagement.Domain
             ITransactionOwner transactionOwner = null;
             if (ownerType == TransactionOwnerType.Account.ToInt())
             {
-                transactionOwner = accountRepository.GetById(ownerId.Value);
+                transactionOwner = coreContext.Query<IAccountRepository>().GetById(ownerId.Value);
             }
             else if (ownerType == TransactionOwnerType.TransactionOrder.ToInt())
             {
-                transactionOwner = transactionOrderRepository.GetById(ownerId.Value);
+                transactionOwner = coreContext.Query<ITransactionOrderRepository>().GetById(ownerId.Value);
             }
             return transactionOwner;
         }
@@ -144,8 +129,8 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.TransactionId = dbEntity.TransactionId;
             domainEntity.FromTransactionOwner = GetTransactionOwner(dbEntity.FromOwnerType, dbEntity.FromOwnerId);
             domainEntity.ToTransactionOwner = GetTransactionOwner(dbEntity.ToOwnerType, dbEntity.ToOwnerId);
-            domainEntity.TransactionOrderStatus = transactionStatusRepository.GetById(dbEntity.TransactionStatusId);
-            domainEntity.TransactionType = transactionTypeRepository.GetById(dbEntity.TransactionTypeId);
+            domainEntity.TransactionStatus = coreContext.Query<ITransactionStatusRepository>().GetById(dbEntity.TransactionStatusId);
+            domainEntity.TransactionType = coreContext.Query<ITransactionTypeRepository>().GetById(dbEntity.TransactionTypeId);
         }
 
         public override IEnumerable<AccountTransactionDomainEntity> MapToDomainObjectList(IEnumerable<AccountTransaction> dbEntities)
@@ -162,7 +147,7 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             dbEntity.Amount = domainEntity.Amount;
             dbEntity.TransactionDate = domainEntity.TransactionDate;
-            dbEntity.TransactionStatusId = domainEntity.TransactionOrderStatus.StatusId;
+            dbEntity.TransactionStatusId = domainEntity.TransactionStatus.StatusId;
             dbEntity.TransactionTypeId = domainEntity.TransactionType.TypeId;
             dbEntity.FromOwnerType = domainEntity.FromTransactionOwner?.OwnerType.ToInt();
             dbEntity.FromOwnerId = domainEntity.FromTransactionOwner?.OwnerId;
@@ -221,7 +206,8 @@ namespace AydoganFBank.AccountManagement.Domain
             return GetOrderedDescListBy(
                 at =>
                     ((at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId) ||
-                    (at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId)),
+                    (at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId)) &&
+                    at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
                     at.TransactionDate)
                 .ToList();
@@ -234,7 +220,8 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return GetOrderedDescListBy(
                 at =>
-                    at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId,
+                    at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId &&
+                    at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
                     at.TransactionDate)
                 .ToList();
@@ -242,18 +229,21 @@ namespace AydoganFBank.AccountManagement.Domain
         
         public List<AccountTransactionDomainEntity> GetLastOutgoingDateRangeListByTransactionOwner(
             ITransactionOwner transactionOwner,
-            DateTime starDate,
+            DateTime startDate,
             DateTime endDate)
         {
             return GetOrderedDescListBy(
                 at =>
-                    at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId,
+                    at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId &&
+                    at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
                     at.TransactionDate)
                 .ToList();
         }
         
-        public List<AccountTransactionDomainEntity> GetLastOutgoingListByTransactionOwner(ITransactionOwner transactionOwner, int itemCount)
+        public List<AccountTransactionDomainEntity> GetLastOutgoingListByTransactionOwner(
+            ITransactionOwner transactionOwner, 
+            int itemCount)
         {
             return GetLastItemCountListBy(
                 at =>

@@ -10,16 +10,15 @@ namespace AydoganFBank.AccountManagement.Builder
 {
     public class CompanyDomainEntityBuilder : IDomainEntityBuilder<CompanyDomainEntity, Company>
     {
-        private readonly ICoreContext coreContext;
-        private readonly IDomainEntityBuilder<PersonDomainEntity, Person> personDomainEntityBuilder;
+        #region  IoC
 
-        public CompanyDomainEntityBuilder(
-            ICoreContext coreContext,
-            IDomainEntityBuilder<PersonDomainEntity, Person> personDomainEntityBuilder)
+        private readonly ICoreContext coreContext;
+
+        public CompanyDomainEntityBuilder(ICoreContext coreContext)
         {
             this.coreContext = coreContext;
-            this.personDomainEntityBuilder = personDomainEntityBuilder;
         }
+        #endregion
 
         public CompanyDomainEntity MapToDomainObject(Company entity)
         {
@@ -33,7 +32,7 @@ namespace AydoganFBank.AccountManagement.Builder
 
         public void MapToDomainObject(CompanyDomainEntity domainEntity, Company entity)
         {
-            if (entity == null)
+            if (domainEntity == null || entity == null)
                 return;
 
             domainEntity.Address = entity.Address;

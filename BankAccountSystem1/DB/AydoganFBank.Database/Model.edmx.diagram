@@ -26,6 +26,7 @@
         <EntityTypeShape EntityType="AydoganFBankModel.CreditCard" Width="1.75" PointX="1" PointY="9.25" />
         <EntityTypeShape EntityType="AydoganFBankModel.CreditCardExtre" Width="1.5" PointX="2.75" PointY="12.5" />
         <EntityTypeShape EntityType="AydoganFBankModel.CreditCardPayment" Width="1.75" PointX="4.375" PointY="12.75" />
+        <EntityTypeShape EntityType="AydoganFBankModel.CreditCardExtreDischarge" Width="2.125" PointX="0.5" PointY="12.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

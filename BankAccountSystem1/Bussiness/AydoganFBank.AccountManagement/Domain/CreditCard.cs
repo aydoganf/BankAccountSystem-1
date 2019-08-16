@@ -1,13 +1,11 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
+using AydoganFBank.Common.Repository;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -95,39 +93,39 @@ namespace AydoganFBank.AccountManagement.Domain
             creditCardRepository.UpdateEntity(this);
         }
 
-        public void DoPayment(decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)
+        public void DoPayment(decimal amount)
         {
             if (UsableLimit < amount)
                 throw new AccountManagementException.CreditCardHasNotEnoughLimit(string.Format("{0} = {1}", nameof(amount), amount));
 
             Debt += amount;
+        }
 
+        public CreditCardExtreDomainEntity GetLastCreditCardExtre()
+        {
+            return coreContext.Query<ICreditCardExtreRepository>().GetLastByCreditCard(this);
+        }
 
-            var transactionType = coreContext.Query<ITransactionTypeRepository>()
-                    .GetByKey(TransactionTypeEnum.CreditCardPayment.ToString());
+        public List<CreditCardExtreDomainEntity> GetCreditCardExtres()
+        {
+            return coreContext.Query<ICreditCardExtreRepository>().GetListByCreditCard(this);
+        }
 
-            var transactionStatus = coreContext.Query<ITransactionStatusRepository>()
-                .GetByKey(TransactionStatusEnum.InProgress.ToString());
+        public CreditCardExtreDomainEntity GetCreditCardExtreByDate(int month, int year)
+        {
+            return coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(this, month, year);
+        }
 
-            var transaction = coreContext.New<AccountTransactionDomainEntity>()
-                .With(this, toTransactionOwner, amount, transactionType, transactionStatus, this);
+        public List<AccountTransactionDomainEntity> GetTransactionInfoListByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<IAccountTransactionRepository>()
+                .GetLastOutgoingDateRangeListByTransactionOwner(this, startDate, endDate);
+        }
 
-            transaction.Insert();
-            var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.Out);
-            transactionDetail.Insert();
-
-            for (int instalmentIndex = 1; instalmentIndex <= instalmentCount; instalmentIndex++)
-            {
-                decimal instalmentAmount = amount / instalmentCount;
-                string paymentDescription = string.Format("{0} - {1}{2} ({3} instalment)", 
-                    toTransactionOwner.TransactionDetailDisplayName, instalmentAmount, toTransactionOwner.AssetsUnit, 
-                    string.Format("{0}/{1}", instalmentIndex, instalmentCount));
-                DateTime instalmentDate = transaction.TransactionDate.AddMonths(instalmentIndex - 1);
-
-                var creditCardPayment = coreContext.New<CreditCardPaymentDomainEntity>()
-                    .With(instalmentIndex, instalmentAmount, paymentDescription, transaction.TransactionDate, instalmentDate, transaction);
-                creditCardPayment.Insert();
-            }
+        public List<CreditCardPaymentDomainEntity> GetLastExtrePayments()
+        {
+            var lastExtre = GetLastCreditCardExtre();
+            return coreContext.Query<ICreditCardPaymentRepository>().GetListByCreditCardExtre(lastExtre);
         }
     }
 
@@ -222,6 +220,8 @@ namespace AydoganFBank.AccountManagement.Domain
                 cc => cc.OwnerType == creditCardOwner.CreditCardOwnerType.ToInt() && 
                 cc.OwnerId == creditCardOwner.OwnerId);
         }
+
+        
     }
 
     public interface ICreditCardRepository : IRepository<CreditCardDomainEntity>

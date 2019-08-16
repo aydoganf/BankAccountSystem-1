@@ -1,16 +1,16 @@
-﻿using AydoganFBank.AccountManagement.Repository;
+﻿using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.Common;
 using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
+using AydoganFBank.Common.Repository;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardPaymentDomainEntity : IDomainEntity
+    public class CreditCardPaymentDomainEntity : IDomainEntity, ITransactionHolder
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -35,6 +35,10 @@ namespace AydoganFBank.AccountManagement.Domain
 
         int IDomainEntity.Id => CreditCardPaymentId;
 
+        ITransactionInfo ITransactionHolder.TransactionInfo => AccountTransaction;
+        DateTime ITransactionHolder.CreateDate => CreateDate;
+
+        #region CRUD
 
         public void Insert()
         {
@@ -45,6 +49,7 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             creditCardPaymentRepository.UpdateEntity(this);
         }
+        #endregion
 
         public CreditCardPaymentDomainEntity With(
             int instalmentIndex, decimal amount, string description, DateTime createDate, 
@@ -82,10 +87,38 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return dbContext.CreditCardPayment.Single(ccp => ccp.CreditCardPaymentId == id);
         }
+
+        public List<CreditCardPaymentDomainEntity> GetListByCreditCard(CreditCardDomainEntity creditCard, DateTime fromDate)
+        {
+            var transactions = coreContext.Query<IAccountTransactionRepository>()
+                .GetLastOutgoingDateRangeListByTransactionOwner(creditCard, fromDate, DateTime.Now);
+
+            return GetOrderedDescListBy(
+                ccp =>
+                    transactions.Select(t => t.TransactionId).Contains(ccp.AccountTransactionId),
+                ccp =>
+                    ccp.InstalmentDate)
+                .ToList();
+        }
+        
+        public List<CreditCardPaymentDomainEntity> GetListByCreditCardExtre(CreditCardExtreDomainEntity creditCardExtre)
+        {
+            var fromDate = creditCardExtre.ExtreDate.AddMonths(-1);
+            var transactions = coreContext.Query<IAccountTransactionRepository>()
+                .GetLastOutgoingDateRangeListByTransactionOwner(creditCardExtre.CreditCard, fromDate, creditCardExtre.ExtreDate);
+
+            return GetOrderedDescListBy(
+                ccp =>
+                    transactions.Select(t => t.TransactionId).Contains(ccp.AccountTransactionId),
+                ccp =>
+                    ccp.InstalmentDate)
+                .ToList();
+        }
     }
 
     public interface ICreditCardPaymentRepository : IRepository<CreditCardPaymentDomainEntity>
     {
-
+        List<CreditCardPaymentDomainEntity> GetListByCreditCard(CreditCardDomainEntity creditCard, DateTime fromDate);
+        List<CreditCardPaymentDomainEntity> GetListByCreditCardExtre(CreditCardExtreDomainEntity creditCardExtre);
     }
 }

@@ -1,9 +1,8 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
 using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
-using AydoganFBank.Database;
+using AydoganFBank.Common.Repository;
 using System.Linq;
 using TransactionStatus = AydoganFBank.Database.TransactionStatus;
 

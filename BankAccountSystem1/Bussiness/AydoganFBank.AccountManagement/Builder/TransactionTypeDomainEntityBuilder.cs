@@ -21,6 +21,9 @@ namespace AydoganFBank.AccountManagement.Builder
 
         public TransactionTypeDomainEntity MapToDomainObject(TransactionType entity)
         {
+            if (entity == null)
+                return null;
+
             TransactionTypeDomainEntity domainEntity = coreContext.New<TransactionTypeDomainEntity>();
             MapToDomainObject(domainEntity, entity);
             return domainEntity;
@@ -28,6 +31,9 @@ namespace AydoganFBank.AccountManagement.Builder
 
         public void MapToDomainObject(TransactionTypeDomainEntity domainEntity, TransactionType entity)
         {
+            if (domainEntity == null || entity == null)
+                return;
+
             domainEntity.TypeId = entity.TransactionTypeId;
             domainEntity.TypeKey = entity.TypeKey;
             domainEntity.TypeName = entity.TypeName;

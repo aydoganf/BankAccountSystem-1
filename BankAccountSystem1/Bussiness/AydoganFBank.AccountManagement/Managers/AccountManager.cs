@@ -91,7 +91,7 @@ namespace AydoganFBank.AccountManagement.Managers
 
                 isWithdrawOK = account.Withdraw(amount);
 
-                transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
                 transaction.Save();
                 var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.Out);
                 transactionDetail.Insert();
@@ -100,7 +100,7 @@ namespace AydoganFBank.AccountManagement.Managers
             {
                 if (transaction != null && isWithdrawOK == false)
                 {
-                    transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
+                    transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
                     transaction.Save();
                 }
             }
@@ -126,7 +126,7 @@ namespace AydoganFBank.AccountManagement.Managers
                 transaction.Insert();
                 isDepositOk = account.Deposit(amount);
 
-                transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
                 transaction.Save();
 
                 var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.In);
@@ -136,7 +136,7 @@ namespace AydoganFBank.AccountManagement.Managers
             {
                 if (transaction != null && isDepositOk == false)
                 {
-                    transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
+                    transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
                     transaction.Save();
                 }
             }
@@ -174,7 +174,7 @@ namespace AydoganFBank.AccountManagement.Managers
                 isWithdrawOk = fromAccount.Withdraw(amount, false);
                 isDepositOk = toAccount.Deposit(amount, false);
 
-                transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
                 transaction.Save();
 
                 var transactionDetailIn = transaction.CreateTransactionDetail(TransactionDirection.In);
@@ -190,7 +190,7 @@ namespace AydoganFBank.AccountManagement.Managers
                     if (isWithdrawOk && isDepositOk == false)
                     {
                         fromAccount.Deposit(amount);
-                        transaction.TransactionOrderStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
+                        transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
 
                         transaction.Save();
                     }
@@ -250,10 +250,11 @@ namespace AydoganFBank.AccountManagement.Managers
             PersonDomainEntity responsablePerson, 
             string address, 
             string phoneNumber,
-            string taxNumber)
+            string taxNumber,
+            AccountDomainEntity account)
         {
             var company = coreContext.New<CompanyDomainEntity>()
-                .With(companyName, responsablePerson, address, phoneNumber, taxNumber);
+                .With(companyName, responsablePerson, address, phoneNumber, taxNumber, account);
 
             company.Insert();
             return company;
@@ -271,10 +272,12 @@ namespace AydoganFBank.AccountManagement.Managers
             int responsablePersonId, 
             string address, 
             string phoneNumber,
-            string taxNumber)
+            string taxNumber,
+            int accountId)
         {
             var person = GetPersonById(responsablePersonId);
-            return CreateCompany(companyName, person, address, phoneNumber, taxNumber);
+            var account = GetAccountById(accountId);
+            return CreateCompany(companyName, person, address, phoneNumber, taxNumber, account);
         }
 
         public CompanyDomainEntity GetCompanyById(int companyId)
@@ -386,6 +389,57 @@ namespace AydoganFBank.AccountManagement.Managers
             {
                 transactionOrder.SetStatus(TransactionStatusEnum.Failed);
             }
+        }
+        #endregion
+
+        #region CreditCard
+        private CreditCardDomainEntity DoCreditCardPayment(
+            CreditCardDomainEntity creditCard, decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)
+        {
+            creditCard.DoPayment(amount);
+
+            var transactionType = coreContext.Query<ITransactionTypeRepository>()
+                    .GetByKey(TransactionTypeEnum.CreditCardPayment.ToString());
+
+            var transactionStatus = coreContext.Query<ITransactionStatusRepository>()
+                .GetByKey(TransactionStatusEnum.InProgress.ToString());
+
+            var transaction = coreContext.New<AccountTransactionDomainEntity>()
+                .With(creditCard, toTransactionOwner, amount, transactionType, transactionStatus, creditCard);
+
+            transaction.Insert();
+            var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.Out);
+            transactionDetail.Insert();
+
+            for (int instalmentIndex = 1; instalmentIndex <= instalmentCount; instalmentIndex++)
+            {
+                decimal instalmentAmount = amount / instalmentCount;
+                string paymentDescription = string.Format("{0} - {1}{2} ({3} instalment)",
+                    toTransactionOwner.TransactionDetailDisplayName, instalmentAmount, toTransactionOwner.AssetsUnit,
+                    string.Format("{0}/{1}", instalmentIndex, instalmentCount));
+                DateTime instalmentDate = transaction.TransactionDate.AddMonths(instalmentIndex - 1);
+
+                var creditCardPayment = coreContext.New<CreditCardPaymentDomainEntity>()
+                    .With(instalmentIndex, instalmentAmount, paymentDescription, 
+                    transaction.TransactionDate, instalmentDate, transaction);
+                creditCardPayment.Insert();
+            }
+
+            return creditCard;
+        }
+
+        public CreditCardDomainEntity DoCreditCardPayment(
+            int creditCardId, decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)
+        {
+            var creditCard = coreContext.Query<ICreditCardRepository>()
+                .GetById(creditCardId);
+
+            if(creditCard == null)
+            {
+                //
+            }
+
+            return DoCreditCardPayment(creditCard, amount, instalmentCount, toTransactionOwner);
         }
         #endregion
     }

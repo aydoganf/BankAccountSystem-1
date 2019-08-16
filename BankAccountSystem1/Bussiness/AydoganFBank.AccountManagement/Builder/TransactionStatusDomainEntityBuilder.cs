@@ -20,6 +20,9 @@ namespace AydoganFBank.AccountManagement.Builder
 
         public TransactionStatusDomainEntity MapToDomainObject(TransactionStatus entity)
         {
+            if (entity == null)
+                return null;
+
             var domainEntity = coreContext.New<TransactionStatusDomainEntity>();
             MapToDomainObject(domainEntity, entity);
             return domainEntity;
@@ -27,6 +30,9 @@ namespace AydoganFBank.AccountManagement.Builder
 
         public void MapToDomainObject(TransactionStatusDomainEntity domainEntity, TransactionStatus entity)
         {
+            if (domainEntity == null || entity == null)
+                return;
+
             domainEntity.StatusId = entity.TransactionStatusId;
             domainEntity.StatusKey = entity.StatusKey;
             domainEntity.StatusName = entity.StatusName;

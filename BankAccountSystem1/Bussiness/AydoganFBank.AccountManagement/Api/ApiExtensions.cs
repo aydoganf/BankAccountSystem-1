@@ -1,10 +1,4 @@
-﻿using AydoganFBank.AccountManagement.Domain;
-using AydoganFBank.AccountManagement.Repository;
-using AydoganFBank.Common;
-using AydoganFBank.Common.IoC;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace AydoganFBank.AccountManagement.Api
 {

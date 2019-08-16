@@ -1,13 +1,11 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.AccountManagement.Repository;
 using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
 using AydoganFBank.Common.IoC;
+using AydoganFBank.Common.Repository;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -39,7 +37,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public decimal Amount { get; set; }
 
         public ITransactionTypeInfo TransactionType { get; set; }
-        public ITransactionStatusInfo TransactionOrderStatus { get; set; }
+        public ITransactionStatusInfo TransactionStatus { get; set; }
 
         int IDomainEntity.Id => TransactionOrderId;
         int ITransactionOwner.OwnerId => TransactionOrderId;
@@ -64,7 +62,7 @@ namespace AydoganFBank.AccountManagement.Domain
             FromAccount = fromAccount;
             ToAccount = toAccount;
             Amount = amount;
-            TransactionOrderStatus = transactionOrderStatus;
+            TransactionStatus = transactionOrderStatus;
             return this;
         }
 
@@ -80,7 +78,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public void SetStatus(TransactionStatusEnum transactionStatus)
         {
-            TransactionOrderStatus = coreContext
+            TransactionStatus = coreContext
                 .Query<ITransactionStatusRepository>()
                 .GetByKey(transactionStatus.ToString());
         }
@@ -91,20 +89,9 @@ namespace AydoganFBank.AccountManagement.Domain
         ITransactionOrderRepository,
         IDomainObjectBuilderRepository<TransactionOrderDomainEntity, TransactionOrder>
     {
-        private readonly IAccountRepository accountRepository;
-        private readonly ITransactionTypeRepository transactionTypeRepository;
-        private readonly ITransactionStatusRepository transactionStatusRepository;
-
-        public TransactionOrderRepository(
-            ICoreContext coreContext,
-            IAccountRepository accountRepository,
-            ITransactionTypeRepository transactionTypeRepository,
-            ITransactionStatusRepository transactionStatusRepository) 
+        public TransactionOrderRepository(ICoreContext coreContext) 
             : base(coreContext, null, null)
         {
-            this.accountRepository = accountRepository;
-            this.transactionTypeRepository = transactionTypeRepository;
-            this.transactionStatusRepository = transactionStatusRepository;
         }
 
         #region Mapping overrides
@@ -125,13 +112,13 @@ namespace AydoganFBank.AccountManagement.Domain
 
             domainEntity.Amount = dbEntity.Amount;
             domainEntity.CreateDate = dbEntity.CreateDate;
-            domainEntity.FromAccount = accountRepository.GetById(dbEntity.FromAccountId);
+            domainEntity.FromAccount = coreContext.Query<IAccountRepository>().GetById(dbEntity.FromAccountId);
             domainEntity.OperationDate = dbEntity.OperationDate;
             domainEntity.OrderDesctiption = dbEntity.OrderDescription;
-            domainEntity.ToAccount = accountRepository.GetById(dbEntity.ToAccountId);
+            domainEntity.ToAccount = coreContext.Query<IAccountRepository>().GetById(dbEntity.ToAccountId);
             domainEntity.TransactionOrderId = dbEntity.TransactionOrderId;
-            domainEntity.TransactionType = transactionTypeRepository.GetById(dbEntity.TransactionTypeId);
-            domainEntity.TransactionOrderStatus = transactionStatusRepository.GetById(dbEntity.TransactionOrderStatusId);
+            domainEntity.TransactionType = coreContext.Query<ITransactionTypeRepository>().GetById(dbEntity.TransactionTypeId);
+            domainEntity.TransactionStatus = coreContext.Query<ITransactionStatusRepository>().GetById(dbEntity.TransactionOrderStatusId);
         }
 
         public override IEnumerable<TransactionOrderDomainEntity> MapToDomainObjectList(IEnumerable<TransactionOrder> dbEntities)
@@ -153,7 +140,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.OrderDescription = domainEntity.OrderDesctiption;
             dbEntity.ToAccountId = domainEntity.ToAccount.AccountId;
             dbEntity.TransactionTypeId = domainEntity.TransactionType.TypeId;
-            dbEntity.TransactionOrderStatusId = domainEntity.TransactionOrderStatus.StatusId;
+            dbEntity.TransactionOrderStatusId = domainEntity.TransactionStatus.StatusId;
         }
         #endregion
 

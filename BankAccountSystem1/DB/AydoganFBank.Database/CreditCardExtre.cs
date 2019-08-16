@@ -22,5 +22,6 @@ namespace AydoganFBank.Database
         public decimal TotalPayment { get; set; }
         public decimal MinPayment { get; set; }
         public bool IsDischarged { get; set; }
+        public bool IsMinDischarged { get; set; }
     }
 }

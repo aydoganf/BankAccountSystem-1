@@ -1,4 +1,5 @@
 ﻿using System;
+using AydoganFBank.Common.Repository;
 using AydoganFBank.Database;
 using StructureMap;
 
@@ -21,7 +22,7 @@ namespace AydoganFBank.Common.IoC
             }
         }
 
-        public AydoganFBankDbContext DBContext => dbContext;
+        AydoganFBankDbContext ICoreContext.DBContext => dbContext;
 
         public CoreContext(IContext context)
         {
@@ -33,7 +34,7 @@ namespace AydoganFBank.Common.IoC
             return context.GetInstance<T>();
         }
 
-        public T Query<T>()
+        public T Query<T>() where T : IQueryRepository
         {
             return context.GetInstance<T>();
         }

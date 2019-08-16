@@ -37,5 +37,6 @@ namespace AydoganFBank.Database
         public virtual DbSet<CreditCard> CreditCard { get; set; }
         public virtual DbSet<CreditCardExtre> CreditCardExtre { get; set; }
         public virtual DbSet<CreditCardPayment> CreditCardPayment { get; set; }
+        public virtual DbSet<CreditCardExtreDischarge> CreditCardExtreDischarge { get; set; }
     }
 }
