@@ -110,6 +110,8 @@
     <EntitySetMapping Name="TransactionDetail">
       <EntityTypeMapping TypeName="AydoganFBankModel.TransactionDetail">
         <MappingFragment StoreEntitySet="TransactionDetail">
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
           <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
           <ScalarProperty Name="TransactionDirection" ColumnName="TransactionDirection" />
@@ -131,6 +133,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TransactionOrder">
+      <EntityTypeMapping TypeName="AydoganFBankModel.TransactionOrder">
+        <MappingFragment StoreEntitySet="TransactionOrder">
+          <ScalarProperty Name="TransactionOrderStatusId" ColumnName="TransactionOrderStatusId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ToAccountId" ColumnName="ToAccountId" />
+          <ScalarProperty Name="FromAccountId" ColumnName="FromAccountId" />
+          <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+          <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+          <ScalarProperty Name="TransactionOrderId" ColumnName="TransactionOrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="AccountTransaction">
       <EntityTypeMapping TypeName="AydoganFBankModel.AccountTransaction">
         <MappingFragment StoreEntitySet="AccountTransaction">
@@ -145,21 +162,6 @@
           <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TransactionOrder">
-      <EntityTypeMapping TypeName="AydoganFBankModel.TransactionOrder">
-        <MappingFragment StoreEntitySet="TransactionOrder">
-          <ScalarProperty Name="TransactionOrderStatusId" ColumnName="TransactionOrderStatusId" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="ToAccountId" ColumnName="ToAccountId" />
-          <ScalarProperty Name="FromAccountId" ColumnName="FromAccountId" />
-          <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
-          <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
-          <ScalarProperty Name="TransactionOrderId" ColumnName="TransactionOrderId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

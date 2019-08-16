@@ -17,8 +17,8 @@ namespace AydoganFBank.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TransactionType()
         {
-            this.AccountTransaction = new HashSet<AccountTransaction>();
             this.TransactionOrder = new HashSet<TransactionOrder>();
+            this.AccountTransaction = new HashSet<AccountTransaction>();
         }
     
         public int TransactionTypeId { get; set; }
@@ -26,8 +26,8 @@ namespace AydoganFBank.Database
         public string TypeKey { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountTransaction> AccountTransaction { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TransactionOrder> TransactionOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AccountTransaction> AccountTransaction { get; set; }
     }
 }

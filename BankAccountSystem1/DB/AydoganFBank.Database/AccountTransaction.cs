@@ -21,10 +21,10 @@ namespace AydoganFBank.Database
         public int TransactionStatusId { get; set; }
         public int OwnerId { get; set; }
         public int OwnerType { get; set; }
-        public int FromOwnerType { get; set; }
-        public int FromOwnerId { get; set; }
-        public int ToOwnerType { get; set; }
-        public int ToOwnerId { get; set; }
+        public Nullable<int> FromOwnerType { get; set; }
+        public Nullable<int> FromOwnerId { get; set; }
+        public Nullable<int> ToOwnerType { get; set; }
+        public Nullable<int> ToOwnerId { get; set; }
     
         public virtual TransactionStatus TransactionStatus { get; set; }
         public virtual TransactionType TransactionType { get; set; }

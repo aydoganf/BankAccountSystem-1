@@ -19,5 +19,7 @@ namespace AydoganFBank.Database
         public int TransactionDirection { get; set; }
         public System.DateTime CreateDate { get; set; }
         public int AccountTransactionId { get; set; }
+        public int OwnerType { get; set; }
+        public int OwnerId { get; set; }
     }
 }

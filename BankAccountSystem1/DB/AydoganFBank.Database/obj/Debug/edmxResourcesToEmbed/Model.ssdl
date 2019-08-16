@@ -22,10 +22,10 @@
     <Property Name="TransactionStatusId" Type="int" Nullable="false" />
     <Property Name="OwnerId" Type="int" Nullable="false" />
     <Property Name="OwnerType" Type="int" Nullable="false" />
-    <Property Name="FromOwnerType" Type="int" Nullable="false" />
-    <Property Name="FromOwnerId" Type="int" Nullable="false" />
-    <Property Name="ToOwnerType" Type="int" Nullable="false" />
-    <Property Name="ToOwnerId" Type="int" Nullable="false" />
+    <Property Name="FromOwnerType" Type="int" />
+    <Property Name="FromOwnerId" Type="int" />
+    <Property Name="ToOwnerType" Type="int" />
+    <Property Name="ToOwnerId" Type="int" />
   </EntityType>
   <EntityType Name="AccountType">
     <Key>
@@ -118,6 +118,8 @@
     <Property Name="TransactionDirection" Type="int" Nullable="false" />
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
     <Property Name="AccountTransactionId" Type="int" Nullable="false" />
+    <Property Name="OwnerType" Type="int" Nullable="false" />
+    <Property Name="OwnerId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TransactionOrder">
     <Key>
