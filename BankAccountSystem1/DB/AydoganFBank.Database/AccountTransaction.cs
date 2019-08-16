@@ -15,21 +15,17 @@ namespace AydoganFBank.Database
     public partial class AccountTransaction
     {
         public int TransactionId { get; set; }
-        public int FromAccountId { get; set; }
-        public int ToAccountId { get; set; }
         public decimal Amount { get; set; }
         public System.DateTime TransactionDate { get; set; }
         public int TransactionTypeId { get; set; }
         public int TransactionStatusId { get; set; }
-        public Nullable<int> OwnerId { get; set; }
-        public Nullable<int> OwnerType { get; set; }
-        public Nullable<int> FromOwnerType { get; set; }
-        public Nullable<int> FromOwnerId { get; set; }
-        public Nullable<int> ToOwnerType { get; set; }
-        public Nullable<int> ToOwnerId { get; set; }
+        public int OwnerId { get; set; }
+        public int OwnerType { get; set; }
+        public int FromOwnerType { get; set; }
+        public int FromOwnerId { get; set; }
+        public int ToOwnerType { get; set; }
+        public int ToOwnerId { get; set; }
     
-        public virtual Account FromAccount { get; set; }
-        public virtual Account ToAccount { get; set; }
         public virtual TransactionStatus TransactionStatus { get; set; }
         public virtual TransactionType TransactionType { get; set; }
     }

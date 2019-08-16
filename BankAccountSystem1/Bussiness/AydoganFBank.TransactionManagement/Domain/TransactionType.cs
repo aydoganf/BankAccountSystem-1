@@ -1,14 +1,14 @@
 ﻿using AydoganFBank.TransactionManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System.Linq;
 
 namespace AydoganFBank.TransactionManagement.Domain
 {
-    public class TransactionTypeDomainEntity : IDomainEntity, ITransactionTypeInfo
+    public class TransactionTypeDomainEntity : IDomainEntity
     {
         #region IoC
         private readonly ITransactionTypeRepository transactionTypeRepository;

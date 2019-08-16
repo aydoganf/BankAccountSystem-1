@@ -16,14 +16,16 @@
       <PropertyRef Name="TransactionId" />
     </Key>
     <Property Name="TransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FromAccountId" Type="int" Nullable="false" />
-    <Property Name="ToAccountId" Type="int" Nullable="false" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="TransactionDate" Type="datetime" Nullable="false" />
     <Property Name="TransactionTypeId" Type="int" Nullable="false" />
     <Property Name="TransactionStatusId" Type="int" Nullable="false" />
     <Property Name="OwnerId" Type="int" Nullable="false" />
     <Property Name="OwnerType" Type="int" Nullable="false" />
+    <Property Name="FromOwnerType" Type="int" Nullable="false" />
+    <Property Name="FromOwnerId" Type="int" Nullable="false" />
+    <Property Name="ToOwnerType" Type="int" Nullable="false" />
+    <Property Name="ToOwnerId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AccountType">
     <Key>
@@ -40,8 +42,62 @@
     <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CompanyName" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="ResponsablePersonId" Type="int" Nullable="false" />
-    <Property Name="Address" Type="nvarchar" MaxLength="250" />
-    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TaxNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AccountId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreditCard">
+    <Key>
+      <PropertyRef Name="CreditCardId" />
+    </Key>
+    <Property Name="CreditCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreditCardNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Limit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExtreDay" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="ValidMonth" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ValidYear" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SecurityCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsInternetUsageOpen" Type="bit" Nullable="false" />
+    <Property Name="OwnerType" Type="int" Nullable="false" />
+    <Property Name="OwnerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreditCardExtre">
+    <Key>
+      <PropertyRef Name="CreditCardExtreId" />
+    </Key>
+    <Property Name="CreditCardExtreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreditCardId" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="MonthName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="TotalPayment" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MinPayment" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IsDischarged" Type="bit" Nullable="false" />
+    <Property Name="IsMinDischarged" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreditCardExtreDischarge">
+    <Key>
+      <PropertyRef Name="CreditCardExtreDischargeId" />
+    </Key>
+    <Property Name="CreditCardExtreDischargeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DischargeAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreditCardExtreId" Type="int" Nullable="false" />
+    <Property Name="AccountTransactionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreditCardPayment">
+    <Key>
+      <PropertyRef Name="CreditCardPaymentId" />
+    </Key>
+    <Property Name="CreditCardPaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstalmentIndex" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="InstalmentDate" Type="datetime" Nullable="false" />
+    <Property Name="AccountTransactionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -52,6 +108,16 @@
     <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
     <Property Name="IdentityNumber" Type="nvarchar" MaxLength="11" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionDetail">
+    <Key>
+      <PropertyRef Name="TransactionDetailId" />
+    </Key>
+    <Property Name="TransactionDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TransactionDirection" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="AccountTransactionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TransactionOrder">
     <Key>
@@ -65,6 +131,7 @@
     <Property Name="FromAccountId" Type="int" Nullable="false" />
     <Property Name="ToAccountId" Type="int" Nullable="false" />
     <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TransactionOrderStatusId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TransactionStatus">
     <Key>
@@ -91,30 +158,6 @@
       </Principal>
       <Dependent Role="Account">
         <PropertyRef Name="AccountTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AccountTransaction_Account">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="AccountId" />
-      </Principal>
-      <Dependent Role="AccountTransaction">
-        <PropertyRef Name="FromAccountId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AccountTransaction_Account1">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="AccountId" />
-      </Principal>
-      <Dependent Role="AccountTransaction">
-        <PropertyRef Name="ToAccountId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -195,21 +238,18 @@
     <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CreditCardExtre" EntityType="Self.CreditCardExtre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CreditCardExtreDischarge" EntityType="Self.CreditCardExtreDischarge" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CreditCardPayment" EntityType="Self.CreditCardPayment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionDetail" EntityType="Self.TransactionDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionOrder" EntityType="Self.TransactionOrder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Account_AccountType" Association="Self.FK_Account_AccountType">
       <End Role="AccountType" EntitySet="AccountType" />
       <End Role="Account" EntitySet="Account" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AccountTransaction_Account" Association="Self.FK_AccountTransaction_Account">
-      <End Role="Account" EntitySet="Account" />
-      <End Role="AccountTransaction" EntitySet="AccountTransaction" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AccountTransaction_Account1" Association="Self.FK_AccountTransaction_Account1">
-      <End Role="Account" EntitySet="Account" />
-      <End Role="AccountTransaction" EntitySet="AccountTransaction" />
     </AssociationSet>
     <AssociationSet Name="FK_AccountTransaction_TransactionStatus" Association="Self.FK_AccountTransaction_TransactionStatus">
       <End Role="TransactionStatus" EntitySet="TransactionStatus" />

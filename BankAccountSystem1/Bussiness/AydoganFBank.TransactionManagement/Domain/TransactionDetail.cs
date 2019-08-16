@@ -1,8 +1,8 @@
 ﻿using AydoganFBank.TransactionManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
@@ -10,8 +10,7 @@ using System.Linq;
 
 namespace AydoganFBank.TransactionManagement.Domain
 {
-    public class TransactionDetailDomainEntity : 
-        IDomainEntity
+    public class TransactionDetailDomainEntity : IDomainEntity
     {
         #region Ioc
         private readonly ICoreContext coreContext;
@@ -30,7 +29,6 @@ namespace AydoganFBank.TransactionManagement.Domain
         public string Description { get; set; }
         public DateTime CreateDate { get; set; }
         public AccountTransactionDomainEntity AccountTransaction { get; set; }
-        public ITransactionOwner TransactionOwner { get; set; }
         public TransactionDirection TransactionDirection { get; set; }
 
 
@@ -40,13 +38,11 @@ namespace AydoganFBank.TransactionManagement.Domain
             string description,
             DateTime createDate,
             AccountTransactionDomainEntity accountTransaction,
-            ITransactionOwner transactionOwner,
             TransactionDirection transactionDirection)
         {
             Description = description;
             CreateDate = createDate;
             AccountTransaction = accountTransaction;
-            TransactionOwner = transactionOwner;
             TransactionDirection = transactionDirection;
 
             return this;
@@ -84,35 +80,10 @@ namespace AydoganFBank.TransactionManagement.Domain
         {
             return dbContext.TransactionDetail.FirstOrDefault(td => td.TransactionDetailId == id);
         }
-
-        public List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionOwner(
-            ITransactionOwner transactionOwner, DateTime startDate, DateTime endDate)
-        {
-            return GetOrderedDescListBy(
-                td =>
-                    td.AccountId == transactionOwner.OwnerId && td.CreateDate >= startDate && td.CreateDate <= endDate,
-                td =>
-                    td.CreateDate)
-                .ToList();                
-        }
-
-        public List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionOwner(
-            ITransactionOwner transactionOwner, TransactionDirection transactionDirection, DateTime startDate, DateTime endDate)
-        {
-            return GetOrderedDescListBy(
-                td =>
-                    td.AccountId == transactionOwner.OwnerId && td.CreateDate >= startDate && td.CreateDate <= endDate &&
-                    td.TransactionDirection == transactionDirection.ToInt(),
-                td =>
-                    td.CreateDate)
-                .ToList();
-        }
     }
 
 
     public interface ITransactionDetailRepository : IRepository<TransactionDetailDomainEntity>
     {
-        List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionOwner(ITransactionOwner transactionOwner, DateTime startDate, DateTime endDate);
-        List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionOwner(ITransactionOwner transactionOwner, TransactionDirection transactionDirection, DateTime startDate, DateTime endDate);
     }
 }

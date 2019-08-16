@@ -1,7 +1,7 @@
 ﻿using AydoganFBank.TransactionManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 namespace AydoganFBank.TransactionManagement.Domain
 {
     public class AccountTransactionDomainEntity : 
-        IDomainEntity, ITransactionTypeOwner, ITransactionStatusOwner, ITransactionInfo
+        IDomainEntity, ITransactionInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -33,15 +33,15 @@ namespace AydoganFBank.TransactionManagement.Domain
         public ITransactionOwner TransactionOwner { get; set; }
 
         int IDomainEntity.Id => TransactionId;
-        public ITransactionTypeInfo TransactionType { get; set; }
-        public ITransactionStatusInfo TransactionStatus { get; set; }
+        public TransactionTypeDomainEntity TransactionType { get; set; }
+        public TransactionStatusDomainEntity TransactionStatus { get; set; }
 
         public AccountTransactionDomainEntity With(
             ITransactionOwner from,
             ITransactionOwner to, 
             decimal amount,
-            ITransactionTypeInfo transactionType,
-            ITransactionStatusInfo transactionStatus,
+            TransactionTypeDomainEntity transactionType,
+            TransactionStatusDomainEntity transactionStatus,
             ITransactionOwner transactionOwner)
         {
             Amount = amount;
@@ -72,12 +72,12 @@ namespace AydoganFBank.TransactionManagement.Domain
             if (transactionDirection == TransactionDirection.In)
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, ToTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, transactionDirection);
             }
             else
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, FromTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, transactionDirection);
             }
         }
     }

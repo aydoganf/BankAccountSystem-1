@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,13 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ApiExtensions.cs" />
     <Compile Include="Api\ITransactionHolder.cs" />
     <Compile Include="Api\ITransactionInfo.cs" />
     <Compile Include="Api\ITransactionOwner.cs" />
     <Compile Include="Api\ITransactionStatusInfo.cs" />
-    <Compile Include="Api\ITransactionStatusOwner.cs" />
     <Compile Include="Api\ITransactionTypeInfo.cs" />
-    <Compile Include="Api\ITransactionTypeOwner.cs" />
     <Compile Include="Api\TransactionDirection.cs" />
     <Compile Include="Api\TransactionOwnerType.cs" />
     <Compile Include="Api\TransactionStatus.cs" />
@@ -65,6 +71,20 @@
   <ItemGroup>
     <Folder Include="Managers\" />
     <Folder Include="Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DB\AydoganFBank.Database\AydoganFBank.Database.csproj">
+      <Project>{ab99fb45-6418-4fc4-9af8-cbaa53285d22}</Project>
+      <Name>AydoganFBank.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AydoganFBank.Context\AydoganFBank.Context.csproj">
+      <Project>{1b386555-65fb-457b-bf73-83832404dc06}</Project>
+      <Name>AydoganFBank.Context</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

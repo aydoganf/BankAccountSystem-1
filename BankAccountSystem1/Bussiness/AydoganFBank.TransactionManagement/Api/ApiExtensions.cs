@@ -1,13 +1,9 @@
 ﻿using System;
 
-namespace AydoganFBank.AccountManagement.Api
+namespace AydoganFBank.TransactionManagement.Api
 {
     internal static class ApiExtensions
     {
-        public static int ToInt(this AccountOwnerType accountOwnerType)
-        {
-            return Convert.ToInt32(accountOwnerType);
-        }
 
         public static int ToInt(this TransactionOwnerType transactionOwnerType)
         {
@@ -22,11 +18,6 @@ namespace AydoganFBank.AccountManagement.Api
         public static int ToInt(this TransactionDirection transactionDirection)
         {
             return Convert.ToInt32(transactionDirection);
-        }
-
-        public static int ToInt(this CreditCardOwnerType creditCardOwnerType)
-        {
-            return Convert.ToInt32(creditCardOwnerType);
         }
 
         public static string ToFormattedString(this DateTime dateTime)

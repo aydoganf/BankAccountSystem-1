@@ -2193,27 +2193,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\faruk\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\Faruk\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Common\\AydoganFBank.Common.csproj",
+      "projectUniqueName": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Common\\AydoganFBank.Common.csproj",
       "projectName": "AydoganFBank.Common",
-      "projectPath": "C:\\Users\\faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Common\\AydoganFBank.Common.csproj",
-      "packagesPath": "C:\\Users\\faruk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Common\\obj\\",
+      "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Common\\AydoganFBank.Common.csproj",
+      "packagesPath": "C:\\Users\\Faruk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\faruk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Faruk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -2225,8 +2222,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj": {
-              "projectPath": "C:\\Users\\faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj"
+            "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj": {
+              "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj"
             }
           }
         }

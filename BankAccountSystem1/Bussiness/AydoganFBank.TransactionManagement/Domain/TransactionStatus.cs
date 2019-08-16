@@ -1,14 +1,14 @@
 ﻿using AydoganFBank.TransactionManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using System.Linq;
 using TransactionStatus = AydoganFBank.Database.TransactionStatus;
 
 namespace AydoganFBank.TransactionManagement.Domain
 {
-    public class TransactionStatusDomainEntity : IDomainEntity, ITransactionStatusInfo
+    public class TransactionStatusDomainEntity : IDomainEntity
     {
         #region IoC
         private readonly ITransactionStatusRepository transactionStatusRepository;
