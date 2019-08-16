@@ -68,6 +68,9 @@
     <Compile Include="CreditCardExtre.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="CreditCardExtreDischarge.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="CreditCardPayment.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

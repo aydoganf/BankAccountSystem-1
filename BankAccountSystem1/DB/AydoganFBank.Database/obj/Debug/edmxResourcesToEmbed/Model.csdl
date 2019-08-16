@@ -264,6 +264,7 @@
     <EntitySet Name="CreditCard" EntityType="AydoganFBankModel.CreditCard" />
     <EntitySet Name="CreditCardExtre" EntityType="AydoganFBankModel.CreditCardExtre" />
     <EntitySet Name="CreditCardPayment" EntityType="AydoganFBankModel.CreditCardPayment" />
+    <EntitySet Name="CreditCardExtreDischarge" EntityType="AydoganFBankModel.CreditCardExtreDischarge" />
   </EntityContainer>
   <EntityType Name="TransactionDetail">
     <Key>
@@ -304,6 +305,7 @@
     <Property Name="TotalPayment" Type="Decimal" Nullable="false" />
     <Property Name="MinPayment" Type="Decimal" Nullable="false" />
     <Property Name="IsDischarged" Type="Boolean" Nullable="false" />
+    <Property Name="IsMinDischarged" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="CreditCardPayment">
     <Key>
@@ -316,5 +318,15 @@
     <Property Name="CreateDate" Type="DateTime" Nullable="false" />
     <Property Name="InstalmentDate" Type="DateTime" Nullable="false" />
     <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreditCardExtreDischarge">
+    <Key>
+      <PropertyRef Name="CreditCardExtreDischargeId" />
+    </Key>
+    <Property Name="CreditCardExtreDischargeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DischargeAmount" Type="Decimal" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="CreditCardExtreId" Type="Int32" Nullable="false" />
+    <Property Name="AccountTransactionId" Type="String" Nullable="false" />
   </EntityType>
 </Schema>
