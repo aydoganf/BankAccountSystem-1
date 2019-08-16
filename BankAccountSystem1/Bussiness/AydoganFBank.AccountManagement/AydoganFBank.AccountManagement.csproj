@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AccountManagementException.cs" />
     <Compile Include="Api\AccountOwnerType.cs" />
+    <Compile Include="Api\AccountType.cs" />
     <Compile Include="Api\ApiExtensions.cs" />
     <Compile Include="Api\IAccountOwner.cs" />
     <Compile Include="Api\ICreditCardOwner.cs" />
@@ -57,9 +58,7 @@
     <Compile Include="Api\ITransactionInfo.cs" />
     <Compile Include="Api\ITransactionOwner.cs" />
     <Compile Include="Api\ITransactionStatusInfo.cs" />
-    <Compile Include="Api\ITransactionStatusOwner.cs" />
     <Compile Include="Api\ITransactionTypeInfo.cs" />
-    <Compile Include="Api\ITransactionTypeOwner.cs" />
     <Compile Include="Api\TransactionDirection.cs" />
     <Compile Include="Api\TransactionOwnerType.cs" />
     <Compile Include="Api\TransactionStatus.cs" />
