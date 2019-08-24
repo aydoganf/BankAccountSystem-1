@@ -10,4 +10,8 @@
     <Folder Include="Message\Response\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bussiness\AydoganFBank.AccountManagement\AydoganFBank.AccountManagement.csproj" />
+  </ItemGroup>
+
 </Project>
