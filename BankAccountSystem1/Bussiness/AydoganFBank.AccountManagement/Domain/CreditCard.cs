@@ -10,7 +10,7 @@ using AydoganFBank.Context.Exception;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardDomainEntity : IDomainEntity, ITransactionOwner
+    public class CreditCardDomainEntity : IDomainEntity, ITransactionOwner, ICreditCardInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;

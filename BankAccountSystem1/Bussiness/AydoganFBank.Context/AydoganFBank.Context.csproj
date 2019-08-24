@@ -59,7 +59,7 @@
     <Compile Include="DataAccess\Repository.cs" />
     <Compile Include="Exception\CommonException.cs" />
     <Compile Include="Exception\ServiceException.cs" />
-    <Compile Include="IDomainEntity.cs" />
+    <Compile Include="DataAccess\IDomainEntity.cs" />
     <Compile Include="IoC\CoreContext.cs" />
     <Compile Include="IoC\ICoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

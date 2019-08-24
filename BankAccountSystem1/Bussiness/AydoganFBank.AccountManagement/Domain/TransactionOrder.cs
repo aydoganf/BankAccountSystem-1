@@ -42,7 +42,7 @@ namespace AydoganFBank.AccountManagement.Domain
         TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.TransactionOrder;
 
 
-        public TransactionOrderDomainEntity With(
+        private TransactionOrderDomainEntity With(
             TransactionTypeDomainEntity transactionType, 
             string orderDescription,
             DateTime operationDate,
@@ -60,6 +60,25 @@ namespace AydoganFBank.AccountManagement.Domain
             Amount = amount;
             TransactionStatus = transactionOrderStatus;
             return this;
+        }
+
+        public TransactionOrderDomainEntity With(
+            TransactionTypeEnum type,
+            string orderDescription,
+            DateTime operationDate,
+            AccountDomainEntity fromAccount,
+            AccountDomainEntity toAccount,
+            decimal amount,
+            TransactionStatusEnum orderStatus)
+        {
+            if (fromAccount.AccountType.AccountTypeId != toAccount.AccountType.AccountTypeId)
+                throw new AccountManagementException.TransactionOrderCouldNotHasDifferentAccountTypes(string.
+                    Format("FromAccountType: {0} - ToAccountType: {1}", fromAccount.AccountType.AccountTypeName, toAccount.AccountType.AccountTypeName));
+
+            var transactionType = coreContext.Query<ITransactionTypeRepository>().GetByKey(type.ToString());
+            var transactionStatus = coreContext.Query<ITransactionStatusRepository>().GetByKey(orderStatus.ToString());
+
+            return With(transactionType, orderDescription, operationDate, fromAccount, toAccount, amount, transactionStatus);
         }
 
         public void Insert(bool forceToInsertDb = true)

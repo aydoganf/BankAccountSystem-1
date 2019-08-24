@@ -40,7 +40,7 @@ namespace AydoganFBank.AccountManagement.Domain
         ITransactionStatusInfo ITransactionInfo.TransactionStatus => TransactionStatus;
 
 
-        public AccountTransactionDomainEntity With(
+        private AccountTransactionDomainEntity With(
             ITransactionOwner from,
             ITransactionOwner to, 
             decimal amount,
@@ -57,6 +57,22 @@ namespace AydoganFBank.AccountManagement.Domain
             return this;
         }
 
+        public AccountTransactionDomainEntity With(
+            ITransactionOwner from,
+            ITransactionOwner to,
+            decimal amount,
+            TransactionTypeEnum type,
+            TransactionStatusEnum status,
+            ITransactionOwner transactionOwner)
+        {
+            var transactionType = coreContext.Query<ITransactionTypeRepository>()
+                .GetByKey(type.ToString());
+            var transactionStatus = coreContext.Query<ITransactionStatusRepository>()
+                .GetByKey(status.ToString());
+
+            return With(from, to, amount, transactionType, transactionStatus, transactionOwner);
+        }
+
         public void Insert(bool forceToInsertDb = true)
         {
             TransactionDate = DateTime.Now;
@@ -66,6 +82,11 @@ namespace AydoganFBank.AccountManagement.Domain
         public void Save()
         {
             accountTransactionRepository.UpdateEntity(this);
+        }
+
+        public void SetStatus(TransactionStatusEnum transactionStatus)
+        {
+            TransactionStatus = coreContext.Query<ITransactionStatusRepository>().GetByKey(transactionStatus.ToString());
         }
 
         public TransactionDetailDomainEntity CreateTransactionDetail(TransactionDirection transactionDirection)

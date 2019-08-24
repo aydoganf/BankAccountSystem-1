@@ -29,7 +29,11 @@
         },
         "frameworks": {
           "netcoreapp2.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -68,6 +72,60 @@
           "assetTargetFallback": true,
           "warn": true
         }
+      }
+    },
+    "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj",
+        "projectName": "AydoganFBank.AccountManagement",
+        "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj"
+              },
+              "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj",
+        "projectName": "AydoganFBank.Context",
+        "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj",
+        "projectName": "AydoganFBank.Database",
+        "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj"
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }

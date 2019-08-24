@@ -10,8 +10,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionDetailDomainEntity : 
-        IDomainEntity
+    public class TransactionDetailDomainEntity : IDomainEntity, ITransactionHolder
     {
         #region Ioc
         private readonly ICoreContext coreContext;
@@ -35,6 +34,10 @@ namespace AydoganFBank.AccountManagement.Domain
 
 
         int IDomainEntity.Id => TransactionDetailId;
+
+        ITransactionInfo ITransactionHolder.TransactionInfo => AccountTransaction;
+        DateTime ITransactionHolder.CreateDate => CreateDate;
+
 
         public TransactionDetailDomainEntity With(
             string description,

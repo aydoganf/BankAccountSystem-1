@@ -4,10 +4,11 @@ using AydoganFBank.Context.IoC;
 using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System.Linq;
+using AydoganFBank.AccountManagement.Api;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class AccountTypeDomainEntity : IDomainEntity
+    public class AccountTypeDomainEntity : IDomainEntity, IAccountTypeInfo
     {
         #region IoC
         private readonly IAccountTypeRepository accountTypeRepository;

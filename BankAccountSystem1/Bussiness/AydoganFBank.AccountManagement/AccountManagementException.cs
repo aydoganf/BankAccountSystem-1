@@ -68,5 +68,19 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class DifferentAccountTypesCouldNotTransferAssetsToEachOther : AccountManagementException
+        {
+            public DifferentAccountTypesCouldNotTransferAssetsToEachOther(string message) : base(9, message)
+            {
+            }
+        }
+
+        public class TransactionOrderCouldNotHasDifferentAccountTypes : AccountManagementException
+        {
+            public TransactionOrderCouldNotHasDifferentAccountTypes(string message) : base(10, message)
+            {
+            }
+        }
     }
 }
