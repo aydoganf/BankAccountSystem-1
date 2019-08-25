@@ -9,3 +9,4 @@ C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBa
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csproj.CopyComplete
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.dll
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.pdb
+C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csprojAssemblyReference.cache
