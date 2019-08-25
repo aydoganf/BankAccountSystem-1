@@ -1,14 +1,12 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.Exception;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.DataAccess;
+using AydoganFBank.Context.Exception;
+using AydoganFBank.Context.IoC;
 using AydoganFBank.Database;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AydoganFBank.AccountManagement.Domain
 {

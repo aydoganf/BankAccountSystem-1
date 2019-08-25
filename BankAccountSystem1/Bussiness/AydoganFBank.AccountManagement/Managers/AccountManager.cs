@@ -1,7 +1,7 @@
 ﻿using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.AccountManagement.Domain;
 using AydoganFBank.AccountManagement.Service;
-using AydoganFBank.Common.IoC;
+using AydoganFBank.Context.IoC;
 using System;
 using System.Collections.Generic;
 
@@ -22,8 +22,7 @@ namespace AydoganFBank.AccountManagement.Managers
 
         #region Account
 
-        #region privates
-        private AccountDomainEntity CreateAccount(AccountTypeDomainEntity accountType, IAccountOwner accountOwner)
+        internal AccountDomainEntity CreateAccount(AccountTypeDomainEntity accountType, IAccountOwner accountOwner)
         {
             var account = coreContext.New<AccountDomainEntity>()
                 .With(accountType, accountOwner);
@@ -32,45 +31,31 @@ namespace AydoganFBank.AccountManagement.Managers
             return account;
         }
 
-        private AccountDomainEntity DepositToAccount(AccountDomainEntity account, decimal amount)
-        {
-            account.Deposit(amount);
-            return account;
-        }
-
-        private AccountDomainEntity WithdrawFromAccount(AccountDomainEntity account, decimal amount)
-        {
-            account.Withdraw(amount);
-            return account;
-        }
-        #endregion
-
-        #region publics
-        public AccountDomainEntity CreatePersonAccount(string accountTypeKey, int personId)
+        internal AccountDomainEntity CreatePersonAccount(string accountTypeKey, int personId)
         {
             var accountType = coreContext.Query<IAccountTypeRepository>().GetByKey(accountTypeKey);
             var person = coreContext.Query<IPersonRepository>().GetById(personId);
             return CreateAccount(accountType, person);
         }
 
-        public AccountDomainEntity CreateCompanyAccount(string accountTypeKey, int companyId)
+        internal AccountDomainEntity CreateCompanyAccount(string accountTypeKey, int companyId)
         {
             var accountType = coreContext.Query<IAccountTypeRepository>().GetByKey(accountTypeKey);
             var company = coreContext.Query<ICompanyRepository>().GetById(companyId);
             return CreateAccount(accountType, company);
         }
 
-        public AccountDomainEntity GetAccountById(int accountId)
+        internal AccountDomainEntity GetAccountById(int accountId)
         {
             return coreContext.Query<IAccountRepository>().GetById(accountId);
         }
 
-        public AccountDomainEntity GetAccountByAccountNumber(string accountNumber)
+        internal AccountDomainEntity GetAccountByAccountNumber(string accountNumber)
         {
             return coreContext.Query<IAccountRepository>().GetByAccountNumber(accountNumber);
         }
-        
-        public AccountDomainEntity WithdrawMoneyFromOwn(int accountId, decimal amount)
+
+        internal AccountDomainEntity WithdrawMoneyFromOwn(int accountId, decimal amount)
         {
             AccountTransactionDomainEntity transaction = null;
             AccountDomainEntity account = null;
@@ -79,36 +64,35 @@ namespace AydoganFBank.AccountManagement.Managers
             try
             {
                 account = GetAccountById(accountId);
-                var transactionType = GetTransactionTypeByKey(TransactionTypeEnum.AccountItself.ToString());
-
-                var transactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.InProgress.ToString());
 
                 transaction = coreContext
                     .New<AccountTransactionDomainEntity>()
-                    .With(account, null, amount, transactionType, transactionStatus, account);
+                    .With(account, null, amount, TransactionTypeEnum.AccountItself, TransactionStatusEnum.InProgress, account);
 
                 transaction.Insert();
 
                 isWithdrawOK = account.Withdraw(amount);
 
-                transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.SetStatus(TransactionStatusEnum.Succeeded);
                 transaction.Save();
                 var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.Out);
                 transactionDetail.Insert();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 if (transaction != null && isWithdrawOK == false)
                 {
-                    transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
+                    transaction.SetStatus(TransactionStatusEnum.Failed);
                     transaction.Save();
                 }
+
+                throw ex;
             }
 
             return account;
         }
 
-        public AccountDomainEntity DepositToOwnAccount(int accountId, decimal amount)
+        internal AccountDomainEntity DepositToOwnAccount(int accountId, decimal amount)
         {
             AccountTransactionDomainEntity transaction = null;
             AccountDomainEntity account = null;
@@ -116,42 +100,48 @@ namespace AydoganFBank.AccountManagement.Managers
             try
             {
                 account = GetAccountById(accountId);
-                var transactionType = GetTransactionTypeByKey(TransactionTypeEnum.AccountItself.ToString());
-
-                var transactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.InProgress.ToString());
 
                 transaction = coreContext.New<AccountTransactionDomainEntity>()
-                    .With(null, account, amount, transactionType, transactionStatus, account);
+                    .With(null, account, amount, TransactionTypeEnum.AccountItself, TransactionStatusEnum.InProgress, account);
 
                 transaction.Insert();
                 isDepositOk = account.Deposit(amount);
 
-                transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.SetStatus(TransactionStatusEnum.Succeeded);
                 transaction.Save();
 
                 var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.In);
                 transactionDetail.Insert();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 if (transaction != null && isDepositOk == false)
                 {
-                    transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
+                    transaction.SetStatus(TransactionStatusEnum.Failed);
                     transaction.Save();
                 }
+
+                throw ex;
             }
             
             return account;
         }
 
+        internal void TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType)
+        {
+            var fromAccount = GetAccountById(fromAccountId);
+            var toAccount = GetAccountById(toAccountId);
+            TransferAssets(fromAccount, toAccount, amount, transactionType);
+        }
+
         /// <summary>
-        /// Does money transfer from one account to another account with given TransactionType
+        /// Does assets transfer from one account to another account with given TransactionType
         /// </summary>
         /// <param name="fromAccount"></param>
         /// <param name="toAccount"></param>
         /// <param name="amount"></param>
         /// <param name="transactionTypeEnum"></param>
-        public void TransferMoney(
+        private void TransferAssets(
             AccountDomainEntity fromAccount, 
             AccountDomainEntity toAccount, 
             decimal amount, 
@@ -163,18 +153,18 @@ namespace AydoganFBank.AccountManagement.Managers
 
             try
             {
-                var transactionType = GetTransactionTypeByKey(transactionTypeEnum.ToString());
-
-                var transactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.InProgress.ToString());
+                if (fromAccount.AccountType.AccountTypeKey != toAccount.AccountType.AccountTypeKey)
+                    throw new AccountManagementException.DifferentAccountTypesCouldNotTransferAssetsToEachOther(string
+                        .Format("FromAccountType: {0} - ToAccountType: {1}", fromAccount.AccountType.AccountTypeName, toAccount.AccountType.AccountTypeName));
 
                 transaction = coreContext.New<AccountTransactionDomainEntity>()
-                    .With(fromAccount, toAccount, amount, transactionType, transactionStatus, null);
+                    .With(fromAccount, toAccount, amount, transactionTypeEnum, TransactionStatusEnum.InProgress, null);
                 transaction.Insert();
 
-                isWithdrawOk = fromAccount.Withdraw(amount, false);
-                isDepositOk = toAccount.Deposit(amount, false);
+                isWithdrawOk = fromAccount.Withdraw(amount);
+                isDepositOk = toAccount.Deposit(amount);
 
-                transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Succeeded.ToString());
+                transaction.SetStatus(TransactionStatusEnum.Succeeded);
                 transaction.Save();
 
                 var transactionDetailIn = transaction.CreateTransactionDetail(TransactionDirection.In);
@@ -183,136 +173,26 @@ namespace AydoganFBank.AccountManagement.Managers
                 var transactionDetailOut = transaction.CreateTransactionDetail(TransactionDirection.Out);
                 transactionDetailOut.Insert();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 if (transaction != null)
                 {
                     if (isWithdrawOk && isDepositOk == false)
                     {
                         fromAccount.Deposit(amount);
-                        transaction.TransactionStatus = GetTransactionStatusByKey(TransactionStatusEnum.Failed.ToString());
+                        transaction.SetStatus(TransactionStatusEnum.Failed);
 
                         transaction.Save();
                     }
                 }
+
+                throw ex;
             }
         }
-        #endregion
+        
 
         #endregion
-
-        #region AccountTransaction
-        #endregion
-
-        #region Person
-
-        #region privates
-
-        #endregion
-
-        #region publics
-        public PersonDomainEntity CreatePerson(string firstName, string lastName, string emailAddress, string identityNumber)
-        {
-            var person = coreContext.New<PersonDomainEntity>()
-                .With(firstName, lastName, emailAddress, identityNumber);
-
-            person.Insert();
-            return person;
-        }
-
-        public PersonDomainEntity ChangePersonLastName(int personId, string lastName)
-        {
-            var person = coreContext.Query<IPersonRepository>().GetById(personId);
-            person.SetLastname(lastName);
-            return person;
-        }
-
-        public PersonDomainEntity ChangePersonEmailAddress(int personId, string emailAddress)
-        {
-            var person = coreContext.Query<IPersonRepository>().GetById(personId);
-            person.SetEmail(emailAddress);
-            return person;
-        }
-
-        public PersonDomainEntity GetPersonById(int personId)
-        {
-            return coreContext.Query<IPersonRepository>().GetById(personId);
-        }
-        #endregion
-
-        #endregion
-
-        #region Company
-
-        #region privates
-        private CompanyDomainEntity CreateCompany(
-            string companyName, 
-            PersonDomainEntity responsablePerson, 
-            string address, 
-            string phoneNumber,
-            string taxNumber,
-            AccountDomainEntity account)
-        {
-            var company = coreContext.New<CompanyDomainEntity>()
-                .With(companyName, responsablePerson, address, phoneNumber, taxNumber, account);
-
-            company.Insert();
-            return company;
-        }
-
-        private CompanyDomainEntity GetCompanyByResponsablePerson(PersonDomainEntity responsablePerson)
-        {
-            return coreContext.Query<ICompanyRepository>().GetByResponsablePerson(responsablePerson);
-        }
-        #endregion
-
-        #region publics
-        public CompanyDomainEntity CreateCompany(
-            string companyName, 
-            int responsablePersonId, 
-            string address, 
-            string phoneNumber,
-            string taxNumber,
-            int accountId)
-        {
-            var person = GetPersonById(responsablePersonId);
-            var account = GetAccountById(accountId);
-            return CreateCompany(companyName, person, address, phoneNumber, taxNumber, account);
-        }
-
-        public CompanyDomainEntity GetCompanyById(int companyId)
-        {
-            return coreContext.Query<ICompanyRepository>().GetById(companyId);
-        }
-
-        public CompanyDomainEntity GetCompanyByResponsableId(int responsablePersonId)
-        {
-            var person = GetPersonById(responsablePersonId);
-            return GetCompanyByResponsablePerson(person);
-        }
-
-        public CompanyDomainEntity ChangeCompanyAddress(int companyId, string address)
-        {
-            var company = GetCompanyById(companyId);
-            company.SetAddress(address);
-            return company;
-        }
-
-        public CompanyDomainEntity ChangeCompanyPhoneNumber(int companyId, string phoneNumber)
-        {
-            var company = GetCompanyById(companyId);
-            company.SetPhoneNumber(phoneNumber);
-            return company;
-        }
-
-        public CompanyDomainEntity GetCompanyByTaxNumber(string taxNumber)
-        {
-            return coreContext.Query<ICompanyRepository>().GetByTaxNumber(taxNumber);
-        }
-        #endregion
-
-        #endregion
-
+        
         #region AccountType
 
         public AccountTypeDomainEntity GetAccountTypeById(int id)
@@ -356,11 +236,33 @@ namespace AydoganFBank.AccountManagement.Managers
         #endregion
 
         #region TransactionOrder
+
+        private TransactionOrderDomainEntity CreateTransactionOrder(
+            TransactionTypeEnum transactionType,
+            string orderDescription,
+            DateTime operationDate,
+            AccountDomainEntity fromAccount,
+            AccountDomainEntity toAccount,
+            decimal amount)
+        {
+            TransactionOrderDomainEntity transactionOrder = coreContext
+                .New<TransactionOrderDomainEntity>()
+                .With(transactionType, orderDescription, operationDate, fromAccount, toAccount, amount, TransactionStatusEnum.Created);
+            transactionOrder.Insert();
+
+            return transactionOrder;
+        }
+
+        private List<TransactionOrderDomainEntity> GetTransactionOrderListByAccount(AccountDomainEntity account)
+        {
+            return coreContext.Query<ITransactionOrderRepository>().GetListByFromAccount(account);
+        }
+
+
         public List<TransactionOrderDomainEntity> GetTransactionOrderListByAccount(int accountId)
         {
             AccountDomainEntity account = GetAccountById(accountId);
-
-            return coreContext.Query<ITransactionOrderRepository>().GetListByFromAccount(account);
+            return GetTransactionOrderListByAccount(account);
         }
 
         public List<TransactionOrderDomainEntity> GetAllTransactionOrders(DateTime operationDate)
@@ -373,11 +275,24 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<ITransactionOrderRepository>().GetUncompletedListByOperationDate(operationDate);
         }
 
+        public TransactionOrderDomainEntity CreateTransactionOrder(
+            TransactionTypeEnum transactionType,
+            string orderDescription,
+            DateTime operationDate,
+            int fromAccountId,
+            int toAccountId,
+            decimal amount)
+        {
+            var fromAccount = GetAccountById(fromAccountId);
+            var toAccount = GetAccountById(toAccountId);
+            return CreateTransactionOrder(transactionType, orderDescription, operationDate, fromAccount, toAccount, amount);
+        }
+
         internal void DoTransactionOrder(TransactionOrderDomainEntity transactionOrder)
         {
             try
             {
-                TransferMoney(
+                TransferAssets(
                     transactionOrder.FromAccount,
                     transactionOrder.ToAccount,
                     transactionOrder.Amount,
@@ -391,55 +306,52 @@ namespace AydoganFBank.AccountManagement.Managers
             }
         }
         #endregion
+        
 
-        #region CreditCard
-        private CreditCardDomainEntity DoCreditCardPayment(
-            CreditCardDomainEntity creditCard, decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)
+        #region API Implementations
+        IAccountInfo IAccountManager.CreatePersonAccount(string accountTypeKey, int personId)
         {
-            creditCard.DoPayment(amount);
+            return CreatePersonAccount(accountTypeKey, personId);
+        } 
 
-            var transactionType = coreContext.Query<ITransactionTypeRepository>()
-                    .GetByKey(TransactionTypeEnum.CreditCardPayment.ToString());
-
-            var transactionStatus = coreContext.Query<ITransactionStatusRepository>()
-                .GetByKey(TransactionStatusEnum.InProgress.ToString());
-
-            var transaction = coreContext.New<AccountTransactionDomainEntity>()
-                .With(creditCard, toTransactionOwner, amount, transactionType, transactionStatus, creditCard);
-
-            transaction.Insert();
-            var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.Out);
-            transactionDetail.Insert();
-
-            for (int instalmentIndex = 1; instalmentIndex <= instalmentCount; instalmentIndex++)
-            {
-                decimal instalmentAmount = amount / instalmentCount;
-                string paymentDescription = string.Format("{0} - {1}{2} ({3} instalment)",
-                    toTransactionOwner.TransactionDetailDisplayName, instalmentAmount, toTransactionOwner.AssetsUnit,
-                    string.Format("{0}/{1}", instalmentIndex, instalmentCount));
-                DateTime instalmentDate = transaction.TransactionDate.AddMonths(instalmentIndex - 1);
-
-                var creditCardPayment = coreContext.New<CreditCardPaymentDomainEntity>()
-                    .With(instalmentIndex, instalmentAmount, paymentDescription, 
-                    transaction.TransactionDate, instalmentDate, transaction);
-                creditCardPayment.Insert();
-            }
-
-            return creditCard;
+        IAccountInfo IAccountManager.CreateCompanyAccount(string accountTypeKey, int companyId)
+        {
+            return CreateCompanyAccount(accountTypeKey, companyId);
         }
 
-        public CreditCardDomainEntity DoCreditCardPayment(
-            int creditCardId, decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)
+        IAccountInfo IAccountManager.GetAccountInfo(int accountId)
         {
-            var creditCard = coreContext.Query<ICreditCardRepository>()
-                .GetById(creditCardId);
+            return GetAccountById(accountId);
+        }
 
-            if(creditCard == null)
-            {
-                //
-            }
+        IAccountInfo IAccountManager.GetAccountInfoByAccountNumber(string accountNumber)
+        {
+            return GetAccountByAccountNumber(accountNumber);
+        }
 
-            return DoCreditCardPayment(creditCard, amount, instalmentCount, toTransactionOwner);
+        IAccountInfo IAccountManager.WithdrawMoneyFromOwn(int accountId, decimal amount)
+        {
+            return WithdrawMoneyFromOwn(accountId, amount);
+        }
+
+        IAccountInfo IAccountManager.DepositToOwnAccount(int accountId, decimal amount)
+        {
+            return DepositToOwnAccount(accountId, amount);
+        }
+
+        void IAccountManager.TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType)
+        {
+            TransferAssets(fromAccountId, toAccountId, amount, transactionType);
+        }
+
+        IAccountTypeInfo IAccountManager.GetAccountTypeInfo(int accountTypeId)
+        {
+            return GetAccountTypeById(accountTypeId);
+        }
+
+        IAccountTypeInfo IAccountManager.GetAccountTypeByKey(string key)
+        {
+            return GetAccountTypeByKey(key);
         }
         #endregion
     }

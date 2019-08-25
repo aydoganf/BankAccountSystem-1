@@ -1,7 +1,7 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 namespace AydoganFBank.AccountManagement.Domain
 {
     public class AccountTransactionDomainEntity : 
-        IDomainEntity, ITransactionTypeOwner, ITransactionStatusOwner, ITransactionInfo
+        IDomainEntity, ITransactionInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -33,15 +33,19 @@ namespace AydoganFBank.AccountManagement.Domain
         public ITransactionOwner TransactionOwner { get; set; }
 
         int IDomainEntity.Id => TransactionId;
-        public ITransactionTypeInfo TransactionType { get; set; }
-        public ITransactionStatusInfo TransactionStatus { get; set; }
+        public TransactionTypeDomainEntity TransactionType { get; set; }
+        public TransactionStatusDomainEntity TransactionStatus { get; set; }
 
-        public AccountTransactionDomainEntity With(
+        ITransactionTypeInfo ITransactionInfo.TransactionType => TransactionType;
+        ITransactionStatusInfo ITransactionInfo.TransactionStatus => TransactionStatus;
+
+
+        private AccountTransactionDomainEntity With(
             ITransactionOwner from,
             ITransactionOwner to, 
             decimal amount,
-            ITransactionTypeInfo transactionType,
-            ITransactionStatusInfo transactionStatus,
+            TransactionTypeDomainEntity transactionType,
+            TransactionStatusDomainEntity transactionStatus,
             ITransactionOwner transactionOwner)
         {
             Amount = amount;
@@ -53,6 +57,22 @@ namespace AydoganFBank.AccountManagement.Domain
             return this;
         }
 
+        public AccountTransactionDomainEntity With(
+            ITransactionOwner from,
+            ITransactionOwner to,
+            decimal amount,
+            TransactionTypeEnum type,
+            TransactionStatusEnum status,
+            ITransactionOwner transactionOwner)
+        {
+            var transactionType = coreContext.Query<ITransactionTypeRepository>()
+                .GetByKey(type.ToString());
+            var transactionStatus = coreContext.Query<ITransactionStatusRepository>()
+                .GetByKey(status.ToString());
+
+            return With(from, to, amount, transactionType, transactionStatus, transactionOwner);
+        }
+
         public void Insert(bool forceToInsertDb = true)
         {
             TransactionDate = DateTime.Now;
@@ -62,6 +82,11 @@ namespace AydoganFBank.AccountManagement.Domain
         public void Save()
         {
             accountTransactionRepository.UpdateEntity(this);
+        }
+
+        public void SetStatus(TransactionStatusEnum transactionStatus)
+        {
+            TransactionStatus = coreContext.Query<ITransactionStatusRepository>().GetByKey(transactionStatus.ToString());
         }
 
         public TransactionDetailDomainEntity CreateTransactionDetail(TransactionDirection transactionDirection)
@@ -153,8 +178,8 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.FromOwnerId = domainEntity.FromTransactionOwner?.OwnerId;
             dbEntity.ToOwnerType = domainEntity.ToTransactionOwner?.OwnerType.ToInt();
             dbEntity.ToOwnerId = domainEntity.ToTransactionOwner?.OwnerId;
-            dbEntity.OwnerType = domainEntity.TransactionOwner?.OwnerType.ToInt();
-            dbEntity.OwnerId = domainEntity.TransactionOwner?.OwnerId;
+            dbEntity.OwnerType = domainEntity.TransactionOwner.OwnerType.ToInt();
+            dbEntity.OwnerId = domainEntity.TransactionOwner.OwnerId;
         }
         #endregion
 

@@ -1,15 +1,16 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AydoganFBank.Context.Exception;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardDomainEntity : IDomainEntity, ITransactionOwner
+    public class CreditCardDomainEntity : IDomainEntity, ITransactionOwner, ICreditCardInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -65,16 +66,22 @@ namespace AydoganFBank.AccountManagement.Domain
             decimal limit, int extreDay, int type, string validMonth, string validYear, string securityCode, 
             bool isInternetUsageOpen, ICreditCardOwner creditCardOwner)
         {
+            if (limit <= 0)
+                throw new AccountManagementException.CreditCardLimitCouldNotBeZeroOrNegative(string.Format("{0} = {1}", nameof(limit), limit));
+
+            if (extreDay <= 0)
+                throw new AccountManagementException.CreditCardExtreDayCouldNotZeroOrNegative(string.Format("{0} = {1}", nameof(extreDay), extreDay));
+
             CreditCardNumber = GenerateCrediCardNumber();
             Limit = limit;
             ExtreDay = extreDay;
             Debt = 0;
             Type = type;
-            ValidMonth = validMonth;
-            ValidYear = validYear;
-            SecurityCode = securityCode;
+            ValidMonth = string.IsNullOrWhiteSpace(validMonth) == false ? validMonth : throw new CommonException.RequiredParameterMissingException(nameof(validMonth));
+            ValidYear = string.IsNullOrWhiteSpace(validYear) == false ? validYear : throw new CommonException.RequiredParameterMissingException(nameof(validYear));
+            SecurityCode = string.IsNullOrWhiteSpace(securityCode) == false ? securityCode : throw new CommonException.RequiredParameterMissingException(nameof(securityCode));
             IsInternetUsageOpen = isInternetUsageOpen;
-            CreditCardOwner = creditCardOwner;
+            CreditCardOwner = creditCardOwner ?? throw new CommonException.RequiredParameterMissingException(nameof(creditCardOwner)); ;
             return this;
         }
 

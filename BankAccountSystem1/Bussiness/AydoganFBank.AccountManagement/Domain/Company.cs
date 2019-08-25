@@ -1,19 +1,16 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.Exception;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.Exception;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CompanyDomainEntity : 
-        IDomainEntity, 
-        IAccountOwner, 
-        ICreditCardOwner
+    public class CompanyDomainEntity : IDomainEntity, IAccountOwner, ICreditCardOwner, ICompanyInfo
     {
         #region IoC
         private readonly ICompanyRepository companyRepository;
@@ -84,6 +81,16 @@ namespace AydoganFBank.AccountManagement.Domain
             PhoneNumber = phoneNumber;
             Save();
         }
+
+        #region Api
+        int ICompanyInfo.Id => CompanyId;
+        string ICompanyInfo.CompanyName => CompanyName;
+        IPersonInfo ICompanyInfo.ResponsablePerson => ResponsablePerson;
+        string ICompanyInfo.Address => Address;
+        string ICompanyInfo.PhoneNumber => PhoneNumber;
+        string ICompanyInfo.TaxNumber => TaxNumber;
+        IAccountInfo ICompanyInfo.Account => Account;
+        #endregion
     }
 
     public class CompanyRepository : 

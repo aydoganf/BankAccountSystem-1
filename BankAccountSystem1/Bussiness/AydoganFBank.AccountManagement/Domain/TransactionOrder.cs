@@ -1,7 +1,7 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionOrderDomainEntity : 
-        IDomainEntity, 
-        ITransactionOwner, 
-        ITransactionTypeOwner, 
-        ITransactionStatusOwner
+    public class TransactionOrderDomainEntity : IDomainEntity, ITransactionOwner
     {
         #region IoC
         private readonly ITransactionOrderRepository transactionOrderRepository;
@@ -36,8 +32,8 @@ namespace AydoganFBank.AccountManagement.Domain
         public AccountDomainEntity ToAccount { get; set; }
         public decimal Amount { get; set; }
 
-        public ITransactionTypeInfo TransactionType { get; set; }
-        public ITransactionStatusInfo TransactionStatus { get; set; }
+        public TransactionTypeDomainEntity TransactionType { get; set; }
+        public TransactionStatusDomainEntity TransactionStatus { get; set; }
 
         int IDomainEntity.Id => TransactionOrderId;
         int ITransactionOwner.OwnerId => TransactionOrderId;
@@ -46,14 +42,14 @@ namespace AydoganFBank.AccountManagement.Domain
         TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.TransactionOrder;
 
 
-        public TransactionOrderDomainEntity With(
-            ITransactionTypeInfo transactionType, 
+        private TransactionOrderDomainEntity With(
+            TransactionTypeDomainEntity transactionType, 
             string orderDescription,
             DateTime operationDate,
             AccountDomainEntity fromAccount,
             AccountDomainEntity toAccount,
             decimal amount,
-            ITransactionStatusInfo transactionOrderStatus)
+            TransactionStatusDomainEntity transactionOrderStatus)
         {
             TransactionType = transactionType;
             OrderDesctiption = orderDescription;
@@ -64,6 +60,25 @@ namespace AydoganFBank.AccountManagement.Domain
             Amount = amount;
             TransactionStatus = transactionOrderStatus;
             return this;
+        }
+
+        public TransactionOrderDomainEntity With(
+            TransactionTypeEnum type,
+            string orderDescription,
+            DateTime operationDate,
+            AccountDomainEntity fromAccount,
+            AccountDomainEntity toAccount,
+            decimal amount,
+            TransactionStatusEnum orderStatus)
+        {
+            if (fromAccount.AccountType.AccountTypeId != toAccount.AccountType.AccountTypeId)
+                throw new AccountManagementException.TransactionOrderCouldNotHasDifferentAccountTypes(string.
+                    Format("FromAccountType: {0} - ToAccountType: {1}", fromAccount.AccountType.AccountTypeName, toAccount.AccountType.AccountTypeName));
+
+            var transactionType = coreContext.Query<ITransactionTypeRepository>().GetByKey(type.ToString());
+            var transactionStatus = coreContext.Query<ITransactionStatusRepository>().GetByKey(orderStatus.ToString());
+
+            return With(transactionType, orderDescription, operationDate, fromAccount, toAccount, amount, transactionStatus);
         }
 
         public void Insert(bool forceToInsertDb = true)

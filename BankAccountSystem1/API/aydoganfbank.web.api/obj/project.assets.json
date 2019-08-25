@@ -4615,6 +4615,40 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "AydoganFBank.AccountManagement/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "AydoganFBank.Context": "1.0.0",
+          "AydoganFBank.Database": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AydoganFBank.AccountManagement.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AydoganFBank.AccountManagement.dll": {}
+        }
+      },
+      "AydoganFBank.Context/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "AydoganFBank.Database": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AydoganFBank.Context.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AydoganFBank.Context.dll": {}
+        }
+      },
+      "AydoganFBank.Database/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/AydoganFBank.Database.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AydoganFBank.Database.dll": {}
+        }
       }
     }
   },
@@ -12526,10 +12560,26 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "AydoganFBank.AccountManagement/1.0.0": {
+      "type": "project",
+      "path": "../../Bussiness/AydoganFBank.AccountManagement/AydoganFBank.AccountManagement.csproj",
+      "msbuildProject": "../../Bussiness/AydoganFBank.AccountManagement/AydoganFBank.AccountManagement.csproj"
+    },
+    "AydoganFBank.Context/1.0.0": {
+      "type": "project",
+      "path": "../../Bussiness/AydoganFBank.Context/AydoganFBank.Context.csproj",
+      "msbuildProject": "../../Bussiness/AydoganFBank.Context/AydoganFBank.Context.csproj"
+    },
+    "AydoganFBank.Database/1.0.0": {
+      "type": "project",
+      "path": "../../DB/AydoganFBank.Database/AydoganFBank.Database.csproj",
+      "msbuildProject": "../../DB/AydoganFBank.Database/AydoganFBank.Database.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "AydoganFBank.AccountManagement >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -12537,27 +12587,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\faruk\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\Faruk\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api\\aydoganfbank.web.api.csproj",
+      "projectUniqueName": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api\\aydoganfbank.web.api.csproj",
       "projectName": "aydoganfbank.web.api",
-      "projectPath": "C:\\Users\\faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api\\aydoganfbank.web.api.csproj",
-      "packagesPath": "C:\\Users\\faruk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api\\obj\\",
+      "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api\\aydoganfbank.web.api.csproj",
+      "packagesPath": "C:\\Users\\Faruk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\faruk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Faruk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -12568,7 +12615,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj": {
+              "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

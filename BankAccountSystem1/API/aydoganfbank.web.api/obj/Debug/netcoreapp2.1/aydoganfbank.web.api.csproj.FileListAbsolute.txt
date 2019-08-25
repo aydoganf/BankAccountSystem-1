@@ -12,3 +12,17 @@ C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfb
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.RazorTargetAssemblyInfo.cache
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.dll
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.pdb
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.AccountManagement.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Context.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Database.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\EntityFramework.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\StructureMap.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.AccountManagement.pdb
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.AccountManagement.dll.config
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Context.pdb
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Context.dll.config
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Database.pdb
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Database.dll.config
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\EntityFramework.xml
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\StructureMap.xml
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.csproj.CopyComplete

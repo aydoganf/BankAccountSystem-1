@@ -1,8 +1,8 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
@@ -10,8 +10,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionDetailDomainEntity : 
-        IDomainEntity
+    public class TransactionDetailDomainEntity : IDomainEntity, ITransactionHolder
     {
         #region Ioc
         private readonly ICoreContext coreContext;
@@ -35,6 +34,10 @@ namespace AydoganFBank.AccountManagement.Domain
 
 
         int IDomainEntity.Id => TransactionDetailId;
+
+        ITransactionInfo ITransactionHolder.TransactionInfo => AccountTransaction;
+        DateTime ITransactionHolder.CreateDate => CreateDate;
+
 
         public TransactionDetailDomainEntity With(
             string description,
@@ -65,13 +68,11 @@ namespace AydoganFBank.AccountManagement.Domain
 
     public class TransactionDetailRepository :
         OrderedQueryRepository<TransactionDetailDomainEntity, TransactionDetail>,
+        IDomainObjectBuilderRepository<TransactionDetailDomainEntity, TransactionDetail>,
         ITransactionDetailRepository
     {
-        public TransactionDetailRepository(
-            ICoreContext coreContext, 
-            IDomainEntityBuilder<TransactionDetailDomainEntity, TransactionDetail> domainEntityBuilder, 
-            IDbEntityMapper<TransactionDetail, TransactionDetailDomainEntity> dbEntityMapper) 
-            : base(coreContext, domainEntityBuilder, dbEntityMapper)
+        public TransactionDetailRepository(ICoreContext coreContext)
+            : base(coreContext, null, null)
         {
         }
 
@@ -85,12 +86,71 @@ namespace AydoganFBank.AccountManagement.Domain
             return dbContext.TransactionDetail.FirstOrDefault(td => td.TransactionDetailId == id);
         }
 
+        private ITransactionOwner GetTransactionOwner(int ownerType, int ownerId)
+        {
+            ITransactionOwner transactionOwner = null;
+
+            if (ownerType == TransactionOwnerType.Account.ToInt())
+                transactionOwner = coreContext.Query<IAccountRepository>().GetById(ownerId);
+            else if (ownerType == TransactionOwnerType.CreditCard.ToInt())
+                transactionOwner = coreContext.Query<ICreditCardRepository>().GetById(ownerId);
+            else if (ownerType == TransactionOwnerType.TransactionOrder.ToInt())
+                transactionOwner = coreContext.Query<ITransactionOrderRepository>().GetById(ownerId);
+
+            return transactionOwner;
+        }
+
+        #region Mapping overrides
+        public override void MapToDbEntity(TransactionDetailDomainEntity domainEntity, TransactionDetail dbEntity)
+        {
+            dbEntity.AccountTransactionId = domainEntity.AccountTransaction.TransactionId;
+            dbEntity.CreateDate = domainEntity.CreateDate;
+            dbEntity.Description = domainEntity.Description;
+            dbEntity.OwnerId = domainEntity.TransactionOwner.OwnerId;
+            dbEntity.OwnerType = domainEntity.TransactionOwner.OwnerType.ToInt();
+            dbEntity.TransactionDirection = domainEntity.TransactionDirection.ToInt();
+        }
+
+        public override TransactionDetailDomainEntity MapToDomainObject(TransactionDetail dbEntity)
+        {
+            if (dbEntity == null)
+                return null;
+
+            var domainEntity = coreContext.New<TransactionDetailDomainEntity>();
+            MapToDomainObject(domainEntity, dbEntity);
+            return domainEntity;
+        }
+
+        public override void MapToDomainObject(TransactionDetailDomainEntity domainEntity, TransactionDetail dbEntity)
+        {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
+            domainEntity.AccountTransaction = coreContext.Query<IAccountTransactionRepository>().GetById(dbEntity.AccountTransactionId);
+            domainEntity.CreateDate = dbEntity.CreateDate;
+            domainEntity.Description = dbEntity.Description;
+            domainEntity.TransactionDetailId = dbEntity.TransactionDetailId;
+            domainEntity.TransactionDirection = (TransactionDirection)Enum.Parse(typeof(TransactionDirection), dbEntity.TransactionDirection.ToString());
+            domainEntity.TransactionOwner = GetTransactionOwner(dbEntity.OwnerType, dbEntity.OwnerId);
+        }
+
+        public override IEnumerable<TransactionDetailDomainEntity> MapToDomainObjectList(IEnumerable<TransactionDetail> dbEntities)
+        {
+            List<TransactionDetailDomainEntity> domainEntities = new List<TransactionDetailDomainEntity>();
+            foreach (var dbEntity in dbEntities)
+            {
+                domainEntities.Add(MapToDomainObject(dbEntity));
+            }
+            return domainEntities;
+        }
+        #endregion
+
         public List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionOwner(
             ITransactionOwner transactionOwner, DateTime startDate, DateTime endDate)
         {
             return GetOrderedDescListBy(
                 td =>
-                    td.AccountId == transactionOwner.OwnerId && td.CreateDate >= startDate && td.CreateDate <= endDate,
+                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId && td.CreateDate >= startDate && td.CreateDate <= endDate,
                 td =>
                     td.CreateDate)
                 .ToList();                
@@ -101,7 +161,7 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return GetOrderedDescListBy(
                 td =>
-                    td.AccountId == transactionOwner.OwnerId && td.CreateDate >= startDate && td.CreateDate <= endDate &&
+                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId && td.CreateDate >= startDate && td.CreateDate <= endDate &&
                     td.TransactionDirection == transactionDirection.ToInt(),
                 td =>
                     td.CreateDate)

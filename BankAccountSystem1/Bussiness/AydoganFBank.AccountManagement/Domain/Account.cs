@@ -1,9 +1,7 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.Exception;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context.DataAccess;
+using AydoganFBank.Context.Exception;
+using AydoganFBank.Context.IoC;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
@@ -12,10 +10,7 @@ using System.Linq;
 namespace AydoganFBank.AccountManagement.Domain
 {
 
-    public class AccountDomainEntity : 
-        IDomainEntity, 
-        ITransactionOwner,
-        ICreditCardOwner
+    public class AccountDomainEntity : IDomainEntity, ITransactionOwner, ICreditCardOwner, IAccountInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -120,6 +115,15 @@ namespace AydoganFBank.AccountManagement.Domain
                 .Query<IAccountTransactionRepository>()
                 .GetLastDateRangeListByTransactionOwner(this, startDate, endDate);
         }
+
+
+        #region Api
+        int IAccountInfo.Id => AccountId;
+        string IAccountInfo.AccountNumber => AccountNumber;
+        IAccountTypeInfo IAccountInfo.AccountType => AccountType;
+        decimal IAccountInfo.Balance => Balance;
+        IAccountOwner IAccountInfo.AccountOwner => AccountOwner;
+        #endregion
     }
 
     public class AccountRepository : 

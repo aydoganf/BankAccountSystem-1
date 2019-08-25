@@ -1,22 +1,25 @@
 ﻿using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Common;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.Exception;
-using AydoganFBank.Common.IoC;
-using AydoganFBank.Common.Repository;
+using AydoganFBank.Context;
+using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.Exception;
+using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
 
-    public class PersonDomainEntity : IDomainEntity, IAccountOwner
+    public class PersonDomainEntity : IDomainEntity, IAccountOwner, IPersonInfo
     {
         #region IoC
         private readonly IPersonRepository personRepository;
+        private readonly ICoreContext coreContext;
 
-        public PersonDomainEntity(IPersonRepository personRepository)
+        public PersonDomainEntity(
+            IPersonRepository personRepository, ICoreContext coreContext)
         {
+            this.coreContext = coreContext;
             this.personRepository = personRepository;
         }
         #endregion
@@ -80,6 +83,11 @@ namespace AydoganFBank.AccountManagement.Domain
         public void Save()
         {
             personRepository.UpdateEntity(this);
+        }
+
+        public CompanyDomainEntity GetResponsableCompany()
+        {
+            return coreContext.Query<ICompanyRepository>().GetByResponsablePerson(this);
         }
     }
 

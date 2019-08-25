@@ -1,6 +1,6 @@
 ﻿using AydoganFBank.AccountManagement.Domain;
-using AydoganFBank.Common.Builders;
-using AydoganFBank.Common.IoC;
+using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.IoC;
 using AydoganFBank.Database;
 using System.Collections.Generic;
 
