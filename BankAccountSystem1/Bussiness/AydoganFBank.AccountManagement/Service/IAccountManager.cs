@@ -14,7 +14,7 @@ namespace AydoganFBank.AccountManagement.Service
         IAccountInfo WithdrawMoneyFromOwn(int accountId, decimal amount);
         IAccountInfo DepositToOwnAccount(int accountId, decimal amount);
 
-        void TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType);
+        object TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType);
 
         IAccountTypeInfo GetAccountTypeInfo(int accountTypeId);
         IAccountTypeInfo GetAccountTypeByKey(string key);

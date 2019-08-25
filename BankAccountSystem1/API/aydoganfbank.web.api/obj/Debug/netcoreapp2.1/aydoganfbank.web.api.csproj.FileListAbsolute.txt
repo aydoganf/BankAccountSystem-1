@@ -26,3 +26,7 @@ C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfb
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\EntityFramework.xml
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\StructureMap.xml
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.csproj.CopyComplete
+C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Service.dll
+C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Service.pdb
+C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.bussiness.dll
+C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.bussiness.pdb

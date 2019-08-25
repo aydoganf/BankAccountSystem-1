@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bussiness", "Bussiness", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{343B396C-3283-4E0F-A6B4-E364EE79F0EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AydoganFBank.Service", "Service\AydoganFBank.Service\AydoganFBank.Service.csproj", "{5F744FEC-883C-41DB-8D06-067B89AC26C4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{4F0AA3C2-498A-4C4C-914B-B6286049BDAB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aydoganfbank.web.api", "API\aydoganfbank.web.api\aydoganfbank.web.api.csproj", "{A38A6804-8884-45AF-A76D-84BDF3EC9D25}"
@@ -21,16 +19,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AydoganFBank.Context", "Bus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AydoganFBank.AccountManagement", "Bussiness\AydoganFBank.AccountManagement\AydoganFBank.AccountManagement.csproj", "{C7414BA4-90A9-4FAB-B6B2-D039297DF26A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AydoganFBank.Service", "Service\AydoganFBank.Service\AydoganFBank.Service.csproj", "{5C41C69B-EB42-477A-99EE-17E3488EF37C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aydoganfbank.web.api.bussiness", "API\aydoganfbank.web.api.bussiness\aydoganfbank.web.api.bussiness.csproj", "{0126F903-0AB2-4643-9CA9-98E8CCC5E20C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5F744FEC-883C-41DB-8D06-067B89AC26C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F744FEC-883C-41DB-8D06-067B89AC26C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F744FEC-883C-41DB-8D06-067B89AC26C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F744FEC-883C-41DB-8D06-067B89AC26C4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A38A6804-8884-45AF-A76D-84BDF3EC9D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A38A6804-8884-45AF-A76D-84BDF3EC9D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A38A6804-8884-45AF-A76D-84BDF3EC9D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,16 +45,25 @@ Global
 		{C7414BA4-90A9-4FAB-B6B2-D039297DF26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7414BA4-90A9-4FAB-B6B2-D039297DF26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7414BA4-90A9-4FAB-B6B2-D039297DF26A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C41C69B-EB42-477A-99EE-17E3488EF37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C41C69B-EB42-477A-99EE-17E3488EF37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C41C69B-EB42-477A-99EE-17E3488EF37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C41C69B-EB42-477A-99EE-17E3488EF37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0126F903-0AB2-4643-9CA9-98E8CCC5E20C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0126F903-0AB2-4643-9CA9-98E8CCC5E20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0126F903-0AB2-4643-9CA9-98E8CCC5E20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0126F903-0AB2-4643-9CA9-98E8CCC5E20C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{5F744FEC-883C-41DB-8D06-067B89AC26C4} = {343B396C-3283-4E0F-A6B4-E364EE79F0EC}
 		{A38A6804-8884-45AF-A76D-84BDF3EC9D25} = {4F0AA3C2-498A-4C4C-914B-B6286049BDAB}
 		{AB99FB45-6418-4FC4-9AF8-CBAA53285D22} = {E277E9EF-556F-4551-9E0A-B7FCC8B0F38A}
 		{1B386555-65FB-457B-BF73-83832404DC06} = {652ACAE4-BD8A-4927-B761-4F76BEFB0606}
 		{C7414BA4-90A9-4FAB-B6B2-D039297DF26A} = {652ACAE4-BD8A-4927-B761-4F76BEFB0606}
+		{5C41C69B-EB42-477A-99EE-17E3488EF37C} = {343B396C-3283-4E0F-A6B4-E364EE79F0EC}
+		{0126F903-0AB2-4643-9CA9-98E8CCC5E20C} = {4F0AA3C2-498A-4C4C-914B-B6286049BDAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1A5E257-73E3-44F0-B9AF-E5DD83594CDE}

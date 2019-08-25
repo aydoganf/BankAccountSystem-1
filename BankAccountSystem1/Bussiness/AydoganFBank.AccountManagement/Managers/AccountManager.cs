@@ -339,9 +339,10 @@ namespace AydoganFBank.AccountManagement.Managers
             return DepositToOwnAccount(accountId, amount);
         }
 
-        void IAccountManager.TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType)
+        object IAccountManager.TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType)
         {
             TransferAssets(fromAccountId, toAccountId, amount, transactionType);
+            return null;
         }
 
         IAccountTypeInfo IAccountManager.GetAccountTypeInfo(int accountTypeId)
