@@ -30,3 +30,11 @@ C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfb
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\AydoganFBank.Service.pdb
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.bussiness.dll
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\bin\Debug\netcoreapp2.1\aydoganfbank.web.api.bussiness.pdb
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.csprojAssemblyReference.cache
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.csproj.CoreCompileInputs.cache
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.RazorAssemblyInfo.cache
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.RazorAssemblyInfo.cs
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.AssemblyInfoInputs.cache
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.AssemblyInfo.cs
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.dll
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api\obj\Debug\netcoreapp2.1\aydoganfbank.web.api.pdb

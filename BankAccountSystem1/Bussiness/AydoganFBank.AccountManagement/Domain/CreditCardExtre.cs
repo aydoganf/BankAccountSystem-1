@@ -105,9 +105,7 @@ namespace AydoganFBank.AccountManagement.Domain
     }
 
 
-    public class CreditCardExtreRepository : 
-        OrderedQueryRepository<CreditCardExtreDomainEntity, CreditCardExtre>,
-        ICreditCardExtreRepository
+    public class CreditCardExtreRepository : OrderedQueryRepository<CreditCardExtreDomainEntity, CreditCardExtre>, ICreditCardExtreRepository
     {
         public CreditCardExtreRepository(
             ICoreContext coreContext, 
@@ -116,6 +114,36 @@ namespace AydoganFBank.AccountManagement.Domain
             : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
+
+        #region Mapping overrides
+        public override void MapToDbEntity(CreditCardExtreDomainEntity domainEntity, CreditCardExtre dbEntity)
+        {
+            dbEntity.CreditCardId = domainEntity.CreditCard.CreditCardId;
+            dbEntity.IsDischarged = domainEntity.IsDischarged;
+            dbEntity.IsMinDischarged = domainEntity.IsMinDischarged;
+            dbEntity.MinPayment = domainEntity.MinPayment;
+            dbEntity.Month = domainEntity.Month;
+            dbEntity.MonthName = domainEntity.MonthName;
+            dbEntity.TotalPayment = domainEntity.TotalPayment;
+            dbEntity.Year = domainEntity.Year;
+        }
+
+        public override void MapToDomainObject(CreditCardExtreDomainEntity domainEntity, CreditCardExtre dbEntity)
+        {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
+            domainEntity.CreditCard = coreContext.Query<ICreditCardRepository>().GetById(dbEntity.CreditCardId);
+            domainEntity.CreditCardExtreId = dbEntity.CreditCardExtreId;
+            domainEntity.IsDischarged = dbEntity.IsDischarged;
+            domainEntity.IsMinDischarged = dbEntity.IsMinDischarged;
+            domainEntity.MinPayment = dbEntity.MinPayment;
+            domainEntity.Month = dbEntity.Month;
+            domainEntity.MonthName = dbEntity.MonthName;
+            domainEntity.TotalPayment = dbEntity.TotalPayment;
+            domainEntity.Year = dbEntity.Year;
+        }
+        #endregion
 
         public override CreditCardExtreDomainEntity GetById(int id)
         {

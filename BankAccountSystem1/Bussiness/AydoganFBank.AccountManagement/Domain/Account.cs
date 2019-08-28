@@ -126,10 +126,7 @@ namespace AydoganFBank.AccountManagement.Domain
         #endregion
     }
 
-    public class AccountRepository : 
-        OrderedQueryRepository<AccountDomainEntity, Account>,
-        IAccountRepository,
-        IDomainObjectBuilderRepository<AccountDomainEntity, Account>
+    public class AccountRepository : OrderedQueryRepository<AccountDomainEntity, Account>, IAccountRepository
     {
         private const int ACCOUNT_NUMBER_START = 1000000;
 
@@ -154,16 +151,6 @@ namespace AydoganFBank.AccountManagement.Domain
 
         #region Mapper overrides
 
-        public override AccountDomainEntity MapToDomainObject(Account account)
-        {
-            if (account == null)
-                return null;
-
-            var domainEntity = coreContext.New<AccountDomainEntity>();
-            MapToDomainObject(domainEntity, account);
-            return domainEntity;
-        }
-
         public override void MapToDomainObject(AccountDomainEntity domainEntity, Account dbEntity)
         {
             if (domainEntity == null || dbEntity == null)
@@ -174,16 +161,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.AccountType = coreContext.Query<IAccountTypeRepository>().GetById(dbEntity.AccountTypeId);
             domainEntity.Balance = dbEntity.Balance;
             domainEntity.AccountOwner = GetAccountOwner(dbEntity);
-        }
-
-        public override IEnumerable<AccountDomainEntity> MapToDomainObjectList(IEnumerable<Account> entities)
-        {
-            List<AccountDomainEntity> accounts = new List<AccountDomainEntity>();
-            foreach (var entity in entities)
-            {
-                accounts.Add(MapToDomainObject(entity));
-            }
-            return accounts;
         }
 
         public override void MapToDbEntity(AccountDomainEntity domainEntity, Account dbEntity)

@@ -66,8 +66,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class CreditCardPaymentRepository : 
-        OrderedQueryRepository<CreditCardPaymentDomainEntity, CreditCardPayment>,
+    public class CreditCardPaymentRepository : OrderedQueryRepository<CreditCardPaymentDomainEntity, CreditCardPayment>,
         ICreditCardPaymentRepository
     {
         public CreditCardPaymentRepository(
@@ -77,6 +76,32 @@ namespace AydoganFBank.AccountManagement.Domain
             : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
+
+        #region Mapping overrides
+        public override void MapToDbEntity(CreditCardPaymentDomainEntity domainEntity, CreditCardPayment dbEntity)
+        {
+            dbEntity.AccountTransactionId = domainEntity.AccountTransaction.TransactionId;
+            dbEntity.Amount = domainEntity.Amount;
+            dbEntity.CreateDate = domainEntity.CreateDate;
+            dbEntity.Description = domainEntity.Description;
+            dbEntity.InstalmentDate = domainEntity.InstalmentDate;
+            dbEntity.InstalmentIndex = domainEntity.InstalmentIndex;
+        }
+
+        public override void MapToDomainObject(CreditCardPaymentDomainEntity domainEntity, CreditCardPayment dbEntity)
+        {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
+            domainEntity.AccountTransaction = coreContext.Query<IAccountTransactionRepository>().GetById(dbEntity.AccountTransactionId);
+            domainEntity.Amount = dbEntity.Amount;
+            domainEntity.CreateDate = dbEntity.CreateDate;
+            domainEntity.CreditCardPaymentId = dbEntity.CreditCardPaymentId;
+            domainEntity.Description = dbEntity.Description;
+            domainEntity.InstalmentDate = dbEntity.InstalmentDate;
+            domainEntity.InstalmentIndex = dbEntity.InstalmentIndex;
+        }
+        #endregion
 
         public override CreditCardPaymentDomainEntity GetById(int id)
         {

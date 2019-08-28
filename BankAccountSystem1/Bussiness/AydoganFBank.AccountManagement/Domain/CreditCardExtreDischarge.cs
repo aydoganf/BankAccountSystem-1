@@ -64,8 +64,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class CreditCardExtreDischargeRepository :
-        OrderedQueryRepository<CreditCardExtreDischargeDomainEntity, CreditCardExtreDischarge>
+    public class CreditCardExtreDischargeRepository : OrderedQueryRepository<CreditCardExtreDischargeDomainEntity, CreditCardExtreDischarge>
     {
         public CreditCardExtreDischargeRepository(
             ICoreContext coreContext, 
@@ -74,6 +73,28 @@ namespace AydoganFBank.AccountManagement.Domain
             : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
+
+        #region Mapping overrides
+        public override void MapToDbEntity(CreditCardExtreDischargeDomainEntity domainEntity, CreditCardExtreDischarge dbEntity)
+        {
+            dbEntity.AccountTransactionId = domainEntity.AccountTransaction.TransactionId;
+            dbEntity.CreateDate = domainEntity.CreateDate;
+            dbEntity.CreditCardExtreId = domainEntity.CreditCardExtre.CreditCardExtreId;
+            dbEntity.DischargeAmount = domainEntity.DischargeAmount;
+        }
+
+        public override void MapToDomainObject(CreditCardExtreDischargeDomainEntity domainEntity, CreditCardExtreDischarge dbEntity)
+        {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
+            domainEntity.AccountTransaction = coreContext.Query<IAccountTransactionRepository>().GetById(dbEntity.AccountTransactionId);
+            domainEntity.CreateDate = dbEntity.CreateDate;
+            domainEntity.CreditCardExtre = coreContext.Query<ICreditCardExtreRepository>().GetById(dbEntity.CreditCardExtreId);
+            domainEntity.CreditCardExtreDischargeId = dbEntity.CreditCardExtreDischargeId;
+            domainEntity.DischargeAmount = dbEntity.DischargeAmount;
+        }
+        #endregion
 
         public override CreditCardExtreDischargeDomainEntity GetById(int id)
         {

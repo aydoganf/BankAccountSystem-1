@@ -18,38 +18,59 @@ namespace aydoganfbank.web.api.Controllers.Bussiness
         }
 
 
-        [HttpPost("/person/{accountTypeKey}/{personId}")]
-        public ActionResult<ApiResponse<IAccountInfo>> CreatePersonAccount(string accountTypeKey, int personId)
+        [HttpPost(ApiURLActions.Business.AccountsController.CREATE_PERSON_ACCOUNT)]
+        public ActionResult<ApiResponse<IAccountInfo>> CreatePersonAccount(int personId, [FromBody] CreatePersonAccountMessage message)
         {
-            return this.HandleResult(() => serviceContext.AccountManager.CreatePersonAccount(accountTypeKey, personId));
+            return this.HandleResult(
+                () => 
+                    serviceContext.AccountManager.CreatePersonAccount(
+                        message.AccountTypeKey, 
+                        personId));
         }
 
-        [HttpPost("/company/{accountTypeKey}/{companyId}")]
-        public ActionResult<ApiResponse<IAccountInfo>> CreateCompanyAccount(string accountTypeKey, int companyId)
+        [HttpPost(ApiURLActions.Business.AccountsController.CREATE_COMPANY_ACCOUNT)]
+        public ActionResult<ApiResponse<IAccountInfo>> CreateCompanyAccount(int companyId, [FromBody] CreateCompanyAccountMessage message)
         {
-            return this.HandleResult(() => serviceContext.AccountManager.CreateCompanyAccount(accountTypeKey, companyId));
+            return this.HandleResult(
+                () => 
+                    serviceContext.AccountManager.CreateCompanyAccount(
+                        message.AccountTypeKey, 
+                        companyId));
         }
 
-        [HttpPost("/transferAssets")]
+        [HttpPost(ApiURLActions.Business.AccountsController.TRANSFER_ASSETS)]
         public ActionResult<ApiResponse<object>> TransferAssets([FromBody] TransferAssetsMessage message)
         {
             TransactionTypeEnum transactionType = message.TransactionType.ParseToEnum<TransactionTypeEnum>();
 
-            return this.HandleResult(() => serviceContext.AccountManager
-                .TransferAssets(message.FromAccountId, message.ToAccountId, message.Amount, transactionType));
+            return this.HandleResult(
+                () => 
+                    serviceContext.AccountManager.TransferAssets(
+                        message.FromAccountId, 
+                        message.ToAccountId, 
+                        message.Amount, 
+                        transactionType));
         }
 
 
-        [HttpPut("withdraw/{accountId}")]
+        [HttpPut(ApiURLActions.Business.AccountsController.WITHDRAW_ASSETS)]
         public ActionResult<ApiResponse<IAccountInfo>> WithdrawMoneyFromOwn(int accountId, [FromBody] WithdrawMoneyFromOwnMessage message)
         {
-            return this.HandleResult(() => serviceContext.AccountManager.WithdrawMoneyFromOwn(accountId, message.Amount));
+            return this.HandleResult(
+                () => 
+                    serviceContext.AccountManager.WithdrawMoneyFromOwn(
+                        accountId, 
+                        message.Amount));
         }
 
-        [HttpPut("deposit/{accountId}")]
+        [HttpPut(ApiURLActions.Business.AccountsController.DEPOSIT_ASSETS)]
         public ActionResult<ApiResponse<IAccountInfo>> DepositToOwnAccount(int accountId, [FromBody] DepositToOwnAccountMessage message)
         {
-            return this.HandleResult(() => serviceContext.AccountManager.DepositToOwnAccount(accountId, message.Amount));
+            return this.HandleResult(
+                () => 
+                    serviceContext.AccountManager.DepositToOwnAccount(
+                        accountId, 
+                        message.Amount));
         }
 
         

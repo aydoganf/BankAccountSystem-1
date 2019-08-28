@@ -107,10 +107,8 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class AccountTransactionRepository : 
-        OrderedQueryRepository<AccountTransactionDomainEntity, AccountTransaction>,
-        IAccountTransactionRepository,
-        IDomainObjectBuilderRepository<AccountTransactionDomainEntity, AccountTransaction>
+    public class AccountTransactionRepository : OrderedQueryRepository<AccountTransactionDomainEntity, AccountTransaction>,
+        IAccountTransactionRepository
     {
         public AccountTransactionRepository(ICoreContext coreContext) : base(coreContext, null, null)
         {
@@ -134,15 +132,6 @@ namespace AydoganFBank.AccountManagement.Domain
         }
 
         #region Mapping overrides
-        public override AccountTransactionDomainEntity MapToDomainObject(AccountTransaction dbEntity)
-        {
-            if (dbEntity == null)
-                return null;
-
-            var domainEntity = coreContext.New<AccountTransactionDomainEntity>();
-            MapToDomainObject(domainEntity, dbEntity);
-            return domainEntity;
-        }
 
         public override void MapToDomainObject(AccountTransactionDomainEntity domainEntity, AccountTransaction dbEntity)
         {
@@ -156,16 +145,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.ToTransactionOwner = GetTransactionOwner(dbEntity.ToOwnerType, dbEntity.ToOwnerId);
             domainEntity.TransactionStatus = coreContext.Query<ITransactionStatusRepository>().GetById(dbEntity.TransactionStatusId);
             domainEntity.TransactionType = coreContext.Query<ITransactionTypeRepository>().GetById(dbEntity.TransactionTypeId);
-        }
-
-        public override IEnumerable<AccountTransactionDomainEntity> MapToDomainObjectList(IEnumerable<AccountTransaction> dbEntities)
-        {
-            List<AccountTransactionDomainEntity> domainEntities = new List<AccountTransactionDomainEntity>();
-            foreach (var dbEntity in dbEntities)
-            {
-                domainEntities.Add(MapToDomainObject(dbEntity));
-            }
-            return domainEntities;
         }
 
         public override void MapToDbEntity(AccountTransactionDomainEntity domainEntity, AccountTransaction dbEntity)

@@ -45,9 +45,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class TransactionTypeRepository : 
-        Repository<TransactionTypeDomainEntity, TransactionType>,
-        ITransactionTypeRepository
+    public class TransactionTypeRepository : Repository<TransactionTypeDomainEntity, TransactionType>, ITransactionTypeRepository
     {
         public TransactionTypeRepository(
             ICoreContext coreContext,
@@ -56,6 +54,24 @@ namespace AydoganFBank.AccountManagement.Domain
             : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
+
+        #region Mapping overrides
+        public override void MapToDbEntity(TransactionTypeDomainEntity domainEntity, TransactionType dbEntity)
+        {
+            dbEntity.TypeKey = domainEntity.TypeKey;
+            dbEntity.TypeName = domainEntity.TypeName;
+        }
+
+        public override void MapToDomainObject(TransactionTypeDomainEntity domainEntity, TransactionType dbEntity)
+        {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
+            domainEntity.TypeId = dbEntity.TransactionTypeId;
+            domainEntity.TypeKey = dbEntity.TypeKey;
+            domainEntity.TypeName = dbEntity.TypeName;
+        }
+        #endregion
 
         public override TransactionTypeDomainEntity GetById(int id)
         {

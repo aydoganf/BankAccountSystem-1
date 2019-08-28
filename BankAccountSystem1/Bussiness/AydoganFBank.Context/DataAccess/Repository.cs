@@ -32,23 +32,26 @@ namespace AydoganFBank.Context.DataAccess
 
         public virtual TDomainEntity MapToDomainObject(TDbEntity dbEntity)
         {
-            return domainEntityBuilder.MapToDomainObject(dbEntity);
-        }
+            if (dbEntity == null)
+                return default(TDomainEntity);
 
-        public virtual void MapToDomainObject(TDomainEntity domainEntity, TDbEntity dbEntity)
-        {
-            domainEntityBuilder.MapToDomainObject(domainEntity, dbEntity);
+            var domainEnttiy = coreContext.New<TDomainEntity>();
+            MapToDomainObject(domainEnttiy, dbEntity);
+            return domainEnttiy;
         }
+        public abstract void MapToDomainObject(TDomainEntity domainEntity, TDbEntity dbEntity);
 
         public virtual IEnumerable<TDomainEntity> MapToDomainObjectList(IEnumerable<TDbEntity> dbEntities)
         {
-            return domainEntityBuilder.MapToDomainObjectList(dbEntities);
+            List<TDomainEntity> domainEntities = new List<TDomainEntity>();
+            foreach (var dbEntity in dbEntities)
+            {
+                domainEntities.Add(MapToDomainObject(dbEntity));
+            }
+            return domainEntities;
         }
 
-        public virtual void MapToDbEntity(TDomainEntity domainEntity, TDbEntity dbEntity)
-        {
-            dbEntityMapper.MapToDbEntity(domainEntity, dbEntity);
-        }
+        public abstract void MapToDbEntity(TDomainEntity domainEntity, TDbEntity dbEntity);
 
         private void UpdateEntity(TDbEntity dbEntity)
         {

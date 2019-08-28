@@ -10,3 +10,15 @@ C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBa
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.dll
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.pdb
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csprojAssemblyReference.cache
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\AydoganFBank.Database.dll.config
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\AydoganFBank.Database.dll
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\AydoganFBank.Database.pdb
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\EntityFramework.dll
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\EntityFramework.xml
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csprojAssemblyReference.cache
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csproj.CoreCompileInputs.cache
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csproj.CopyComplete
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.dll
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.pdb

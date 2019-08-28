@@ -136,10 +136,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class CreditCardRepository : 
-        Repository<CreditCardDomainEntity, CreditCard>,
-        IDomainObjectBuilderRepository<CreditCardDomainEntity, CreditCard>,
-        ICreditCardRepository
+    public class CreditCardRepository : Repository<CreditCardDomainEntity, CreditCard>, ICreditCardRepository
     {
         public CreditCardRepository(ICoreContext coreContext) 
             : base(coreContext, null, null)
@@ -188,15 +185,11 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.ValidYear = domainEntity.ValidYear;
         }
 
-        public override CreditCardDomainEntity MapToDomainObject(CreditCard dbEntity)
-        {
-            var domainEntity = coreContext.New<CreditCardDomainEntity>();
-            MapToDomainObject(domainEntity, dbEntity);
-            return domainEntity;
-        }
-
         public override void MapToDomainObject(CreditCardDomainEntity domainEntity, CreditCard dbEntity)
         {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
             domainEntity.CreditCardId = dbEntity.CreditCardId;
             domainEntity.CreditCardNumber = dbEntity.CreditCardNumber;
             domainEntity.CreditCardOwner = GetCreditCardOwner(dbEntity.OwnerType, dbEntity.OwnerId); 
@@ -208,17 +201,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.ValidMonth = dbEntity.ValidMonth;
             domainEntity.ValidYear = dbEntity.ValidYear;
         }
-
-        public override IEnumerable<CreditCardDomainEntity> MapToDomainObjectList(IEnumerable<CreditCard> dbEntities)
-        {
-            List<CreditCardDomainEntity> domainEntities = new List<CreditCardDomainEntity>();
-            foreach (var dbEntity in dbEntities)
-            {
-                domainEntities.Add(MapToDomainObject(dbEntity));
-            }
-            return domainEntities;
-        }
-
         #endregion
 
         public CreditCardDomainEntity GetByCreditCardOwner(ICreditCardOwner creditCardOwner)

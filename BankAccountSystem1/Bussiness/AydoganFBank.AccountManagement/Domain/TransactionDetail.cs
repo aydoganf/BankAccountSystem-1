@@ -66,10 +66,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class TransactionDetailRepository :
-        OrderedQueryRepository<TransactionDetailDomainEntity, TransactionDetail>,
-        IDomainObjectBuilderRepository<TransactionDetailDomainEntity, TransactionDetail>,
-        ITransactionDetailRepository
+    public class TransactionDetailRepository : OrderedQueryRepository<TransactionDetailDomainEntity, TransactionDetail>, ITransactionDetailRepository
     {
         public TransactionDetailRepository(ICoreContext coreContext)
             : base(coreContext, null, null)
@@ -111,16 +108,6 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.TransactionDirection = domainEntity.TransactionDirection.ToInt();
         }
 
-        public override TransactionDetailDomainEntity MapToDomainObject(TransactionDetail dbEntity)
-        {
-            if (dbEntity == null)
-                return null;
-
-            var domainEntity = coreContext.New<TransactionDetailDomainEntity>();
-            MapToDomainObject(domainEntity, dbEntity);
-            return domainEntity;
-        }
-
         public override void MapToDomainObject(TransactionDetailDomainEntity domainEntity, TransactionDetail dbEntity)
         {
             if (domainEntity == null || dbEntity == null)
@@ -132,16 +119,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.TransactionDetailId = dbEntity.TransactionDetailId;
             domainEntity.TransactionDirection = (TransactionDirection)Enum.Parse(typeof(TransactionDirection), dbEntity.TransactionDirection.ToString());
             domainEntity.TransactionOwner = GetTransactionOwner(dbEntity.OwnerType, dbEntity.OwnerId);
-        }
-
-        public override IEnumerable<TransactionDetailDomainEntity> MapToDomainObjectList(IEnumerable<TransactionDetail> dbEntities)
-        {
-            List<TransactionDetailDomainEntity> domainEntities = new List<TransactionDetailDomainEntity>();
-            foreach (var dbEntity in dbEntities)
-            {
-                domainEntities.Add(MapToDomainObject(dbEntity));
-            }
-            return domainEntities;
         }
         #endregion
 

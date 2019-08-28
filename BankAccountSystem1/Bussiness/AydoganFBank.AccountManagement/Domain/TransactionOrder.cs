@@ -99,10 +99,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class TransactionOrderRepository :
-        Repository<TransactionOrderDomainEntity, TransactionOrder>,
-        ITransactionOrderRepository,
-        IDomainObjectBuilderRepository<TransactionOrderDomainEntity, TransactionOrder>
+    public class TransactionOrderRepository : Repository<TransactionOrderDomainEntity, TransactionOrder>, ITransactionOrderRepository
     {
         public TransactionOrderRepository(ICoreContext coreContext) 
             : base(coreContext, null, null)
@@ -110,15 +107,6 @@ namespace AydoganFBank.AccountManagement.Domain
         }
 
         #region Mapping overrides
-        public override TransactionOrderDomainEntity MapToDomainObject(TransactionOrder dbEntity)
-        {
-            if (dbEntity == null)
-                return null;
-
-            var domainEntity = coreContext.New<TransactionOrderDomainEntity>();
-            MapToDomainObject(domainEntity, dbEntity);
-            return domainEntity;
-        }
 
         public override void MapToDomainObject(TransactionOrderDomainEntity domainEntity, TransactionOrder dbEntity)
         {
@@ -134,16 +122,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.TransactionOrderId = dbEntity.TransactionOrderId;
             domainEntity.TransactionType = coreContext.Query<ITransactionTypeRepository>().GetById(dbEntity.TransactionTypeId);
             domainEntity.TransactionStatus = coreContext.Query<ITransactionStatusRepository>().GetById(dbEntity.TransactionOrderStatusId);
-        }
-
-        public override IEnumerable<TransactionOrderDomainEntity> MapToDomainObjectList(IEnumerable<TransactionOrder> dbEntities)
-        {
-            List<TransactionOrderDomainEntity> domainEntities = new List<TransactionOrderDomainEntity>();
-            foreach (var dbEntity in dbEntities)
-            {
-                domainEntities.Add(MapToDomainObject(dbEntity));
-            }
-            return domainEntities;
         }
 
         public override void MapToDbEntity(TransactionOrderDomainEntity domainEntity, TransactionOrder dbEntity)

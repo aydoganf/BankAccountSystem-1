@@ -46,9 +46,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class AccountTypeRepository :
-        Repository<AccountTypeDomainEntity, AccountType>,
-        IAccountTypeRepository
+    public class AccountTypeRepository : Repository<AccountTypeDomainEntity, AccountType>, IAccountTypeRepository
     {
         public AccountTypeRepository(
             ICoreContext coreContext,  
@@ -74,6 +72,24 @@ namespace AydoganFBank.AccountManagement.Domain
                 at =>
                     at.TypeKey == typeKey);
         }
+
+        #region Mapping overrides
+
+        public override void MapToDomainObject(AccountTypeDomainEntity domainEntity, AccountType dbEntity)
+        {
+            domainEntity.AccountTypeId = dbEntity.AccountTypeId;
+            domainEntity.AccountTypeKey = dbEntity.TypeKey;
+            domainEntity.AccountTypeName = dbEntity.TypeName;
+            //domainEntity.AssetsUnit = dbEntity.AssestsUnit;
+        }
+
+        public override void MapToDbEntity(AccountTypeDomainEntity domainEntity, AccountType dbEntity)
+        {
+            dbEntity.TypeKey = domainEntity.AccountTypeKey;
+            dbEntity.TypeName = domainEntity.AccountTypeName;
+            //dbEntity.AssetsUnit = domainEntity.AssetsUnit;
+        }
+        #endregion
     }
 
     public interface IAccountTypeRepository : IRepository<AccountTypeDomainEntity>
