@@ -97,12 +97,12 @@ namespace AydoganFBank.AccountManagement.Domain
             if (transactionDirection == TransactionDirection.In)
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, ToTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, (ITransactionDetailOwner)ToTransactionOwner, transactionDirection);
             }
             else
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, FromTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, (ITransactionDetailOwner)FromTransactionOwner, transactionDirection);
             }
         }
     }
@@ -120,13 +120,14 @@ namespace AydoganFBank.AccountManagement.Domain
                 return null;
 
             ITransactionOwner transactionOwner = null;
+            
             if (ownerType == TransactionOwnerType.Account.ToInt())
             {
                 transactionOwner = coreContext.Query<IAccountRepository>().GetById(ownerId.Value);
             }
-            else if (ownerType == TransactionOwnerType.TransactionOrder.ToInt())
+            else if (ownerType == TransactionOwnerType.CreditCard.ToInt())
             {
-                transactionOwner = coreContext.Query<ITransactionOrderRepository>().GetById(ownerId.Value);
+                transactionOwner = coreContext.Query<ICreditCardRepository>().GetById(ownerId.Value);
             }
             return transactionOwner;
         }

@@ -24,5 +24,30 @@ namespace aydoganfbank.web.api.Utility
                 public const string CHANGE_EMAIL = "/{personId}/change-email";
             }
         }
+
+        public static class UI
+        {
+            public static class AccountsController
+            {
+                public const string GET_ACCOUNT_BY_ID = "/{id}";
+                public const string GET_ACCOUNT_BY_ACCOUNT_NUMBER = "/?accountNumber={accountNumber}";
+                public const string GET_ACCOUNT_TYPE_BY_ID = "/accountType/{id}";
+                public const string GET_ACCOUNT_TYPE_BY_KEY = "/accountType/?type={key}";
+            }
+
+            public static class PersonsController
+            {
+                public const string GET_PERSON_BY_ID = "/{id}";
+                public const string GET_PERSON_BY_IDENTITY_NUMBER = "/?identityNumber={identityNumber}";
+            }
+
+            public static class CompaniesController
+            {
+                public const string GET_COMPANY_BY_ID = "/{id}";
+                public const string GET_COMPANY_BY_RESPONSABLE_PERSON_ID = "/?responsableId={responsableId}";
+                public const string GET_COMPANY_BY_RESPONSABLE_PERSON_IDENTITY_NUMBER = "/?responsableIdentityNumber={responsableIdentityNumber}";
+                public const string GET_COMPANY_BY_TAX_NUMBER = "/?taxNumber={taxNumber}";
+            }
+        }
     }
 }

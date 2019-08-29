@@ -10,7 +10,7 @@ using System.Linq;
 namespace AydoganFBank.AccountManagement.Domain
 {
 
-    public class AccountDomainEntity : IDomainEntity, ITransactionOwner, ICreditCardOwner, IAccountInfo
+    public class AccountDomainEntity : IDomainEntity, ITransactionOwner, ITransactionDetailOwner, ICreditCardOwner, IAccountInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -41,6 +41,9 @@ namespace AydoganFBank.AccountManagement.Domain
         int ICreditCardOwner.OwnerId => AccountId;
         CreditCardOwnerType ICreditCardOwner.CreditCardOwnerType => CreditCardOwnerType.Account;
         string ICreditCardOwner.AssetsUnit => AccountType.AssetsUnit;
+
+        int ITransactionDetailOwner.OwnerId => AccountId;
+        TransactionDetailOwnerType ITransactionDetailOwner.OwnerType => TransactionDetailOwnerType.Account;
 
         public AccountDomainEntity With(
             AccountTypeDomainEntity accountType, 
@@ -114,6 +117,18 @@ namespace AydoganFBank.AccountManagement.Domain
             return coreContext
                 .Query<IAccountTransactionRepository>()
                 .GetLastDateRangeListByTransactionOwner(this, startDate, endDate);
+        }
+
+        public List<TransactionDetailDomainEntity> GetLastTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetLastDateRangeListByTransactionDetailOwner(this, startDate, endDate);
+        }
+
+        public List<TransactionDetailDomainEntity> GetTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetDateRangeListByTransactionDetailOwner(this, startDate, endDate);
         }
 
 

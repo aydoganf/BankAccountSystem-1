@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionOrderDomainEntity : IDomainEntity, ITransactionOwner
+    public class TransactionOrderDomainEntity : IDomainEntity
     {
         #region IoC
         private readonly ITransactionOrderRepository transactionOrderRepository;
@@ -36,10 +36,6 @@ namespace AydoganFBank.AccountManagement.Domain
         public TransactionStatusDomainEntity TransactionStatus { get; set; }
 
         int IDomainEntity.Id => TransactionOrderId;
-        int ITransactionOwner.OwnerId => TransactionOrderId;
-        string ITransactionOwner.TransactionDetailDisplayName => string.Format("{0} - Transaction order", OperationDate.ToFormattedString());
-        string ITransactionOwner.AssetsUnit => ((ITransactionOwner)ToAccount).AssetsUnit;
-        TransactionOwnerType ITransactionOwner.OwnerType => TransactionOwnerType.TransactionOrder;
 
 
         private TransactionOrderDomainEntity With(

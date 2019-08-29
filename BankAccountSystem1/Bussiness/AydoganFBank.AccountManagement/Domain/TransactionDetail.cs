@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TransactionDetailDomainEntity : IDomainEntity, ITransactionHolder
+    public class TransactionDetailDomainEntity : IDomainEntity, ITransactionHolder, ITransactionDetailInfo
     {
         #region Ioc
         private readonly ICoreContext coreContext;
@@ -29,7 +29,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public string Description { get; set; }
         public DateTime CreateDate { get; set; }
         public AccountTransactionDomainEntity AccountTransaction { get; set; }
-        public ITransactionOwner TransactionOwner { get; set; }
+        public ITransactionDetailOwner TransactionDetailOwner { get; set; }
         public TransactionDirection TransactionDirection { get; set; }
 
 
@@ -38,18 +38,22 @@ namespace AydoganFBank.AccountManagement.Domain
         ITransactionInfo ITransactionHolder.TransactionInfo => AccountTransaction;
         DateTime ITransactionHolder.CreateDate => CreateDate;
 
+        int ITransactionDetailInfo.Id => TransactionDetailId;
+        string ITransactionDetailInfo.Description => Description;
+        ITransactionInfo ITransactionDetailInfo.TransactionInfo => AccountTransaction;
+        TransactionDirection ITransactionDetailInfo.TransactionDirection => TransactionDirection;
 
         public TransactionDetailDomainEntity With(
             string description,
             DateTime createDate,
             AccountTransactionDomainEntity accountTransaction,
-            ITransactionOwner transactionOwner,
+            ITransactionDetailOwner transactionDetailOwner,
             TransactionDirection transactionDirection)
         {
             Description = description;
             CreateDate = createDate;
             AccountTransaction = accountTransaction;
-            TransactionOwner = transactionOwner;
+            TransactionDetailOwner = transactionDetailOwner;
             TransactionDirection = transactionDirection;
 
             return this;
@@ -83,18 +87,15 @@ namespace AydoganFBank.AccountManagement.Domain
             return dbContext.TransactionDetail.FirstOrDefault(td => td.TransactionDetailId == id);
         }
 
-        private ITransactionOwner GetTransactionOwner(int ownerType, int ownerId)
+        private ITransactionDetailOwner GetTransactionDetailOwner(int ownerType, int ownerId)
         {
-            ITransactionOwner transactionOwner = null;
+            ITransactionDetailOwner transactionDetailOwner = null;
 
-            if (ownerType == TransactionOwnerType.Account.ToInt())
-                transactionOwner = coreContext.Query<IAccountRepository>().GetById(ownerId);
-            else if (ownerType == TransactionOwnerType.CreditCard.ToInt())
-                transactionOwner = coreContext.Query<ICreditCardRepository>().GetById(ownerId);
-            else if (ownerType == TransactionOwnerType.TransactionOrder.ToInt())
-                transactionOwner = coreContext.Query<ITransactionOrderRepository>().GetById(ownerId);
-
-            return transactionOwner;
+            if (ownerType == TransactionDetailOwnerType.Account.ToInt())
+                transactionDetailOwner = coreContext.Query<IAccountRepository>().GetById(ownerId);
+            else if (ownerType == TransactionDetailOwnerType.CreditCard.ToInt())
+                transactionDetailOwner = coreContext.Query<ICreditCardRepository>().GetById(ownerId);
+            return transactionDetailOwner;
         }
 
         #region Mapping overrides
@@ -103,8 +104,8 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.AccountTransactionId = domainEntity.AccountTransaction.TransactionId;
             dbEntity.CreateDate = domainEntity.CreateDate;
             dbEntity.Description = domainEntity.Description;
-            dbEntity.OwnerId = domainEntity.TransactionOwner.OwnerId;
-            dbEntity.OwnerType = domainEntity.TransactionOwner.OwnerType.ToInt();
+            dbEntity.OwnerId = domainEntity.TransactionDetailOwner.OwnerId;
+            dbEntity.OwnerType = domainEntity.TransactionDetailOwner.OwnerType.ToInt();
             dbEntity.TransactionDirection = domainEntity.TransactionDirection.ToInt();
         }
 
@@ -118,28 +119,41 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.Description = dbEntity.Description;
             domainEntity.TransactionDetailId = dbEntity.TransactionDetailId;
             domainEntity.TransactionDirection = (TransactionDirection)Enum.Parse(typeof(TransactionDirection), dbEntity.TransactionDirection.ToString());
-            domainEntity.TransactionOwner = GetTransactionOwner(dbEntity.OwnerType, dbEntity.OwnerId);
+            domainEntity.TransactionDetailOwner = GetTransactionDetailOwner(dbEntity.OwnerType, dbEntity.OwnerId);
         }
         #endregion
 
-        public List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionOwner(
-            ITransactionOwner transactionOwner, DateTime startDate, DateTime endDate)
+        public List<TransactionDetailDomainEntity> GetDateRangeListByTransactionDetailOwner(
+            ITransactionDetailOwner transactionDetailOwner, DateTime startDate, DateTime endDate)
+        {
+            return GetOrderedAscListBy(
+                td => 
+                    td.OwnerType == transactionDetailOwner.OwnerType.ToInt() && td.OwnerId == transactionDetailOwner.OwnerId && 
+                    td.CreateDate >= startDate && td.CreateDate <= endDate,
+                td => 
+                    td.CreateDate)
+                .ToList();
+        }
+
+        public List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionDetailOwner(
+            ITransactionDetailOwner transactionOwner, DateTime startDate, DateTime endDate)
         {
             return GetOrderedDescListBy(
                 td =>
-                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId && td.CreateDate >= startDate && td.CreateDate <= endDate,
+                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId && 
+                    td.CreateDate >= startDate && td.CreateDate <= endDate,
                 td =>
                     td.CreateDate)
                 .ToList();                
         }
 
-        public List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionOwner(
-            ITransactionOwner transactionOwner, TransactionDirection transactionDirection, DateTime startDate, DateTime endDate)
+        public List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionDetailOwner(
+            ITransactionDetailOwner transactionOwner, TransactionDirection transactionDirection, DateTime startDate, DateTime endDate)
         {
             return GetOrderedDescListBy(
                 td =>
-                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId && td.CreateDate >= startDate && td.CreateDate <= endDate &&
-                    td.TransactionDirection == transactionDirection.ToInt(),
+                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId && 
+                    td.CreateDate >= startDate && td.CreateDate <= endDate && td.TransactionDirection == transactionDirection.ToInt(),
                 td =>
                     td.CreateDate)
                 .ToList();
@@ -149,7 +163,11 @@ namespace AydoganFBank.AccountManagement.Domain
 
     public interface ITransactionDetailRepository : IRepository<TransactionDetailDomainEntity>
     {
-        List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionOwner(ITransactionOwner transactionOwner, DateTime startDate, DateTime endDate);
-        List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionOwner(ITransactionOwner transactionOwner, TransactionDirection transactionDirection, DateTime startDate, DateTime endDate);
+        List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionDetailOwner(
+            ITransactionDetailOwner transactionDetailOwner, DateTime startDate, DateTime endDate);
+        List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionDetailOwner(
+            ITransactionDetailOwner transactionDetailOwner, TransactionDirection transactionDirection, DateTime startDate, DateTime endDate);
+        List<TransactionDetailDomainEntity> GetDateRangeListByTransactionDetailOwner(
+            ITransactionDetailOwner transactionDetailOwner, DateTime startDate, DateTime endDate);
     }
 }

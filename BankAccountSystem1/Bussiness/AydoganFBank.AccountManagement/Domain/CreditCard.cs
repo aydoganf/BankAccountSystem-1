@@ -10,7 +10,7 @@ using AydoganFBank.Context.Exception;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardDomainEntity : IDomainEntity, ITransactionOwner, ICreditCardInfo
+    public class CreditCardDomainEntity : IDomainEntity, ITransactionOwner, ITransactionDetailOwner, ICreditCardInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -44,6 +44,9 @@ namespace AydoganFBank.AccountManagement.Domain
         string ITransactionOwner.TransactionDetailDisplayName => string.Format("Credit card - {0}", CreditCardMaskedNumber);
         string ITransactionOwner.AssetsUnit => CreditCardOwner.AssetsUnit;
 
+        int ITransactionDetailOwner.OwnerId => CreditCardId;
+        TransactionDetailOwnerType ITransactionDetailOwner.OwnerType => TransactionDetailOwnerType.CreditCard;
+
         #region Calculated properties
         public string CreditCardMaskedNumber
         {
@@ -60,6 +63,7 @@ namespace AydoganFBank.AccountManagement.Domain
                 return Limit - Debt;
             }
         }
+
         #endregion
 
         public CreditCardDomainEntity With(
@@ -123,16 +127,28 @@ namespace AydoganFBank.AccountManagement.Domain
             return coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(this, month, year);
         }
 
-        public List<AccountTransactionDomainEntity> GetTransactionInfoListByDateRange(DateTime startDate, DateTime endDate)
+        public List<AccountTransactionDomainEntity> GetLastDateRangeCreditCardTransactionList(DateTime startDate, DateTime endDate)
         {
             return coreContext.Query<IAccountTransactionRepository>()
-                .GetLastOutgoingDateRangeListByTransactionOwner(this, startDate, endDate);
+                .GetLastDateRangeListByTransactionOwner(this, startDate, endDate);
         }
 
         public List<CreditCardPaymentDomainEntity> GetLastExtrePayments()
         {
             var lastExtre = GetLastCreditCardExtre();
             return coreContext.Query<ICreditCardPaymentRepository>().GetListByCreditCardExtre(lastExtre);
+        }
+
+        public List<TransactionDetailDomainEntity> GetLastTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetLastDateRangeListByTransactionDetailOwner(this, startDate, endDate);
+        }
+
+        public List<TransactionDetailDomainEntity> GetTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetDateRangeListByTransactionDetailOwner(this, startDate, endDate);
         }
     }
 
