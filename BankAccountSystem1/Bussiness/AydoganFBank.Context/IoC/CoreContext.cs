@@ -7,7 +7,7 @@ namespace AydoganFBank.Context.IoC
 {
     public class CoreContext : ICoreContext
     {
-        private readonly IContext context;
+        private readonly IContainer container;
 
         private AydoganFBankDbContext _dbContext;
         private AydoganFBankDbContext dbContext
@@ -24,19 +24,19 @@ namespace AydoganFBank.Context.IoC
 
         AydoganFBankDbContext ICoreContext.DBContext => dbContext;
 
-        public CoreContext(IContext context)
+        public CoreContext(IContainer container)
         {
-            this.context = context;
+            this.container = container;
         }
 
         public T New<T>()
         {
-            return context.GetInstance<T>();
+            return container.GetInstance<T>();
         }
 
         public T Query<T>() where T : IQueryRepository
         {
-            return context.GetInstance<T>();
+            return container.GetInstance<T>();
         }
 
         //public ICoreContext WithNewContext()

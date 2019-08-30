@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aydoganfbank.web.api.Utility;
+using AydoganFBank.AccountManagement.Api;
+using AydoganFBank.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aydoganfbank.web.api.Controllers
@@ -10,11 +13,18 @@ namespace aydoganfbank.web.api.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IServiceContext serviceContext;
+
+        public ValuesController(IServiceContext serviceContext)
+        {
+            this.serviceContext = serviceContext;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<ApiResponse<IPersonInfo>> GetPersonById()
         {
-            return new string[] { "value1", "value2" };
+            return this.HandleResult(() => serviceContext.PersonManager.GetPersonInfo(1));
         }
 
         // GET api/values/5
