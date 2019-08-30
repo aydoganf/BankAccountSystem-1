@@ -93,9 +93,7 @@ namespace AydoganFBank.AccountManagement.Domain
         #endregion
     }
 
-    public class CompanyRepository : 
-        Repository<CompanyDomainEntity, Company>, 
-        ICompanyRepository
+    public class CompanyRepository : Repository<CompanyDomainEntity, Company>, ICompanyRepository
     {
         public CompanyRepository(
             ICoreContext coreContext,
@@ -104,6 +102,32 @@ namespace AydoganFBank.AccountManagement.Domain
             : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
+
+        #region Mapping overrides
+        public override void MapToDbEntity(CompanyDomainEntity domainEntity, Company dbEntity)
+        {
+            dbEntity.Address = domainEntity.Address;
+            dbEntity.CompanyName = domainEntity.CompanyName;
+            dbEntity.PhoneNumber = domainEntity.PhoneNumber;
+            dbEntity.ResponsablePersonId = domainEntity.ResponsablePerson.PersonId;
+            dbEntity.TaxNumber = domainEntity.TaxNumber;
+            dbEntity.AccountId = domainEntity.Account.AccountId;
+        }
+
+        public override void MapToDomainObject(CompanyDomainEntity domainEntity, Company dbEntity)
+        {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
+            domainEntity.Address = dbEntity.Address;
+            domainEntity.CompanyId = dbEntity.CompanyId;
+            domainEntity.CompanyName = dbEntity.CompanyName;
+            domainEntity.PhoneNumber = dbEntity.PhoneNumber;
+            domainEntity.ResponsablePerson = coreContext.Query<IPersonRepository>().GetById(dbEntity.ResponsablePersonId);
+            domainEntity.TaxNumber = dbEntity.TaxNumber;
+            domainEntity.Account = coreContext.Query<IAccountRepository>().GetById(dbEntity.AccountId);
+        }
+        #endregion
 
         public override CompanyDomainEntity GetById(int id)
         {

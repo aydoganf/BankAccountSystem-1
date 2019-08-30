@@ -10,7 +10,7 @@ using AydoganFBank.Context.Exception;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardDomainEntity : IDomainEntity, ITransactionOwner, ICreditCardInfo
+    public class CreditCardDomainEntity : IDomainEntity, ITransactionOwner, ITransactionDetailOwner, ICreditCardInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -44,6 +44,9 @@ namespace AydoganFBank.AccountManagement.Domain
         string ITransactionOwner.TransactionDetailDisplayName => string.Format("Credit card - {0}", CreditCardMaskedNumber);
         string ITransactionOwner.AssetsUnit => CreditCardOwner.AssetsUnit;
 
+        int ITransactionDetailOwner.OwnerId => CreditCardId;
+        TransactionDetailOwnerType ITransactionDetailOwner.OwnerType => TransactionDetailOwnerType.CreditCard;
+
         #region Calculated properties
         public string CreditCardMaskedNumber
         {
@@ -60,6 +63,7 @@ namespace AydoganFBank.AccountManagement.Domain
                 return Limit - Debt;
             }
         }
+
         #endregion
 
         public CreditCardDomainEntity With(
@@ -123,10 +127,10 @@ namespace AydoganFBank.AccountManagement.Domain
             return coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(this, month, year);
         }
 
-        public List<AccountTransactionDomainEntity> GetTransactionInfoListByDateRange(DateTime startDate, DateTime endDate)
+        public List<AccountTransactionDomainEntity> GetLastDateRangeCreditCardTransactionList(DateTime startDate, DateTime endDate)
         {
             return coreContext.Query<IAccountTransactionRepository>()
-                .GetLastOutgoingDateRangeListByTransactionOwner(this, startDate, endDate);
+                .GetLastDateRangeListByTransactionOwner(this, startDate, endDate);
         }
 
         public List<CreditCardPaymentDomainEntity> GetLastExtrePayments()
@@ -134,12 +138,21 @@ namespace AydoganFBank.AccountManagement.Domain
             var lastExtre = GetLastCreditCardExtre();
             return coreContext.Query<ICreditCardPaymentRepository>().GetListByCreditCardExtre(lastExtre);
         }
+
+        public List<TransactionDetailDomainEntity> GetLastTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetLastDateRangeListByTransactionDetailOwner(this, startDate, endDate);
+        }
+
+        public List<TransactionDetailDomainEntity> GetTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetDateRangeListByTransactionDetailOwner(this, startDate, endDate);
+        }
     }
 
-    public class CreditCardRepository : 
-        Repository<CreditCardDomainEntity, CreditCard>,
-        IDomainObjectBuilderRepository<CreditCardDomainEntity, CreditCard>,
-        ICreditCardRepository
+    public class CreditCardRepository : Repository<CreditCardDomainEntity, CreditCard>, ICreditCardRepository
     {
         public CreditCardRepository(ICoreContext coreContext) 
             : base(coreContext, null, null)
@@ -188,15 +201,11 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.ValidYear = domainEntity.ValidYear;
         }
 
-        public override CreditCardDomainEntity MapToDomainObject(CreditCard dbEntity)
-        {
-            var domainEntity = coreContext.New<CreditCardDomainEntity>();
-            MapToDomainObject(domainEntity, dbEntity);
-            return domainEntity;
-        }
-
         public override void MapToDomainObject(CreditCardDomainEntity domainEntity, CreditCard dbEntity)
         {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
             domainEntity.CreditCardId = dbEntity.CreditCardId;
             domainEntity.CreditCardNumber = dbEntity.CreditCardNumber;
             domainEntity.CreditCardOwner = GetCreditCardOwner(dbEntity.OwnerType, dbEntity.OwnerId); 
@@ -208,17 +217,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.ValidMonth = dbEntity.ValidMonth;
             domainEntity.ValidYear = dbEntity.ValidYear;
         }
-
-        public override IEnumerable<CreditCardDomainEntity> MapToDomainObjectList(IEnumerable<CreditCard> dbEntities)
-        {
-            List<CreditCardDomainEntity> domainEntities = new List<CreditCardDomainEntity>();
-            foreach (var dbEntity in dbEntities)
-            {
-                domainEntities.Add(MapToDomainObject(dbEntity));
-            }
-            return domainEntities;
-        }
-
         #endregion
 
         public CreditCardDomainEntity GetByCreditCardOwner(ICreditCardOwner creditCardOwner)

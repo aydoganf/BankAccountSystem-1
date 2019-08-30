@@ -14,6 +14,11 @@ namespace AydoganFBank.AccountManagement.Api
             return Convert.ToInt32(transactionOwnerType);
         }
 
+        public static int ToInt(this TransactionDetailOwnerType transactionDetailOwnerType)
+        {
+            return Convert.ToInt32(transactionDetailOwnerType);
+        }
+
         public static int ToInt(this TransactionStatusEnum transactionStatus)
         {
             return Convert.ToInt32(transactionStatus);

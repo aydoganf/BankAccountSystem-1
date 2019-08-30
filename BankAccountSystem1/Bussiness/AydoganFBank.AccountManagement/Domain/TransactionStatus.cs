@@ -5,6 +5,7 @@ using AydoganFBank.Context.IoC;
 using AydoganFBank.Context.DataAccess;
 using System.Linq;
 using TransactionStatus = AydoganFBank.Database.TransactionStatus;
+using AydoganFBank.Database;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -45,9 +46,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class TransactionStatusRepository :
-        Repository<TransactionStatusDomainEntity, TransactionStatus>,
-        ITransactionStatusRepository
+    public class TransactionStatusRepository : Repository<TransactionStatusDomainEntity, TransactionStatus>, ITransactionStatusRepository
     {
         public TransactionStatusRepository(
             ICoreContext coreContext,
@@ -56,6 +55,24 @@ namespace AydoganFBank.AccountManagement.Domain
             : base(coreContext, domainEntityBuilder, dbEntityMapper)
         {
         }
+
+        #region Mapping overrides
+        public override void MapToDbEntity(TransactionStatusDomainEntity domainEntity, TransactionStatus dbEntity)
+        {
+            dbEntity.StatusKey = domainEntity.StatusKey;
+            dbEntity.StatusName = domainEntity.StatusName;
+        }
+
+        public override void MapToDomainObject(TransactionStatusDomainEntity domainEntity, TransactionStatus dbEntity)
+        {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
+            domainEntity.StatusId = dbEntity.TransactionStatusId;
+            domainEntity.StatusKey = dbEntity.StatusKey;
+            domainEntity.StatusName = dbEntity.StatusName;
+        }
+        #endregion
 
         public override TransactionStatusDomainEntity GetById(int id)
         {

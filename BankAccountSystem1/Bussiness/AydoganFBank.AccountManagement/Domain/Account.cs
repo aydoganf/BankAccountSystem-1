@@ -10,7 +10,7 @@ using System.Linq;
 namespace AydoganFBank.AccountManagement.Domain
 {
 
-    public class AccountDomainEntity : IDomainEntity, ITransactionOwner, ICreditCardOwner, IAccountInfo
+    public class AccountDomainEntity : IDomainEntity, ITransactionOwner, ITransactionDetailOwner, ICreditCardOwner, IAccountInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -41,6 +41,9 @@ namespace AydoganFBank.AccountManagement.Domain
         int ICreditCardOwner.OwnerId => AccountId;
         CreditCardOwnerType ICreditCardOwner.CreditCardOwnerType => CreditCardOwnerType.Account;
         string ICreditCardOwner.AssetsUnit => AccountType.AssetsUnit;
+
+        int ITransactionDetailOwner.OwnerId => AccountId;
+        TransactionDetailOwnerType ITransactionDetailOwner.OwnerType => TransactionDetailOwnerType.Account;
 
         public AccountDomainEntity With(
             AccountTypeDomainEntity accountType, 
@@ -116,6 +119,18 @@ namespace AydoganFBank.AccountManagement.Domain
                 .GetLastDateRangeListByTransactionOwner(this, startDate, endDate);
         }
 
+        public List<TransactionDetailDomainEntity> GetLastTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetLastDateRangeListByTransactionDetailOwner(this, startDate, endDate);
+        }
+
+        public List<TransactionDetailDomainEntity> GetTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetDateRangeListByTransactionDetailOwner(this, startDate, endDate);
+        }
+
 
         #region Api
         int IAccountInfo.Id => AccountId;
@@ -126,10 +141,7 @@ namespace AydoganFBank.AccountManagement.Domain
         #endregion
     }
 
-    public class AccountRepository : 
-        OrderedQueryRepository<AccountDomainEntity, Account>,
-        IAccountRepository,
-        IDomainObjectBuilderRepository<AccountDomainEntity, Account>
+    public class AccountRepository : OrderedQueryRepository<AccountDomainEntity, Account>, IAccountRepository
     {
         private const int ACCOUNT_NUMBER_START = 1000000;
 
@@ -154,16 +166,6 @@ namespace AydoganFBank.AccountManagement.Domain
 
         #region Mapper overrides
 
-        public override AccountDomainEntity MapToDomainObject(Account account)
-        {
-            if (account == null)
-                return null;
-
-            var domainEntity = coreContext.New<AccountDomainEntity>();
-            MapToDomainObject(domainEntity, account);
-            return domainEntity;
-        }
-
         public override void MapToDomainObject(AccountDomainEntity domainEntity, Account dbEntity)
         {
             if (domainEntity == null || dbEntity == null)
@@ -174,16 +176,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.AccountType = coreContext.Query<IAccountTypeRepository>().GetById(dbEntity.AccountTypeId);
             domainEntity.Balance = dbEntity.Balance;
             domainEntity.AccountOwner = GetAccountOwner(dbEntity);
-        }
-
-        public override IEnumerable<AccountDomainEntity> MapToDomainObjectList(IEnumerable<Account> entities)
-        {
-            List<AccountDomainEntity> accounts = new List<AccountDomainEntity>();
-            foreach (var entity in entities)
-            {
-                accounts.Add(MapToDomainObject(entity));
-            }
-            return accounts;
         }
 
         public override void MapToDbEntity(AccountDomainEntity domainEntity, Account dbEntity)

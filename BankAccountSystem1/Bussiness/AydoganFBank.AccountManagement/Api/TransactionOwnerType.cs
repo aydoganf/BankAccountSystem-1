@@ -7,7 +7,6 @@ namespace AydoganFBank.AccountManagement.Api
     public enum TransactionOwnerType
     {
         Account = 1,
-        TransactionOrder,
         CreditCard
     }
 }

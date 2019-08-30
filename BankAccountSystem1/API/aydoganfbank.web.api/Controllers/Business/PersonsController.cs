@@ -22,20 +22,33 @@ namespace aydoganfbank.web.api.Controllers.Business
         [HttpPut("")]
         public ActionResult<ApiResponse<IPersonInfo>> CreatePerson([FromBody] CreatePersonMessage message)
         {
-            return this.HandleResult(() => serviceContext.PersonManager.CreatePerson(
-                message.FirstName, message.LastName, message.EmailAddress, message.IdentityNumber));
+            return this.HandleResult(
+                () => 
+                    serviceContext.PersonManager.CreatePerson(
+                        message.FirstName, 
+                        message.LastName, 
+                        message.EmailAddress, 
+                        message.IdentityNumber));
         }
 
-        [HttpPut("/{personId}/changePersonLastName")]
+        [HttpPut(ApiURLActions.Business.PersonsController.CHANGE_LAST_NAME)]
         public ActionResult<ApiResponse<IPersonInfo>> ChangePersonLastName(int personId, [FromBody] ChangePersonLastNameMessage message)
         {
-            return this.HandleResult(() => serviceContext.PersonManager.ChangePersonLastName(personId, message.LastName));
+            return this.HandleResult(
+                () => 
+                    serviceContext.PersonManager.ChangePersonLastName(
+                        personId, 
+                        message.LastName));
         }
 
-        [HttpPut("/{personId}/changePersonEmailAddress")]
+        [HttpPut(ApiURLActions.Business.PersonsController.CHANGE_EMAIL)]
         public ActionResult<ApiResponse<IPersonInfo>> ChangePersonEmailAddress(int personId, [FromBody] ChangePersonEmailAddressMessage message)
         {
-            return this.HandleResult(() => serviceContext.PersonManager.ChangePersonEmailAddress(personId, message.EmailAddress));
+            return this.HandleResult(
+                () => 
+                    serviceContext.PersonManager.ChangePersonEmailAddress(
+                        personId, 
+                        message.EmailAddress));
         }
     }
 }

@@ -91,9 +91,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class PersonRepository : 
-        OrderedQueryRepository<PersonDomainEntity, Person>, 
-        IPersonRepository
+    public class PersonRepository : OrderedQueryRepository<PersonDomainEntity, Person>, IPersonRepository
     {
         public PersonRepository(
             ICoreContext coreContext,
@@ -102,6 +100,27 @@ namespace AydoganFBank.AccountManagement.Domain
             : base (coreContext, domainEntityBuilder, dbEntityMapper)
         {            
         }
+
+        #region Mapping overrides
+        public override void MapToDbEntity(PersonDomainEntity domainEntity, Person dbEntity)
+        {
+            dbEntity.EmailAddress = domainEntity.EmailAddress;
+            dbEntity.FirstName = domainEntity.FirstName;
+            dbEntity.LastName = domainEntity.LastName;
+        }
+
+        public override void MapToDomainObject(PersonDomainEntity domainEntity, Person dbEntity)
+        {
+            if (domainEntity == null || dbEntity == null)
+                return;
+
+            domainEntity.PersonId = dbEntity.PersonId;
+            domainEntity.EmailAddress = dbEntity.EmailAddress;
+            domainEntity.FirstName = dbEntity.FirstName;
+            domainEntity.LastName = dbEntity.LastName;
+            domainEntity.IdentityNumber = dbEntity.IdentityNumber;
+        }
+        #endregion
 
         protected override Person GetDbEntityById(int id)
         {

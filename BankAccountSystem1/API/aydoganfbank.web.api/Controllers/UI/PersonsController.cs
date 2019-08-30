@@ -23,16 +23,20 @@ namespace aydoganfbank.web.api.Controllers.UI
         }
         #endregion
 
-        [HttpGet("/{personId}")]
-        public ActionResult<ApiResponse<IPersonInfo>> GetPersonById(int personId)
+        [HttpGet(ApiURLActions.UI.PersonsController.GET_PERSON_BY_ID)]
+        public ActionResult<ApiResponse<IPersonInfo>> GetPersonById(int id)
         {
-            return this.HandleResult(() => serviceContext.PersonManager.GetPersonInfo(personId));
+            return this.HandleResult(
+                () => 
+                    serviceContext.PersonManager.GetPersonInfo(id));
         }
 
-        [HttpGet("/identityNumber/{identityNumber}")]
-        public ActionResult<ApiResponse<IPersonInfo>> GetPersonByIdentityNumber(string identityNumber)
+        [HttpGet(ApiURLActions.UI.PersonsController.GET_PERSON_BY_IDENTITY_NUMBER)]
+        public ActionResult<ApiResponse<IPersonInfo>> GetPersonByIdentityNumber([FromQuery] string identityNumber)
         {
-            return this.HandleResult(() => serviceContext.PersonManager.GetPersonByIdentityNumber(identityNumber));
+            return this.HandleResult(
+                () => 
+                    serviceContext.PersonManager.GetPersonByIdentityNumber(identityNumber));
         }
 
 

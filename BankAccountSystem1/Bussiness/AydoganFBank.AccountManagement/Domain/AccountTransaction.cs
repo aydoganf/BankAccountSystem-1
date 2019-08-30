@@ -97,20 +97,18 @@ namespace AydoganFBank.AccountManagement.Domain
             if (transactionDirection == TransactionDirection.In)
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, ToTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, (ITransactionDetailOwner)ToTransactionOwner, transactionDirection);
             }
             else
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, FromTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, (ITransactionDetailOwner)FromTransactionOwner, transactionDirection);
             }
         }
     }
 
-    public class AccountTransactionRepository : 
-        OrderedQueryRepository<AccountTransactionDomainEntity, AccountTransaction>,
-        IAccountTransactionRepository,
-        IDomainObjectBuilderRepository<AccountTransactionDomainEntity, AccountTransaction>
+    public class AccountTransactionRepository : OrderedQueryRepository<AccountTransactionDomainEntity, AccountTransaction>,
+        IAccountTransactionRepository
     {
         public AccountTransactionRepository(ICoreContext coreContext) : base(coreContext, null, null)
         {
@@ -122,27 +120,19 @@ namespace AydoganFBank.AccountManagement.Domain
                 return null;
 
             ITransactionOwner transactionOwner = null;
+            
             if (ownerType == TransactionOwnerType.Account.ToInt())
             {
                 transactionOwner = coreContext.Query<IAccountRepository>().GetById(ownerId.Value);
             }
-            else if (ownerType == TransactionOwnerType.TransactionOrder.ToInt())
+            else if (ownerType == TransactionOwnerType.CreditCard.ToInt())
             {
-                transactionOwner = coreContext.Query<ITransactionOrderRepository>().GetById(ownerId.Value);
+                transactionOwner = coreContext.Query<ICreditCardRepository>().GetById(ownerId.Value);
             }
             return transactionOwner;
         }
 
         #region Mapping overrides
-        public override AccountTransactionDomainEntity MapToDomainObject(AccountTransaction dbEntity)
-        {
-            if (dbEntity == null)
-                return null;
-
-            var domainEntity = coreContext.New<AccountTransactionDomainEntity>();
-            MapToDomainObject(domainEntity, dbEntity);
-            return domainEntity;
-        }
 
         public override void MapToDomainObject(AccountTransactionDomainEntity domainEntity, AccountTransaction dbEntity)
         {
@@ -156,16 +146,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.ToTransactionOwner = GetTransactionOwner(dbEntity.ToOwnerType, dbEntity.ToOwnerId);
             domainEntity.TransactionStatus = coreContext.Query<ITransactionStatusRepository>().GetById(dbEntity.TransactionStatusId);
             domainEntity.TransactionType = coreContext.Query<ITransactionTypeRepository>().GetById(dbEntity.TransactionTypeId);
-        }
-
-        public override IEnumerable<AccountTransactionDomainEntity> MapToDomainObjectList(IEnumerable<AccountTransaction> dbEntities)
-        {
-            List<AccountTransactionDomainEntity> domainEntities = new List<AccountTransactionDomainEntity>();
-            foreach (var dbEntity in dbEntities)
-            {
-                domainEntities.Add(MapToDomainObject(dbEntity));
-            }
-            return domainEntities;
         }
 
         public override void MapToDbEntity(AccountTransactionDomainEntity domainEntity, AccountTransaction dbEntity)
