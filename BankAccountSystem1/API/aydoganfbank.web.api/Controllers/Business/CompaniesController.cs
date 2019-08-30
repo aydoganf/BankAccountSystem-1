@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aydoganfbank.web.api.bussiness.Inputs.Company;
 using aydoganfbank.web.api.Utility;
 using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.Service;

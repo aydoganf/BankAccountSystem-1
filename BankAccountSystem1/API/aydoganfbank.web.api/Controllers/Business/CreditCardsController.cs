@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aydoganfbank.web.api.bussiness.Inputs.CreditCard;
 using aydoganfbank.web.api.Utility;
 using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.Service;
@@ -39,7 +40,7 @@ namespace aydoganfbank.web.api.Controllers.Business
                                 message.ValidYear,
                                 message.SecurityCode,
                                 message.IsInternetUsageOpen,
-                                message.OwnerId));
+                                message.CreditCardOwner.OwnerId));
                 case CreditCardOwnerType.Company:
                     return this.HandleResult(
                         () =>
@@ -51,7 +52,7 @@ namespace aydoganfbank.web.api.Controllers.Business
                                 message.ValidYear,
                                 message.SecurityCode,
                                 message.IsInternetUsageOpen,
-                                message.OwnerId));
+                                message.CreditCardOwner.OwnerId));
                 default:
                     return BadRequest();
             }
