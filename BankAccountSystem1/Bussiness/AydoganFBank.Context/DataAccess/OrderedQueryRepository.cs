@@ -12,10 +12,8 @@ namespace AydoganFBank.Context.DataAccess
         where TDbEntity : class
     {
         public OrderedQueryRepository(
-            ICoreContext coreContext,
-            IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder,
-            IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper)
-            : base(coreContext, domainEntityBuilder, dbEntityMapper)
+            ICoreContext coreContext)
+            : base(coreContext)
         {
         }
 

@@ -61,7 +61,9 @@
     <Compile Include="Exception\ServiceException.cs" />
     <Compile Include="DataAccess\IDomainEntity.cs" />
     <Compile Include="IoC\CoreContext.cs" />
+    <Compile Include="IoC\CoreContextConfigurer.cs" />
     <Compile Include="IoC\ICoreContext.cs" />
+    <Compile Include="IoC\ICoreContextConfigurer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

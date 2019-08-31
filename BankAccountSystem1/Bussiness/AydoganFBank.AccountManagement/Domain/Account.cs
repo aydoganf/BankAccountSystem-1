@@ -131,6 +131,12 @@ namespace AydoganFBank.AccountManagement.Domain
                 .GetDateRangeListByTransactionDetailOwner(this, startDate, endDate);
         }
 
+        public List<TransactionDetailDomainEntity> GetLastTransactionDetailDateRangeAndTransactionDirectionList(
+            TransactionDirection transactionDirection, DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ITransactionDetailRepository>()
+                .GetLastDateRangeAndTransactionDirectionListByTransactionDetailOwner(this, transactionDirection, startDate, endDate);
+        }
 
         #region Api
         int IAccountInfo.Id => AccountId;
@@ -146,7 +152,7 @@ namespace AydoganFBank.AccountManagement.Domain
         private const int ACCOUNT_NUMBER_START = 1000000;
 
         public AccountRepository(ICoreContext coreContext) 
-            : base(coreContext, null, null)
+            : base(coreContext)
         {
         }
 

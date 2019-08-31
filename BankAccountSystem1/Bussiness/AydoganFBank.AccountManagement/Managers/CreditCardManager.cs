@@ -10,12 +10,26 @@ namespace AydoganFBank.AccountManagement.Managers
     {
         #region IoC
         private readonly ICoreContext coreContext;
+        private readonly AccountManager accountManager;
 
-        public CreditCardManager(ICoreContext coreContext)
+        public CreditCardManager(ICoreContext coreContext, AccountManager accountManager)
         {
             this.coreContext = coreContext;
+            this.accountManager = accountManager;
         }
         #endregion
+
+        internal CreditCardDomainEntity GetCreditCardById(int creditCardId)
+        {
+            return coreContext.Query<ICreditCardRepository>()
+                .GetById(creditCardId);
+        }
+
+        internal CreditCardDomainEntity GetCreditCardBySecurityInfos(
+            string creditCardNumber, string validMonth, string validYear, string securityCode)
+        {
+            return coreContext.Query<ICreditCardRepository>().GetBySecurityInfos(creditCardNumber, validMonth, validYear, securityCode);
+        }
 
         private CreditCardDomainEntity CreateCreditCard(decimal limit, int extreDate, int type, string validMonth, string validYear, string securityCode,
             bool isInternetUsageOpen, ICreditCardOwner creditCardOwner)
@@ -75,23 +89,29 @@ namespace AydoganFBank.AccountManagement.Managers
 
         internal CreditCardDomainEntity DoCreditCardPayment(int creditCardId, decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)
         {
-            var creditCard = coreContext.Query<ICreditCardRepository>()
-                .GetById(creditCardId);
+            var creditCard = GetCreditCardById(creditCardId);
 
             return DoCreditCardPayment(creditCard, amount, instalmentCount, toTransactionOwner);
         }
 
         internal CreditCardDomainEntity DoCreditCardPayment(int creditCardId, decimal amount, int instalmentCount, int toAccountId)
         {
-            var creditCard = coreContext.Query<ICreditCardRepository>()
-                .GetById(creditCardId);
+            var creditCard = GetCreditCardById(creditCardId);
 
-            var toAccount = coreContext.Query<IAccountRepository>()
-                .GetById(toAccountId);
+            var toAccount = accountManager.GetAccountById(toAccountId);
 
             return DoCreditCardPayment(creditCard, amount, instalmentCount, toAccount);
         }
 
+        internal CreditCardDomainEntity DoCreditCardPayment(
+            string creditCardNumber, string validMonth, string validYear, string securityCode, 
+            decimal amount, int instalmentCount, int toAccountId)
+        {
+            var creditCard = GetCreditCardBySecurityInfos(creditCardNumber, validMonth, validYear, securityCode);
+            var toAccount = accountManager.GetAccountById(toAccountId);
+
+            return DoCreditCardPayment(creditCard, amount, instalmentCount, toAccount);
+        }
 
         #region API Implementations
 
@@ -118,6 +138,11 @@ namespace AydoganFBank.AccountManagement.Managers
         ICreditCardInfo ICreditCardManager.DoCreditCardPayment(int creditCardId, decimal amount, int instalmentCount, int toAccountId)
         {
             return DoCreditCardPayment(creditCardId, amount, instalmentCount, toAccountId);
+        }
+
+        ICreditCardInfo ICreditCardManager.DoCreditCardPayment(string creditCardNumber, string validMonth, string validYear, string securityCode, decimal amount, int instalmentCount, int toAccountId)
+        {
+            return DoCreditCardPayment(creditCardNumber, validMonth, validYear, securityCode, amount, instalmentCount, toAccountId);
         }
         #endregion
     }

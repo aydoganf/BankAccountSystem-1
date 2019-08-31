@@ -15,17 +15,18 @@ namespace AydoganFBank.Context.DataAccess
     {
         protected readonly ICoreContext coreContext;
         protected readonly AydoganFBankDbContext dbContext;
-        protected readonly IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder;
-        protected readonly IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper;
+        //protected readonly IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder;
+        //protected readonly IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper;
 
         public Repository(
-            ICoreContext coreContext,
-            IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder,
-            IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper)
+            ICoreContext coreContext
+            //IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder,
+            //IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper
+            )
         {
             this.coreContext = coreContext;
-            this.domainEntityBuilder = domainEntityBuilder;
-            this.dbEntityMapper = dbEntityMapper;
+            //this.domainEntityBuilder = domainEntityBuilder;
+            //this.dbEntityMapper = dbEntityMapper;
 
             dbContext = this.coreContext.DBContext;
         }

@@ -6,6 +6,7 @@ using AydoganFBank.AccountManagement.Domain;
 using AydoganFBank.AccountManagement.Managers;
 using AydoganFBank.AccountManagement.Service;
 using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -55,6 +56,11 @@ namespace aydoganfbank.web.api
         {
             var container = new Container(_ => 
             {
+                _.For<ICoreContextConfigurer>().Use<CoreContextConfigurer>()
+                    .Ctor<Action<CoreContextConfigurer>>().Is(c =>
+                    {
+                        c.SetConnStr(Configuration.GetConnectionString("AydoganFBankDatabase"));
+                    }).Singleton();
                 //_.Scan(s =>
                 //{
                 //    s.Assembly("AydoganFBank.AccountManagement");
@@ -63,20 +69,16 @@ namespace aydoganfbank.web.api
                 //    s.WithDefaultConventions();
                 //});
 
-                _.For<IAccountManager>().Use<AccountManager>();
-                _.For<IPersonManager>().Use<PersonManager>();
-                _.For<ICompanyManager>().Use<CompanyManager>();
-                _.For<ICreditCardManager>().Use<CreditCardManager>();
-                _.For<IPersonRepository>().Use<PersonRepository>();
+                //_.For<IAccountManager>().Use<AccountManager>();
+                //_.For<IPersonManager>().Use<PersonManager>();
+                //_.For<ICompanyManager>().Use<CompanyManager>();
+                //_.For<ICreditCardManager>().Use<CreditCardManager>();
+                //_.For<IPersonRepository>().Use<PersonRepository>();
 
                 _.Scan(s =>
                 {
                     s.Assembly("AydoganFBank.Context");
                     s.Assembly("AydoganFBank.AccountManagement");
-                    //s.WithDefaultConventions();
-                    s.IncludeNamespace("AydoganFBank.Context");
-                    s.ConnectImplementationsToTypesClosing(typeof(IDomainEntityBuilder<,>));
-                    s.ConnectImplementationsToTypesClosing(typeof(IDbEntityMapper<,>));
                     s.WithDefaultConventions();                    
                 });
 

@@ -64,6 +64,20 @@ namespace AydoganFBank.AccountManagement.Domain
             }
         }
 
+        public DateTime UntilValidDate
+        {
+            get
+            {
+                int month = Convert.ToInt32(ValidMonth);
+                int year = Convert.ToInt32(ValidYear);
+                int day = 1;
+                int hour = 0;
+                int minute = 0;
+                int second = 0;
+
+                return new DateTime(year, month, day, hour, minute, second);
+            }
+        }
         #endregion
 
         public CreditCardDomainEntity With(
@@ -106,6 +120,9 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public void DoPayment(decimal amount)
         {
+            if (UntilValidDate < DateTime.Now)
+                throw new AccountManagementException.CreditCardValidDateHasExpired(string.Format("Valid date limit = {0}", UntilValidDate));
+
             if (UsableLimit < amount)
                 throw new AccountManagementException.CreditCardHasNotEnoughLimit(string.Format("{0} = {1}", nameof(amount), amount));
 
@@ -155,7 +172,7 @@ namespace AydoganFBank.AccountManagement.Domain
     public class CreditCardRepository : Repository<CreditCardDomainEntity, CreditCard>, ICreditCardRepository
     {
         public CreditCardRepository(ICoreContext coreContext) 
-            : base(coreContext, null, null)
+            : base(coreContext)
         {
         }
 
@@ -222,15 +239,25 @@ namespace AydoganFBank.AccountManagement.Domain
         public CreditCardDomainEntity GetByCreditCardOwner(ICreditCardOwner creditCardOwner)
         {
             return GetFirstBy(
-                cc => cc.OwnerType == creditCardOwner.CreditCardOwnerType.ToInt() && 
-                cc.OwnerId == creditCardOwner.OwnerId);
+                cc => 
+                    cc.OwnerType == creditCardOwner.CreditCardOwnerType.ToInt() && 
+                    cc.OwnerId == creditCardOwner.OwnerId);
         }
 
-        
+        public CreditCardDomainEntity GetBySecurityInfos(
+            string creditCardNumber, string validMonth, string validYear, string securityCode)
+        {
+            return GetFirstBy(
+                cc =>
+                    cc.CreditCardNumber == creditCardNumber && cc.ValidMonth == validMonth &&
+                    cc.ValidYear == validYear && cc.SecurityCode == securityCode);
+        }
     }
 
     public interface ICreditCardRepository : IRepository<CreditCardDomainEntity>
     {
         CreditCardDomainEntity GetByCreditCardOwner(ICreditCardOwner creditCardOwner);
+
+        CreditCardDomainEntity GetBySecurityInfos(string creditCardNumber, string validMonth, string validYear, string securityCode);
     }
 }

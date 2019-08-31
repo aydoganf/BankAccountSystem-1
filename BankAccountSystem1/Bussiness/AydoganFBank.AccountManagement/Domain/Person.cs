@@ -93,11 +93,8 @@ namespace AydoganFBank.AccountManagement.Domain
 
     public class PersonRepository : OrderedQueryRepository<PersonDomainEntity, Person>, IPersonRepository
     {
-        public PersonRepository(
-            ICoreContext coreContext,
-            IDomainEntityBuilder<PersonDomainEntity, Person> domainEntityBuilder,
-            IDbEntityMapper<Person, PersonDomainEntity> dbEntityMapper) 
-            : base (coreContext, domainEntityBuilder, dbEntityMapper)
+        public PersonRepository(ICoreContext coreContext) 
+            : base (coreContext)
         {            
         }
 

@@ -13,15 +13,43 @@ namespace AydoganFBank.AccountManagement.Service
         List<ITransactionInfo> GetAccountTransactionDateRangeTransactionInfoList(int accountId, DateTime startDate, DateTime endDate);
 
         List<ITransactionDetailInfo> GetCreditCardLastDateRangeTransactionDetailInfoList(
-            int creditCardId, DateTime startDate, DateTime endDate);
+            int creditCardId, 
+            DateTime startDate, 
+            DateTime endDate);
 
         List<ITransactionDetailInfo> GetAccountLastDateRangeTransactionDetailInfoList(
-            int accountId, DateTime startDate, DateTime endDate);
+            int accountId, 
+            DateTime startDate, 
+            DateTime endDate);
 
         List<ITransactionDetailInfo> GetCreditCardDateRangeTransactionDetailInfoList(
-            int creditCardId, DateTime startDate, DateTime endDate);
+            int creditCardId, 
+            DateTime startDate, 
+            DateTime endDate);
 
         List<ITransactionDetailInfo> GetAccountDateRangeTransactionDetailInfoList(
-            int accountId, DateTime startDate, DateTime endDate);
+            int accountId, 
+            DateTime startDate, 
+            DateTime endDate);
+
+        List<ITransactionInfo> GetAccountLastIncomingDateRangeAccountTransactionInfoList(
+            int accountId, 
+            DateTime startDate, 
+            DateTime endDate);
+
+        List<ITransactionInfo> GetAccountLastOutgoingDateRangeAccountTransactionInfoList(
+            int accountId, 
+            DateTime startDate, 
+            DateTime endDate);
+
+        List<ITransactionDetailInfo> GetAccountLastDateRangeAndIncomingTransactionDetailInfoList(
+            int accountId, 
+            DateTime startDate, 
+            DateTime endDate);
+
+        List<ITransactionDetailInfo> GetAccountLastDateRangeAndOutgoingTransactionDetailInfoList(
+            int accountId, 
+            DateTime startDate, 
+            DateTime endDate);
     }
 }

@@ -49,10 +49,8 @@ namespace AydoganFBank.AccountManagement.Domain
     public class AccountTypeRepository : Repository<AccountTypeDomainEntity, AccountType>, IAccountTypeRepository
     {
         public AccountTypeRepository(
-            ICoreContext coreContext,  
-            IDomainEntityBuilder<AccountTypeDomainEntity, AccountType> domainEntityBuilder, 
-            IDbEntityMapper<AccountType, AccountTypeDomainEntity> dbEntityMapper) 
-            : base(coreContext, domainEntityBuilder, dbEntityMapper)
+            ICoreContext coreContext) 
+            : base(coreContext)
         {
         }
 

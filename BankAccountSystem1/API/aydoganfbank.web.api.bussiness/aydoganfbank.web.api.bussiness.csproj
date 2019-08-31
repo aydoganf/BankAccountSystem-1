@@ -51,6 +51,7 @@
     <Compile Include="Inputs\Company\CreateCompanyMessage.cs" />
     <Compile Include="Inputs\CreditCard\CreateCreditCardMessage.cs" />
     <Compile Include="Inputs\CreditCard\DoCreditCardPaymentMessage.cs" />
+    <Compile Include="Inputs\CreditCard\DoPaymentWithSecurityInfosMessage.cs" />
     <Compile Include="Inputs\Person\ChangePersonEmailAddressMessage.cs" />
     <Compile Include="Inputs\Person\ChangePersonLastNameMessage.cs" />
     <Compile Include="Inputs\Person\CreatePersonMessage.cs" />

@@ -82,5 +82,12 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class CreditCardValidDateHasExpired : AccountManagementException
+        {
+            public CreditCardValidDateHasExpired(string message) : base(11, message)
+            {
+            }
+        }
     }
 }

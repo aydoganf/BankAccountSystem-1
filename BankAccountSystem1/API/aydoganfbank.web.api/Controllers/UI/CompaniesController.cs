@@ -31,7 +31,7 @@ namespace aydoganfbank.web.api.Controllers.UI
                     serviceContext.CompanyManager.GetCompanyInfo(id));
         }
 
-        [HttpGet(ApiURLActions.UI.CompaniesController.GET_COMPANY_BY_RESPONSABLE_PERSON_ID)]
+        [HttpGet()]
         public ActionResult<ApiResponse<ICompanyInfo>> GetCompanyByResponsablePerson([FromQuery] int responsableId)
         {
             return this.HandleResult(
@@ -39,7 +39,7 @@ namespace aydoganfbank.web.api.Controllers.UI
                     serviceContext.CompanyManager.GetCompanyByResponsableId(responsableId));
         }
 
-        [HttpGet(ApiURLActions.UI.CompaniesController.GET_COMPANY_BY_RESPONSABLE_PERSON_IDENTITY_NUMBER)]
+        [HttpGet()]
         public ActionResult<ApiResponse<ICompanyInfo>> GetCompanyByResponsablePerson([FromQuery] string responsableIdentityNumber)
         {
             return this.HandleResult(
@@ -47,7 +47,7 @@ namespace aydoganfbank.web.api.Controllers.UI
                     serviceContext.CompanyManager.GetCompanyByResponsableIdentityNumber(responsableIdentityNumber));
         }
 
-        [HttpGet(ApiURLActions.UI.CompaniesController.GET_COMPANY_BY_TAX_NUMBER)]
+        [HttpGet()]
         public ActionResult<ApiResponse<ICompanyInfo>> GetCompanyByTaxNumber([FromQuery] string taxNumber)
         {
             return this.HandleResult(

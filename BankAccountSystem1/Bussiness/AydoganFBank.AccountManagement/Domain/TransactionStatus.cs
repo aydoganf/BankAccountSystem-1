@@ -49,10 +49,8 @@ namespace AydoganFBank.AccountManagement.Domain
     public class TransactionStatusRepository : Repository<TransactionStatusDomainEntity, TransactionStatus>, ITransactionStatusRepository
     {
         public TransactionStatusRepository(
-            ICoreContext coreContext,
-            IDomainEntityBuilder<TransactionStatusDomainEntity, TransactionStatus> domainEntityBuilder, 
-            IDbEntityMapper<TransactionStatus, TransactionStatusDomainEntity> dbEntityMapper) 
-            : base(coreContext, domainEntityBuilder, dbEntityMapper)
+            ICoreContext coreContext) 
+            : base(coreContext)
         {
         }
 

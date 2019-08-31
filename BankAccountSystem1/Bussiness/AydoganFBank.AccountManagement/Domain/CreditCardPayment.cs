@@ -70,10 +70,8 @@ namespace AydoganFBank.AccountManagement.Domain
         ICreditCardPaymentRepository
     {
         public CreditCardPaymentRepository(
-            ICoreContext coreContext, 
-            IDomainEntityBuilder<CreditCardPaymentDomainEntity, CreditCardPayment> domainEntityBuilder, 
-            IDbEntityMapper<CreditCardPayment, CreditCardPaymentDomainEntity> dbEntityMapper) 
-            : base(coreContext, domainEntityBuilder, dbEntityMapper)
+            ICoreContext coreContext) 
+            : base(coreContext)
         {
         }
 
