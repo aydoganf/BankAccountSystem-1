@@ -24,7 +24,7 @@ namespace aydoganfbank.web.api2.Utility
                     if (((ServiceException)ex).ExceptionCode == 10000)
                         return controller.HandleResult<T>(default, HttpStatusCode.Unauthorized, 10000, "unauthorized");
 
-                    if (((ServiceException)ex).ExceptionCode > 20000)
+                    if (((ServiceException)ex).ExceptionCode > 10000)
                         return controller.HandleResult<T>(default, HttpStatusCode.BadRequest,
                             ((ServiceException)ex).ExceptionCode, ((ServiceException)ex).ExceptionMessage);
                 }

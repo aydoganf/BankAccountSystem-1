@@ -19,5 +19,12 @@ namespace AydoganFBank.Context.Exception
             {
             }
         }
+
+        public class EntityNotFoundInDbContextException : CommonException
+        {
+            public EntityNotFoundInDbContextException(string message) : base(2, string.Format("Entity not found in db context: id = {0}", message))
+            {
+            }
+        }
     }
 }
