@@ -41,9 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Inputs\DepositToOwnAccountMessage.cs" />
-    <Compile Include="Inputs\TransferAssetsMessage.cs" />
-    <Compile Include="Inputs\WithdrawMoneyFromOwnMessage.cs" />
+    <Compile Include="Inputs\Account\CreateCompanyAccountMessage.cs" />
+    <Compile Include="Inputs\Account\CreatePersonAccountMessage.cs" />
+    <Compile Include="Inputs\Account\DepositToOwnAccountMessage.cs" />
+    <Compile Include="Inputs\Account\TransferAssetsMessage.cs" />
+    <Compile Include="Inputs\Account\WithdrawMoneyFromOwnMessage.cs" />
+    <Compile Include="Inputs\Company\ChangeCompanyAddressMessage.cs" />
+    <Compile Include="Inputs\Company\ChangeCompanyPhoneNumberMessage.cs" />
+    <Compile Include="Inputs\Company\CreateCompanyMessage.cs" />
+    <Compile Include="Inputs\CreditCard\CreateCreditCardMessage.cs" />
+    <Compile Include="Inputs\CreditCard\DoCreditCardPaymentMessage.cs" />
+    <Compile Include="Inputs\Person\ChangePersonEmailAddressMessage.cs" />
+    <Compile Include="Inputs\Person\ChangePersonLastNameMessage.cs" />
+    <Compile Include="Inputs\Person\CreatePersonMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
