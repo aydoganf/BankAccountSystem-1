@@ -23,6 +23,12 @@ namespace aydoganfbank.web.api.Utility
                 public const string CHANGE_LAST_NAME = "/{personId}/change-last-name";
                 public const string CHANGE_EMAIL = "/{personId}/change-email";
             }
+
+            public static class CreditCardsController
+            {
+                public const string DO_CREDIT_CARD_PAYMENT = "/{id}/do-payment";
+                public const string DO_CREDIT_CARD_PAYMENT_WITH_SECURITY_INFOS = "/do-payment";
+            }
         }
 
         public static class UI
@@ -32,7 +38,7 @@ namespace aydoganfbank.web.api.Utility
                 public const string GET_ACCOUNT_BY_ID = "/{id}";
                 public const string GET_ACCOUNT_BY_ACCOUNT_NUMBER = "/?accountNumber={accountNumber}";
                 public const string GET_ACCOUNT_TYPE_BY_ID = "/accountType/{id}";
-                public const string GET_ACCOUNT_TYPE_BY_KEY = "/accountType/?type={key}";
+                public const string GET_ACCOUNT_TYPE_BY_KEY = "/accountType";
             }
 
             public static class PersonsController

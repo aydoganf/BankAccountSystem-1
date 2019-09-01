@@ -110,7 +110,7 @@ namespace AydoganFBank.AccountManagement.Domain
     public class AccountTransactionRepository : OrderedQueryRepository<AccountTransactionDomainEntity, AccountTransaction>,
         IAccountTransactionRepository
     {
-        public AccountTransactionRepository(ICoreContext coreContext) : base(coreContext, null, null)
+        public AccountTransactionRepository(ICoreContext coreContext) : base(coreContext)
         {
         }
 

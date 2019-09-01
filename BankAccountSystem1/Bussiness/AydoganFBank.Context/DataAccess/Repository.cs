@@ -1,9 +1,11 @@
 ﻿using AydoganFBank.Context.Builders;
+using AydoganFBank.Context.Exception;
 using AydoganFBank.Context.IoC;
 using AydoganFBank.Database;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -15,17 +17,18 @@ namespace AydoganFBank.Context.DataAccess
     {
         protected readonly ICoreContext coreContext;
         protected readonly AydoganFBankDbContext dbContext;
-        protected readonly IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder;
-        protected readonly IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper;
+        //protected readonly IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder;
+        //protected readonly IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper;
 
         public Repository(
-            ICoreContext coreContext,
-            IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder,
-            IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper)
+            ICoreContext coreContext
+            //IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder,
+            //IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper
+            )
         {
             this.coreContext = coreContext;
-            this.domainEntityBuilder = domainEntityBuilder;
-            this.dbEntityMapper = dbEntityMapper;
+            //this.domainEntityBuilder = domainEntityBuilder;
+            //this.dbEntityMapper = dbEntityMapper;
 
             dbContext = this.coreContext.DBContext;
         }
@@ -33,7 +36,7 @@ namespace AydoganFBank.Context.DataAccess
         public virtual TDomainEntity MapToDomainObject(TDbEntity dbEntity)
         {
             if (dbEntity == null)
-                return default(TDomainEntity);
+                throw new CommonException.EntityNotFoundInDbContextException("");
 
             var domainEnttiy = coreContext.New<TDomainEntity>();
             MapToDomainObject(domainEnttiy, dbEntity);

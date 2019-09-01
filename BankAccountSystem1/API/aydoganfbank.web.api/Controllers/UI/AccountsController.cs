@@ -25,7 +25,7 @@ namespace aydoganfbank.web.api.Controllers.UI
                     serviceContext.AccountManager.GetAccountInfo(id));
         }
 
-        [HttpGet(ApiURLActions.UI.AccountsController.GET_ACCOUNT_BY_ACCOUNT_NUMBER)]
+        [HttpGet()]
         public ActionResult<ApiResponse<IAccountInfo>> GetAccountByAccountNumber([FromQuery] string accountNumber)
         {
             return this.HandleResult(

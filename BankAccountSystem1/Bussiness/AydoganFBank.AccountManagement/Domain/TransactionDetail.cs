@@ -73,7 +73,7 @@ namespace AydoganFBank.AccountManagement.Domain
     public class TransactionDetailRepository : OrderedQueryRepository<TransactionDetailDomainEntity, TransactionDetail>, ITransactionDetailRepository
     {
         public TransactionDetailRepository(ICoreContext coreContext)
-            : base(coreContext, null, null)
+            : base(coreContext)
         {
         }
 

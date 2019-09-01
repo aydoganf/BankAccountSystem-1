@@ -41,9 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ServiceDataBuilder.cs" />
     <Compile Include="IServiceContext.cs" />
+    <Compile Include="Message\Data\AccountInfo.cs" />
+    <Compile Include="Message\Data\AccountOwner.cs" />
+    <Compile Include="Message\Data\AccountTypeInfo.cs" />
+    <Compile Include="Message\Data\CompanyInfo.cs" />
+    <Compile Include="Message\Data\CreditCardInfo.cs" />
+    <Compile Include="Message\Data\CreditCardOwner.cs" />
+    <Compile Include="Message\Data\PersonInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContext.cs" />
+    <Compile Include="Services\AccountManagerService.cs" />
+    <Compile Include="Services\APIs\IAccountManagerService.cs" />
+    <Compile Include="Services\APIs\ICompanyManagerService.cs" />
+    <Compile Include="Services\APIs\ICreditCardManagerService.cs" />
+    <Compile Include="Services\APIs\IPersonManagerService.cs" />
+    <Compile Include="Services\CompanyManagerService.cs" />
+    <Compile Include="Services\CreditCardManagerService.cs" />
+    <Compile Include="Services\IServiceContext.cs" />
+    <Compile Include="Services\PersonManagerService.cs" />
+    <Compile Include="Services\ServiceContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Bussiness\AydoganFBank.AccountManagement\AydoganFBank.AccountManagement.csproj">

@@ -1,0 +1,196 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\aydoganfbank.web.api2.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj",
+        "projectName": "aydoganfbank.web.api.bussiness",
+        "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\aydoganfbank.web.api2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\aydoganfbank.web.api2.csproj",
+        "projectName": "aydoganfbank.web.api2",
+        "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\aydoganfbank.web.api2.csproj",
+        "packagesPath": "C:\\Users\\Faruk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Faruk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj"
+              },
+              "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "Microsoft.AspNetCore": {
+              "target": "Package",
+              "version": "[2.1.7, )"
+            },
+            "Microsoft.AspNetCore.HttpsPolicy": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[2.1.3, )"
+            },
+            "Microsoft.AspNetCore.StaticFiles": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.VisualStudio.Web.BrowserLink": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.1.9, )"
+            },
+            "StructureMap": {
+              "target": "Package",
+              "version": "[4.7.1, )"
+            },
+            "StructureMap.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win7-x86": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj",
+        "projectName": "AydoganFBank.AccountManagement",
+        "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj"
+              },
+              "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj",
+        "projectName": "AydoganFBank.Context",
+        "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj",
+        "projectName": "AydoganFBank.Database",
+        "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\DB\\AydoganFBank.Database\\AydoganFBank.Database.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj",
+        "projectName": "AydoganFBank.Service",
+        "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

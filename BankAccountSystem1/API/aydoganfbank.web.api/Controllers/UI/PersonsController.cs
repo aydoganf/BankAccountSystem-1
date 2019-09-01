@@ -31,7 +31,7 @@ namespace aydoganfbank.web.api.Controllers.UI
                     serviceContext.PersonManager.GetPersonInfo(id));
         }
 
-        [HttpGet(ApiURLActions.UI.PersonsController.GET_PERSON_BY_IDENTITY_NUMBER)]
+        [HttpGet()]
         public ActionResult<ApiResponse<IPersonInfo>> GetPersonByIdentityNumber([FromQuery] string identityNumber)
         {
             return this.HandleResult(

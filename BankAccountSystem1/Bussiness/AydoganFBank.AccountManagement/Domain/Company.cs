@@ -96,10 +96,8 @@ namespace AydoganFBank.AccountManagement.Domain
     public class CompanyRepository : Repository<CompanyDomainEntity, Company>, ICompanyRepository
     {
         public CompanyRepository(
-            ICoreContext coreContext,
-            IDomainEntityBuilder<CompanyDomainEntity, Company> domainEntityBuilder, 
-            IDbEntityMapper<Company, CompanyDomainEntity> dbEntityMapper) 
-            : base(coreContext, domainEntityBuilder, dbEntityMapper)
+            ICoreContext coreContext) 
+            : base(coreContext)
         {
         }
 

@@ -8,6 +8,10 @@ namespace AydoganFBank.Context.IoC
     public class CoreContext : ICoreContext
     {
         private readonly IContainer container;
+        private readonly ICoreContextConfigurer coreContextConfigurer;
+
+
+        private string ConnStr = "";
 
         private AydoganFBankDbContext _dbContext;
         private AydoganFBankDbContext dbContext
@@ -16,7 +20,8 @@ namespace AydoganFBank.Context.IoC
             {
                 if (_dbContext == null)
                 {
-                    _dbContext = new AydoganFBankDbContext();
+                    _dbContext = new AydoganFBankDbContext(coreContextConfigurer.GetConnectionString());
+                    //_dbContext.Database.Connection.ConnectionString = this.coreContextConfigurer.GetConnectionString();
                 }
                 return _dbContext;
             }
@@ -24,9 +29,10 @@ namespace AydoganFBank.Context.IoC
 
         AydoganFBankDbContext ICoreContext.DBContext => dbContext;
 
-        public CoreContext(IContainer container)
+        public CoreContext(IContainer container, ICoreContextConfigurer coreContextConfigurer)
         {
             this.container = container;
+            this.coreContextConfigurer = coreContextConfigurer;
         }
 
         public T New<T>()

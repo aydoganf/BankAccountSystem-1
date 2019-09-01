@@ -15,70 +15,96 @@ namespace AydoganFBank.AccountManagement
 
         public class PersonAlreadyExistWithTheGivenIdentityNumberException : AccountManagementException
         {
-            public PersonAlreadyExistWithTheGivenIdentityNumberException(string message) : base(1, message)
+            public PersonAlreadyExistWithTheGivenIdentityNumberException(string message) 
+                : base(1, string.Format("Person already exist with the given identity number. {0}", message))
             {
             }
         }
 
         public class DepositAmountCanNotBeZeroOrNegativeException : AccountManagementException
         {
-            public DepositAmountCanNotBeZeroOrNegativeException(string message) : base(2, message)
+            public DepositAmountCanNotBeZeroOrNegativeException(string message) 
+                : base(2, string.Format("Deposit amount cannot be zero or negative. {0}", message))
             {
             }
         }
 
         public class WithdrawAmountCanNotBeZeroOrNegativeException : AccountManagementException
         {
-            public WithdrawAmountCanNotBeZeroOrNegativeException(string message) : base(3, message)
+            public WithdrawAmountCanNotBeZeroOrNegativeException(string message) 
+                : base(3, string.Format("withdraw amount cannot be zero or negative. {0}", message))
             {
             }
         }
 
         public class AccountHasNotEnoughBalanceForWithdrawAmount : AccountManagementException
         {
-            public AccountHasNotEnoughBalanceForWithdrawAmount(string message) : base(4, message)
+            public AccountHasNotEnoughBalanceForWithdrawAmount(string message) 
+                : base(4, string.Format("Account has not enough balance for withdraw amount. {0}", message))
             {
             }
         }
 
         public class CompanyAlreadyExistWithTheGivenTaxNumberException : AccountManagementException
         {
-            public CompanyAlreadyExistWithTheGivenTaxNumberException(string message) : base(5, message)
+            public CompanyAlreadyExistWithTheGivenTaxNumberException(string message) 
+                : base(5, string.Format("Company already exist with the given tax number. {0}", message))
             {
             }
         }
 
         public class CreditCardLimitCouldNotBeZeroOrNegative : AccountManagementException
         {
-            public CreditCardLimitCouldNotBeZeroOrNegative(string message) : base(6, message)
+            public CreditCardLimitCouldNotBeZeroOrNegative(string message) 
+                : base(6, string.Format("Credit card limit cannot be zero or negative. {0}", message))
             {
             }
         }
 
         public class CreditCardExtreDayCouldNotZeroOrNegative : AccountManagementException
         {
-            public CreditCardExtreDayCouldNotZeroOrNegative(string message) : base(7, message)
+            public CreditCardExtreDayCouldNotZeroOrNegative(string message) 
+                : base(7, string.Format("Credit card extre day cannot be zero or negative. {0}", message))
             {
             }
         }
 
         public class CreditCardHasNotEnoughLimit : AccountManagementException
         {
-            public CreditCardHasNotEnoughLimit(string message) : base(8, message)
+            public CreditCardHasNotEnoughLimit(string message) 
+                : base(8, string.Format("Credit card has not enough limit. {0}", message))
             {
             }
         }
 
         public class DifferentAccountTypesCouldNotTransferAssetsToEachOther : AccountManagementException
         {
-            public DifferentAccountTypesCouldNotTransferAssetsToEachOther(string message) : base(9, message)
+            public DifferentAccountTypesCouldNotTransferAssetsToEachOther(string message) 
+                : base(9, string.Format("Different account types cannot transfer assets to each other. {0}", message))
             {
             }
         }
 
         public class TransactionOrderCouldNotHasDifferentAccountTypes : AccountManagementException
         {
-            public TransactionOrderCouldNotHasDifferentAccountTypes(string message) : base(10, message)
+            public TransactionOrderCouldNotHasDifferentAccountTypes(string message) 
+                : base(10, string.Format("Transaction order cannot has different account types. {0}", message))
+            {
+            }
+        }
+
+        public class CreditCardValidDateHasExpired : AccountManagementException
+        {
+            public CreditCardValidDateHasExpired(string message) 
+                : base(11, string.Format("Credit card valid date has expired. {0}", message))
+            {
+            }
+        }
+
+        public class CreditCardOwnerHasAlreadyCreditCard : AccountManagementException
+        {
+            public CreditCardOwnerHasAlreadyCreditCard(string message) 
+                : base(12, string.Format("Credit card owner already has credit card. {0}", message))
             {
             }
         }

@@ -98,7 +98,7 @@ namespace AydoganFBank.AccountManagement.Domain
     public class TransactionOrderRepository : Repository<TransactionOrderDomainEntity, TransactionOrder>, ITransactionOrderRepository
     {
         public TransactionOrderRepository(ICoreContext coreContext) 
-            : base(coreContext, null, null)
+            : base(coreContext)
         {
         }
 

@@ -108,10 +108,8 @@ namespace AydoganFBank.AccountManagement.Domain
     public class CreditCardExtreRepository : OrderedQueryRepository<CreditCardExtreDomainEntity, CreditCardExtre>, ICreditCardExtreRepository
     {
         public CreditCardExtreRepository(
-            ICoreContext coreContext, 
-            IDomainEntityBuilder<CreditCardExtreDomainEntity, CreditCardExtre> domainEntityBuilder, 
-            IDbEntityMapper<CreditCardExtre, CreditCardExtreDomainEntity> dbEntityMapper) 
-            : base(coreContext, domainEntityBuilder, dbEntityMapper)
+            ICoreContext coreContext) 
+            : base(coreContext)
         {
         }
 

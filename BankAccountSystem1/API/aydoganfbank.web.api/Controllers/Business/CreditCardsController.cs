@@ -58,13 +58,28 @@ namespace aydoganfbank.web.api.Controllers.Business
             }
         }
 
-        [HttpPost("/{id}/do-payment")]
+        [HttpPost(ApiURLActions.Business.CreditCardsController.DO_CREDIT_CARD_PAYMENT)]
         public ActionResult<ApiResponse<ICreditCardInfo>> DoPayment(int id, [FromBody] DoCreditCardPaymentMessage message)
         {
             return this.HandleResult(
                 () =>
                     serviceContext.CreditCardManager.DoCreditCardPayment(
                         id,
+                        message.Amount,
+                        message.InstalmentCount,
+                        message.ToAccountId));
+        }
+
+        [HttpPost(ApiURLActions.Business.CreditCardsController.DO_CREDIT_CARD_PAYMENT_WITH_SECURITY_INFOS)]
+        public ActionResult<ApiResponse<ICreditCardInfo>> DoPaymentWithSecurityInfos([FromBody] DoPaymentWithSecurityInfosMessage message)
+        {
+            return this.HandleResult(
+                () =>
+                    serviceContext.CreditCardManager.DoCreditCardPayment(
+                        message.CreditCardNumber,
+                        message.ValidMonth,
+                        message.ValidYear,
+                        message.SecurityCode,
                         message.Amount,
                         message.InstalmentCount,
                         message.ToAccountId));

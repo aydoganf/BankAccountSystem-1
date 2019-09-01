@@ -15,7 +15,16 @@ namespace AydoganFBank.Context.Exception
 
         public class RequiredParameterMissingException : CommonException
         {
-            public RequiredParameterMissingException(string message) : base(1, string.Format("Required parameter is missing: {0}", message))
+            public RequiredParameterMissingException(string message) 
+                : base(1, string.Format("Required parameter is missing: {0}", message))
+            {
+            }
+        }
+
+        public class EntityNotFoundInDbContextException : CommonException
+        {
+            public EntityNotFoundInDbContextException(string message) : 
+                base(2, "Entity not found in database")
             {
             }
         }
