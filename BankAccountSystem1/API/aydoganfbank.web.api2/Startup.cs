@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aydoganfbank.web.api2.Middlewares;
 using AydoganFBank.Context.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -27,7 +30,16 @@ namespace aydoganfbank.web.api2
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(opt =>
+            {
+                var oldFormatter = opt.OutputFormatters.OfType<JsonOutputFormatter>().Single();
+                opt.OutputFormatters.Remove(oldFormatter);
+
+                oldFormatter.PublicSerializerSettings.ContractResolver = new CamelCaseContractResolver();
+
+                var newFormatter = new CustomJsonOutputFormatter(oldFormatter.PublicSerializerSettings, ArrayPool<char>.Shared);
+                opt.OutputFormatters.Add(newFormatter);
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             return ConfigureIoC(services);
         }
@@ -58,32 +70,20 @@ namespace aydoganfbank.web.api2
                     {
                         c.SetConnStr(Configuration.GetConnectionString("AydoganFBankDatabase"));
                     }).Singleton();
-                //_.Scan(s =>
-                //{
-                //    s.Assembly("AydoganFBank.AccountManagement");
-                //    //s.ConnectImplementationsToTypesClosing(typeof(IDomainEntityBuilder<,>));
-                //    //s.ConnectImplementationsToTypesClosing(typeof(IDbEntityMapper<,>));
-                //    s.WithDefaultConventions();
-                //});
-
-                //_.For<IAccountManager>().Use<AccountManager>();
-                //_.For<IPersonManager>().Use<PersonManager>();
-                //_.For<ICompanyManager>().Use<CompanyManager>();
-                //_.For<ICreditCardManager>().Use<CreditCardManager>();
-                //_.For<IPersonRepository>().Use<PersonRepository>();
 
                 _.Scan(s =>
                 {
                     s.Assembly("AydoganFBank.Context");
                     s.Assembly("AydoganFBank.AccountManagement");
-                    s.WithDefaultConventions();
-                });
-
-                _.Scan(s =>
-                {
                     s.Assembly("AydoganFBank.Service");
                     s.WithDefaultConventions();
                 });
+
+                //_.Scan(s =>
+                //{
+                //    s.Assembly("AydoganFBank.Service");
+                //    s.WithDefaultConventions();
+                //});
 
 
                 _.Populate(services);

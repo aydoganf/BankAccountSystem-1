@@ -47,19 +47,22 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public AccountDomainEntity With(
             AccountTypeDomainEntity accountType, 
-            IAccountOwner accountOwner)
+            IAccountOwner accountOwner,
+            string accountNumber)
         {
             AccountType = accountType ?? throw new CommonException.RequiredParameterMissingException(nameof(accountType));
             AccountOwner = accountOwner ?? throw new CommonException.RequiredParameterMissingException(nameof(accountType));
+            AccountNumber = string.IsNullOrWhiteSpace(accountNumber) ? 
+                throw new CommonException.RequiredParameterMissingException(nameof(accountNumber)) : accountNumber;
+
+            accountRepository.InsertEntity(this);
             return this;
         }
 
         public void Insert(bool forceToInsertDb = true)
         {
             // calculate new account number
-            string accountNumber = accountRepository.GetNextAccountNumber();
-            AccountNumber = accountNumber;
-            accountRepository.InsertEntity(this, forceToInsertDb);
+            
         }
 
         public void Save()
@@ -161,11 +164,11 @@ namespace AydoganFBank.AccountManagement.Domain
             IAccountOwner accountOwner = null;
             if (account.OwnerType == AccountOwnerType.Person.ToInt())
             {
-                accountOwner = coreContext.Query<IPersonRepository>().GetById(account.OwnerId);
+                accountOwner = coreContext.Query<IPersonRepository>().GetById(account.OwnerId) as IAccountOwner;
             }
             else if (account.OwnerType == AccountOwnerType.Company.ToInt())
             {
-                accountOwner = coreContext.Query<ICompanyRepository>().GetById(account.OwnerId);
+                accountOwner = coreContext.Query<ICompanyRepository>().GetById(account.OwnerId) as IAccountOwner;
             }
             return accountOwner;
         }
@@ -190,6 +193,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.Balance = domainEntity.Balance;
             dbEntity.OwnerId = domainEntity.AccountOwner.OwnerId;
             dbEntity.OwnerType = (int)domainEntity.AccountOwner.OwnerType;
+            dbEntity.AccountNumber = domainEntity.AccountNumber;
         }
 
         #endregion
@@ -224,7 +228,16 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public string GetNextAccountNumber()
         {
-            var lastAccount = GetLastBy(a => a.AccountNumber);
+            AccountDomainEntity lastAccount = null;
+
+            try
+            {
+                lastAccount = GetLastBy(a => a.AccountNumber);
+            }
+            catch (Exception)
+            {
+            }
+
             int nextAccountNumber = lastAccount != null ? Convert.ToInt32(lastAccount.AccountNumber) + 1 : ACCOUNT_NUMBER_START;
             return nextAccountNumber.ToString();
         }
@@ -234,10 +247,16 @@ namespace AydoganFBank.AccountManagement.Domain
             return GetFirstBy(
                 a => a.AccountNumber == accountNumber);
         }
+
+        public new List<AccountDomainEntity> GetAll()
+        {
+            return base.GetAll().ToList();
+        }
     }
 
     public interface IAccountRepository : IRepository<AccountDomainEntity>        
     {
+        List<AccountDomainEntity> GetAll();
         string GetNextAccountNumber();
         List<AccountDomainEntity> GetListByPerson(PersonDomainEntity person);
         List<AccountDomainEntity> GetLisyByCompany(CompanyDomainEntity company);

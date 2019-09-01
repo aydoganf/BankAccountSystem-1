@@ -20,3 +20,4 @@ C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\Aydoga
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csproj.CopyComplete
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.pdb
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csprojAssemblyReference.cache

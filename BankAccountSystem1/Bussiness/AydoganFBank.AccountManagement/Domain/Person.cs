@@ -6,6 +6,7 @@ using AydoganFBank.Context.IoC;
 using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -36,6 +37,8 @@ namespace AydoganFBank.AccountManagement.Domain
 
         int IDomainEntity.Id => PersonId;
 
+
+
         #region Calculated properties
         public string FullName
         {
@@ -44,6 +47,15 @@ namespace AydoganFBank.AccountManagement.Domain
                 return string.Format("{0} {1}", FirstName, LastName);
             }
         }
+        #endregion
+
+        #region Api
+        int IPersonInfo.Id => PersonId;
+        string IPersonInfo.FirstName => FirstName;
+        string IPersonInfo.LastName => LastName;
+        string IPersonInfo.EmailAddress => EmailAddress;
+        string IPersonInfo.IdentityNumber => IdentityNumber;
+        string IPersonInfo.FullName => FullName;
         #endregion
 
         public PersonDomainEntity With(
@@ -61,7 +73,15 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public void Insert(bool forceToInsertDb = true)
         {
-            var person = personRepository.GetByIdentityNumber(IdentityNumber);
+            PersonDomainEntity person = null;
+            try
+            {
+                person = personRepository.GetByIdentityNumber(IdentityNumber);
+            }
+            catch (System.Exception)
+            {
+            }
+            
             if (person != null)
                 throw new AccountManagementException.PersonAlreadyExistWithTheGivenIdentityNumberException(string.Format("{0} = {1}", nameof(IdentityNumber), IdentityNumber));
 
@@ -104,6 +124,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.EmailAddress = domainEntity.EmailAddress;
             dbEntity.FirstName = domainEntity.FirstName;
             dbEntity.LastName = domainEntity.LastName;
+            dbEntity.IdentityNumber = domainEntity.IdentityNumber;
         }
 
         public override void MapToDomainObject(PersonDomainEntity domainEntity, Person dbEntity)
@@ -134,10 +155,16 @@ namespace AydoganFBank.AccountManagement.Domain
             return GetFirstBy(
                 p => p.IdentityNumber == identityNumber);
         }
+
+        public new List<PersonDomainEntity> GetAll()
+        {
+            return base.GetAll().ToList();
+        }
     }
 
     public interface IPersonRepository : IRepository<PersonDomainEntity>
     {
+        List<PersonDomainEntity> GetAll();
         PersonDomainEntity GetByIdentityNumber(string identityNumber);
     }
 }

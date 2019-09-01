@@ -33,6 +33,8 @@ namespace aydoganfbank.web.api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+
+
             return ConfigureIoC(services);
         }
 

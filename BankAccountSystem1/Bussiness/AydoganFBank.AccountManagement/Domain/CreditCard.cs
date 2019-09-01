@@ -52,7 +52,7 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             get
             {
-                return string.Format("**{0}", CreditCardNumber.Substring(-6));
+                return string.Format("**{0}", CreditCardNumber.Substring(CreditCardNumber.Length - 6));
             }
         }
 
@@ -80,6 +80,36 @@ namespace AydoganFBank.AccountManagement.Domain
         }
         #endregion
 
+        #region Api
+        int ICreditCardInfo.Id => CreditCardId;
+
+        string ICreditCardInfo.CreditCardNumber => CreditCardNumber;
+
+        decimal ICreditCardInfo.Limit => Limit;
+
+        int ICreditCardInfo.ExtreDay => ExtreDay;
+
+        decimal ICreditCardInfo.Debt => Debt;
+
+        int ICreditCardInfo.Type => Type;
+
+        string ICreditCardInfo.ValidMonth => ValidMonth;
+
+        string ICreditCardInfo.ValidYear => ValidYear;
+
+        string ICreditCardInfo.SecurityCode => SecurityCode;
+
+        bool ICreditCardInfo.IsInternetUsageOpen => IsInternetUsageOpen;
+
+        ICreditCardOwner ICreditCardInfo.CreditCardOwner => CreditCardOwner;
+
+        string ICreditCardInfo.CreditCardMaskedNumber => CreditCardMaskedNumber;
+
+        decimal ICreditCardInfo.UsableLimit => UsableLimit;
+
+        DateTime ICreditCardInfo.UntilValidDate => UntilValidDate;
+        #endregion
+
         public CreditCardDomainEntity With(
             decimal limit, int extreDay, int type, string validMonth, string validYear, string securityCode, 
             bool isInternetUsageOpen, ICreditCardOwner creditCardOwner)
@@ -89,6 +119,19 @@ namespace AydoganFBank.AccountManagement.Domain
 
             if (extreDay <= 0)
                 throw new AccountManagementException.CreditCardExtreDayCouldNotZeroOrNegative(string.Format("{0} = {1}", nameof(extreDay), extreDay));
+
+            CreditCardDomainEntity cc = null;
+
+            try
+            {
+                cc = creditCardRepository.GetByCreditCardOwner(creditCardOwner);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            if (cc != null)
+                throw new AccountManagementException.CreditCardOwnerHasAlreadyCreditCard(string.Format("Owner:{0} - Id: {1}", creditCardOwner.CreditCardOwnerType, creditCardOwner.OwnerId));
 
             CreditCardNumber = GenerateCrediCardNumber();
             Limit = limit;
@@ -105,7 +148,30 @@ namespace AydoganFBank.AccountManagement.Domain
 
         private string GenerateCrediCardNumber()
         {
-            return "";
+            Random rnd = new Random();
+            const string numbers = "123456789";
+            var stringChars = new char[16];
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = numbers[rnd.Next(numbers.Length)];
+            }
+
+            var creditCardNumber = new String(stringChars);
+
+            try
+            {
+                var cc = creditCardRepository.GetByCreditCardNumber(creditCardNumber);
+                if (cc != null)
+                {
+                    creditCardNumber = GenerateCrediCardNumber();
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return creditCardNumber;
         }
 
         public void Insert()
@@ -238,9 +304,10 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public CreditCardDomainEntity GetByCreditCardOwner(ICreditCardOwner creditCardOwner)
         {
+            int ownerType = creditCardOwner.CreditCardOwnerType.ToInt();
             return GetFirstBy(
                 cc => 
-                    cc.OwnerType == creditCardOwner.CreditCardOwnerType.ToInt() && 
+                    cc.OwnerType == ownerType && 
                     cc.OwnerId == creditCardOwner.OwnerId);
         }
 
@@ -252,10 +319,18 @@ namespace AydoganFBank.AccountManagement.Domain
                     cc.CreditCardNumber == creditCardNumber && cc.ValidMonth == validMonth &&
                     cc.ValidYear == validYear && cc.SecurityCode == securityCode);
         }
+
+        public CreditCardDomainEntity GetByCreditCardNumber(string creditCardNumber)
+        {
+            return GetFirstBy(
+                cc =>
+                    cc.CreditCardNumber == creditCardNumber);
+        }
     }
 
     public interface ICreditCardRepository : IRepository<CreditCardDomainEntity>
     {
+        CreditCardDomainEntity GetByCreditCardNumber(string creditCardNumber);
         CreditCardDomainEntity GetByCreditCardOwner(ICreditCardOwner creditCardOwner);
 
         CreditCardDomainEntity GetBySecurityInfos(string creditCardNumber, string validMonth, string validYear, string securityCode);

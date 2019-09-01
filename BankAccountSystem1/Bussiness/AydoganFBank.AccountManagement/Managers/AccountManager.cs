@@ -22,10 +22,10 @@ namespace AydoganFBank.AccountManagement.Managers
 
         #region Account
 
-        internal AccountDomainEntity CreateAccount(AccountTypeDomainEntity accountType, IAccountOwner accountOwner)
+        internal AccountDomainEntity CreateAccount(AccountTypeDomainEntity accountType, IAccountOwner accountOwner, string accountNumber)
         {
             var account = coreContext.New<AccountDomainEntity>()
-                .With(accountType, accountOwner);
+                .With(accountType, accountOwner, accountNumber);
 
             account.Insert();
             return account;
@@ -33,16 +33,20 @@ namespace AydoganFBank.AccountManagement.Managers
 
         internal AccountDomainEntity CreatePersonAccount(string accountTypeKey, int personId)
         {
+            var accountNumber = coreContext.Query<IAccountRepository>().GetNextAccountNumber();
             var accountType = coreContext.Query<IAccountTypeRepository>().GetByKey(accountTypeKey);
             var person = coreContext.Query<IPersonRepository>().GetById(personId);
-            return CreateAccount(accountType, person);
+            var persons = coreContext.Query<IPersonRepository>().GetAll();
+            return CreateAccount(accountType, person, accountNumber);
         }
 
         internal AccountDomainEntity CreateCompanyAccount(string accountTypeKey, int companyId)
         {
+            var accountNumber = coreContext.Query<IAccountRepository>().GetNextAccountNumber();
             var accountType = coreContext.Query<IAccountTypeRepository>().GetByKey(accountTypeKey);
             var company = coreContext.Query<ICompanyRepository>().GetById(companyId);
-            return CreateAccount(accountType, company);
+            
+            return CreateAccount(accountType, company, accountNumber);
         }
 
         internal AccountDomainEntity GetAccountById(int accountId)
@@ -321,7 +325,8 @@ namespace AydoganFBank.AccountManagement.Managers
 
         IAccountInfo IAccountManager.GetAccountInfo(int accountId)
         {
-            return GetAccountById(accountId);
+            var account = GetAccountById(accountId) as IAccountInfo;
+            return account;
         }
 
         IAccountInfo IAccountManager.GetAccountInfoByAccountNumber(string accountNumber)
