@@ -1,4 +1,6 @@
-﻿namespace AydoganFBank.Context.DataAccess
+﻿using AydoganFBank.Context.IoC.Lifecycle;
+
+namespace AydoganFBank.Context.DataAccess
 {
     public interface IRepository<TDomainEntity> : IQueryRepository 
         where TDomainEntity : IDomainEntity
@@ -8,7 +10,7 @@
         void UpdateEntity(TDomainEntity domainEntity);
     }
 
-    public interface IQueryRepository
+    public interface IQueryRepository : ITransientObject
     {
 
     }

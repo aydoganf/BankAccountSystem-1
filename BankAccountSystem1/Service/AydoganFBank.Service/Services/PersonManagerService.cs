@@ -40,6 +40,12 @@ namespace AydoganFBank.Service.Services
             return dataBuilder.BuildPersonInfo(person);
         }
 
+        public List<PersonInfo> GetAllPersons()
+        {
+            var people = personManager.GetAllPersonList();
+            return dataBuilder.BuildPersonInfoList(people);
+        }
+
         public PersonInfo GetPersonByIdentityNumber(string identityNumber)
         {
             var person = personManager.GetPersonByIdentityNumber(identityNumber);

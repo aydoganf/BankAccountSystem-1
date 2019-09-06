@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using aydoganfbank.web.api2.Middlewares;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.IoC.Lifecycle;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +17,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using StructureMap;
+using StructureMap.Graph;
+using StructureMap.Graph.Scanning;
 
 namespace aydoganfbank.web.api2
 {
@@ -69,7 +73,7 @@ namespace aydoganfbank.web.api2
                     .Ctor<Action<CoreContextConfigurer>>().Is(c =>
                     {
                         c.SetConnStr(Configuration.GetConnectionString("AydoganFBankDatabase"));
-                    }).Singleton();
+                    });
 
                 _.Scan(s =>
                 {
@@ -77,19 +81,36 @@ namespace aydoganfbank.web.api2
                     s.Assembly("AydoganFBank.AccountManagement");
                     s.Assembly("AydoganFBank.Service");
                     s.WithDefaultConventions();
+                    s.Convention<ObjectLifecycleRegistrationConvention>();
                 });
-
-                //_.Scan(s =>
-                //{
-                //    s.Assembly("AydoganFBank.Service");
-                //    s.WithDefaultConventions();
-                //});
-
 
                 _.Populate(services);
             });
 
             return container.GetInstance<IServiceProvider>();
+        }
+
+        public class ObjectLifecycleRegistrationConvention : IRegistrationConvention
+        {
+            public void ScanTypes(TypeSet types, Registry registry)
+            {
+                types.FindTypes(TypeClassification.Concretes | TypeClassification.Closed).ToList()
+                    .ForEach(type => 
+                    {
+                        if (type.GetInterfaces().Any(@interface => @interface.Name == typeof(ITransientObject).Name))
+                        {
+                            registry.For(type).LifecycleIs(StructureMap.Pipeline.Lifecycles.Transient);
+                        }
+                        else if (type.GetInterfaces().Any(@interface => @interface.Name == typeof(ISingletonObject).Name))
+                        {
+                            registry.For(type).LifecycleIs(StructureMap.Pipeline.Lifecycles.Singleton);
+                        }
+                        else
+                        {
+                            registry.For(type).LifecycleIs(StructureMap.Pipeline.Lifecycles.Unique);
+                        }
+                    });
+            }
         }
     }
 }

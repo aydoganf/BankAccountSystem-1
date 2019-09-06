@@ -15,5 +15,7 @@ namespace AydoganFBank.Service.Services.APIs
         PersonInfo CreatePerson(string firstName, string lastName, string emailAddress, string identityNumber);
         PersonInfo ChangePersonLastName(int personId, string lastName);
         PersonInfo ChangePersonEmailAddress(int personId, string emailAddress);
+
+        List<PersonInfo> GetAllPersons();
     }
 }

@@ -2,6 +2,8 @@
 using AydoganFBank.AccountManagement.Domain;
 using AydoganFBank.AccountManagement.Service;
 using AydoganFBank.Context.IoC;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Managers
 {
@@ -51,6 +53,10 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<IPersonRepository>().GetByIdentityNumber(identityNumber);
         }
 
+        internal List<PersonDomainEntity> GetAllPersons()
+        {
+            return coreContext.Query<IPersonRepository>().GetAll();
+        }
 
         #region API Implementations
 
@@ -77,6 +83,11 @@ namespace AydoganFBank.AccountManagement.Managers
         IPersonInfo IPersonManager.GetPersonInfo(int personId)
         {
             return GetPersonById(personId);
+        }
+
+        List<IPersonInfo> IPersonManager.GetAllPersonList()
+        {
+            return GetAllPersons().Cast<IPersonInfo>().ToList();
         }
         #endregion
     }

@@ -1,5 +1,6 @@
 ﻿using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.AccountManagement.Domain;
+using System.Collections.Generic;
 
 namespace AydoganFBank.AccountManagement.Service
 {
@@ -10,5 +11,6 @@ namespace AydoganFBank.AccountManagement.Service
         IPersonInfo ChangePersonEmailAddress(int personId, string emailAddress);
         IPersonInfo GetPersonInfo(int personId);
         IPersonInfo GetPersonByIdentityNumber(string identityNumber);
+        List<IPersonInfo> GetAllPersonList();
     }
 }

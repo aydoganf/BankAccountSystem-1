@@ -56,6 +56,16 @@ namespace AydoganFBank.Service.Builder
             };
         }
 
+        public List<PersonInfo> BuildPersonInfoList(List<IPersonInfo> personInfos)
+        {
+            List<PersonInfo> people = new List<PersonInfo>();
+            foreach (var personInfo in personInfos)
+            {
+                people.Add(BuildPersonInfo(personInfo));
+            }
+            return people;
+        }
+
         public CompanyInfo BuildCompanyInfo(ICompanyInfo company)
         {
             return new CompanyInfo()

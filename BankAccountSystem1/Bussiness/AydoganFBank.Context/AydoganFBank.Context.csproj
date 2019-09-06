@@ -64,6 +64,8 @@
     <Compile Include="IoC\CoreContextConfigurer.cs" />
     <Compile Include="IoC\ICoreContext.cs" />
     <Compile Include="IoC\ICoreContextConfigurer.cs" />
+    <Compile Include="IoC\Lifecycle\ISingletonObject.cs" />
+    <Compile Include="IoC\Lifecycle\ITransientObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
