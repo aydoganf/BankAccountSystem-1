@@ -81,12 +81,14 @@
     <Compile Include="Domain\Account.cs" />
     <Compile Include="Domain\AccountTransaction.cs" />
     <Compile Include="Domain\AccountType.cs" />
+    <Compile Include="Domain\Application.cs" />
     <Compile Include="Domain\Company.cs" />
     <Compile Include="Domain\CreditCard.cs" />
     <Compile Include="Domain\CreditCardExtre.cs" />
     <Compile Include="Domain\CreditCardExtreDischarge.cs" />
     <Compile Include="Domain\CreditCardPayment.cs" />
     <Compile Include="Domain\Person.cs" />
+    <Compile Include="Domain\Token.cs" />
     <Compile Include="Domain\TransactionDetail.cs" />
     <Compile Include="Domain\TransactionOrder.cs" />
     <Compile Include="Domain\TransactionStatus.cs" />

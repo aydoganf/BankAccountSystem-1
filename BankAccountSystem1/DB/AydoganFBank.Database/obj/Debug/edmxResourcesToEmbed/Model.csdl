@@ -107,6 +107,8 @@
       <End Role="Company" EntitySet="Company" />
     </AssociationSet>
     <EntitySet Name="CreditCard" EntityType="AydoganFBankModel.CreditCard" />
+    <EntitySet Name="Application" EntityType="AydoganFBankModel.Application" />
+    <EntitySet Name="Token" EntityType="AydoganFBankModel.Token" />
   </EntityContainer>
   <EntityType Name="CreditCardExtre">
     <Key>
@@ -291,5 +293,31 @@
     <Property Name="IsInternetUsageOpen" Type="Boolean" Nullable="false" />
     <Property Name="OwnerType" Type="Int32" Nullable="false" />
     <Property Name="OwnerId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Domain" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Token" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Guid" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="TokenId" />
+      <PropertyRef Name="Value" />
+      <PropertyRef Name="PersonId" />
+      <PropertyRef Name="ValidUntil" />
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="CreateDate" />
+    </Key>
+    <Property Name="TokenId" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+    <Property Name="ValidUntil" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
 </Schema>
