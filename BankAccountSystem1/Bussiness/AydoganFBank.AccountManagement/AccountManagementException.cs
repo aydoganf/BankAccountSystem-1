@@ -108,5 +108,13 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class AccountOwnerHasAlreadyAnAccountWithGivenAccountType : AccountManagementException
+        {
+            public AccountOwnerHasAlreadyAnAccountWithGivenAccountType(string message) 
+                : base(13, string.Format("Account owner has already an account with given account type. {0}", message))
+            {
+            }
+        }
     }
 }

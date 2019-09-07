@@ -153,16 +153,14 @@ namespace AydoganFBank.AccountManagement.Domain
 
             return GetListBy(
                 to =>
-                    to.FromAccountId == fromAccount.AccountId && statusList.Contains(to.TransactionOrderStatusId))
-                .ToList();
+                    to.FromAccountId == fromAccount.AccountId && statusList.Contains(to.TransactionOrderStatusId));
         }
 
         public List<TransactionOrderDomainEntity> GetListByOperationDate(DateTime operationDate)
         {
             return GetListBy(
                 to =>
-                    to.OperationDate == operationDate)
-                .ToList();
+                    to.OperationDate == operationDate);
         }
 
         public List<TransactionOrderDomainEntity> GetUncompletedListByOperationDate(DateTime operationDate)
@@ -175,8 +173,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
             return GetListBy(
                 to =>
-                    to.OperationDate == operationDate && statusList.Contains(to.TransactionOrderStatusId))
-                .ToList();
+                    to.OperationDate == operationDate && statusList.Contains(to.TransactionOrderStatusId));
         }
 
     }

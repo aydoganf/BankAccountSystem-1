@@ -68,6 +68,10 @@
       <Project>{c7414ba4-90a9-4fab-b6b2-d039297df26a}</Project>
       <Name>AydoganFBank.AccountManagement</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Bussiness\AydoganFBank.Context\AydoganFBank.Context.csproj">
+      <Project>{1b386555-65fb-457b-bf73-83832404dc06}</Project>
+      <Name>AydoganFBank.Context</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Message\Response\" />

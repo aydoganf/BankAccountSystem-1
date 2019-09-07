@@ -14,6 +14,5 @@ namespace AydoganFBank.AccountManagement.Api
         string Address { get; }
         string PhoneNumber { get; }
         string TaxNumber { get; }
-        IAccountInfo Account { get; }
     }
 }

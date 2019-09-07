@@ -13,7 +13,6 @@ namespace AydoganFBank.AccountManagement.Api
 
     public enum CreditCardOwnerType
     {
-        Account = 1,
-        Company
+        Account = 1
     }
 }

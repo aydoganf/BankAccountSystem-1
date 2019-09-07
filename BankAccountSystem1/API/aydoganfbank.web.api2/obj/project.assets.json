@@ -1638,7 +1638,7 @@
           }
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -2651,7 +2651,8 @@
       "AydoganFBank.Service/1.0.0": {
         "type": "project",
         "dependencies": {
-          "AydoganFBank.AccountManagement": "1.0.0"
+          "AydoganFBank.AccountManagement": "1.0.0",
+          "AydoganFBank.Context": "1.0.0"
         },
         "compile": {
           "bin/placeholder/AydoganFBank.Service.dll": {}
@@ -4253,7 +4254,7 @@
           "lib/net461/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -5164,7 +5165,8 @@
       "AydoganFBank.Service/1.0.0": {
         "type": "project",
         "dependencies": {
-          "AydoganFBank.AccountManagement": "1.0.0"
+          "AydoganFBank.AccountManagement": "1.0.0",
+          "AydoganFBank.Context": "1.0.0"
         },
         "compile": {
           "bin/placeholder/AydoganFBank.Service.dll": {}
@@ -6972,10 +6974,10 @@
         "version.txt"
       ]
     },
-    "Newtonsoft.Json/11.0.2": {
-      "sha512": "IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
+    "Newtonsoft.Json/12.0.2": {
+      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
-      "path": "newtonsoft.json/11.0.2",
+      "path": "newtonsoft.json/12.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -6998,7 +7000,7 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.11.0.2.nupkg.sha512",
+        "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
     },
@@ -10167,6 +10169,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 2.1.1",
       "Microsoft.VisualStudio.Web.BrowserLink >= 2.1.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.9",
+      "Newtonsoft.Json >= 12.0.2",
       "StructureMap >= 4.7.1",
       "StructureMap.Microsoft.DependencyInjection >= 2.0.0",
       "aydoganfbank.web.api.bussiness >= 1.0.0"
@@ -10261,6 +10264,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.1.9, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.2, )"
           },
           "StructureMap": {
             "target": "Package",

@@ -120,8 +120,7 @@ namespace AydoganFBank.AccountManagement.Domain
                 ccp =>
                     transactions.Select(t => t.TransactionId).Contains(ccp.AccountTransactionId),
                 ccp =>
-                    ccp.InstalmentDate)
-                .ToList();
+                    ccp.InstalmentDate);
         }
         
         public List<CreditCardPaymentDomainEntity> GetListByCreditCardExtre(CreditCardExtreDomainEntity creditCardExtre)
@@ -134,8 +133,7 @@ namespace AydoganFBank.AccountManagement.Domain
                 ccp =>
                     transactions.Select(t => t.TransactionId).Contains(ccp.AccountTransactionId),
                 ccp =>
-                    ccp.InstalmentDate)
-                .ToList();
+                    ccp.InstalmentDate);
         }
     }
 

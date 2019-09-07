@@ -165,6 +165,9 @@
             "projectReferences": {
               "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj": {
                 "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.AccountManagement\\AydoganFBank.AccountManagement.csproj"
+              },
+              "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj": {
+                "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Bussiness\\AydoganFBank.Context\\AydoganFBank.Context.csproj"
               }
             }
           }

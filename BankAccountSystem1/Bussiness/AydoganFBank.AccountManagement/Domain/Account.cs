@@ -157,6 +157,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public AccountRepository(ICoreContext coreContext) 
             : base(coreContext)
         {
+            coreContext.Logger.Info("AccountRepository created.", coreContext.GetContainerInfo());
         }
 
         private IAccountOwner GetAccountOwner(Account account)
@@ -208,8 +209,7 @@ namespace AydoganFBank.AccountManagement.Domain
             return GetListBy(
                 a => 
                     a.OwnerType == AccountOwnerType.Person.ToInt() && a.OwnerId == person.PersonId
-                    ).
-                ToList();
+                    );
         }
 
         public List<AccountDomainEntity> GetLisyByCompany(CompanyDomainEntity company)
@@ -217,8 +217,7 @@ namespace AydoganFBank.AccountManagement.Domain
             return GetListBy(
                 a => 
                     a.OwnerType == AccountOwnerType.Company.ToInt() && a.OwnerId == company.CompanyId
-                    ).
-                ToList();
+                    );
         }
 
         protected override Account GetDbEntityById(int id)
@@ -250,7 +249,24 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public new List<AccountDomainEntity> GetAll()
         {
-            return base.GetAll().ToList();
+            return base.GetAll();
+        }
+
+        public List<AccountDomainEntity> GetListByOwner(IAccountOwner accountOwner)
+        {
+            int ownerType = accountOwner.OwnerType.ToInt();
+            return GetListBy(
+                a =>
+                    a.OwnerId == accountOwner.OwnerId && a.OwnerType == ownerType);
+        }
+
+        public bool HasOwnerAccountByType(IAccountOwner accountOwner, AccountTypeDomainEntity accountType)
+        {
+            int ownerType = accountOwner.OwnerType.ToInt();
+            return Exists(
+                a =>
+                    a.OwnerId == accountOwner.OwnerId && a.OwnerType == ownerType &&
+                    a.AccountTypeId == accountType.AccountTypeId);
         }
     }
 
@@ -261,5 +277,7 @@ namespace AydoganFBank.AccountManagement.Domain
         List<AccountDomainEntity> GetListByPerson(PersonDomainEntity person);
         List<AccountDomainEntity> GetLisyByCompany(CompanyDomainEntity company);
         AccountDomainEntity GetByAccountNumber(string accountNumber);
+        bool HasOwnerAccountByType(IAccountOwner accountOwner, AccountTypeDomainEntity accountType);
+        List<AccountDomainEntity> GetListByOwner(IAccountOwner accountOwner);
     }
 }

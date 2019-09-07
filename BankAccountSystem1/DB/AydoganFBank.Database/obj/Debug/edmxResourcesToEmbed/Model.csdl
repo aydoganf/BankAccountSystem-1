@@ -75,16 +75,10 @@
       <End Role="AccountType" EntitySet="AccountType" />
       <End Role="Account" EntitySet="Account" />
     </AssociationSet>
-    <EntitySet Name="CreditCard" EntityType="AydoganFBankModel.CreditCard" />
     <EntitySet Name="CreditCardExtre" EntityType="AydoganFBankModel.CreditCardExtre" />
     <EntitySet Name="CreditCardExtreDischarge" EntityType="AydoganFBankModel.CreditCardExtreDischarge" />
     <EntitySet Name="CreditCardPayment" EntityType="AydoganFBankModel.CreditCardPayment" />
     <EntitySet Name="TransactionDetail" EntityType="AydoganFBankModel.TransactionDetail" />
-    <EntitySet Name="Company" EntityType="AydoganFBankModel.Company" />
-    <AssociationSet Name="FK_Company_Person" Association="AydoganFBankModel.FK_Company_Person">
-      <End Role="Person" EntitySet="Person" />
-      <End Role="Company" EntitySet="Company" />
-    </AssociationSet>
     <EntitySet Name="TransactionOrder" EntityType="AydoganFBankModel.TransactionOrder" />
     <AssociationSet Name="FK_TransactionOrder_Account" Association="AydoganFBankModel.FK_TransactionOrder_Account">
       <End Role="Account" EntitySet="Account" />
@@ -107,23 +101,13 @@
       <End Role="TransactionType" EntitySet="TransactionType" />
       <End Role="AccountTransaction" EntitySet="AccountTransaction" />
     </AssociationSet>
+    <EntitySet Name="Company" EntityType="AydoganFBankModel.Company" />
+    <AssociationSet Name="FK_Company_Person" Association="AydoganFBankModel.FK_Company_Person">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <EntitySet Name="CreditCard" EntityType="AydoganFBankModel.CreditCard" />
   </EntityContainer>
-  <EntityType Name="CreditCard">
-    <Key>
-      <PropertyRef Name="CreditCardId" />
-    </Key>
-    <Property Name="CreditCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CreditCardNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Limit" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="ExtreDay" Type="Int32" Nullable="false" />
-    <Property Name="Type" Type="Int32" Nullable="false" />
-    <Property Name="ValidMonth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ValidYear" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SecurityCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IsInternetUsageOpen" Type="Boolean" Nullable="false" />
-    <Property Name="OwnerType" Type="Int32" Nullable="false" />
-    <Property Name="OwnerId" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="CreditCardExtre">
     <Key>
       <PropertyRef Name="CreditCardExtreId" />
@@ -172,31 +156,6 @@
     <Property Name="OwnerType" Type="Int32" Nullable="false" />
     <Property Name="OwnerId" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityType Name="Company">
-    <Key>
-      <PropertyRef Name="CompanyId" />
-    </Key>
-    <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="ResponsablePersonId" Type="Int32" Nullable="false" />
-    <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TaxNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="AccountId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Person" Relationship="AydoganFBankModel.FK_Company_Person" FromRole="Company" ToRole="Person" />
-  </EntityType>
-  <Association Name="FK_Company_Person">
-    <End Type="AydoganFBankModel.Person" Role="Person" Multiplicity="1" />
-    <End Type="AydoganFBankModel.Company" Role="Company" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Person">
-        <PropertyRef Name="PersonId" />
-      </Principal>
-      <Dependent Role="Company">
-        <PropertyRef Name="ResponsablePersonId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="TransactionOrder">
     <Key>
       <PropertyRef Name="TransactionOrderId" />
@@ -292,4 +251,45 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ResponsablePersonId" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaxNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Person" Relationship="AydoganFBankModel.FK_Company_Person" FromRole="Company" ToRole="Person" />
+  </EntityType>
+  <Association Name="FK_Company_Person">
+    <End Type="AydoganFBankModel.Person" Role="Person" Multiplicity="1" />
+    <End Type="AydoganFBankModel.Company" Role="Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="PersonId" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="ResponsablePersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CreditCard">
+    <Key>
+      <PropertyRef Name="CreditCardId" />
+    </Key>
+    <Property Name="CreditCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreditCardNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Limit" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Debt" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ExtreDay" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="ValidMonth" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ValidYear" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsInternetUsageOpen" Type="Boolean" Nullable="false" />
+    <Property Name="OwnerType" Type="Int32" Nullable="false" />
+    <Property Name="OwnerId" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

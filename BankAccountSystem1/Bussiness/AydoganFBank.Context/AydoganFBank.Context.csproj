@@ -37,6 +37,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\StructureMap.4.7.1\lib\net45\StructureMap.dll</HintPath>
     </Reference>
@@ -54,6 +57,7 @@
     <Compile Include="Builders\IDbEntityMapper.cs" />
     <Compile Include="Builders\IDomainEntityBuilder.cs" />
     <Compile Include="DataAccess\IDomainObjectBuilderRepository.cs" />
+    <Compile Include="DataAccess\IDomianEntityManager.cs" />
     <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="DataAccess\OrderedQueryRepository.cs" />
     <Compile Include="DataAccess\Repository.cs" />
@@ -67,6 +71,8 @@
     <Compile Include="IoC\Lifecycle\ISingletonObject.cs" />
     <Compile Include="IoC\Lifecycle\ITransientObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ILogger.cs" />
+    <Compile Include="Utils\Logger.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

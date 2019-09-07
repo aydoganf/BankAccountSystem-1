@@ -45,7 +45,6 @@
     <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="TaxNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="AccountId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CreditCard">
     <Key>
@@ -54,6 +53,7 @@
     <Property Name="CreditCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CreditCardNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Limit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Debt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ExtreDay" Type="int" Nullable="false" />
     <Property Name="Type" Type="int" Nullable="false" />
     <Property Name="ValidMonth" Type="nvarchar" MaxLength="50" Nullable="false" />

@@ -30,8 +30,7 @@ namespace aydoganfbank.web.api2.Controllers.Business
                         message.ResponsablePersonId,
                         message.Address,
                         message.PhoneNumber,
-                        message.TaxNumber,
-                        message.AccountId));
+                        message.TaxNumber));
         }
 
         [HttpPut("/{id}/change-company-address")]

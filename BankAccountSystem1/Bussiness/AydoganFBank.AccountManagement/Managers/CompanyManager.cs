@@ -31,11 +31,10 @@ namespace AydoganFBank.AccountManagement.Managers
             PersonDomainEntity responsablePerson,
             string address,
             string phoneNumber,
-            string taxNumber,
-            AccountDomainEntity account)
+            string taxNumber)
         {
             var company = coreContext.New<CompanyDomainEntity>()
-                .With(companyName, responsablePerson, address, phoneNumber, taxNumber, account);
+                .With(companyName, responsablePerson, address, phoneNumber, taxNumber);
 
             company.Insert();
             return company;
@@ -47,12 +46,10 @@ namespace AydoganFBank.AccountManagement.Managers
             int responsablePersonId,
             string address,
             string phoneNumber,
-            string taxNumber,
-            int accountId)
+            string taxNumber)
         {
             var person = personManager.GetPersonById(responsablePersonId);
-            var account = accountManager.GetAccountById(accountId);
-            return CreateCompany(companyName, person, address, phoneNumber, taxNumber, account);
+            return CreateCompany(companyName, person, address, phoneNumber, taxNumber);
         }
 
         internal CompanyDomainEntity GetCompanyById(int companyId)
@@ -91,11 +88,23 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<ICompanyRepository>().GetByTaxNumber(taxNumber);
         }
 
+        internal List<AccountDomainEntity> GetCompanyAccounts(int companyId)
+        {
+            var company = coreContext.Query<ICompanyRepository>().GetById(companyId);
+            return company.GetAccounts();
+        }
+
+
         #region API Implementations
 
-        ICompanyInfo ICompanyManager.CreateCompany(string companyName, int responsablePersonId, string address, string phoneNumber, string taxNumber, int accountId)
+        ICompanyInfo ICompanyManager.CreateCompany(
+            string companyName, 
+            int responsablePersonId, 
+            string address, 
+            string phoneNumber, 
+            string taxNumber)
         {
-            return CreateCompany(companyName, responsablePersonId, address, phoneNumber, taxNumber, accountId);
+            return CreateCompany(companyName, responsablePersonId, address, phoneNumber, taxNumber);
         }
 
         ICompanyInfo ICompanyManager.GetCompanyInfo(int companyId)
@@ -126,6 +135,11 @@ namespace AydoganFBank.AccountManagement.Managers
         ICompanyInfo ICompanyManager.GetCompanyByTaxNumber(string taxNumber)
         {
             return GetCompanyByTaxNumber(taxNumber);
+        }
+
+        List<IAccountInfo> ICompanyManager.GetCompanyAccounts(int companyId)
+        {
+            return GetCompanyAccounts(companyId).Cast<IAccountInfo>().ToList();
         }
         #endregion
     }

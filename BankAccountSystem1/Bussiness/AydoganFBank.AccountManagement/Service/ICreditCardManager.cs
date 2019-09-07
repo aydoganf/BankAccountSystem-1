@@ -1,9 +1,10 @@
 ﻿using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.AccountManagement.Domain;
+using AydoganFBank.Context.DataAccess;
 
 namespace AydoganFBank.AccountManagement.Service
 {
-    public interface ICreditCardManager
+    public interface ICreditCardManager : IDomianEntityManager
     {
         ICreditCardInfo DoCreditCardPayment(
             int creditCardId, 
@@ -29,23 +30,13 @@ namespace AydoganFBank.AccountManagement.Service
 
         ICreditCardInfo CreateAccountCreditCard(
             decimal limit, 
-            int extreDate, 
+            int extreDay, 
             int type, 
             string validMonth, 
             string validYear, 
             string securityCode, 
             bool isInternetUsageOpen, 
             int accountId);
-
-        ICreditCardInfo CreateCompanyCreditCard(
-            decimal limit, 
-            int extreDate, 
-            int type, 
-            string validMonth, 
-            string validYear, 
-            string securityCode, 
-            bool isInternetUsageOpen, 
-            int companyId);
 
         ICreditCardInfo DoCreditCardPayment(
             string creditCardNumber, 

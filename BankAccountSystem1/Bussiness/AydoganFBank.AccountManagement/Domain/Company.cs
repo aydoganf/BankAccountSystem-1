@@ -10,13 +10,15 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CompanyDomainEntity : IDomainEntity, IAccountOwner, ICreditCardOwner, ICompanyInfo
+    public class CompanyDomainEntity : IDomainEntity, IAccountOwner, ICompanyInfo
     {
         #region IoC
         private readonly ICompanyRepository companyRepository;
+        private readonly ICoreContext coreContext;
 
-        public CompanyDomainEntity(ICompanyRepository companyRepository)
+        public CompanyDomainEntity(ICoreContext coreContext, ICompanyRepository companyRepository)
         {
+            this.coreContext = coreContext;
             this.companyRepository = companyRepository;
         }
         #endregion
@@ -27,7 +29,6 @@ namespace AydoganFBank.AccountManagement.Domain
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string TaxNumber { get; set; }
-        public AccountDomainEntity Account { get; set; }
 
 
         int IDomainEntity.Id => CompanyId;
@@ -36,31 +37,25 @@ namespace AydoganFBank.AccountManagement.Domain
         int IAccountOwner.OwnerId => CompanyId;
         string IAccountOwner.DisplayName => CompanyName;
 
-        int ICreditCardOwner.OwnerId => CompanyId;
-        CreditCardOwnerType ICreditCardOwner.CreditCardOwnerType => CreditCardOwnerType.Company;
-        string ICreditCardOwner.AssetsUnit => Account.AccountType.AssetsUnit;
-
         public CompanyDomainEntity With(
             string companyName, 
             PersonDomainEntity responsablePerson, 
             string address, 
             string phoneNumber,
-            string taxNumber,
-            AccountDomainEntity account)
+            string taxNumber)
         {
             CompanyName = companyName ?? throw new CommonException.RequiredParameterMissingException(nameof(companyName));
             ResponsablePerson = responsablePerson ?? throw new CommonException.RequiredParameterMissingException(nameof(responsablePerson));
             Address = address ?? throw new CommonException.RequiredParameterMissingException(nameof(address));
             PhoneNumber = phoneNumber ?? throw new CommonException.RequiredParameterMissingException(nameof(phoneNumber));
             TaxNumber = taxNumber ?? throw new CommonException.RequiredParameterMissingException(nameof(taxNumber));
-            Account = account ?? throw new CommonException.RequiredParameterMissingException(nameof(account));
             return this;
         }
 
         public void Insert(bool forceToInsertDb = true)
         {
             var company = companyRepository.GetByTaxNumber(TaxNumber);
-            if (company != null)
+            if (company != default)
                 throw new AccountManagementException.CompanyAlreadyExistWithTheGivenTaxNumberException(string.Format("{0} = {1}", nameof(TaxNumber), TaxNumber));
             companyRepository.InsertEntity(this, forceToInsertDb);
         }
@@ -82,6 +77,11 @@ namespace AydoganFBank.AccountManagement.Domain
             Save();
         }
 
+        public List<AccountDomainEntity> GetAccounts()
+        {
+            return coreContext.Query<IAccountRepository>().GetListByOwner(this);
+        }
+
         #region Api
         int ICompanyInfo.Id => CompanyId;
         string ICompanyInfo.CompanyName => CompanyName;
@@ -89,7 +89,6 @@ namespace AydoganFBank.AccountManagement.Domain
         string ICompanyInfo.Address => Address;
         string ICompanyInfo.PhoneNumber => PhoneNumber;
         string ICompanyInfo.TaxNumber => TaxNumber;
-        IAccountInfo ICompanyInfo.Account => Account;
         #endregion
     }
 
@@ -109,7 +108,6 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.PhoneNumber = domainEntity.PhoneNumber;
             dbEntity.ResponsablePersonId = domainEntity.ResponsablePerson.PersonId;
             dbEntity.TaxNumber = domainEntity.TaxNumber;
-            dbEntity.AccountId = domainEntity.Account.AccountId;
         }
 
         public override void MapToDomainObject(CompanyDomainEntity domainEntity, Company dbEntity)
@@ -123,7 +121,6 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.PhoneNumber = dbEntity.PhoneNumber;
             domainEntity.ResponsablePerson = coreContext.Query<IPersonRepository>().GetById(dbEntity.ResponsablePersonId);
             domainEntity.TaxNumber = dbEntity.TaxNumber;
-            domainEntity.Account = coreContext.Query<IAccountRepository>().GetById(dbEntity.AccountId);
         }
         #endregion
 
@@ -145,8 +142,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public List<CompanyDomainEntity> GetListLikeCompanyName(string companyName)
         {
             return MapToDomainObjectList(
-                dbContext.Company.Where(c => c.CompanyName.Contains(companyName)))
-                .ToList();
+                dbContext.Company.Where(c => c.CompanyName.Contains(companyName)));
         }
 
         public CompanyDomainEntity GetByTaxNumber(string taxNumber)

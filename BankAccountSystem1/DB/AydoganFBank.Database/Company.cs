@@ -20,7 +20,6 @@ namespace AydoganFBank.Database
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string TaxNumber { get; set; }
-        public int AccountId { get; set; }
     
         public virtual Person Person { get; set; }
     }

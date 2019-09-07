@@ -28,40 +28,9 @@ namespace aydoganfbank.web.api2.Controllers.Test
 
         // GET: api/Values
         [HttpGet]
-        public ActionResult<ApiResponse<IPersonInfo>> Get()
+        public List<string> Get()
         {
-            return this.HandleResult(() => serviceContext.PersonManager.GetPersonInfo(1));
-        }
-
-        // GET: api/Values/5
-        [HttpGet("{id}", Name = "Get")]
-        public ActionResult<ApiResponse<AydoganFBank.Service.Message.Data.AccountInfo>> Get(int id)
-        {
-            return this.HandleResult(() => newServiceContext.AccountManagerService.GetAccountInfo(id));
-        }
-
-        // POST: api/Values
-        [HttpPost]
-        public ActionResult<ApiResponse<IPersonInfo>> Post([FromBody] CreatePersonMessage message)
-        {
-            return this.HandleResult(
-                () =>
-                    serviceContext.PersonManager.CreatePerson(
-                        message.FirstName,
-                        message.LastName,
-                        message.EmailAddress,
-                        message.IdentityNumber));
-        }
-
-        // PUT: api/Values/5
-        [HttpPut("{id}/change-last-name")]
-        public ActionResult<ApiResponse<IPersonInfo>> Put(int id, [FromBody] ChangePersonLastNameMessage message)
-        {
-            return this.HandleResult(
-                () =>
-                    serviceContext.PersonManager.ChangePersonLastName(
-                        id,
-                        message.LastName));
+            return new List<string>() { "value1", "value2" };
         }
 
         // DELETE: api/ApiWithActions/5

@@ -6,7 +6,7 @@ namespace AydoganFBank.AccountManagement.Api
 {
     public enum TransactionStatusEnum
     {
-        Created,
+        Created = 1,
         Pending,
         InProgress,
         Failed,

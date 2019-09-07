@@ -168,8 +168,7 @@ namespace AydoganFBank.AccountManagement.Domain
                 cce =>
                     cce.Year,
                 cce =>
-                    cce.Month)
-                .ToList();
+                    cce.Month);
         }
 
         public CreditCardExtreDomainEntity GetByCreditCardAndDate(CreditCardDomainEntity creditCard, int month, int year)

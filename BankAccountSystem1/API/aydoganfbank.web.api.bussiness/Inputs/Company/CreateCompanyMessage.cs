@@ -13,6 +13,5 @@ namespace aydoganfbank.web.api.bussiness.Inputs.Company
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string TaxNumber { get; set; }
-        public int AccountId { get; set; }
     }
 }

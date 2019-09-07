@@ -41,7 +41,6 @@ namespace AydoganFBank.AccountManagement.Builder
             domainEntity.PhoneNumber = entity.PhoneNumber;
             domainEntity.ResponsablePerson = coreContext.Query<IPersonRepository>().GetById(entity.ResponsablePersonId);
             domainEntity.TaxNumber = entity.TaxNumber;
-            domainEntity.Account = coreContext.Query<IAccountRepository>().GetById(entity.AccountId);
         }
 
         public IEnumerable<CompanyDomainEntity> MapToDomainObjectList(IEnumerable<Company> entities)
@@ -64,7 +63,6 @@ namespace AydoganFBank.AccountManagement.Builder
             dbEntity.PhoneNumber = domainEntity.PhoneNumber;
             dbEntity.ResponsablePersonId = domainEntity.ResponsablePerson.PersonId;
             dbEntity.TaxNumber = domainEntity.TaxNumber;
-            dbEntity.AccountId = domainEntity.Account.AccountId;
         }
     }
 }

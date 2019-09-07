@@ -127,12 +127,11 @@ namespace AydoganFBank.AccountManagement.Domain
             ITransactionDetailOwner transactionDetailOwner, DateTime startDate, DateTime endDate)
         {
             return GetOrderedAscListBy(
-                td => 
-                    td.OwnerType == transactionDetailOwner.OwnerType.ToInt() && td.OwnerId == transactionDetailOwner.OwnerId && 
+                td =>
+                    td.OwnerType == transactionDetailOwner.OwnerType.ToInt() && td.OwnerId == transactionDetailOwner.OwnerId &&
                     td.CreateDate >= startDate && td.CreateDate <= endDate,
-                td => 
-                    td.CreateDate)
-                .ToList();
+                td =>
+                    td.CreateDate);
         }
 
         public List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionDetailOwner(
@@ -140,11 +139,10 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return GetOrderedDescListBy(
                 td =>
-                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId && 
+                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId &&
                     td.CreateDate >= startDate && td.CreateDate <= endDate,
                 td =>
-                    td.CreateDate)
-                .ToList();                
+                    td.CreateDate);        
         }
 
         public List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionDetailOwner(
@@ -152,11 +150,10 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return GetOrderedDescListBy(
                 td =>
-                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId && 
+                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId &&
                     td.CreateDate >= startDate && td.CreateDate <= endDate && td.TransactionDirection == transactionDirection.ToInt(),
                 td =>
-                    td.CreateDate)
-                .ToList();
+                    td.CreateDate);
         }
     }
 

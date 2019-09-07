@@ -16,6 +16,8 @@ namespace AydoganFBank.AccountManagement.Managers
         public PersonManager(ICoreContext coreContext)
         {
             this.coreContext = coreContext;
+
+            this.coreContext.Logger.Info("PersonManager created.", this.coreContext.GetContainerInfo());
         }
         #endregion
 

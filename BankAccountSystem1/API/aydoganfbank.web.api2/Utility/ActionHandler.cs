@@ -15,19 +15,21 @@ namespace aydoganfbank.web.api2.Utility
             try
             {
                 T result = (T)action.Invoke();
+                if (result == default)
+                    return controller.HandleResult((default(T)), HttpStatusCode.NotFound, 0, null);
                 return controller.HandleResult(result, HttpStatusCode.OK, 0, "success");
             }
             catch (Exception ex)
             {
-                if (ex is ServiceException)
+                if (ex is ServiceException serviceException)
                 {
-                    if (((ServiceException)ex).ExceptionCode == 10000)
+                    if (serviceException.ExceptionCode == 10000)
                         return controller.HandleResult<T>(default, HttpStatusCode.Unauthorized, 10000, "unauthorized");
 
-                    if (((ServiceException)ex).ExceptionCode > 10000)
+                    if (serviceException.ExceptionCode > 10000)
                     {
                         return controller.HandleResult<T>(default, HttpStatusCode.BadRequest,
-                            ((ServiceException)ex).ExceptionCode, ((ServiceException)ex).ExceptionMessage);
+                            serviceException.ExceptionCode, serviceException.ExceptionMessage);
                     }
                         
                 }
@@ -51,6 +53,8 @@ namespace aydoganfbank.web.api2.Utility
                 case HttpStatusCode.InternalServerError:
                 case HttpStatusCode.BadRequest:
                     return controller.BadRequest(new { });
+                case HttpStatusCode.NotFound:
+                    return controller.NotFound();
                 default:
                     return controller.StatusCode((int)statusCode, result);
             }

@@ -9,7 +9,7 @@ namespace aydoganfbank.web.api.bussiness.Inputs.CreditCard
     public class CreateCreditCardMessage
     {
         public decimal Limit { get; set; }
-        public int ExtreDate { get; set; }
+        public int ExtreDay { get; set; }
         public int Type { get; set; }
         public string ValidMonth { get; set; }
         public string ValidYear { get; set; }

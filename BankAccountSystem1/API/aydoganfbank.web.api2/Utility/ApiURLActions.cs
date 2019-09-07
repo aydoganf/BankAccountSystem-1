@@ -12,10 +12,10 @@ namespace aydoganfbank.web.api2.Utility
             public static class AccountsController
             {
                 public const string CREATE_PERSON_ACCOUNT = "person/{personId}/create-account";
-                public const string CREATE_COMPANY_ACCOUNT = "/company/{companyId}/create-account";
-                public const string TRANSFER_ASSETS = "/transaction/transfer-assets";
-                public const string WITHDRAW_ASSETS = "/{accountId}/transaction/withdraw-assets";
-                public const string DEPOSIT_ASSETS = "/{accountId}/transaction/deposit-assets";
+                public const string CREATE_COMPANY_ACCOUNT = "company/{companyId}/create-account";
+                public const string TRANSFER_ASSETS = "transaction/transfer-assets";
+                public const string WITHDRAW_ASSETS = "{accountId}/transaction/withdraw-assets";
+                public const string DEPOSIT_ASSETS = "{accountId}/transaction/deposit-assets";
             }
 
             public static class PersonsController
@@ -26,7 +26,7 @@ namespace aydoganfbank.web.api2.Utility
 
             public static class CreditCardsController
             {
-                public const string DO_CREDIT_CARD_PAYMENT = "/{id}/do-payment";
+                public const string DO_CREDIT_CARD_PAYMENT = "{id}/do-payment";
                 public const string DO_CREDIT_CARD_PAYMENT_WITH_SECURITY_INFOS = "/do-payment";
             }
         }

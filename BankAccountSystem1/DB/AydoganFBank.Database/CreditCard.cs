@@ -17,6 +17,7 @@ namespace AydoganFBank.Database
         public int CreditCardId { get; set; }
         public string CreditCardNumber { get; set; }
         public decimal Limit { get; set; }
+        public decimal Debt { get; set; }
         public int ExtreDay { get; set; }
         public int Type { get; set; }
         public string ValidMonth { get; set; }

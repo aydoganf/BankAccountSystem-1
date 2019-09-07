@@ -22,6 +22,19 @@ namespace AydoganFBank.Service.Builder
             };
         }
 
+        public List<AccountInfo> BuildAccountInfoList(List<IAccountInfo> accountInfos)
+        {
+            if (accountInfos == null || accountInfos.Count == 0)
+                return null;
+
+            List<AccountInfo> accounts = new List<AccountInfo>();
+            foreach (var accountInfo in accountInfos)
+            {
+                accounts.Add(BuildAccountInfo(accountInfo));
+            }
+            return accounts;
+        }
+
         public AccountTypeInfo BuildAccountTypeInfo(IAccountTypeInfo accountType)
         {
             return new AccountTypeInfo()
@@ -70,7 +83,6 @@ namespace AydoganFBank.Service.Builder
         {
             return new CompanyInfo()
             {
-                Account = BuildAccountInfo(company.Account),
                 Address = company.Address,
                 CompanyName = company.CompanyName,
                 Id = company.Id,

@@ -97,12 +97,12 @@ namespace AydoganFBank.AccountManagement.Domain
             if (transactionDirection == TransactionDirection.In)
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, (ITransactionDetailOwner)ToTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, (ITransactionDetailOwner)FromTransactionOwner, transactionDirection);
             }
             else
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, (ITransactionDetailOwner)FromTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, (ITransactionDetailOwner)ToTransactionOwner, transactionDirection);
             }
         }
     }
@@ -185,8 +185,7 @@ namespace AydoganFBank.AccountManagement.Domain
                     (at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId)),
                 at =>
                     at.TransactionDate,
-                itemCount)
-                .ToList();
+                itemCount);
         }
 
         
@@ -199,8 +198,7 @@ namespace AydoganFBank.AccountManagement.Domain
                     at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId,
                 at =>
                     at.TransactionDate,
-                itemCount)
-                .ToList();
+                itemCount);
         }
         
         public List<AccountTransactionDomainEntity> GetLastDateRangeListByTransactionOwner(
@@ -214,8 +212,7 @@ namespace AydoganFBank.AccountManagement.Domain
                     (at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId)) &&
                     at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
-                    at.TransactionDate)
-                .ToList();
+                    at.TransactionDate);
         }
         
         public List<AccountTransactionDomainEntity> GetLastIncomingDateRangeListByTransactionOwner(
@@ -228,8 +225,7 @@ namespace AydoganFBank.AccountManagement.Domain
                     at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId &&
                     at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
-                    at.TransactionDate)
-                .ToList();
+                    at.TransactionDate);
         }
         
         public List<AccountTransactionDomainEntity> GetLastOutgoingDateRangeListByTransactionOwner(
@@ -242,8 +238,7 @@ namespace AydoganFBank.AccountManagement.Domain
                     at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId &&
                     at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
-                    at.TransactionDate)
-                .ToList();
+                    at.TransactionDate);
         }
         
         public List<AccountTransactionDomainEntity> GetLastOutgoingListByTransactionOwner(
@@ -255,8 +250,7 @@ namespace AydoganFBank.AccountManagement.Domain
                     at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId,
                 at =>
                     at.TransactionDate,
-                itemCount)
-                .ToList();
+                itemCount);
         }
     }
 

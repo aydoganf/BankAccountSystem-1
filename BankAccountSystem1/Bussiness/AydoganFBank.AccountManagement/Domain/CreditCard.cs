@@ -249,7 +249,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
         protected override CreditCard GetDbEntityById(int id)
         {
-            return dbContext.CreditCard.Single(cc => cc.CreditCardId == id);
+            return dbContext.CreditCard.FirstOrDefault(cc => cc.CreditCardId == id);
         }
 
         private ICreditCardOwner GetCreditCardOwner(int ownerType, int ownerId)
@@ -260,11 +260,11 @@ namespace AydoganFBank.AccountManagement.Domain
                 creditCardOwner = coreContext.Query<IAccountRepository>()
                     .GetById(ownerId);
             }
-            else if (ownerType == CreditCardOwnerType.Company.ToInt())
-            {
-                creditCardOwner = coreContext.Query<ICompanyRepository>()
-                    .GetById(ownerId);
-            }
+            //else if (ownerType == CreditCardOwnerType.Company.ToInt())
+            //{
+            //    creditCardOwner = coreContext.Query<ICompanyRepository>()
+            //        .GetById(ownerId);
+            //}
 
             return creditCardOwner;
         }
@@ -276,6 +276,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.ExtreDay = domainEntity.ExtreDay;
             dbEntity.IsInternetUsageOpen = domainEntity.IsInternetUsageOpen;
             dbEntity.Limit = domainEntity.Limit;
+            dbEntity.Debt = domainEntity.Debt;
             dbEntity.OwnerId = domainEntity.CreditCardOwner.OwnerId;
             dbEntity.OwnerType = (int)domainEntity.CreditCardOwner.CreditCardOwnerType;
             dbEntity.SecurityCode = domainEntity.SecurityCode;
@@ -295,6 +296,7 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.ExtreDay = dbEntity.ExtreDay;
             domainEntity.IsInternetUsageOpen = dbEntity.IsInternetUsageOpen;
             domainEntity.Limit = dbEntity.Limit;
+            domainEntity.Debt = dbEntity.Debt;
             domainEntity.SecurityCode = dbEntity.SecurityCode;
             domainEntity.Type = dbEntity.Type;
             domainEntity.ValidMonth = dbEntity.ValidMonth;

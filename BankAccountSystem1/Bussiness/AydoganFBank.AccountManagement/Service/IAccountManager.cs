@@ -2,10 +2,11 @@
 
 using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.AccountManagement.Domain;
+using AydoganFBank.Context.DataAccess;
 
 namespace AydoganFBank.AccountManagement.Service
 {
-    public interface IAccountManager
+    public interface IAccountManager : IDomianEntityManager
     {
         IAccountInfo CreatePersonAccount(string accountTypeKey, int personId);
         IAccountInfo CreateCompanyAccount(string accountTypeKey, int companyId);

@@ -8,7 +8,8 @@ namespace AydoganFBank.Context.IoC
 {
     public class CoreContextConfigurer : ICoreContextConfigurer
     {
-        private string ConnStr = "";
+        private string connStr = "";
+        private string logFileDirectory = "";
 
         public CoreContextConfigurer(Action<CoreContextConfigurer> action)
         {
@@ -17,12 +18,21 @@ namespace AydoganFBank.Context.IoC
 
         string ICoreContextConfigurer.GetConnectionString()
         {
-            return ConnStr;
+            return connStr;
+        }
+        string ICoreContextConfigurer.GetLogFileDirectory()
+        {
+            return logFileDirectory;
         }
 
-        public void SetConnStr(string connStr)
+        public void DBConnectionString(string connStr)
         {
-            this.ConnStr = connStr;
+            this.connStr = connStr;
+        }
+
+        public void LogFileDirectory(string logFileDirectory)
+        {
+            this.logFileDirectory = logFileDirectory;
         }
     }
 

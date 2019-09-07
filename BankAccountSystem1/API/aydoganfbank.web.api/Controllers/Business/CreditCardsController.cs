@@ -34,7 +34,7 @@ namespace aydoganfbank.web.api.Controllers.Business
                         () =>
                             serviceContext.CreditCardManager.CreateAccountCreditCard(
                                 message.Limit,
-                                message.ExtreDate,
+                                message.ExtreDay,
                                 message.Type,
                                 message.ValidMonth,
                                 message.ValidYear,
@@ -46,7 +46,7 @@ namespace aydoganfbank.web.api.Controllers.Business
                         () =>
                             serviceContext.CreditCardManager.CreateCompanyCreditCard(
                                 message.Limit,
-                                message.ExtreDate,
+                                message.ExtreDay,
                                 message.Type,
                                 message.ValidMonth,
                                 message.ValidYear,

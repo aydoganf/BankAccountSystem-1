@@ -7,5 +7,6 @@ namespace AydoganFBank.Context.IoC
     public interface ICoreContextConfigurer : ISingletonObject
     {
         string GetConnectionString();
+        string GetLogFileDirectory();
     }
 }

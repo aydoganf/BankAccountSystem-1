@@ -7,6 +7,7 @@ using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -22,6 +23,8 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             this.coreContext = coreContext;
             this.personRepository = personRepository;
+
+            this.coreContext.Logger.Info("PersonDomainEntity created.", this.coreContext.GetContainerInfo());
         }
         #endregion
 
@@ -115,7 +118,8 @@ namespace AydoganFBank.AccountManagement.Domain
     {
         public PersonRepository(ICoreContext coreContext) 
             : base (coreContext)
-        {            
+        {
+            coreContext.Logger.Info("PersonRepository created.", coreContext.GetContainerInfo());
         }
 
         #region Mapping overrides
@@ -158,7 +162,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public new List<PersonDomainEntity> GetAll()
         {
-            return base.GetAll().ToList();
+            return base.GetAll();
         }
     }
 

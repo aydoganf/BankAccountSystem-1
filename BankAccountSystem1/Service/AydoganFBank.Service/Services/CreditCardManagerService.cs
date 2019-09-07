@@ -22,20 +22,11 @@ namespace AydoganFBank.Service.Services
         }
 
         public CreditCardInfo CreateAccountCreditCard(
-            decimal limit, int extreDate, int type, string validMonth, string validYear, 
+            decimal limit, int extreDay, int type, string validMonth, string validYear, 
             string securityCode, bool isInternetUsageOpen, int accountId)
         {
             var creditCard = creditCardManager.CreateAccountCreditCard(
-                limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, accountId);
-            return dataBuilder.BuildCreditCardInfo(creditCard);
-        }
-
-        public CreditCardInfo CreateCompanyCreditCard(
-            decimal limit, int extreDate, int type, string validMonth, string validYear, 
-            string securityCode, bool isInternetUsageOpen, int companyId)
-        {
-            var creditCard = creditCardManager.CreateCompanyCreditCard(
-                limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, companyId);
+                limit, extreDay, type, validMonth, validYear, securityCode, isInternetUsageOpen, accountId);
             return dataBuilder.BuildCreditCardInfo(creditCard);
         }
 

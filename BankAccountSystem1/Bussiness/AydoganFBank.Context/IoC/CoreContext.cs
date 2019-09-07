@@ -1,5 +1,6 @@
 ﻿using System;
 using AydoganFBank.Context.DataAccess;
+using AydoganFBank.Context.Utils;
 using AydoganFBank.Database;
 using StructureMap;
 
@@ -9,9 +10,7 @@ namespace AydoganFBank.Context.IoC
     {
         private readonly IContainer container;
         private readonly ICoreContextConfigurer coreContextConfigurer;
-
-
-        private string ConnStr = "";
+        private Logger logger;
 
         private AydoganFBankDbContext _dbContext;
         private AydoganFBankDbContext dbContext
@@ -28,11 +27,19 @@ namespace AydoganFBank.Context.IoC
         }
 
         AydoganFBankDbContext ICoreContext.DBContext => dbContext;
+        ILogger ICoreContext.Logger => logger;
 
-        public CoreContext(IContainer container, ICoreContextConfigurer coreContextConfigurer)
+        public CoreContext(
+            IContainer container, ICoreContextConfigurer coreContextConfigurer)
         {
             this.container = container;
             this.coreContextConfigurer = coreContextConfigurer;
+
+            logger = new Logger();
+            logger.SetFilePaths(this.coreContextConfigurer.GetLogFileDirectory());
+
+            logger.Info("coreContext created.", this);
+            logger.Info("logger created.");
         }
 
         public T New<T>()
@@ -43,6 +50,11 @@ namespace AydoganFBank.Context.IoC
         public T Query<T>() where T : IQueryRepository
         {
             return container.GetInstance<T>();
+        }
+
+        public string GetContainerInfo()
+        {
+            return container.Name;
         }
 
         //public ICoreContext WithNewContext()

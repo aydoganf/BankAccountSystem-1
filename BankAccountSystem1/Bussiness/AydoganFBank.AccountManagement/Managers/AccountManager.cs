@@ -17,6 +17,8 @@ namespace AydoganFBank.AccountManagement.Managers
             ICoreContext coreContext)
         {
             this.coreContext = coreContext;
+
+            this.coreContext.Logger.Info("AccountManager created.", this.coreContext.GetContainerInfo());
         }
         #endregion
 
@@ -33,10 +35,15 @@ namespace AydoganFBank.AccountManagement.Managers
 
         internal AccountDomainEntity CreatePersonAccount(string accountTypeKey, int personId)
         {
-            var accountNumber = coreContext.Query<IAccountRepository>().GetNextAccountNumber();
             var accountType = coreContext.Query<IAccountTypeRepository>().GetByKey(accountTypeKey);
             var person = coreContext.Query<IPersonRepository>().GetById(personId);
-            var persons = coreContext.Query<IPersonRepository>().GetAll();
+            if (coreContext.Query<IAccountRepository>().HasOwnerAccountByType(person, accountType))
+            {
+                throw new AccountManagementException.AccountOwnerHasAlreadyAnAccountWithGivenAccountType(string.Format("{0} - {1}",
+                    nameof(accountType), accountTypeKey));
+            }
+
+            var accountNumber = coreContext.Query<IAccountRepository>().GetNextAccountNumber();
             return CreateAccount(accountType, person, accountNumber);
         }
 

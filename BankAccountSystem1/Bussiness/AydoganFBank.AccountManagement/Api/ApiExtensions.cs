@@ -54,17 +54,17 @@ namespace AydoganFBank.AccountManagement.Api
             switch (transactionDirection)
             {
                 case TransactionDirection.In:
-                    message = string.Format("{0} have sent {1}{2} to you on {3}.", 
-                        from.TransactionDetailDisplayName, 
-                        amount, 
-                        to.AssetsUnit, 
+                    message = string.Format("{0} have sent {1}{2} to you on {3}.",
+                        from.TransactionDetailDisplayName,
+                        amount,
+                        to.AssetsUnit,
                         date);
                     break;
                 case TransactionDirection.Out:
-                    message = string.Format("You sent {0} to {1}{2} on {3}", 
+                    message = string.Format("You sent {0}{1} to {2} on {3}",
                         amount,
                         from.AssetsUnit,
-                        to.TransactionDetailDisplayName, 
+                        to.TransactionDetailDisplayName,
                         date);
                     break;
                 default:

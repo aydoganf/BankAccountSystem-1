@@ -17,7 +17,7 @@ namespace AydoganFBank.Context.DataAccess
         {
         }
 
-        protected IEnumerable<TDomainEntity> GetOrderedAscListBy<TOrder>(
+        protected List<TDomainEntity> GetOrderedAscListBy<TOrder>(
             Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder>> ascendingOrder)
         {
@@ -26,7 +26,7 @@ namespace AydoganFBank.Context.DataAccess
                     .OrderBy(ascendingOrder));
         }
 
-        protected IEnumerable<TDomainEntity> GetOrderedAscListBy<TOrder1, TOrder2>(
+        protected List<TDomainEntity> GetOrderedAscListBy<TOrder1, TOrder2>(
             Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder1>> ascendingOrder,
             Expression<Func<TDbEntity, TOrder2>> ascendingOrderThen)
@@ -37,7 +37,7 @@ namespace AydoganFBank.Context.DataAccess
                     .ThenBy(ascendingOrderThen));
         }
 
-        protected IEnumerable<TDomainEntity> GetOrderedAscListBy<TOrder1, TOrder2, TOrder3>(
+        protected List<TDomainEntity> GetOrderedAscListBy<TOrder1, TOrder2, TOrder3>(
             Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder1>> ascendingOrder,
             Expression<Func<TDbEntity, TOrder2>> ascendingOrderThen1,
@@ -65,7 +65,7 @@ namespace AydoganFBank.Context.DataAccess
                 dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descendingOrder).FirstOrDefault());
         }
 
-        protected IEnumerable<TDomainEntity> GetLastItemCountListBy<TOrder>(
+        protected List<TDomainEntity> GetLastItemCountListBy<TOrder>(
             Expression<Func<TDbEntity, TOrder>> descedingOrder,
             int itemCount)
         {
@@ -73,7 +73,7 @@ namespace AydoganFBank.Context.DataAccess
                 dbContext.Set<TDbEntity>().OrderByDescending(descedingOrder).Take(itemCount));
         }
 
-        protected IEnumerable<TDomainEntity> GetLastItemCountListBy<TOrder>(
+        protected List<TDomainEntity> GetLastItemCountListBy<TOrder>(
             Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder>> descedingOrder,
             int itemCount)
@@ -82,7 +82,7 @@ namespace AydoganFBank.Context.DataAccess
                 dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descedingOrder).Take(itemCount));
         }
 
-        protected IEnumerable<TDomainEntity> GetOrderedDescListBy<TOrder>(
+        protected List<TDomainEntity> GetOrderedDescListBy<TOrder>(
             Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder>> descendingOrder)
         {
@@ -90,7 +90,7 @@ namespace AydoganFBank.Context.DataAccess
                     dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descendingOrder));
         }
 
-        protected IEnumerable<TDomainEntity> GetOrderedDescListBy<TOrder1, TOrder2>(
+        protected List<TDomainEntity> GetOrderedDescListBy<TOrder1, TOrder2>(
             Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder1>> descendingOrder1,
             Expression<Func<TDbEntity, TOrder2>> descendingOrder2)
@@ -101,7 +101,7 @@ namespace AydoganFBank.Context.DataAccess
                     .ThenByDescending(descendingOrder2));
         }
 
-        protected IEnumerable<TDomainEntity> GetOrderedDescListBy<TOrder1, TOrder2, TOrder3>(
+        protected List<TDomainEntity> GetOrderedDescListBy<TOrder1, TOrder2, TOrder3>(
             Expression<Func<TDbEntity, bool>> whereCondition,
             Expression<Func<TDbEntity, TOrder1>> descendingOrder1,
             Expression<Func<TDbEntity, TOrder2>> descendingOrder2,

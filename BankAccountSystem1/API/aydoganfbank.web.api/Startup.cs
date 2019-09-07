@@ -61,7 +61,7 @@ namespace aydoganfbank.web.api
                 _.For<ICoreContextConfigurer>().Use<CoreContextConfigurer>()
                     .Ctor<Action<CoreContextConfigurer>>().Is(c =>
                     {
-                        c.SetConnStr(Configuration.GetConnectionString("AydoganFBankDatabase"));
+                        c.DBConnectionString(Configuration.GetConnectionString("AydoganFBankDatabase"));
                     }).Singleton();
                 //_.Scan(s =>
                 //{

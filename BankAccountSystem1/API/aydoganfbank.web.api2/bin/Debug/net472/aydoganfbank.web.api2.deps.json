@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETFramework,Version=v4.7.2/win7-x86",
-    "signature": "7ed9031b596f8e185bc678887fce4d18ec96ea22"
+    "signature": "789dbc191f8893e50289cd53b9441bf0e66bcadc"
   },
   "compilationOptions": {
     "defines": [
@@ -35,6 +35,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.1.1",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.1.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9",
+          "Newtonsoft.Json": "12.0.2",
           "StructureMap": "4.7.1",
           "StructureMap.Microsoft.DependencyInjection": "2.0.0",
           "aydoganfbank.web.api.bussiness": "1.0.0",
@@ -1045,7 +1046,7 @@
       "Microsoft.AspNetCore.JsonPatch/2.1.1": {
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
@@ -1587,7 +1588,7 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "2.1.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.1.1",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll": {}
@@ -1617,7 +1618,7 @@
       "Microsoft.Extensions.DependencyModel/2.1.0": {
         "dependencies": {
           "Microsoft.DotNet.PlatformAbstractions": "2.1.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/net451/Microsoft.Extensions.DependencyModel.dll": {}
@@ -1798,7 +1799,7 @@
       },
       "Microsoft.VisualStudio.Web.CodeGeneration.Contracts/2.1.9": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll": {}
@@ -1808,7 +1809,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Templating": "2.1.9",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.dll": {}
@@ -1844,7 +1845,7 @@
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "2.8.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Contracts": "2.1.9",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "NuGet.Frameworks": "4.7.0"
         },
         "compile": {
@@ -1868,14 +1869,14 @@
           "ref/net461/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.2": {
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
       "Newtonsoft.Json.Bson/1.0.1": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "compile": {
           "lib/net45/Newtonsoft.Json.Bson.dll": {}
@@ -2157,7 +2158,8 @@
       },
       "AydoganFBank.Service/1.0.0": {
         "dependencies": {
-          "AydoganFBank.AccountManagement": "1.0.0"
+          "AydoganFBank.AccountManagement": "1.0.0",
+          "AydoganFBank.Context": "1.0.0"
         },
         "compile": {
           "AydoganFBank.Service.dll": {}
@@ -2183,6 +2185,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.1.1",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.1.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9",
+          "Newtonsoft.Json": "12.0.2",
           "StructureMap": "4.7.1",
           "StructureMap.Microsoft.DependencyInjection": "2.0.0",
           "aydoganfbank.web.api.bussiness": "1.0.0",
@@ -2583,7 +2586,7 @@
       "Microsoft.AspNetCore.JsonPatch/2.1.1": {
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
@@ -3125,7 +3128,7 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "2.1.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.1.1",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.dll": {}
@@ -3155,7 +3158,7 @@
       "Microsoft.Extensions.DependencyModel/2.1.0": {
         "dependencies": {
           "Microsoft.DotNet.PlatformAbstractions": "2.1.0",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/net451/Microsoft.Extensions.DependencyModel.dll": {}
@@ -3336,7 +3339,7 @@
       },
       "Microsoft.VisualStudio.Web.CodeGeneration.Contracts/2.1.9": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll": {}
@@ -3346,7 +3349,7 @@
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Templating": "2.1.9",
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGeneration.Core.dll": {}
@@ -3382,7 +3385,7 @@
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "2.8.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Contracts": "2.1.9",
-          "Newtonsoft.Json": "11.0.2",
+          "Newtonsoft.Json": "12.0.2",
           "NuGet.Frameworks": "4.7.0"
         },
         "runtime": {
@@ -3406,14 +3409,14 @@
           "lib/net461/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "Newtonsoft.Json/11.0.2": {
+      "Newtonsoft.Json/12.0.2": {
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
       "Newtonsoft.Json.Bson/1.0.1": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/net45/Newtonsoft.Json.Bson.dll": {}
@@ -3699,7 +3702,8 @@
       },
       "AydoganFBank.Service/1.0.0": {
         "dependencies": {
-          "AydoganFBank.AccountManagement": "1.0.0"
+          "AydoganFBank.AccountManagement": "1.0.0",
+          "AydoganFBank.Context": "1.0.0"
         },
         "runtime": {
           "AydoganFBank.Service.dll": {}
@@ -4502,12 +4506,12 @@
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
     },
-    "Newtonsoft.Json/11.0.2": {
+    "Newtonsoft.Json/12.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
-      "path": "newtonsoft.json/11.0.2",
-      "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
     },
     "Newtonsoft.Json.Bson/1.0.1": {
       "type": "package",

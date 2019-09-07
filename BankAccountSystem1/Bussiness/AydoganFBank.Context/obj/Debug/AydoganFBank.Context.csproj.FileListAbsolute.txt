@@ -21,11 +21,13 @@ C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\AydoganFBank.Database.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\EntityFramework.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\StructureMap.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\AydoganFBank.Database.pdb
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\AydoganFBank.Database.dll.config
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\EntityFramework.xml
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\StructureMap.xml
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.csprojAssemblyReference.cache
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.csproj.CoreCompileInputs.cache

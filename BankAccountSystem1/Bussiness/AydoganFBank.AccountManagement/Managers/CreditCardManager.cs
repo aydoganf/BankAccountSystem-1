@@ -11,11 +11,16 @@ namespace AydoganFBank.AccountManagement.Managers
         #region IoC
         private readonly ICoreContext coreContext;
         private readonly AccountManager accountManager;
+        private readonly CompanyManager companyManager;
 
-        public CreditCardManager(ICoreContext coreContext, AccountManager accountManager)
+        public CreditCardManager(
+            ICoreContext coreContext, 
+            AccountManager accountManager,
+            CompanyManager companyManager)
         {
             this.coreContext = coreContext;
             this.accountManager = accountManager;
+            this.companyManager = companyManager;
         }
         #endregion
 
@@ -31,30 +36,22 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<ICreditCardRepository>().GetBySecurityInfos(creditCardNumber, validMonth, validYear, securityCode);
         }
 
-        private CreditCardDomainEntity CreateCreditCard(decimal limit, int extreDate, int type, string validMonth, string validYear, string securityCode,
+        private CreditCardDomainEntity CreateCreditCard(decimal limit, int extreDay, int type, string validMonth, string validYear, string securityCode,
             bool isInternetUsageOpen, ICreditCardOwner creditCardOwner)
         {
             var creditCard = coreContext.New<CreditCardDomainEntity>()
-                .With(limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, creditCardOwner);
+                .With(limit, extreDay, type, validMonth, validYear, securityCode, isInternetUsageOpen, creditCardOwner);
             creditCard.Insert();
 
             return creditCard;
         }
 
-        internal CreditCardDomainEntity CreateAccountCreditCard(decimal limit, int extreDate, int type, string validMonth, string validYear, string securityCode, bool isInternetUsageOpen, int accountId)
+        internal CreditCardDomainEntity CreateAccountCreditCard(decimal limit, int extreDay, int type, string validMonth, string validYear, string securityCode, bool isInternetUsageOpen, int accountId)
         {
             var account = coreContext.Query<IAccountRepository>()
                 .GetById(accountId);
 
-            return CreateCreditCard(limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, account);
-        }
-
-        internal CreditCardDomainEntity CreateCompanyCreditCard(decimal limit, int extreDate, int type, string validMonth, string validYear, string securityCode, bool isInternetUsageOpen, int companyId)
-        {
-            var company = coreContext.Query<ICompanyRepository>()
-                .GetById(companyId);
-
-            return CreateCreditCard(limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, company);
+            return CreateCreditCard(limit, extreDay, type, validMonth, validYear, securityCode, isInternetUsageOpen, account);
         }
 
         private CreditCardDomainEntity DoCreditCardPayment(CreditCardDomainEntity creditCard, decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)
@@ -65,24 +62,36 @@ namespace AydoganFBank.AccountManagement.Managers
                 .With(creditCard, toTransactionOwner, amount, TransactionTypeEnum.CreditCardPayment, TransactionStatusEnum.InProgress, creditCard);
 
             transaction.Insert();
-            var transactionDetail = transaction.CreateTransactionDetail(TransactionDirection.Out);
-            transactionDetail.Insert();
+            var transactionDetailIn = transaction.CreateTransactionDetail(TransactionDirection.In);
+            transactionDetailIn.Insert();
+            var transactionDetailOut = transaction.CreateTransactionDetail(TransactionDirection.Out);
+            transactionDetailOut.Insert();
+
+
+            decimal instalmentAmount = amount / instalmentCount;
 
             for (int instalmentIndex = 1; instalmentIndex <= instalmentCount; instalmentIndex++)
             {
-                decimal instalmentAmount = amount / instalmentCount;
-
                 string paymentDescription = string.Format("{0} - {1}{2} ({3} instalment)",
-                    toTransactionOwner.TransactionDetailDisplayName, instalmentAmount, toTransactionOwner.AssetsUnit,
+                    toTransactionOwner.TransactionDetailDisplayName, 
+                    instalmentAmount, 
+                    toTransactionOwner.AssetsUnit,
                     string.Format("{0}/{1}", instalmentIndex, instalmentCount));
 
                 DateTime instalmentDate = transaction.TransactionDate.AddMonths(instalmentIndex - 1);
 
                 var creditCardPayment = coreContext.New<CreditCardPaymentDomainEntity>()
-                    .With(instalmentIndex, instalmentAmount, paymentDescription,
-                    transaction.TransactionDate, instalmentDate, transaction);
+                    .With(
+                        instalmentIndex, 
+                        instalmentAmount, 
+                        paymentDescription,
+                        transaction.TransactionDate, 
+                        instalmentDate, 
+                        transaction);
                 creditCardPayment.Insert();
             }
+
+            creditCard.Save();
 
             return creditCard;
         }
@@ -120,14 +129,9 @@ namespace AydoganFBank.AccountManagement.Managers
             return CreateCreditCard(limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, creditCardOwner);
         }
 
-        ICreditCardInfo ICreditCardManager.CreateAccountCreditCard(decimal limit, int extreDate, int type, string validMonth, string validYear, string securityCode, bool isInternetUsageOpen, int accountId)
+        ICreditCardInfo ICreditCardManager.CreateAccountCreditCard(decimal limit, int extreDay, int type, string validMonth, string validYear, string securityCode, bool isInternetUsageOpen, int accountId)
         {
-            return CreateAccountCreditCard(limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, accountId);
-        }
-
-        ICreditCardInfo ICreditCardManager.CreateCompanyCreditCard(decimal limit, int extreDate, int type, string validMonth, string validYear, string securityCode, bool isInternetUsageOpen, int companyId)
-        {
-            return CreateCompanyCreditCard(limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, companyId);
+            return CreateAccountCreditCard(limit, extreDay, type, validMonth, validYear, securityCode, isInternetUsageOpen, accountId);
         }
 
         ICreditCardInfo ICreditCardManager.DoCreditCardPayment(int creditCardId, decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)

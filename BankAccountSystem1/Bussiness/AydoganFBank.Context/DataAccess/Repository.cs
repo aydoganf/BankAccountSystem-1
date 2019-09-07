@@ -36,7 +36,7 @@ namespace AydoganFBank.Context.DataAccess
         public virtual TDomainEntity MapToDomainObject(TDbEntity dbEntity)
         {
             if (dbEntity == null)
-                throw new CommonException.EntityNotFoundInDbContextException("");
+                return default;  //throw new CommonException.EntityNotFoundInDbContextException("");
 
             var domainEnttiy = coreContext.New<TDomainEntity>();
             MapToDomainObject(domainEnttiy, dbEntity);
@@ -44,7 +44,7 @@ namespace AydoganFBank.Context.DataAccess
         }
         public abstract void MapToDomainObject(TDomainEntity domainEntity, TDbEntity dbEntity);
 
-        public virtual IEnumerable<TDomainEntity> MapToDomainObjectList(IEnumerable<TDbEntity> dbEntities)
+        public virtual List<TDomainEntity> MapToDomainObjectList(IEnumerable<TDbEntity> dbEntities)
         {
             List<TDomainEntity> domainEntities = new List<TDomainEntity>();
             foreach (var dbEntity in dbEntities)
@@ -96,7 +96,7 @@ namespace AydoganFBank.Context.DataAccess
 
         public abstract TDomainEntity GetById(int id);
 
-        public IEnumerable<TDomainEntity> GetAll()
+        public List<TDomainEntity> GetAll()
         {
             return MapToDomainObjectList(dbContext.Set<TDbEntity>().ToList());
         }
@@ -106,9 +106,14 @@ namespace AydoganFBank.Context.DataAccess
             return MapToDomainObject(dbContext.Set<TDbEntity>().FirstOrDefault(predicate));
         }
 
-        protected IEnumerable<TDomainEntity> GetListBy(Expression<Func<TDbEntity, bool>> predicate)
+        protected List<TDomainEntity> GetListBy(Expression<Func<TDbEntity, bool>> predicate)
         {
             return MapToDomainObjectList(dbContext.Set<TDbEntity>().Where(predicate));
+        }
+
+        protected bool Exists(Expression<Func<TDbEntity, bool>> predicate)
+        {
+            return dbContext.Set<TDbEntity>().Any(predicate);
         }
     }
 }

@@ -7,6 +7,7 @@ using aydoganfbank.web.api2.Middlewares;
 using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Context.IoC;
 using AydoganFBank.Context.IoC.Lifecycle;
+using AydoganFBank.Context.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -72,7 +73,8 @@ namespace aydoganfbank.web.api2
                 _.For<ICoreContextConfigurer>().Use<CoreContextConfigurer>()
                     .Ctor<Action<CoreContextConfigurer>>().Is(c =>
                     {
-                        c.SetConnStr(Configuration.GetConnectionString("AydoganFBankDatabase"));
+                        c.DBConnectionString(Configuration.GetConnectionString("AydoganFBankDatabase"));
+                        c.LogFileDirectory(@"C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\logs");
                     });
 
                 _.Scan(s =>

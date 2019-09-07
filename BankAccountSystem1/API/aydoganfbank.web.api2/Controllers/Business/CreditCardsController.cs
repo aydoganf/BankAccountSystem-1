@@ -30,19 +30,7 @@ namespace aydoganfbank.web.api2.Controllers.Business
                         () =>
                             serviceContext.CreditCardManagerService.CreateAccountCreditCard(
                                 message.Limit,
-                                message.ExtreDate,
-                                message.Type,
-                                message.ValidMonth,
-                                message.ValidYear,
-                                message.SecurityCode,
-                                message.IsInternetUsageOpen,
-                                message.CreditCardOwner.OwnerId));
-                case CreditCardOwnerType.Company:
-                    return this.HandleResult(
-                        () =>
-                            serviceContext.CreditCardManagerService.CreateCompanyCreditCard(
-                                message.Limit,
-                                message.ExtreDate,
+                                message.ExtreDay,
                                 message.Type,
                                 message.ValidMonth,
                                 message.ValidYear,

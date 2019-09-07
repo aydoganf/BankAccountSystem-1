@@ -38,3 +38,5 @@ C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\A
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\AydoganFBank.Service\obj\Debug\AydoganFBank.Service.csproj.CopyComplete
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\AydoganFBank.Service\obj\Debug\AydoganFBank.Service.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\AydoganFBank.Service\obj\Debug\AydoganFBank.Service.pdb
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\AydoganFBank.Service\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\AydoganFBank.Service\bin\Debug\Newtonsoft.Json.xml

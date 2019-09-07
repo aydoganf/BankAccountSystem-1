@@ -1,4 +1,5 @@
 ﻿using AydoganFBank.AccountManagement.Api;
+using AydoganFBank.Context.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AydoganFBank.AccountManagement.Service
 {
-    public interface ITransactionManager
+    public interface ITransactionManager : IDomianEntityManager
     {
         List<ITransactionInfo> GetCreditCardLastDateRangeTransactionInfoList(int creditCardId, DateTime startDate, DateTime endDate);
         List<ITransactionInfo> GetAccountTransactionDateRangeTransactionInfoList(int accountId, DateTime startDate, DateTime endDate);

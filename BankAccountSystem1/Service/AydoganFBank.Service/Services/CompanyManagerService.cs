@@ -33,11 +33,17 @@ namespace AydoganFBank.Service.Services
             return dataBuilder.BuildCompanyInfo(company);
         }
 
-        public CompanyInfo CreateCompany(string companyName, int responsablePersonId, string address, string phoneNumber, string taxNumber, int accountId)
+        public CompanyInfo CreateCompany(string companyName, int responsablePersonId, string address, string phoneNumber, string taxNumber)
         {
             var company = companyManager.CreateCompany(
-                companyName, responsablePersonId, address, phoneNumber, taxNumber, accountId);
+                companyName, responsablePersonId, address, phoneNumber, taxNumber);
             return dataBuilder.BuildCompanyInfo(company);
+        }
+
+        public List<AccountInfo> GetAccountListByCompany(int companyId)
+        {
+            var accountInfos = companyManager.GetCompanyAccounts(companyId);
+            return dataBuilder.BuildAccountInfoList(accountInfos);
         }
 
         public CompanyInfo GetCompanyByResponsableId(int responsablePersonId)

@@ -18,23 +18,13 @@ namespace AydoganFBank.Service.Services.APIs
 
         CreditCardInfo CreateAccountCreditCard(
             decimal limit,
-            int extreDate,
+            int extreDay,
             int type,
             string validMonth,
             string validYear,
             string securityCode,
             bool isInternetUsageOpen,
             int accountId);
-
-        CreditCardInfo CreateCompanyCreditCard(
-            decimal limit,
-            int extreDate,
-            int type,
-            string validMonth,
-            string validYear,
-            string securityCode,
-            bool isInternetUsageOpen,
-            int companyId);
 
         CreditCardInfo DoCreditCardPayment(
             string creditCardNumber,

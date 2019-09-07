@@ -4691,7 +4691,8 @@
       "AydoganFBank.Service/1.0.0": {
         "type": "project",
         "dependencies": {
-          "AydoganFBank.AccountManagement": "1.0.0"
+          "AydoganFBank.AccountManagement": "1.0.0",
+          "AydoganFBank.Context": "1.0.0"
         },
         "compile": {
           "bin/placeholder/AydoganFBank.Service.dll": {}
