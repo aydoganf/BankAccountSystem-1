@@ -12,6 +12,7 @@ namespace AydoganFBank.Context.IoC
     {
         AydoganFBankDbContext DBContext { get; }
         ILogger Logger { get; }
+        ICryptographer Cryptographer { get; }
 
         T New<T>();
 

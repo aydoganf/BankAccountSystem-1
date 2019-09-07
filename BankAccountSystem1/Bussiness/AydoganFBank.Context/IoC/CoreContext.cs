@@ -10,6 +10,8 @@ namespace AydoganFBank.Context.IoC
     {
         private readonly IContainer container;
         private readonly ICoreContextConfigurer coreContextConfigurer;
+        private readonly ICryptographer cryptographer;
+
         private Logger logger;
 
         private AydoganFBankDbContext _dbContext;
@@ -28,12 +30,15 @@ namespace AydoganFBank.Context.IoC
 
         AydoganFBankDbContext ICoreContext.DBContext => dbContext;
         ILogger ICoreContext.Logger => logger;
+        ICryptographer ICoreContext.Cryptographer => cryptographer;
+
 
         public CoreContext(
-            IContainer container, ICoreContextConfigurer coreContextConfigurer)
+            IContainer container, ICoreContextConfigurer coreContextConfigurer, ICryptographer cryptographer)
         {
             this.container = container;
             this.coreContextConfigurer = coreContextConfigurer;
+            this.cryptographer = cryptographer;
 
             logger = new Logger();
             logger.SetFilePaths(this.coreContextConfigurer.GetLogFileDirectory());

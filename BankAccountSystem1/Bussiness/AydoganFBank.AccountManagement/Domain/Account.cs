@@ -61,8 +61,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public void Insert(bool forceToInsertDb = true)
         {
-            // calculate new account number
-            
+            accountRepository.InsertEntity(this, forceToInsertDb);
         }
 
         public void Save()

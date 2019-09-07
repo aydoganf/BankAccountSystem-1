@@ -40,6 +40,16 @@
           <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TypeKey" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Domain" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Token" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyId" />
@@ -113,6 +123,24 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="IdentityNumber" Type="nvarchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="TokenId" />
+            <PropertyRef Name="Value" />
+            <PropertyRef Name="PersonId" />
+            <PropertyRef Name="ValidUntil" />
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="CreateDate" />
+          </Key>
+          <Property Name="TokenId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="ValidUntil" Type="datetime" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TransactionDetail">
           <Key>
@@ -244,6 +272,7 @@
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CreditCardExtre" EntityType="Self.CreditCardExtre" Schema="dbo" store:Type="Tables" />
@@ -254,6 +283,16 @@
           <EntitySet Name="TransactionOrder" EntityType="Self.TransactionOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token" EntityType="Self.Token" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Token].[TokenId] AS [TokenId], 
+    [Token].[Value] AS [Value], 
+    [Token].[PersonId] AS [PersonId], 
+    [Token].[ValidUntil] AS [ValidUntil], 
+    [Token].[ApplicationId] AS [ApplicationId], 
+    [Token].[CreateDate] AS [CreateDate]
+    FROM [dbo].[Token] AS [Token]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Account_AccountType" Association="Self.FK_Account_AccountType">
             <End Role="AccountType" EntitySet="AccountType" />
             <End Role="Account" EntitySet="Account" />
@@ -394,6 +433,8 @@
             <End Role="Company" EntitySet="Company" />
           </AssociationSet>
           <EntitySet Name="CreditCard" EntityType="AydoganFBankModel.CreditCard" />
+          <EntitySet Name="Application" EntityType="AydoganFBankModel.Application" />
+          <EntitySet Name="Token" EntityType="AydoganFBankModel.Token" />
           </EntityContainer>
         <EntityType Name="CreditCardExtre">
           <Key>
@@ -579,6 +620,32 @@
           <Property Name="OwnerType" Type="Int32" Nullable="false" />
           <Property Name="OwnerId" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Domain" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="TokenId" />
+            <PropertyRef Name="Value" />
+            <PropertyRef Name="PersonId" />
+            <PropertyRef Name="ValidUntil" />
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="CreateDate" />
+          </Key>
+          <Property Name="TokenId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="ValidUntil" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -746,6 +813,29 @@
                 <ScalarProperty Name="Limit" ColumnName="Limit" />
                 <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
                 <ScalarProperty Name="CreditCardId" ColumnName="CreditCardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="AydoganFBankModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Token">
+            <EntityTypeMapping TypeName="AydoganFBankModel.Token">
+              <MappingFragment StoreEntitySet="Token">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="TokenId" ColumnName="TokenId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
