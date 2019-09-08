@@ -40,9 +40,9 @@ namespace AydoganFBank.AccountManagement.Domain
 
         #region CRUD
 
-        public void Insert()
+        public void Insert(bool forceToInsertDb = true)
         {
-            creditCardPaymentRepository.InsertEntity(this);
+            creditCardPaymentRepository.InsertEntity(this, forceToInsertDb);
         }
 
         public void Save()

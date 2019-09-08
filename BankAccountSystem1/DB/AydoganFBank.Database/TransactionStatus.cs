@@ -14,17 +14,8 @@ namespace AydoganFBank.Database
     
     public partial class TransactionStatus
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TransactionStatus()
-        {
-            this.AccountTransaction = new HashSet<AccountTransaction>();
-        }
-    
         public int TransactionStatusId { get; set; }
         public string StatusName { get; set; }
         public string StatusKey { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccountTransaction> AccountTransaction { get; set; }
     }
 }

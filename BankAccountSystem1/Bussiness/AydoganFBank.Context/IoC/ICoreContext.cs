@@ -18,6 +18,8 @@ namespace AydoganFBank.Context.IoC
 
         T Query<T>() where T : IQueryRepository;
 
+        void Commit();
+
         //ICoreContext WithNewContext();
 
         string GetContainerInfo();

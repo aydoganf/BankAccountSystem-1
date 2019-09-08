@@ -9,9 +9,11 @@ namespace AydoganFBank.Database
 {
     public partial class AydoganFBankDbContext : DbContext 
     {
+        public Guid Guid { get; private set; }
         public AydoganFBankDbContext(string connectionString)
             : base(connectionString)
         {
+            Guid = Guid.NewGuid();
         }
     }
 }

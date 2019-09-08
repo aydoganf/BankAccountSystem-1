@@ -14,24 +14,11 @@ namespace AydoganFBank.Database
     
     public partial class Account
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Account()
-        {
-            this.TransactionOrder = new HashSet<TransactionOrder>();
-            this.TransactionOrder1 = new HashSet<TransactionOrder>();
-        }
-    
         public int AccountId { get; set; }
         public int OwnerId { get; set; }
         public int OwnerType { get; set; }
         public string AccountNumber { get; set; }
         public int AccountTypeId { get; set; }
         public decimal Balance { get; set; }
-    
-        public virtual AccountType AccountType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransactionOrder> TransactionOrder { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransactionOrder> TransactionOrder1 { get; set; }
     }
 }

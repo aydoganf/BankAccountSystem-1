@@ -24,6 +24,13 @@ namespace AydoganFBank.AccountManagement.Managers
 
         #region Account
 
+        internal object DeleteAccount(int accountId)
+        {
+            var account = GetAccountById(accountId);
+            account.Delete();
+            return new object();
+        }
+
         internal AccountDomainEntity CreateAccount(AccountTypeDomainEntity accountType, IAccountOwner accountOwner, string accountNumber)
         {
             var account = coreContext.New<AccountDomainEntity>()
@@ -169,20 +176,21 @@ namespace AydoganFBank.AccountManagement.Managers
                         .Format("FromAccountType: {0} - ToAccountType: {1}", fromAccount.AccountType.AccountTypeName, toAccount.AccountType.AccountTypeName));
 
                 transaction = coreContext.New<AccountTransactionDomainEntity>()
-                    .With(fromAccount, toAccount, amount, transactionTypeEnum, TransactionStatusEnum.InProgress, null);
+                    .With(fromAccount, toAccount, amount, transactionTypeEnum, TransactionStatusEnum.InProgress, fromAccount);
                 transaction.Insert();
 
-                isWithdrawOk = fromAccount.Withdraw(amount);
-                isDepositOk = toAccount.Deposit(amount);
+                isWithdrawOk = fromAccount.Withdraw(amount, false);
+                isDepositOk = toAccount.Deposit(amount, false);
 
                 transaction.SetStatus(TransactionStatusEnum.Succeeded);
-                transaction.Save();
 
                 var transactionDetailIn = transaction.CreateTransactionDetail(TransactionDirection.In);
-                transactionDetailIn.Insert();
+                transactionDetailIn.Insert(false);
 
                 var transactionDetailOut = transaction.CreateTransactionDetail(TransactionDirection.Out);
-                transactionDetailOut.Insert();
+                transactionDetailOut.Insert(false);
+
+                coreContext.Commit();
             }
             catch (Exception ex)
             {
@@ -192,8 +200,7 @@ namespace AydoganFBank.AccountManagement.Managers
                     {
                         fromAccount.Deposit(amount);
                         transaction.SetStatus(TransactionStatusEnum.Failed);
-
-                        transaction.Save();
+                        coreContext.Commit();
                     }
                 }
 
@@ -320,6 +327,11 @@ namespace AydoganFBank.AccountManagement.Managers
         
 
         #region API Implementations
+        object IAccountManager.DeleteAccount(int accountId)
+        {
+            return DeleteAccount(accountId);
+        }
+
         IAccountInfo IAccountManager.CreatePersonAccount(string accountTypeKey, int personId)
         {
             return CreatePersonAccount(accountTypeKey, personId);
@@ -354,7 +366,7 @@ namespace AydoganFBank.AccountManagement.Managers
         object IAccountManager.TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType)
         {
             TransferAssets(fromAccountId, toAccountId, amount, transactionType);
-            return null;
+            return new object();
         }
 
         IAccountTypeInfo IAccountManager.GetAccountTypeInfo(int accountTypeId)

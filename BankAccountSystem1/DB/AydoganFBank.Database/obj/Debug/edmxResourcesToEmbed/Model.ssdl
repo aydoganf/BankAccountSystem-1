@@ -179,90 +179,6 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
     <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="TypeKey" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Account_AccountType">
-    <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
-    <End Role="Account" Type="Self.Account" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AccountType">
-        <PropertyRef Name="AccountTypeId" />
-      </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="AccountTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AccountTransaction_TransactionStatus">
-    <End Role="TransactionStatus" Type="Self.TransactionStatus" Multiplicity="1" />
-    <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TransactionStatus">
-        <PropertyRef Name="TransactionStatusId" />
-      </Principal>
-      <Dependent Role="AccountTransaction">
-        <PropertyRef Name="TransactionStatusId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AccountTransaction_TransactionType">
-    <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
-    <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TransactionType">
-        <PropertyRef Name="TransactionTypeId" />
-      </Principal>
-      <Dependent Role="AccountTransaction">
-        <PropertyRef Name="TransactionTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Company_Person">
-    <End Role="Person" Type="Self.Person" Multiplicity="1" />
-    <End Role="Company" Type="Self.Company" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Person">
-        <PropertyRef Name="PersonId" />
-      </Principal>
-      <Dependent Role="Company">
-        <PropertyRef Name="ResponsablePersonId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TransactionOrder_Account">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="AccountId" />
-      </Principal>
-      <Dependent Role="TransactionOrder">
-        <PropertyRef Name="FromAccountId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TransactionOrder_Account1">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="AccountId" />
-      </Principal>
-      <Dependent Role="TransactionOrder">
-        <PropertyRef Name="ToAccountId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TransactionOrder_TransactionType">
-    <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
-    <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TransactionType">
-        <PropertyRef Name="TransactionTypeId" />
-      </Principal>
-      <Dependent Role="TransactionOrder">
-        <PropertyRef Name="TransactionTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="AydoganFBankModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" Schema="dbo" store:Type="Tables" />
@@ -288,33 +204,5 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
     [Token].[CreateDate] AS [CreateDate]
     FROM [dbo].[Token] AS [Token]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK_Account_AccountType" Association="Self.FK_Account_AccountType">
-      <End Role="AccountType" EntitySet="AccountType" />
-      <End Role="Account" EntitySet="Account" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AccountTransaction_TransactionStatus" Association="Self.FK_AccountTransaction_TransactionStatus">
-      <End Role="TransactionStatus" EntitySet="TransactionStatus" />
-      <End Role="AccountTransaction" EntitySet="AccountTransaction" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AccountTransaction_TransactionType" Association="Self.FK_AccountTransaction_TransactionType">
-      <End Role="TransactionType" EntitySet="TransactionType" />
-      <End Role="AccountTransaction" EntitySet="AccountTransaction" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Company_Person" Association="Self.FK_Company_Person">
-      <End Role="Person" EntitySet="Person" />
-      <End Role="Company" EntitySet="Company" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TransactionOrder_Account" Association="Self.FK_TransactionOrder_Account">
-      <End Role="Account" EntitySet="Account" />
-      <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TransactionOrder_Account1" Association="Self.FK_TransactionOrder_Account1">
-      <End Role="Account" EntitySet="Account" />
-      <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TransactionOrder_TransactionType" Association="Self.FK_TransactionOrder_TransactionType">
-      <End Role="TransactionType" EntitySet="TransactionType" />
-      <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

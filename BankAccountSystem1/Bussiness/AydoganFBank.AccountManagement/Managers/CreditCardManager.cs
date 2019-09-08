@@ -59,15 +59,21 @@ namespace AydoganFBank.AccountManagement.Managers
             creditCard.DoPayment(amount);
 
             var transaction = coreContext.New<AccountTransactionDomainEntity>()
-                .With(creditCard, toTransactionOwner, amount, TransactionTypeEnum.CreditCardPayment, TransactionStatusEnum.InProgress, creditCard);
+                .With(
+                    creditCard, 
+                    toTransactionOwner, 
+                    amount, 
+                    TransactionTypeEnum.CreditCardPayment, 
+                    TransactionStatusEnum.InProgress, 
+                    creditCard);
 
             transaction.Insert();
+
             var transactionDetailIn = transaction.CreateTransactionDetail(TransactionDirection.In);
-            transactionDetailIn.Insert();
+            transactionDetailIn.Insert(forceToInsertDb: false);
             var transactionDetailOut = transaction.CreateTransactionDetail(TransactionDirection.Out);
-            transactionDetailOut.Insert();
-
-
+            transactionDetailOut.Insert(forceToInsertDb: false);
+            
             decimal instalmentAmount = amount / instalmentCount;
 
             for (int instalmentIndex = 1; instalmentIndex <= instalmentCount; instalmentIndex++)
@@ -88,10 +94,14 @@ namespace AydoganFBank.AccountManagement.Managers
                         transaction.TransactionDate, 
                         instalmentDate, 
                         transaction);
-                creditCardPayment.Insert();
+                creditCardPayment.Insert(forceToInsertDb: false);
             }
 
-            creditCard.Save();
+            creditCard.Flush();
+
+            transaction.SetStatus(TransactionStatusEnum.Succeeded);
+
+            coreContext.Commit();
 
             return creditCard;
         }

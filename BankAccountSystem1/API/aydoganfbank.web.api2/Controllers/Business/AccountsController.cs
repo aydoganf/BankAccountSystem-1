@@ -76,5 +76,13 @@ namespace aydoganfbank.web.api2.Controllers.Business
                         accountId,
                         message.Amount));
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult<ApiResponse<object>> DeleteAccount(int id)
+        {
+            return this.HandleResult(
+                () =>
+                    serviceContext.AccountManagerService.DeleteAccount(id));
+        }
     }
 }

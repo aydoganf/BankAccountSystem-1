@@ -25,8 +25,5 @@ namespace AydoganFBank.Database
         public Nullable<int> FromOwnerId { get; set; }
         public Nullable<int> ToOwnerType { get; set; }
         public Nullable<int> ToOwnerId { get; set; }
-    
-        public virtual TransactionStatus TransactionStatus { get; set; }
-        public virtual TransactionType TransactionType { get; set; }
     }
 }

@@ -184,90 +184,6 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TypeKey" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Account_AccountType">
-          <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AccountType">
-              <PropertyRef Name="AccountTypeId" />
-            </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="AccountTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AccountTransaction_TransactionStatus">
-          <End Role="TransactionStatus" Type="Self.TransactionStatus" Multiplicity="1" />
-          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TransactionStatus">
-              <PropertyRef Name="TransactionStatusId" />
-            </Principal>
-            <Dependent Role="AccountTransaction">
-              <PropertyRef Name="TransactionStatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AccountTransaction_TransactionType">
-          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
-          <End Role="AccountTransaction" Type="Self.AccountTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TransactionType">
-              <PropertyRef Name="TransactionTypeId" />
-            </Principal>
-            <Dependent Role="AccountTransaction">
-              <PropertyRef Name="TransactionTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Company_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="1" />
-          <End Role="Company" Type="Self.Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="PersonId" />
-            </Principal>
-            <Dependent Role="Company">
-              <PropertyRef Name="ResponsablePersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionOrder_Account">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
-          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="TransactionOrder">
-              <PropertyRef Name="FromAccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionOrder_Account1">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
-          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="TransactionOrder">
-              <PropertyRef Name="ToAccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionOrder_TransactionType">
-          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
-          <End Role="TransactionOrder" Type="Self.TransactionOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TransactionType">
-              <PropertyRef Name="TransactionTypeId" />
-            </Principal>
-            <Dependent Role="TransactionOrder">
-              <PropertyRef Name="TransactionTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="AydoganFBankModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountTransaction" EntityType="Self.AccountTransaction" Schema="dbo" store:Type="Tables" />
@@ -293,53 +209,11 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
     [Token].[CreateDate] AS [CreateDate]
     FROM [dbo].[Token] AS [Token]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_Account_AccountType" Association="Self.FK_Account_AccountType">
-            <End Role="AccountType" EntitySet="AccountType" />
-            <End Role="Account" EntitySet="Account" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AccountTransaction_TransactionStatus" Association="Self.FK_AccountTransaction_TransactionStatus">
-            <End Role="TransactionStatus" EntitySet="TransactionStatus" />
-            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AccountTransaction_TransactionType" Association="Self.FK_AccountTransaction_TransactionType">
-            <End Role="TransactionType" EntitySet="TransactionType" />
-            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Company_Person" Association="Self.FK_Company_Person">
-            <End Role="Person" EntitySet="Person" />
-            <End Role="Company" EntitySet="Company" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionOrder_Account" Association="Self.FK_TransactionOrder_Account">
-            <End Role="Account" EntitySet="Account" />
-            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionOrder_Account1" Association="Self.FK_TransactionOrder_Account1">
-            <End Role="Account" EntitySet="Account" />
-            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionOrder_TransactionType" Association="Self.FK_TransactionOrder_TransactionType">
-            <End Role="TransactionType" EntitySet="TransactionType" />
-            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AydoganFBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Account">
-          <Key>
-            <PropertyRef Name="AccountId" />
-          </Key>
-          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OwnerId" Type="Int32" Nullable="false" />
-          <Property Name="OwnerType" Type="Int32" Nullable="false" />
-          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <NavigationProperty Name="AccountType" Relationship="Self.FK_Account_AccountType" FromRole="Account" ToRole="AccountType" />
-          <NavigationProperty Name="TransactionOrder" Relationship="AydoganFBankModel.FK_TransactionOrder_Account" FromRole="Account" ToRole="TransactionOrder" />
-          <NavigationProperty Name="TransactionOrder1" Relationship="AydoganFBankModel.FK_TransactionOrder_Account1" FromRole="Account" ToRole="TransactionOrder" />
-          </EntityType>
         <EntityType Name="AccountType">
           <Key>
             <PropertyRef Name="AccountTypeId" />
@@ -347,7 +221,6 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <Property Name="AccountTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TypeKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK_Account_AccountType" FromRole="AccountType" ToRole="Account" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -358,7 +231,6 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdentityNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Company" Relationship="AydoganFBankModel.FK_Company_Person" FromRole="Person" ToRole="Company" />
         </EntityType>
         <EntityType Name="TransactionStatus">
           <Key>
@@ -367,7 +239,6 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <Property Name="TransactionStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="StatusKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AccountTransaction" Relationship="AydoganFBankModel.FK_AccountTransaction_TransactionStatus" FromRole="TransactionStatus" ToRole="AccountTransaction" />
         </EntityType>
         <EntityType Name="TransactionType">
           <Key>
@@ -376,65 +247,23 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <Property Name="TransactionTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TypeKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="TransactionOrder" Relationship="AydoganFBankModel.FK_TransactionOrder_TransactionType" FromRole="TransactionType" ToRole="TransactionOrder" />
-          <NavigationProperty Name="AccountTransaction" Relationship="AydoganFBankModel.FK_AccountTransaction_TransactionType" FromRole="TransactionType" ToRole="AccountTransaction" />
         </EntityType>
-        <Association Name="FK_Account_AccountType">
-          <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AccountType">
-              <PropertyRef Name="AccountTypeId" />
-            </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="AccountTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="AydoganFBankDbContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Account" EntityType="Self.Account" />
           <EntitySet Name="AccountType" EntityType="Self.AccountType" />
           <EntitySet Name="Person" EntityType="Self.Person" />
           <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" />
           <EntitySet Name="TransactionType" EntityType="Self.TransactionType" />
-          <AssociationSet Name="FK_Account_AccountType" Association="Self.FK_Account_AccountType">
-            <End Role="AccountType" EntitySet="AccountType" />
-            <End Role="Account" EntitySet="Account" />
-          </AssociationSet>
           <EntitySet Name="CreditCardExtre" EntityType="AydoganFBankModel.CreditCardExtre" />
           <EntitySet Name="CreditCardExtreDischarge" EntityType="AydoganFBankModel.CreditCardExtreDischarge" />
           <EntitySet Name="CreditCardPayment" EntityType="AydoganFBankModel.CreditCardPayment" />
           <EntitySet Name="TransactionDetail" EntityType="AydoganFBankModel.TransactionDetail" />
-          <EntitySet Name="TransactionOrder" EntityType="AydoganFBankModel.TransactionOrder" />
-          <AssociationSet Name="FK_TransactionOrder_Account" Association="AydoganFBankModel.FK_TransactionOrder_Account">
-            <End Role="Account" EntitySet="Account" />
-            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionOrder_Account1" Association="AydoganFBankModel.FK_TransactionOrder_Account1">
-            <End Role="Account" EntitySet="Account" />
-            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionOrder_TransactionType" Association="AydoganFBankModel.FK_TransactionOrder_TransactionType">
-            <End Role="TransactionType" EntitySet="TransactionType" />
-            <End Role="TransactionOrder" EntitySet="TransactionOrder" />
-          </AssociationSet>
-          <EntitySet Name="AccountTransaction" EntityType="AydoganFBankModel.AccountTransaction" />
-          <AssociationSet Name="FK_AccountTransaction_TransactionStatus" Association="AydoganFBankModel.FK_AccountTransaction_TransactionStatus">
-            <End Role="TransactionStatus" EntitySet="TransactionStatus" />
-            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AccountTransaction_TransactionType" Association="AydoganFBankModel.FK_AccountTransaction_TransactionType">
-            <End Role="TransactionType" EntitySet="TransactionType" />
-            <End Role="AccountTransaction" EntitySet="AccountTransaction" />
-          </AssociationSet>
-          <EntitySet Name="Company" EntityType="AydoganFBankModel.Company" />
-          <AssociationSet Name="FK_Company_Person" Association="AydoganFBankModel.FK_Company_Person">
-            <End Role="Person" EntitySet="Person" />
-            <End Role="Company" EntitySet="Company" />
-          </AssociationSet>
           <EntitySet Name="CreditCard" EntityType="AydoganFBankModel.CreditCard" />
           <EntitySet Name="Application" EntityType="AydoganFBankModel.Application" />
           <EntitySet Name="Token" EntityType="AydoganFBankModel.Token" />
+          <EntitySet Name="AccountTransaction" EntityType="AydoganFBankModel.AccountTransaction" />
+          <EntitySet Name="Account" EntityType="AydoganFBankModel.Account" />
+          <EntitySet Name="Company" EntityType="AydoganFBankModel.Company" />
+          <EntitySet Name="TransactionOrder" EntityType="AydoganFBankModel.TransactionOrder" />
           </EntityContainer>
         <EntityType Name="CreditCardExtre">
           <Key>
@@ -484,125 +313,6 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <Property Name="OwnerType" Type="Int32" Nullable="false" />
           <Property Name="OwnerId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="TransactionOrder">
-          <Key>
-            <PropertyRef Name="TransactionOrderId" />
-          </Key>
-          <Property Name="TransactionOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
-          <Property Name="OrderDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OperationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FromAccountId" Type="Int32" Nullable="false" />
-          <Property Name="ToAccountId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TransactionOrderStatusId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="AydoganFBankModel.FK_TransactionOrder_Account" FromRole="TransactionOrder" ToRole="Account" />
-          <NavigationProperty Name="Account1" Relationship="AydoganFBankModel.FK_TransactionOrder_Account1" FromRole="TransactionOrder" ToRole="Account" />
-          <NavigationProperty Name="TransactionType" Relationship="AydoganFBankModel.FK_TransactionOrder_TransactionType" FromRole="TransactionOrder" ToRole="TransactionType" />
-        </EntityType>
-        <Association Name="FK_TransactionOrder_Account">
-          <End Type="AydoganFBankModel.Account" Role="Account" Multiplicity="1" />
-          <End Type="AydoganFBankModel.TransactionOrder" Role="TransactionOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="TransactionOrder">
-              <PropertyRef Name="FromAccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionOrder_Account1">
-          <End Type="AydoganFBankModel.Account" Role="Account" Multiplicity="1" />
-          <End Type="AydoganFBankModel.TransactionOrder" Role="TransactionOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="AccountId" />
-            </Principal>
-            <Dependent Role="TransactionOrder">
-              <PropertyRef Name="ToAccountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionOrder_TransactionType">
-          <End Type="AydoganFBankModel.TransactionType" Role="TransactionType" Multiplicity="1" />
-          <End Type="AydoganFBankModel.TransactionOrder" Role="TransactionOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TransactionType">
-              <PropertyRef Name="TransactionTypeId" />
-            </Principal>
-            <Dependent Role="TransactionOrder">
-              <PropertyRef Name="TransactionTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="AccountTransaction">
-          <Key>
-            <PropertyRef Name="TransactionId" />
-          </Key>
-          <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
-          <Property Name="TransactionStatusId" Type="Int32" Nullable="false" />
-          <Property Name="OwnerId" Type="Int32" Nullable="false" />
-          <Property Name="OwnerType" Type="Int32" Nullable="false" />
-          <Property Name="FromOwnerType" Type="Int32" />
-          <Property Name="FromOwnerId" Type="Int32" />
-          <Property Name="ToOwnerType" Type="Int32" />
-          <Property Name="ToOwnerId" Type="Int32" />
-          <NavigationProperty Name="TransactionStatus" Relationship="AydoganFBankModel.FK_AccountTransaction_TransactionStatus" FromRole="AccountTransaction" ToRole="TransactionStatus" />
-          <NavigationProperty Name="TransactionType" Relationship="AydoganFBankModel.FK_AccountTransaction_TransactionType" FromRole="AccountTransaction" ToRole="TransactionType" />
-        </EntityType>
-        <Association Name="FK_AccountTransaction_TransactionStatus">
-          <End Type="AydoganFBankModel.TransactionStatus" Role="TransactionStatus" Multiplicity="1" />
-          <End Type="AydoganFBankModel.AccountTransaction" Role="AccountTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TransactionStatus">
-              <PropertyRef Name="TransactionStatusId" />
-            </Principal>
-            <Dependent Role="AccountTransaction">
-              <PropertyRef Name="TransactionStatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AccountTransaction_TransactionType">
-          <End Type="AydoganFBankModel.TransactionType" Role="TransactionType" Multiplicity="1" />
-          <End Type="AydoganFBankModel.AccountTransaction" Role="AccountTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TransactionType">
-              <PropertyRef Name="TransactionTypeId" />
-            </Principal>
-            <Dependent Role="AccountTransaction">
-              <PropertyRef Name="TransactionTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="CompanyId" />
-          </Key>
-          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="ResponsablePersonId" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TaxNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Person" Relationship="AydoganFBankModel.FK_Company_Person" FromRole="Company" ToRole="Person" />
-        </EntityType>
-        <Association Name="FK_Company_Person">
-          <End Type="AydoganFBankModel.Person" Role="Person" Multiplicity="1" />
-          <End Type="AydoganFBankModel.Company" Role="Company" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="PersonId" />
-            </Principal>
-            <Dependent Role="Company">
-              <PropertyRef Name="ResponsablePersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CreditCard">
           <Key>
             <PropertyRef Name="CreditCardId" />
@@ -646,24 +356,64 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <Property Name="ApplicationId" Type="Int32" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="AccountTransaction">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionStatusId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerType" Type="Int32" Nullable="false" />
+          <Property Name="FromOwnerType" Type="Int32" />
+          <Property Name="FromOwnerId" Type="Int32" />
+          <Property Name="ToOwnerType" Type="Int32" />
+          <Property Name="ToOwnerId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerType" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ResponsablePersonId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TransactionOrder">
+          <Key>
+            <PropertyRef Name="TransactionOrderId" />
+          </Key>
+          <Property Name="TransactionOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OperationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FromAccountId" Type="Int32" Nullable="false" />
+          <Property Name="ToAccountId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TransactionOrderStatusId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AydoganFBankModelStoreContainer" CdmEntityContainer="AydoganFBankDbContext">
-          <EntitySetMapping Name="Account">
-            <EntityTypeMapping TypeName="AydoganFBankModel.Account">
-              <MappingFragment StoreEntitySet="Account">
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
-                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
-                <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AccountType">
             <EntityTypeMapping TypeName="AydoganFBankModel.AccountType">
               <MappingFragment StoreEntitySet="AccountType">
@@ -754,50 +504,6 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TransactionOrder">
-            <EntityTypeMapping TypeName="AydoganFBankModel.TransactionOrder">
-              <MappingFragment StoreEntitySet="TransactionOrder">
-                <ScalarProperty Name="TransactionOrderStatusId" ColumnName="TransactionOrderStatusId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="ToAccountId" ColumnName="ToAccountId" />
-                <ScalarProperty Name="FromAccountId" ColumnName="FromAccountId" />
-                <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
-                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
-                <ScalarProperty Name="TransactionOrderId" ColumnName="TransactionOrderId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AccountTransaction">
-            <EntityTypeMapping TypeName="AydoganFBankModel.AccountTransaction">
-              <MappingFragment StoreEntitySet="AccountTransaction">
-                <ScalarProperty Name="ToOwnerId" ColumnName="ToOwnerId" />
-                <ScalarProperty Name="ToOwnerType" ColumnName="ToOwnerType" />
-                <ScalarProperty Name="FromOwnerId" ColumnName="FromOwnerId" />
-                <ScalarProperty Name="FromOwnerType" ColumnName="FromOwnerType" />
-                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-                <ScalarProperty Name="TransactionStatusId" ColumnName="TransactionStatusId" />
-                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
-                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Company">
-            <EntityTypeMapping TypeName="AydoganFBankModel.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ResponsablePersonId" ColumnName="ResponsablePersonId" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CreditCard">
             <EntityTypeMapping TypeName="AydoganFBankModel.CreditCard">
               <MappingFragment StoreEntitySet="CreditCard">
@@ -836,6 +542,62 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountTransaction">
+            <EntityTypeMapping TypeName="AydoganFBankModel.AccountTransaction">
+              <MappingFragment StoreEntitySet="AccountTransaction">
+                <ScalarProperty Name="ToOwnerId" ColumnName="ToOwnerId" />
+                <ScalarProperty Name="ToOwnerType" ColumnName="ToOwnerType" />
+                <ScalarProperty Name="FromOwnerId" ColumnName="FromOwnerId" />
+                <ScalarProperty Name="FromOwnerType" ColumnName="FromOwnerType" />
+                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="TransactionStatusId" ColumnName="TransactionStatusId" />
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="AydoganFBankModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="AydoganFBankModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ResponsablePersonId" ColumnName="ResponsablePersonId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionOrder">
+            <EntityTypeMapping TypeName="AydoganFBankModel.TransactionOrder">
+              <MappingFragment StoreEntitySet="TransactionOrder">
+                <ScalarProperty Name="TransactionOrderStatusId" ColumnName="TransactionOrderStatusId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ToAccountId" ColumnName="ToAccountId" />
+                <ScalarProperty Name="FromAccountId" ColumnName="FromAccountId" />
+                <ScalarProperty Name="OperationDate" ColumnName="OperationDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+                <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
+                <ScalarProperty Name="TransactionOrderId" ColumnName="TransactionOrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -69,6 +69,16 @@ namespace AydoganFBank.AccountManagement.Domain
             accountRepository.UpdateEntity(this);
         }
 
+        public void Flush()
+        {
+            accountRepository.FlushEntity(this);
+        }
+
+        public void Delete()
+        {
+            accountRepository.DeleteEntity(this);
+        }
+
         internal bool Deposit(decimal amount, bool forceToUpdateDb = true)
         {
             if (amount <= 0)
@@ -77,6 +87,8 @@ namespace AydoganFBank.AccountManagement.Domain
             Balance += amount;
             if(forceToUpdateDb)
                 Save();
+
+            accountRepository.FlushEntity(this);
             return true;
         }
 
@@ -91,6 +103,8 @@ namespace AydoganFBank.AccountManagement.Domain
             Balance -= amount;
             if (forceToUpdateDb == false)
                 Save();
+
+            accountRepository.FlushEntity(this);
             return true;
         }
 
