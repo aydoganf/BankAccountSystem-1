@@ -184,6 +184,16 @@ namespace AydoganFBank.AccountManagement.Domain
             creditCardRepository.UpdateEntity(this);
         }
 
+        public void Flush()
+        {
+            creditCardRepository.FlushEntity(this);
+        }
+
+        public void Delete()
+        {
+            creditCardRepository.DeleteEntity(this);
+        }
+
         public void DoPayment(decimal amount)
         {
             if (UntilValidDate < DateTime.Now)

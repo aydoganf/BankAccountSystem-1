@@ -1,0 +1,647 @@
+[08-09-2019 19:00:29] - coreContext created.
+[08-09-2019 19:00:29] - {}
+
+[08-09-2019 19:00:29] - logger created.
+
+[08-09-2019 19:00:29] - AccountManager created.
+[08-09-2019 19:00:29] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:29] - PersonManager created.
+[08-09-2019 19:00:29] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:29] - PersonManager created.
+[08-09-2019 19:00:29] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:29] - AccountManager created.
+[08-09-2019 19:00:29] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:32] - AccountRepository created.
+[08-09-2019 19:00:32] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:32] - PersonRepository created.
+[08-09-2019 19:00:32] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:32] - PersonDomainEntity created.
+[08-09-2019 19:00:32] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:32] - PersonDomainEntity created.
+[08-09-2019 19:00:32] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:32] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:00:32] - "Db context Guid: 65816e2e-13ec-4405-898f-646686f51892"
+
+[08-09-2019 19:00:32] - TDbEntity inserting to context..
+[08-09-2019 19:00:32] - {"TransactionId":0,"Amount":640.0,"TransactionDate":"2019-09-08T19:00:32.3817756+03:00","TransactionTypeId":4,"TransactionStatusId":3,"OwnerId":5,"OwnerType":2,"FromOwnerType":2,"FromOwnerId":5,"ToOwnerType":1,"ToOwnerId":14}
+
+[08-09-2019 19:00:32] - PersonDomainEntity created.
+[08-09-2019 19:00:32] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:32] - PersonDomainEntity created.
+[08-09-2019 19:00:32] - "Nested-fd9dfca6-0d66-484d-9d36-6d29966df8d4"
+
+[08-09-2019 19:00:32] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:00:32] - "Db context Guid: 65816e2e-13ec-4405-898f-646686f51892"
+
+[08-09-2019 19:00:32] - TDbEntity inserting to context..
+[08-09-2019 19:00:32] - {"TransactionDetailId":0,"Description":"Credit card - **562533 have sent 640 to you on 08.09.2019 19:00:32.","TransactionDirection":1,"CreateDate":"2019-09-08T19:00:32.3817756+03:00","AccountTransactionId":16,"OwnerType":2,"OwnerId":5}
+
+[08-09-2019 19:00:32] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:00:32] - "Db context Guid: 65816e2e-13ec-4405-898f-646686f51892"
+
+[08-09-2019 19:00:32] - TDbEntity inserting to context..
+[08-09-2019 19:00:32] - {"TransactionDetailId":0,"Description":"You sent 640 to aydoganF on 08.09.2019 19:00:32","TransactionDirection":2,"CreateDate":"2019-09-08T19:00:32.3817756+03:00","AccountTransactionId":16,"OwnerType":1,"OwnerId":14}
+
+[08-09-2019 19:00:32] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:00:32] - "Db context Guid: 65816e2e-13ec-4405-898f-646686f51892"
+
+[08-09-2019 19:00:32] - TDbEntity inserting to context..
+[08-09-2019 19:00:32] - {"CreditCardPaymentId":0,"InstalmentIndex":1,"Amount":160.0,"Description":"aydoganF - 160 (1/4 instalment)","CreateDate":"2019-09-08T19:00:32.3817756+03:00","InstalmentDate":"2019-09-08T19:00:32.3817756+03:00","AccountTransactionId":16}
+
+[08-09-2019 19:00:32] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:00:32] - "Db context Guid: 65816e2e-13ec-4405-898f-646686f51892"
+
+[08-09-2019 19:00:32] - TDbEntity inserting to context..
+[08-09-2019 19:00:32] - {"CreditCardPaymentId":0,"InstalmentIndex":2,"Amount":160.0,"Description":"aydoganF - 160 (2/4 instalment)","CreateDate":"2019-09-08T19:00:32.3817756+03:00","InstalmentDate":"2019-10-08T19:00:32.3817756+03:00","AccountTransactionId":16}
+
+[08-09-2019 19:00:32] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:00:32] - "Db context Guid: 65816e2e-13ec-4405-898f-646686f51892"
+
+[08-09-2019 19:00:32] - TDbEntity inserting to context..
+[08-09-2019 19:00:32] - {"CreditCardPaymentId":0,"InstalmentIndex":3,"Amount":160.0,"Description":"aydoganF - 160 (3/4 instalment)","CreateDate":"2019-09-08T19:00:32.3817756+03:00","InstalmentDate":"2019-11-08T19:00:32.3817756+03:00","AccountTransactionId":16}
+
+[08-09-2019 19:00:32] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:00:32] - "Db context Guid: 65816e2e-13ec-4405-898f-646686f51892"
+
+[08-09-2019 19:00:32] - TDbEntity inserting to context..
+[08-09-2019 19:00:32] - {"CreditCardPaymentId":0,"InstalmentIndex":4,"Amount":160.0,"Description":"aydoganF - 160 (4/4 instalment)","CreateDate":"2019-09-08T19:00:32.3817756+03:00","InstalmentDate":"2019-12-08T19:00:32.3817756+03:00","AccountTransactionId":16}
+
+[08-09-2019 19:00:32] - Added
+[08-09-2019 19:00:32] - {"TransactionDetailId":0,"Description":"You sent 640 to aydoganF on 08.09.2019 19:00:32","TransactionDirection":2,"CreateDate":"2019-09-08T19:00:32.3817756+03:00","AccountTransactionId":16,"OwnerType":1,"OwnerId":14}
+
+[08-09-2019 19:00:32] - Added
+[08-09-2019 19:00:32] - {"CreditCardPaymentId":0,"InstalmentIndex":4,"Amount":160.0,"Description":"aydoganF - 160 (4/4 instalment)","CreateDate":"2019-09-08T19:00:32.3817756+03:00","InstalmentDate":"2019-12-08T19:00:32.3817756+03:00","AccountTransactionId":16}
+
+[08-09-2019 19:00:32] - Modified
+[08-09-2019 19:00:32] - {"CreditCardId":5,"CreditCardNumber":"3893824698562533","Limit":7500.00,"Debt":5730.00,"ExtreDay":8,"Type":1,"ValidMonth":"03","ValidYear":"2023","SecurityCode":"472","IsInternetUsageOpen":true,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:00:32] - Modified
+[08-09-2019 19:00:32] - {"TransactionId":16,"Amount":640.0,"TransactionDate":"2019-09-08T19:00:32.3817756+03:00","TransactionTypeId":4,"TransactionStatusId":5,"OwnerId":5,"OwnerType":2,"FromOwnerType":2,"FromOwnerId":5,"ToOwnerType":1,"ToOwnerId":14}
+
+[08-09-2019 19:00:32] - Committing context..
+[08-09-2019 19:00:32] - "Db context guid: 65816e2e-13ec-4405-898f-646686f51892"
+
+[08-09-2019 19:02:02] - coreContext created.
+[08-09-2019 19:02:02] - {}
+
+[08-09-2019 19:02:02] - logger created.
+
+[08-09-2019 19:02:02] - AccountManager created.
+[08-09-2019 19:02:02] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:02] - PersonManager created.
+[08-09-2019 19:02:02] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:02] - PersonManager created.
+[08-09-2019 19:02:02] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:02] - AccountManager created.
+[08-09-2019 19:02:02] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:12] - AccountRepository created.
+[08-09-2019 19:02:12] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:12] - PersonRepository created.
+[08-09-2019 19:02:12] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:12] - PersonDomainEntity created.
+[08-09-2019 19:02:12] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:12] - PersonDomainEntity created.
+[08-09-2019 19:02:12] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:23] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:02:23] - "Db context Guid: 77a5aac0-7c4d-43bc-be83-bb6438b361f5"
+
+[08-09-2019 19:02:23] - TDbEntity inserting to context..
+[08-09-2019 19:02:23] - {"TransactionId":0,"Amount":640.0,"TransactionDate":"2019-09-08T19:02:13.0402532+03:00","TransactionTypeId":4,"TransactionStatusId":3,"OwnerId":5,"OwnerType":2,"FromOwnerType":2,"FromOwnerId":5,"ToOwnerType":1,"ToOwnerId":14}
+
+[08-09-2019 19:02:23] - PersonDomainEntity created.
+[08-09-2019 19:02:23] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:23] - PersonDomainEntity created.
+[08-09-2019 19:02:23] - "Nested-f7a118f3-7f72-4006-ad96-dc4ebf8a05de"
+
+[08-09-2019 19:02:30] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:02:30] - "Db context Guid: 77a5aac0-7c4d-43bc-be83-bb6438b361f5"
+
+[08-09-2019 19:02:45] - TDbEntity inserting to context..
+[08-09-2019 19:02:45] - {"TransactionDetailId":0,"Description":"Credit card - **562533 have sent 640 to you on 08.09.2019 19:02:23.","TransactionDirection":1,"CreateDate":"2019-09-08T19:02:13.0402532+03:00","AccountTransactionId":17,"OwnerType":2,"OwnerId":5}
+
+[08-09-2019 19:02:50] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:02:50] - "Db context Guid: 77a5aac0-7c4d-43bc-be83-bb6438b361f5"
+
+[08-09-2019 19:04:26] - coreContext created.
+[08-09-2019 19:04:26] - {}
+
+[08-09-2019 19:04:26] - logger created.
+
+[08-09-2019 19:04:26] - AccountManager created.
+[08-09-2019 19:04:26] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:26] - PersonManager created.
+[08-09-2019 19:04:26] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:26] - PersonManager created.
+[08-09-2019 19:04:26] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:26] - AccountManager created.
+[08-09-2019 19:04:26] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:29] - AccountRepository created.
+[08-09-2019 19:04:29] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:29] - PersonRepository created.
+[08-09-2019 19:04:29] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:29] - PersonDomainEntity created.
+[08-09-2019 19:04:29] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:29] - PersonDomainEntity created.
+[08-09-2019 19:04:29] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:29] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:04:29] - "Db context Guid: 5fdc3180-ebc6-448e-8cf2-e9d582a6dedd"
+
+[08-09-2019 19:04:29] - TDbEntity inserting to context..
+[08-09-2019 19:04:29] - {"TransactionId":0,"Amount":640.0,"TransactionDate":"2019-09-08T19:04:29.3613016+03:00","TransactionTypeId":4,"TransactionStatusId":3,"OwnerId":5,"OwnerType":2,"FromOwnerType":2,"FromOwnerId":5,"ToOwnerType":1,"ToOwnerId":14}
+
+[08-09-2019 19:04:29] - PersonDomainEntity created.
+[08-09-2019 19:04:29] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:29] - PersonDomainEntity created.
+[08-09-2019 19:04:29] - "Nested-cc22a809-f07c-4ba5-99ff-12000fa90f9e"
+
+[08-09-2019 19:04:29] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:04:29] - "Db context Guid: 5fdc3180-ebc6-448e-8cf2-e9d582a6dedd"
+
+[08-09-2019 19:04:29] - TDbEntity inserting to context..
+[08-09-2019 19:04:29] - {"TransactionDetailId":0,"Description":"Credit card - **562533 have sent 640 to you on 08.09.2019 19:04:29.","TransactionDirection":1,"CreateDate":"2019-09-08T19:04:29.3613016+03:00","AccountTransactionId":18,"OwnerType":2,"OwnerId":5}
+
+[08-09-2019 19:04:29] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:04:29] - "Db context Guid: 5fdc3180-ebc6-448e-8cf2-e9d582a6dedd"
+
+[08-09-2019 19:04:29] - TDbEntity inserting to context..
+[08-09-2019 19:04:29] - {"TransactionDetailId":0,"Description":"You sent 640 to aydoganF on 08.09.2019 19:04:29","TransactionDirection":2,"CreateDate":"2019-09-08T19:04:29.3613016+03:00","AccountTransactionId":18,"OwnerType":1,"OwnerId":14}
+
+[08-09-2019 19:04:29] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:04:29] - "Db context Guid: 5fdc3180-ebc6-448e-8cf2-e9d582a6dedd"
+
+[08-09-2019 19:04:29] - TDbEntity inserting to context..
+[08-09-2019 19:04:29] - {"CreditCardPaymentId":0,"InstalmentIndex":1,"Amount":160.0,"Description":"aydoganF - 160 (1/4 instalment)","CreateDate":"2019-09-08T19:04:29.3613016+03:00","InstalmentDate":"2019-09-08T19:04:29.3613016+03:00","AccountTransactionId":18}
+
+[08-09-2019 19:04:29] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:04:29] - "Db context Guid: 5fdc3180-ebc6-448e-8cf2-e9d582a6dedd"
+
+[08-09-2019 19:04:29] - TDbEntity inserting to context..
+[08-09-2019 19:04:29] - {"CreditCardPaymentId":0,"InstalmentIndex":2,"Amount":160.0,"Description":"aydoganF - 160 (2/4 instalment)","CreateDate":"2019-09-08T19:04:29.3613016+03:00","InstalmentDate":"2019-10-08T19:04:29.3613016+03:00","AccountTransactionId":18}
+
+[08-09-2019 19:04:29] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:04:29] - "Db context Guid: 5fdc3180-ebc6-448e-8cf2-e9d582a6dedd"
+
+[08-09-2019 19:04:29] - TDbEntity inserting to context..
+[08-09-2019 19:04:29] - {"CreditCardPaymentId":0,"InstalmentIndex":3,"Amount":160.0,"Description":"aydoganF - 160 (3/4 instalment)","CreateDate":"2019-09-08T19:04:29.3613016+03:00","InstalmentDate":"2019-11-08T19:04:29.3613016+03:00","AccountTransactionId":18}
+
+[08-09-2019 19:04:29] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:04:29] - "Db context Guid: 5fdc3180-ebc6-448e-8cf2-e9d582a6dedd"
+
+[08-09-2019 19:04:29] - TDbEntity inserting to context..
+[08-09-2019 19:04:29] - {"CreditCardPaymentId":0,"InstalmentIndex":4,"Amount":160.0,"Description":"aydoganF - 160 (4/4 instalment)","CreateDate":"2019-09-08T19:04:29.3613016+03:00","InstalmentDate":"2019-12-08T19:04:29.3613016+03:00","AccountTransactionId":18}
+
+[08-09-2019 19:04:29] - Added
+[08-09-2019 19:04:29] - {"TransactionDetailId":0,"Description":"Credit card - **562533 have sent 640 to you on 08.09.2019 19:04:29.","TransactionDirection":1,"CreateDate":"2019-09-08T19:04:29.3613016+03:00","AccountTransactionId":18,"OwnerType":2,"OwnerId":5}
+
+[08-09-2019 19:04:29] - Added
+[08-09-2019 19:04:29] - {"TransactionDetailId":0,"Description":"You sent 640 to aydoganF on 08.09.2019 19:04:29","TransactionDirection":2,"CreateDate":"2019-09-08T19:04:29.3613016+03:00","AccountTransactionId":18,"OwnerType":1,"OwnerId":14}
+
+[08-09-2019 19:04:29] - Added
+[08-09-2019 19:04:29] - {"CreditCardPaymentId":0,"InstalmentIndex":1,"Amount":160.0,"Description":"aydoganF - 160 (1/4 instalment)","CreateDate":"2019-09-08T19:04:29.3613016+03:00","InstalmentDate":"2019-09-08T19:04:29.3613016+03:00","AccountTransactionId":18}
+
+[08-09-2019 19:04:29] - Added
+[08-09-2019 19:04:29] - {"CreditCardPaymentId":0,"InstalmentIndex":2,"Amount":160.0,"Description":"aydoganF - 160 (2/4 instalment)","CreateDate":"2019-09-08T19:04:29.3613016+03:00","InstalmentDate":"2019-10-08T19:04:29.3613016+03:00","AccountTransactionId":18}
+
+[08-09-2019 19:04:29] - Added
+[08-09-2019 19:04:29] - {"CreditCardPaymentId":0,"InstalmentIndex":3,"Amount":160.0,"Description":"aydoganF - 160 (3/4 instalment)","CreateDate":"2019-09-08T19:04:29.3613016+03:00","InstalmentDate":"2019-11-08T19:04:29.3613016+03:00","AccountTransactionId":18}
+
+[08-09-2019 19:04:29] - Added
+[08-09-2019 19:04:29] - {"CreditCardPaymentId":0,"InstalmentIndex":4,"Amount":160.0,"Description":"aydoganF - 160 (4/4 instalment)","CreateDate":"2019-09-08T19:04:29.3613016+03:00","InstalmentDate":"2019-12-08T19:04:29.3613016+03:00","AccountTransactionId":18}
+
+[08-09-2019 19:04:29] - Modified
+[08-09-2019 19:04:29] - {"CreditCardId":5,"CreditCardNumber":"3893824698562533","Limit":7500.00,"Debt":6370.00,"ExtreDay":8,"Type":1,"ValidMonth":"03","ValidYear":"2023","SecurityCode":"472","IsInternetUsageOpen":true,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:04:29] - Modified
+[08-09-2019 19:04:29] - {"TransactionId":18,"Amount":640.0,"TransactionDate":"2019-09-08T19:04:29.3613016+03:00","TransactionTypeId":4,"TransactionStatusId":5,"OwnerId":5,"OwnerType":2,"FromOwnerType":2,"FromOwnerId":5,"ToOwnerType":1,"ToOwnerId":14}
+
+[08-09-2019 19:04:29] - Committing context..
+[08-09-2019 19:04:29] - "Db context guid: 5fdc3180-ebc6-448e-8cf2-e9d582a6dedd"
+
+[08-09-2019 19:37:51] - coreContext created.
+[08-09-2019 19:37:51] - {}
+
+[08-09-2019 19:37:51] - logger created.
+
+[08-09-2019 19:37:51] - AccountManager created.
+[08-09-2019 19:37:51] - "Nested-7dfd8c40-d2fd-451b-9986-46a220a1ba60"
+
+[08-09-2019 19:37:51] - PersonManager created.
+[08-09-2019 19:37:51] - "Nested-7dfd8c40-d2fd-451b-9986-46a220a1ba60"
+
+[08-09-2019 19:37:51] - PersonManager created.
+[08-09-2019 19:37:51] - "Nested-7dfd8c40-d2fd-451b-9986-46a220a1ba60"
+
+[08-09-2019 19:37:52] - AccountManager created.
+[08-09-2019 19:37:52] - "Nested-7dfd8c40-d2fd-451b-9986-46a220a1ba60"
+
+[08-09-2019 19:37:52] - AccountRepository created.
+[08-09-2019 19:37:52] - "Nested-7dfd8c40-d2fd-451b-9986-46a220a1ba60"
+
+[08-09-2019 19:37:54] - PersonRepository created.
+[08-09-2019 19:37:54] - "Nested-7dfd8c40-d2fd-451b-9986-46a220a1ba60"
+
+[08-09-2019 19:37:54] - PersonDomainEntity created.
+[08-09-2019 19:37:54] - "Nested-7dfd8c40-d2fd-451b-9986-46a220a1ba60"
+
+[08-09-2019 19:37:54] - PersonDomainEntity created.
+[08-09-2019 19:37:54] - "Nested-7dfd8c40-d2fd-451b-9986-46a220a1ba60"
+
+[08-09-2019 19:37:54] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:37:54] - "Db context Guid: 9c1a9d46-cd06-46e7-ace8-931d269a2dd6"
+
+[08-09-2019 19:38:36] - coreContext created.
+[08-09-2019 19:38:36] - {}
+
+[08-09-2019 19:38:36] - logger created.
+
+[08-09-2019 19:38:36] - AccountManager created.
+[08-09-2019 19:38:36] - "Nested-1989ea5f-2f83-47ff-9ee5-a68169897115"
+
+[08-09-2019 19:38:36] - PersonManager created.
+[08-09-2019 19:38:36] - "Nested-1989ea5f-2f83-47ff-9ee5-a68169897115"
+
+[08-09-2019 19:38:36] - PersonManager created.
+[08-09-2019 19:38:36] - "Nested-1989ea5f-2f83-47ff-9ee5-a68169897115"
+
+[08-09-2019 19:38:36] - AccountManager created.
+[08-09-2019 19:38:36] - "Nested-1989ea5f-2f83-47ff-9ee5-a68169897115"
+
+[08-09-2019 19:38:37] - AccountRepository created.
+[08-09-2019 19:38:37] - "Nested-1989ea5f-2f83-47ff-9ee5-a68169897115"
+
+[08-09-2019 19:38:40] - PersonRepository created.
+[08-09-2019 19:38:40] - "Nested-1989ea5f-2f83-47ff-9ee5-a68169897115"
+
+[08-09-2019 19:38:40] - PersonDomainEntity created.
+[08-09-2019 19:38:40] - "Nested-1989ea5f-2f83-47ff-9ee5-a68169897115"
+
+[08-09-2019 19:38:40] - PersonDomainEntity created.
+[08-09-2019 19:38:40] - "Nested-1989ea5f-2f83-47ff-9ee5-a68169897115"
+
+[08-09-2019 19:38:56] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:38:56] - "Db context Guid: 7bb853ff-4141-41d1-9c1e-29231b12506c"
+
+[08-09-2019 19:42:18] - coreContext created.
+[08-09-2019 19:42:18] - {}
+
+[08-09-2019 19:42:18] - logger created.
+
+[08-09-2019 19:42:18] - AccountManager created.
+[08-09-2019 19:42:18] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:18] - PersonManager created.
+[08-09-2019 19:42:18] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:18] - PersonManager created.
+[08-09-2019 19:42:18] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:18] - AccountManager created.
+[08-09-2019 19:42:18] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:18] - AccountRepository created.
+[08-09-2019 19:42:18] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:20] - PersonRepository created.
+[08-09-2019 19:42:20] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:20] - PersonDomainEntity created.
+[08-09-2019 19:42:20] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:20] - PersonDomainEntity created.
+[08-09-2019 19:42:20] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:20] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:42:20] - "Db context Guid: 98a499bb-7836-4a0f-b73c-d7d2d538edf1"
+
+[08-09-2019 19:42:20] - TDbEntity inserting to context..
+[08-09-2019 19:42:20] - {"TransactionId":0,"Amount":150.0,"TransactionDate":"2019-09-08T19:42:20.8470172+03:00","TransactionTypeId":2,"TransactionStatusId":3,"OwnerId":1,"OwnerType":1,"FromOwnerType":1,"FromOwnerId":1,"ToOwnerType":1,"ToOwnerId":13}
+
+[08-09-2019 19:42:21] - PersonDomainEntity created.
+[08-09-2019 19:42:21] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:21] - PersonDomainEntity created.
+[08-09-2019 19:42:21] - "Nested-f1ff443c-32c6-4e31-84a4-c7301428f52f"
+
+[08-09-2019 19:42:21] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:42:21] - "Db context Guid: 98a499bb-7836-4a0f-b73c-d7d2d538edf1"
+
+[08-09-2019 19:42:21] - TDbEntity inserting to context..
+[08-09-2019 19:42:21] - {"TransactionDetailId":0,"Description":"Faruk Aydoğan have sent 150 to you on 08.09.2019 19:42:21.","TransactionDirection":1,"CreateDate":"2019-09-08T19:42:20.8470172+03:00","AccountTransactionId":19,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:42:21] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:42:21] - "Db context Guid: 98a499bb-7836-4a0f-b73c-d7d2d538edf1"
+
+[08-09-2019 19:42:21] - TDbEntity inserting to context..
+[08-09-2019 19:42:21] - {"TransactionDetailId":0,"Description":"You sent 150 to Abdullah Aydoğan on 08.09.2019 19:42:21","TransactionDirection":2,"CreateDate":"2019-09-08T19:42:20.8470172+03:00","AccountTransactionId":19,"OwnerType":1,"OwnerId":13}
+
+[08-09-2019 19:42:21] - Added
+[08-09-2019 19:42:21] - {"TransactionDetailId":0,"Description":"Faruk Aydoğan have sent 150 to you on 08.09.2019 19:42:21.","TransactionDirection":1,"CreateDate":"2019-09-08T19:42:20.8470172+03:00","AccountTransactionId":19,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:42:21] - Added
+[08-09-2019 19:42:21] - {"TransactionDetailId":0,"Description":"You sent 150 to Abdullah Aydoğan on 08.09.2019 19:42:21","TransactionDirection":2,"CreateDate":"2019-09-08T19:42:20.8470172+03:00","AccountTransactionId":19,"OwnerType":1,"OwnerId":13}
+
+[08-09-2019 19:43:07] - coreContext created.
+[08-09-2019 19:43:07] - {}
+
+[08-09-2019 19:43:07] - logger created.
+
+[08-09-2019 19:43:07] - AccountManager created.
+[08-09-2019 19:43:07] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:07] - PersonManager created.
+[08-09-2019 19:43:07] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:07] - PersonManager created.
+[08-09-2019 19:43:07] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:07] - AccountManager created.
+[08-09-2019 19:43:07] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:08] - AccountRepository created.
+[08-09-2019 19:43:08] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:11] - PersonRepository created.
+[08-09-2019 19:43:11] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:11] - PersonDomainEntity created.
+[08-09-2019 19:43:11] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:11] - PersonDomainEntity created.
+[08-09-2019 19:43:11] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:17] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:43:17] - "Db context Guid: 3b9d86a7-190a-4d31-8e12-3b9c273589e3"
+
+[08-09-2019 19:43:17] - TDbEntity inserting to context..
+[08-09-2019 19:43:17] - {"TransactionId":0,"Amount":150.0,"TransactionDate":"2019-09-08T19:43:17.026161+03:00","TransactionTypeId":2,"TransactionStatusId":3,"OwnerId":1,"OwnerType":1,"FromOwnerType":1,"FromOwnerId":1,"ToOwnerType":1,"ToOwnerId":13}
+
+[08-09-2019 19:43:17] - PersonDomainEntity created.
+[08-09-2019 19:43:17] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:17] - PersonDomainEntity created.
+[08-09-2019 19:43:17] - "Nested-bdcc669a-7b2b-4494-b6b5-8a1ab5a76d4f"
+
+[08-09-2019 19:43:38] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:43:38] - "Db context Guid: 3b9d86a7-190a-4d31-8e12-3b9c273589e3"
+
+[08-09-2019 19:43:38] - TDbEntity inserting to context..
+[08-09-2019 19:43:38] - {"TransactionDetailId":0,"Description":"Faruk Aydoğan have sent 150 to you on 08.09.2019 19:43:38.","TransactionDirection":1,"CreateDate":"2019-09-08T19:43:17.026161+03:00","AccountTransactionId":20,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:43:40] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:43:40] - "Db context Guid: 3b9d86a7-190a-4d31-8e12-3b9c273589e3"
+
+[08-09-2019 19:43:40] - TDbEntity inserting to context..
+[08-09-2019 19:43:40] - {"TransactionDetailId":0,"Description":"You sent 150 to Abdullah Aydoğan on 08.09.2019 19:43:40","TransactionDirection":2,"CreateDate":"2019-09-08T19:43:17.026161+03:00","AccountTransactionId":20,"OwnerType":1,"OwnerId":13}
+
+[08-09-2019 19:43:42] - Added
+[08-09-2019 19:43:42] - {"TransactionDetailId":0,"Description":"Faruk Aydoğan have sent 150 to you on 08.09.2019 19:43:38.","TransactionDirection":1,"CreateDate":"2019-09-08T19:43:17.026161+03:00","AccountTransactionId":20,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:43:42] - Added
+[08-09-2019 19:43:42] - {"TransactionDetailId":0,"Description":"You sent 150 to Abdullah Aydoğan on 08.09.2019 19:43:40","TransactionDirection":2,"CreateDate":"2019-09-08T19:43:17.026161+03:00","AccountTransactionId":20,"OwnerType":1,"OwnerId":13}
+
+[08-09-2019 19:47:52] - coreContext created.
+[08-09-2019 19:47:52] - {}
+
+[08-09-2019 19:47:52] - logger created.
+
+[08-09-2019 19:47:52] - AccountManager created.
+[08-09-2019 19:47:52] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:52] - PersonManager created.
+[08-09-2019 19:47:52] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:52] - PersonManager created.
+[08-09-2019 19:47:52] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:52] - AccountManager created.
+[08-09-2019 19:47:52] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:52] - AccountRepository created.
+[08-09-2019 19:47:52] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:54] - PersonRepository created.
+[08-09-2019 19:47:54] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:54] - PersonDomainEntity created.
+[08-09-2019 19:47:54] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:54] - PersonDomainEntity created.
+[08-09-2019 19:47:54] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:54] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:47:54] - "Db context Guid: d36d6bd6-2f33-4156-9bfe-d564a4df4e0d"
+
+[08-09-2019 19:47:54] - TDbEntity inserting to context..
+[08-09-2019 19:47:54] - {"TransactionId":0,"Amount":150.0,"TransactionDate":"2019-09-08T19:47:54.3507667+03:00","TransactionTypeId":2,"TransactionStatusId":3,"OwnerId":1,"OwnerType":1,"FromOwnerType":1,"FromOwnerId":1,"ToOwnerType":1,"ToOwnerId":13}
+
+[08-09-2019 19:47:54] - PersonDomainEntity created.
+[08-09-2019 19:47:54] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:54] - PersonDomainEntity created.
+[08-09-2019 19:47:54] - "Nested-798a3a6d-c1c2-4270-96e9-c57e383133b4"
+
+[08-09-2019 19:47:54] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:47:54] - "Db context Guid: d36d6bd6-2f33-4156-9bfe-d564a4df4e0d"
+
+[08-09-2019 19:47:54] - TDbEntity inserting to context..
+[08-09-2019 19:47:54] - {"TransactionDetailId":0,"Description":"Faruk Aydoğan have sent 150 to you on 08.09.2019 19:47:54.","TransactionDirection":1,"CreateDate":"2019-09-08T19:47:54.3507667+03:00","AccountTransactionId":21,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:47:54] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:47:54] - "Db context Guid: d36d6bd6-2f33-4156-9bfe-d564a4df4e0d"
+
+[08-09-2019 19:47:54] - TDbEntity inserting to context..
+[08-09-2019 19:47:54] - {"TransactionDetailId":0,"Description":"You sent 150 to Abdullah Aydoğan on 08.09.2019 19:47:54","TransactionDirection":2,"CreateDate":"2019-09-08T19:47:54.3507667+03:00","AccountTransactionId":21,"OwnerType":1,"OwnerId":13}
+
+[08-09-2019 19:47:54] - Added
+[08-09-2019 19:47:54] - {"TransactionDetailId":0,"Description":"Faruk Aydoğan have sent 150 to you on 08.09.2019 19:47:54.","TransactionDirection":1,"CreateDate":"2019-09-08T19:47:54.3507667+03:00","AccountTransactionId":21,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:47:54] - Added
+[08-09-2019 19:47:54] - {"TransactionDetailId":0,"Description":"You sent 150 to Abdullah Aydoğan on 08.09.2019 19:47:54","TransactionDirection":2,"CreateDate":"2019-09-08T19:47:54.3507667+03:00","AccountTransactionId":21,"OwnerType":1,"OwnerId":13}
+
+[08-09-2019 19:47:54] - Modified
+[08-09-2019 19:47:54] - {"AccountId":1,"OwnerId":1,"OwnerType":1,"AccountNumber":"1000000","AccountTypeId":1,"Balance":550.00}
+
+[08-09-2019 19:47:54] - Modified
+[08-09-2019 19:47:54] - {"AccountId":13,"OwnerId":2,"OwnerType":1,"AccountNumber":"1000001","AccountTypeId":1,"Balance":150.00}
+
+[08-09-2019 19:47:54] - Modified
+[08-09-2019 19:47:54] - {"TransactionId":21,"Amount":150.0,"TransactionDate":"2019-09-08T19:47:54.3507667+03:00","TransactionTypeId":2,"TransactionStatusId":5,"OwnerId":1,"OwnerType":1,"FromOwnerType":1,"FromOwnerId":1,"ToOwnerType":1,"ToOwnerId":13}
+
+[08-09-2019 19:47:54] - Committing context..
+[08-09-2019 19:47:54] - "Db context guid: d36d6bd6-2f33-4156-9bfe-d564a4df4e0d"
+
+[08-09-2019 19:53:52] - coreContext created.
+[08-09-2019 19:53:52] - {}
+
+[08-09-2019 19:53:52] - logger created.
+
+[08-09-2019 19:53:52] - AccountManager created.
+[08-09-2019 19:53:52] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:52] - PersonManager created.
+[08-09-2019 19:53:52] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:52] - PersonManager created.
+[08-09-2019 19:53:52] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:52] - AccountManager created.
+[08-09-2019 19:53:52] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:52] - AccountRepository created.
+[08-09-2019 19:53:52] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:54] - PersonRepository created.
+[08-09-2019 19:53:54] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:54] - PersonDomainEntity created.
+[08-09-2019 19:53:54] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:54] - PersonDomainEntity created.
+[08-09-2019 19:53:54] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:54] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:53:54] - "Db context Guid: fce74f71-4ecc-4d70-a0e6-9827c97a5223"
+
+[08-09-2019 19:53:54] - TDbEntity inserting to context..
+[08-09-2019 19:53:54] - {"TransactionId":0,"Amount":150.0,"TransactionDate":"2019-09-08T19:53:54.5304626+03:00","TransactionTypeId":2,"TransactionStatusId":3,"OwnerId":1,"OwnerType":1,"FromOwnerType":1,"FromOwnerId":1,"ToOwnerType":1,"ToOwnerId":13}
+
+[08-09-2019 19:53:54] - PersonDomainEntity created.
+[08-09-2019 19:53:54] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:54] - PersonDomainEntity created.
+[08-09-2019 19:53:54] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:53:54] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:53:54] - "Db context Guid: fce74f71-4ecc-4d70-a0e6-9827c97a5223"
+
+[08-09-2019 19:53:54] - TDbEntity inserting to context..
+[08-09-2019 19:53:54] - {"TransactionDetailId":0,"Description":"Faruk Aydoğan have sent 150 to you on 08.09.2019 19:53:54.","TransactionDirection":1,"CreateDate":"2019-09-08T19:53:54.5304626+03:00","AccountTransactionId":22,"OwnerType":1,"OwnerId":13}
+
+[08-09-2019 19:53:54] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:53:54] - "Db context Guid: fce74f71-4ecc-4d70-a0e6-9827c97a5223"
+
+[08-09-2019 19:53:54] - TDbEntity inserting to context..
+[08-09-2019 19:53:54] - {"TransactionDetailId":0,"Description":"You sent 150 to Abdullah Aydoğan on 08.09.2019 19:53:54","TransactionDirection":2,"CreateDate":"2019-09-08T19:53:54.5304626+03:00","AccountTransactionId":22,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:53:54] - Added
+[08-09-2019 19:53:54] - {"TransactionDetailId":0,"Description":"Faruk Aydoğan have sent 150 to you on 08.09.2019 19:53:54.","TransactionDirection":1,"CreateDate":"2019-09-08T19:53:54.5304626+03:00","AccountTransactionId":22,"OwnerType":1,"OwnerId":13}
+
+[08-09-2019 19:53:54] - Added
+[08-09-2019 19:53:54] - {"TransactionDetailId":0,"Description":"You sent 150 to Abdullah Aydoğan on 08.09.2019 19:53:54","TransactionDirection":2,"CreateDate":"2019-09-08T19:53:54.5304626+03:00","AccountTransactionId":22,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:53:54] - Modified
+[08-09-2019 19:53:54] - {"AccountId":1,"OwnerId":1,"OwnerType":1,"AccountNumber":"1000000","AccountTypeId":1,"Balance":400.00}
+
+[08-09-2019 19:53:54] - Modified
+[08-09-2019 19:53:54] - {"AccountId":13,"OwnerId":2,"OwnerType":1,"AccountNumber":"1000001","AccountTypeId":1,"Balance":300.00}
+
+[08-09-2019 19:53:54] - Modified
+[08-09-2019 19:53:54] - {"TransactionId":22,"Amount":150.0,"TransactionDate":"2019-09-08T19:53:54.5304626+03:00","TransactionTypeId":2,"TransactionStatusId":5,"OwnerId":1,"OwnerType":1,"FromOwnerType":1,"FromOwnerId":1,"ToOwnerType":1,"ToOwnerId":13}
+
+[08-09-2019 19:53:54] - Committing context..
+[08-09-2019 19:53:54] - "Db context guid: fce74f71-4ecc-4d70-a0e6-9827c97a5223"
+
+[08-09-2019 19:54:47] - coreContext created.
+[08-09-2019 19:54:47] - {}
+
+[08-09-2019 19:54:47] - logger created.
+
+[08-09-2019 19:54:47] - AccountManager created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - PersonManager created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - PersonManager created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - AccountManager created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - AccountRepository created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - PersonRepository created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - PersonDomainEntity created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - PersonDomainEntity created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - Type of AccountTransactionDomainEntity entity will be inserted. forceToInsertDb: True
+[08-09-2019 19:54:47] - "Db context Guid: fad08221-3371-4c47-8bbb-f4bcfa66ceab"
+
+[08-09-2019 19:54:47] - TDbEntity inserting to context..
+[08-09-2019 19:54:47] - {"TransactionId":0,"Amount":40.0,"TransactionDate":"2019-09-08T19:54:47.8922911+03:00","TransactionTypeId":4,"TransactionStatusId":3,"OwnerId":5,"OwnerType":2,"FromOwnerType":2,"FromOwnerId":5,"ToOwnerType":1,"ToOwnerId":14}
+
+[08-09-2019 19:54:47] - PersonDomainEntity created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - PersonDomainEntity created.
+[08-09-2019 19:54:47] - "Nested-215f3343-a7cd-4da4-bb46-c95273b8fe23"
+
+[08-09-2019 19:54:47] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:54:47] - "Db context Guid: fad08221-3371-4c47-8bbb-f4bcfa66ceab"
+
+[08-09-2019 19:54:47] - TDbEntity inserting to context..
+[08-09-2019 19:54:47] - {"TransactionDetailId":0,"Description":"Credit card - **562533 have sent 40 to you on 08.09.2019 19:54:47.","TransactionDirection":1,"CreateDate":"2019-09-08T19:54:47.8922911+03:00","AccountTransactionId":23,"OwnerType":1,"OwnerId":14}
+
+[08-09-2019 19:54:47] - Type of TransactionDetailDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:54:47] - "Db context Guid: fad08221-3371-4c47-8bbb-f4bcfa66ceab"
+
+[08-09-2019 19:54:47] - TDbEntity inserting to context..
+[08-09-2019 19:54:47] - {"TransactionDetailId":0,"Description":"You sent 40 to aydoganF on 08.09.2019 19:54:47","TransactionDirection":2,"CreateDate":"2019-09-08T19:54:47.8922911+03:00","AccountTransactionId":23,"OwnerType":2,"OwnerId":5}
+
+[08-09-2019 19:54:47] - Type of CreditCardPaymentDomainEntity entity will be inserted. forceToInsertDb: False
+[08-09-2019 19:54:47] - "Db context Guid: fad08221-3371-4c47-8bbb-f4bcfa66ceab"
+
+[08-09-2019 19:54:47] - TDbEntity inserting to context..
+[08-09-2019 19:54:47] - {"CreditCardPaymentId":0,"InstalmentIndex":1,"Amount":40.0,"Description":"aydoganF - 40 (1/1 instalment)","CreateDate":"2019-09-08T19:54:47.8922911+03:00","InstalmentDate":"2019-09-08T19:54:47.8922911+03:00","AccountTransactionId":23}
+
+[08-09-2019 19:54:47] - Added
+[08-09-2019 19:54:47] - {"TransactionDetailId":0,"Description":"Credit card - **562533 have sent 40 to you on 08.09.2019 19:54:47.","TransactionDirection":1,"CreateDate":"2019-09-08T19:54:47.8922911+03:00","AccountTransactionId":23,"OwnerType":1,"OwnerId":14}
+
+[08-09-2019 19:54:47] - Added
+[08-09-2019 19:54:47] - {"TransactionDetailId":0,"Description":"You sent 40 to aydoganF on 08.09.2019 19:54:47","TransactionDirection":2,"CreateDate":"2019-09-08T19:54:47.8922911+03:00","AccountTransactionId":23,"OwnerType":2,"OwnerId":5}
+
+[08-09-2019 19:54:47] - Added
+[08-09-2019 19:54:47] - {"CreditCardPaymentId":0,"InstalmentIndex":1,"Amount":40.0,"Description":"aydoganF - 40 (1/1 instalment)","CreateDate":"2019-09-08T19:54:47.8922911+03:00","InstalmentDate":"2019-09-08T19:54:47.8922911+03:00","AccountTransactionId":23}
+
+[08-09-2019 19:54:47] - Modified
+[08-09-2019 19:54:47] - {"CreditCardId":5,"CreditCardNumber":"3893824698562533","Limit":7500.00,"Debt":6410.00,"ExtreDay":8,"Type":1,"ValidMonth":"03","ValidYear":"2023","SecurityCode":"472","IsInternetUsageOpen":true,"OwnerType":1,"OwnerId":1}
+
+[08-09-2019 19:54:47] - Modified
+[08-09-2019 19:54:47] - {"TransactionId":23,"Amount":40.0,"TransactionDate":"2019-09-08T19:54:47.8922911+03:00","TransactionTypeId":4,"TransactionStatusId":5,"OwnerId":5,"OwnerType":2,"FromOwnerType":2,"FromOwnerId":5,"ToOwnerType":1,"ToOwnerId":14}
+
+[08-09-2019 19:54:47] - Committing context..
+[08-09-2019 19:54:47] - "Db context guid: fad08221-3371-4c47-8bbb-f4bcfa66ceab"
+

@@ -8,6 +8,8 @@ namespace AydoganFBank.Context.DataAccess
         TDomainEntity GetById(int id);
         void InsertEntity(TDomainEntity domainEntity, bool forceToInsertDb = true);
         void UpdateEntity(TDomainEntity domainEntity);
+        void FlushEntity(TDomainEntity domainEntity);
+        void DeleteEntity(TDomainEntity domainEntity);
     }
 
     public interface IQueryRepository : ITransientObject

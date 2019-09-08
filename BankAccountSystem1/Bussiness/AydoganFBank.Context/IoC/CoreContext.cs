@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Context.Utils;
 using AydoganFBank.Database;
@@ -8,6 +10,8 @@ namespace AydoganFBank.Context.IoC
 {
     public class CoreContext : ICoreContext
     {
+        private Dictionary<Type, List<IDomainEntity>> payload = new Dictionary<Type, List<IDomainEntity>>();
+
         private readonly IContainer container;
         private readonly ICoreContextConfigurer coreContextConfigurer;
         private readonly ICryptographer cryptographer;
@@ -45,11 +49,27 @@ namespace AydoganFBank.Context.IoC
 
             logger.Info("coreContext created.", this);
             logger.Info("logger created.");
+
         }
 
         public T New<T>()
         {
-            return container.GetInstance<T>();
+            var obj = container.GetInstance<T>();
+            if (obj.GetType().GetInterfaces().Any(@interface => @interface.Name == typeof(IDomainEntity).Name))
+            {
+                if(payload.ContainsKey(obj.GetType()) == false)
+                {
+                    payload.Add(obj.GetType(), new List<IDomainEntity>() { (IDomainEntity)obj });
+                }
+                else
+                {
+                    if (payload[obj.GetType()] == null)
+                        payload[obj.GetType()] = new List<IDomainEntity>();
+                    payload[obj.GetType()].Add((IDomainEntity)obj);
+                }
+            }
+
+            return obj;
         }
 
         public T Query<T>() where T : IQueryRepository
@@ -62,9 +82,18 @@ namespace AydoganFBank.Context.IoC
             return container.Name;
         }
 
-        //public ICoreContext WithNewContext()
-        //{
-        //    return context.GetInstance<ICoreContext>();
-        //}
+        public void Commit()
+        {
+            dbContext.ChangeTracker.Entries()
+                .Where(e => e.State == System.Data.Entity.EntityState.Added || e.State == System.Data.Entity.EntityState.Modified)
+                .ToList()
+                .ForEach(a =>
+            {
+                logger.Info(a.State.ToString(), a.Entity);
+            });
+            logger.Info("Committing context..", string.Format("Db context guid: {0}", dbContext.Guid));
+            dbContext.SaveChanges();
+        }
+
     }
 }

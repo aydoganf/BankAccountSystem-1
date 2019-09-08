@@ -59,8 +59,10 @@
     <Compile Include="DataAccess\IDomainObjectBuilderRepository.cs" />
     <Compile Include="DataAccess\IDomianEntityManager.cs" />
     <Compile Include="DataAccess\IRepository.cs" />
+    <Compile Include="DataAccess\IUnitOfWork.cs" />
     <Compile Include="DataAccess\OrderedQueryRepository.cs" />
     <Compile Include="DataAccess\Repository.cs" />
+    <Compile Include="DataAccess\UnitOfWork.cs" />
     <Compile Include="Exception\CommonException.cs" />
     <Compile Include="Exception\ServiceException.cs" />
     <Compile Include="DataAccess\IDomainEntity.cs" />

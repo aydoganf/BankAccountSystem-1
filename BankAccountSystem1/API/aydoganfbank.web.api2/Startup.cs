@@ -80,6 +80,7 @@ namespace aydoganfbank.web.api2
                 _.Scan(s =>
                 {
                     s.Assembly("AydoganFBank.Context");
+                    s.Assembly("AydoganFBank.Database");
                     s.Assembly("AydoganFBank.AccountManagement");
                     s.Assembly("AydoganFBank.Service");
                     s.WithDefaultConventions();

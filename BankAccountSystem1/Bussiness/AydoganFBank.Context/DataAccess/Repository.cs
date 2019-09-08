@@ -17,21 +17,14 @@ namespace AydoganFBank.Context.DataAccess
     {
         protected readonly ICoreContext coreContext;
         protected readonly AydoganFBankDbContext dbContext;
-        //protected readonly IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder;
-        //protected readonly IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper;
 
-        public Repository(
-            ICoreContext coreContext
-            //IDomainEntityBuilder<TDomainEntity, TDbEntity> domainEntityBuilder,
-            //IDbEntityMapper<TDbEntity, TDomainEntity> dbEntityMapper
-            )
+        public Repository(ICoreContext coreContext)
         {
             this.coreContext = coreContext;
-            //this.domainEntityBuilder = domainEntityBuilder;
-            //this.dbEntityMapper = dbEntityMapper;
-
             dbContext = this.coreContext.DBContext;
         }
+
+        #region Mapping
 
         public virtual TDomainEntity MapToDomainObject(TDbEntity dbEntity)
         {
@@ -56,6 +49,22 @@ namespace AydoganFBank.Context.DataAccess
 
         public abstract void MapToDbEntity(TDomainEntity domainEntity, TDbEntity dbEntity);
 
+        #endregion
+
+        #region Flush
+
+        public void FlushEntity(TDomainEntity domainEntity)
+        {
+            TDbEntity dbEntity = dbContext.Set<TDbEntity>().Find(domainEntity.Id);
+            MapToDbEntity(domainEntity, dbEntity);
+            var entry = dbContext.Entry(dbEntity);
+            entry.State = EntityState.Modified;
+        }
+
+        #endregion
+
+        #region Update
+
         private void UpdateEntity(TDbEntity dbEntity)
         {
             var entry = dbContext.Entry(dbEntity);
@@ -70,12 +79,14 @@ namespace AydoganFBank.Context.DataAccess
             UpdateEntity(dbEntity);
         }
 
-        protected abstract TDbEntity GetDbEntityById(int id);
+        #endregion
+
+        #region Insert
 
         protected virtual void InsertEntity(TDbEntity dbEntity, bool forceToInsertDb = true)
         {
-            var entry = dbContext.Entry(dbEntity);
-            entry.State = EntityState.Added;
+            coreContext.Logger.Info("TDbEntity inserting to context..", dbEntity);
+            dbContext.Set<TDbEntity>().Add(dbEntity);
             if (forceToInsertDb)
                 dbContext.SaveChanges();
         }
@@ -90,9 +101,31 @@ namespace AydoganFBank.Context.DataAccess
 
         public void InsertEntity(TDomainEntity domainEntity, bool forceToInsertDb = true)
         {
+            coreContext.Logger.Info(string.Format("Type of {0} entity will be inserted. forceToInsertDb: {1}", 
+                domainEntity.GetType().Name, forceToInsertDb), string.Format("Db context Guid: {0}", dbContext.Guid));
             TDbEntity dbEntity = coreContext.New<TDbEntity>();
             InsertEntity(domainEntity, dbEntity, forceToInsertDb);
         }
+
+        #endregion
+
+        #region Delete
+        public void DeleteEntity(TDomainEntity domainEntity)
+        {
+            var dbEntity = dbContext.Set<TDbEntity>().Find(domainEntity.Id);
+            dbContext.Set<TDbEntity>().Remove(dbEntity);
+        }
+
+        public void DeleteEntity(int id)
+        {
+            var dbEntity = dbContext.Set<TDbEntity>().Find(id);
+            dbContext.Set<TDbEntity>().Remove(dbEntity);
+        }
+        #endregion
+
+        #region Data retrieving
+
+        protected abstract TDbEntity GetDbEntityById(int id);
 
         public abstract TDomainEntity GetById(int id);
 
@@ -115,5 +148,7 @@ namespace AydoganFBank.Context.DataAccess
         {
             return dbContext.Set<TDbEntity>().Any(predicate);
         }
+
+        #endregion
     }
 }

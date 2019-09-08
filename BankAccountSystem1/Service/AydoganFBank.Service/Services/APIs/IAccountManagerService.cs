@@ -22,5 +22,6 @@ namespace AydoganFBank.Service.Services.APIs
         AccountInfo DepositToOwnAccount(int accountId, decimal amount);
 
         object TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType);
+        object DeleteAccount(int accountId);
     }
 }

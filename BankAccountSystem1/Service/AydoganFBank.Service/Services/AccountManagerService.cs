@@ -29,6 +29,11 @@ namespace AydoganFBank.Service.Services
             return dataBuilder.BuildAccountInfo(account);
         }
 
+        public object DeleteAccount(int accountId)
+        {
+            return accountManager.DeleteAccount(accountId);
+        }
+
         public AccountInfo DepositToOwnAccount(int accountId, decimal amount)
         {
             var account = accountManager.DepositToOwnAccount(accountId, amount);

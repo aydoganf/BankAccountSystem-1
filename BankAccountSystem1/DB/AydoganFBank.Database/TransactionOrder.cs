@@ -23,9 +23,5 @@ namespace AydoganFBank.Database
         public int ToAccountId { get; set; }
         public decimal Amount { get; set; }
         public int TransactionOrderStatusId { get; set; }
-    
-        public virtual Account Account { get; set; }
-        public virtual Account Account1 { get; set; }
-        public virtual TransactionType TransactionType { get; set; }
     }
 }

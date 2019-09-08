@@ -87,6 +87,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public void SetStatus(TransactionStatusEnum transactionStatus)
         {
             TransactionStatus = coreContext.Query<ITransactionStatusRepository>().GetByKey(transactionStatus.ToString());
+            accountTransactionRepository.FlushEntity(this);
         }
 
         public TransactionDetailDomainEntity CreateTransactionDetail(TransactionDirection transactionDirection)
@@ -97,12 +98,12 @@ namespace AydoganFBank.AccountManagement.Domain
             if (transactionDirection == TransactionDirection.In)
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, (ITransactionDetailOwner)FromTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, (ITransactionDetailOwner)ToTransactionOwner, transactionDirection);
             }
             else
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, (ITransactionDetailOwner)ToTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, this, (ITransactionDetailOwner)FromTransactionOwner, transactionDirection);
             }
         }
     }

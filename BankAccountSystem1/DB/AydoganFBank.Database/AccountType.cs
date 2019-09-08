@@ -14,17 +14,8 @@ namespace AydoganFBank.Database
     
     public partial class AccountType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AccountType()
-        {
-            this.Account = new HashSet<Account>();
-        }
-    
         public int AccountTypeId { get; set; }
         public string TypeName { get; set; }
         public string TypeKey { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Account> Account { get; set; }
     }
 }
