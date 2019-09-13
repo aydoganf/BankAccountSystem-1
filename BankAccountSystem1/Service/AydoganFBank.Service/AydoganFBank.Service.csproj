@@ -50,6 +50,10 @@
     <Compile Include="Message\Data\CreditCardInfo.cs" />
     <Compile Include="Message\Data\CreditCardOwner.cs" />
     <Compile Include="Message\Data\PersonInfo.cs" />
+    <Compile Include="Message\Data\TransactionInfo.cs" />
+    <Compile Include="Message\Data\TransactionOwner.cs" />
+    <Compile Include="Message\Data\TransactionStatusInfo.cs" />
+    <Compile Include="Message\Data\TransactionTypeInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContext.cs" />
     <Compile Include="Services\AccountManagerService.cs" />
@@ -57,11 +61,13 @@
     <Compile Include="Services\APIs\ICompanyManagerService.cs" />
     <Compile Include="Services\APIs\ICreditCardManagerService.cs" />
     <Compile Include="Services\APIs\IPersonManagerService.cs" />
+    <Compile Include="Services\APIs\ITransactionManagerService.cs" />
     <Compile Include="Services\CompanyManagerService.cs" />
     <Compile Include="Services\CreditCardManagerService.cs" />
     <Compile Include="Services\IServiceContext.cs" />
     <Compile Include="Services\PersonManagerService.cs" />
     <Compile Include="Services\ServiceContext.cs" />
+    <Compile Include="Services\TransactionManagerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Bussiness\AydoganFBank.AccountManagement\AydoganFBank.AccountManagement.csproj">

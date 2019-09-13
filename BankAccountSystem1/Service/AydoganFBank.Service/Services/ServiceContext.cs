@@ -14,15 +14,18 @@ namespace AydoganFBank.Service.Services
         public IPersonManagerService PersonManagerService { get; private set; }
         public ICompanyManagerService CompanyManagerService { get; private set; }
         public ICreditCardManagerService CreditCardManagerService { get; private set; }
+        public ITransactionManagerService TransactionMangerService { get; private set; }
 
         public ServiceContext(
             IAccountManagerService accountManagerService, IPersonManagerService personManagerService,
-            ICompanyManagerService companyManagerService, ICreditCardManagerService creditCardManagerService)
+            ICompanyManagerService companyManagerService, ICreditCardManagerService creditCardManagerService,
+            ITransactionManagerService transactionMangerService)
         {
             AccountManagerService = accountManagerService;
             PersonManagerService = personManagerService;
             CompanyManagerService = companyManagerService;
             CreditCardManagerService = creditCardManagerService;
+            TransactionMangerService = transactionMangerService;
         }
     }
 }

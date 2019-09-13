@@ -122,5 +122,60 @@ namespace AydoganFBank.Service.Builder
                 OwnerId = creditCardOwner.OwnerId
             };
         }
+
+        public TransactionStatusInfo BuildTransactionStatusInfo(ITransactionStatusInfo transactionStatusInfo)
+        {
+            return new TransactionStatusInfo()
+            {
+                StatusId = transactionStatusInfo.StatusId,
+                StatusKey = transactionStatusInfo.StatusKey,
+                StatusName = transactionStatusInfo.StatusName
+            };
+        }
+
+        public TransactionTypeInfo BuildTransactionTypeInfo(ITransactionTypeInfo transactionTypeInfo)
+        {
+            return new TransactionTypeInfo()
+            {
+                TypeId = transactionTypeInfo.TypeId,
+                TypeKey = transactionTypeInfo.TypeKey,
+                TypeName = transactionTypeInfo.TypeName
+            };
+        }
+
+        public TransactionOwner BuildTransactionOwner(ITransactionOwner transactionOwner)
+        {
+            return new TransactionOwner()
+            {
+                AssetsUnit = transactionOwner.AssetsUnit,
+                OwnerId = transactionOwner.OwnerId,
+                OwnerType = transactionOwner.OwnerType,
+                TransactionDetailDisplayName = transactionOwner.TransactionDetailDisplayName
+            };
+        }
+
+        public TransactionInfo BuildTransactionInfo(ITransactionInfo transactionInfo)
+        {
+            return new TransactionInfo()
+            {
+                Amount = transactionInfo.Amount,
+                FromTransactionOwner = BuildTransactionOwner(transactionInfo.FromTransactionOwner),
+                ToTransactionOwner = BuildTransactionOwner(transactionInfo.ToTransactionOwner),
+                TransactionDate = transactionInfo.TransactionDate,
+                TransactionOwner = transactionInfo.TransactionOwner != null ? BuildTransactionOwner(transactionInfo.TransactionOwner) : null,
+                TransactionStatus = BuildTransactionStatusInfo(transactionInfo.TransactionStatus),
+                TransactionType = BuildTransactionTypeInfo(transactionInfo.TransactionType)
+            };
+        }
+
+        public List<TransactionInfo> BuildTransactionInfoList(List<ITransactionInfo> transactionInfos)
+        {
+            List<TransactionInfo> transactions = new List<TransactionInfo>();
+            foreach (var transactionInfo in transactionInfos)
+            {
+                transactions.Add(BuildTransactionInfo(transactionInfo));
+            }
+            return transactions;
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace AydoganFBank.Service.Services
         IPersonManagerService PersonManagerService { get; }
         ICompanyManagerService CompanyManagerService { get; }
         ICreditCardManagerService CreditCardManagerService { get; }
+        ITransactionManagerService TransactionMangerService { get; }
     }
 }

@@ -180,10 +180,11 @@ namespace AydoganFBank.AccountManagement.Domain
             ITransactionOwner transactionOwner,
             int itemCount = 15)
         {
+            int ownerType = transactionOwner.OwnerType.ToInt();
             return GetLastItemCountListBy(
                 at =>
-                    ((at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId) ||
-                    (at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId)),
+                    ((at.FromOwnerType == ownerType && at.FromOwnerId == transactionOwner.OwnerId) ||
+                    (at.ToOwnerType == ownerType && at.ToOwnerId == transactionOwner.OwnerId)),
                 at =>
                     at.TransactionDate,
                 itemCount);
@@ -194,9 +195,10 @@ namespace AydoganFBank.AccountManagement.Domain
             ITransactionOwner transactionOwner,
             int itemCount)
         {
+            int ownerType = transactionOwner.OwnerType.ToInt();
             return GetLastItemCountListBy(
                 at =>
-                    at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId,
+                    at.ToOwnerType == ownerType && at.ToOwnerId == transactionOwner.OwnerId,
                 at =>
                     at.TransactionDate,
                 itemCount);
@@ -207,10 +209,11 @@ namespace AydoganFBank.AccountManagement.Domain
             DateTime startDate,
             DateTime endDate)
         {
+            int ownerType = transactionOwner.OwnerType.ToInt();
             return GetOrderedDescListBy(
                 at =>
-                    ((at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId) ||
-                    (at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId)) &&
+                    ((at.FromOwnerType == ownerType && at.FromOwnerId == transactionOwner.OwnerId) ||
+                    (at.ToOwnerType == ownerType && at.ToOwnerId == transactionOwner.OwnerId)) &&
                     at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
                     at.TransactionDate);
@@ -221,9 +224,10 @@ namespace AydoganFBank.AccountManagement.Domain
             DateTime startDate,
             DateTime endDate)
         {
+            int ownerType = transactionOwner.OwnerType.ToInt();
             return GetOrderedDescListBy(
                 at =>
-                    at.ToOwnerType == transactionOwner.OwnerType.ToInt() && at.ToOwnerId == transactionOwner.OwnerId &&
+                    at.ToOwnerType == ownerType && at.ToOwnerId == transactionOwner.OwnerId &&
                     at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
                     at.TransactionDate);
@@ -234,9 +238,10 @@ namespace AydoganFBank.AccountManagement.Domain
             DateTime startDate,
             DateTime endDate)
         {
+            int ownerType = transactionOwner.OwnerType.ToInt();
             return GetOrderedDescListBy(
                 at =>
-                    at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId &&
+                    at.FromOwnerType == ownerType && at.FromOwnerId == transactionOwner.OwnerId &&
                     at.TransactionDate >= startDate && at.TransactionDate <= endDate,
                 at =>
                     at.TransactionDate);
@@ -246,9 +251,10 @@ namespace AydoganFBank.AccountManagement.Domain
             ITransactionOwner transactionOwner, 
             int itemCount)
         {
+            int ownerType = transactionOwner.OwnerType.ToInt();
             return GetLastItemCountListBy(
                 at =>
-                    at.FromOwnerType == transactionOwner.OwnerType.ToInt() && at.FromOwnerId == transactionOwner.OwnerId,
+                    at.FromOwnerType == ownerType && at.FromOwnerId == transactionOwner.OwnerId,
                 at =>
                     at.TransactionDate,
                 itemCount);

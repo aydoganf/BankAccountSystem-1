@@ -44,6 +44,9 @@
     <Compile Include="Inputs\Account\CreateCompanyAccountMessage.cs" />
     <Compile Include="Inputs\Account\CreatePersonAccountMessage.cs" />
     <Compile Include="Inputs\Account\DepositToOwnAccountMessage.cs" />
+    <Compile Include="Inputs\Account\GetAccountIncomingTransactionsMessage.cs" />
+    <Compile Include="Inputs\Account\GetAccountOutgoingTransactionsMessage.cs" />
+    <Compile Include="Inputs\Account\GetAccountTransactionsMessage.cs" />
     <Compile Include="Inputs\Account\TransferAssetsMessage.cs" />
     <Compile Include="Inputs\Account\WithdrawMoneyFromOwnMessage.cs" />
     <Compile Include="Inputs\Company\ChangeCompanyAddressMessage.cs" />
