@@ -16,13 +16,9 @@ namespace aydoganfbank.web.api2.Controllers.Test
     public class ValuesController : ControllerBase
     {
         #region IoC
-        private readonly IServiceContext serviceContext;
-        private readonly AydoganFBank.Service.Services.IServiceContext newServiceContext;
 
-        public ValuesController(IServiceContext serviceContext, AydoganFBank.Service.Services.IServiceContext newServiceContext)
+        public ValuesController()
         {
-            this.serviceContext = serviceContext;
-            this.newServiceContext = newServiceContext;
         }
         #endregion
 

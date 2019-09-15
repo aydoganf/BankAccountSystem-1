@@ -1,8 +1,8 @@
 ﻿using aydoganfbank.web.api.bussiness.Inputs.Person;
 using aydoganfbank.web.api2.Utility;
-using AydoganFBank.Service.Message.Data;
-using AydoganFBank.Service.Services;
 using Microsoft.AspNetCore.Mvc;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 
 namespace aydoganfbank.web.api2.Controllers.Business
 {

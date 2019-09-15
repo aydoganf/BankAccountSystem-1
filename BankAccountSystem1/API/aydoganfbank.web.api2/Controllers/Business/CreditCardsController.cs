@@ -1,9 +1,9 @@
 ﻿using aydoganfbank.web.api.bussiness.Inputs.CreditCard;
 using aydoganfbank.web.api2.Utility;
-using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service.Message.Data;
-using AydoganFBank.Service.Services;
 using Microsoft.AspNetCore.Mvc;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
+using AydoganFBank.AccountManagement.Api;
 
 namespace aydoganfbank.web.api2.Controllers.Business
 {

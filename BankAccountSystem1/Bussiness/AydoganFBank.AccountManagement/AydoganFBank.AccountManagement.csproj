@@ -72,12 +72,6 @@
     <Compile Include="Api\TransactionOwnerType.cs" />
     <Compile Include="Api\TransactionStatus.cs" />
     <Compile Include="Api\TransactionType.cs" />
-    <Compile Include="Builder\CompanyDomainEntityBuilder.cs" />
-    <Compile Include="Builder\CreditCardExtreDomainEntityBuilder.cs" />
-    <Compile Include="Builder\CreditCardPaymentDomainEntityBuilder.cs" />
-    <Compile Include="Builder\PersonDomainEntityBuilder.cs" />
-    <Compile Include="Builder\TransactionStatusDomainEntityBuilder.cs" />
-    <Compile Include="Builder\TransactionTypeDomainEntityBuilder.cs" />
     <Compile Include="Domain\Account.cs" />
     <Compile Include="Domain\AccountTransaction.cs" />
     <Compile Include="Domain\AccountType.cs" />

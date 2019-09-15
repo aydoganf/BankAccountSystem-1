@@ -1,10 +1,9 @@
 ﻿using aydoganfbank.web.api.bussiness.Inputs.Account;
 using aydoganfbank.web.api2.Utility;
-using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service.Message.Data;
-using AydoganFBank.Service.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using AydoganFBank.Service.Dispatcher.Data;
+using AydoganFBank.Service.Dispatcher.Context;
 
 namespace aydoganfbank.web.api2.Controllers.UI
 {
@@ -13,6 +12,7 @@ namespace aydoganfbank.web.api2.Controllers.UI
     public class AccountsController : ControllerBase
     {
         #region IoC
+        //private readonly IServiceContext serviceContext;
         private readonly IServiceContext serviceContext;
 
         public AccountsController(IServiceContext serviceContext)
@@ -58,7 +58,7 @@ namespace aydoganfbank.web.api2.Controllers.UI
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.TransactionMangerService.GetAccountTransactionDateRangeTransactionInfoList(
+                    serviceContext.TransactionManagerService.GetAccountTransactionDateRangeTransactionInfoList(
                         id,
                         message.StartDate,
                         message.EndDate));
@@ -69,7 +69,7 @@ namespace aydoganfbank.web.api2.Controllers.UI
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.TransactionMangerService.GetAccountLastIncomingDateRangeAccountTransactionInfoList(
+                    serviceContext.TransactionManagerService.GetAccountLastIncomingDateRangeAccountTransactionInfoList(
                         id,
                         message.StartDate,
                         message.EndDate));
@@ -80,7 +80,7 @@ namespace aydoganfbank.web.api2.Controllers.UI
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.TransactionMangerService.GetAccountLastOutgoingDateRangeAccountTransactionInfoList(
+                    serviceContext.TransactionManagerService.GetAccountLastOutgoingDateRangeAccountTransactionInfoList(
                         id,
                         message.StartDate,
                         message.EndDate));

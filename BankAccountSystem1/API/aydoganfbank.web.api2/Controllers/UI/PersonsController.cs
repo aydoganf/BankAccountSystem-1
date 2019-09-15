@@ -1,9 +1,8 @@
 ﻿using aydoganfbank.web.api2.Utility;
-using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service.Message.Data;
-using AydoganFBank.Service.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 
 namespace aydoganfbank.web.api2.Controllers.UI
 {
@@ -41,7 +40,7 @@ namespace aydoganfbank.web.api2.Controllers.UI
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.PersonManagerService.GetAllPersons());
+                    serviceContext.PersonManagerService.GetAllPersonList());
         }
     }
 }
