@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using aydoganfbank.web.api.Utility;
-using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service;
-using Microsoft.AspNetCore.Http;
+﻿using aydoganfbank.web.api.Utility;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aydoganfbank.web.api.Controllers.UI
@@ -24,35 +19,35 @@ namespace aydoganfbank.web.api.Controllers.UI
         #endregion
 
         [HttpGet(ApiURLActions.UI.CompaniesController.GET_COMPANY_BY_ID)]
-        public ActionResult<ApiResponse<ICompanyInfo>> GetCompanyById(int id)
+        public ActionResult<ApiResponse<CompanyInfo>> GetCompanyById(int id)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.CompanyManager.GetCompanyInfo(id));
+                    serviceContext.CompanyManagerService.GetCompanyInfo(id));
         }
 
         [HttpGet()]
-        public ActionResult<ApiResponse<ICompanyInfo>> GetCompanyByResponsablePerson([FromQuery] int responsableId)
+        public ActionResult<ApiResponse<CompanyInfo>> GetCompanyByResponsablePerson([FromQuery] int responsableId)
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.CompanyManager.GetCompanyByResponsableId(responsableId));
+                    serviceContext.CompanyManagerService.GetCompanyByResponsableId(responsableId));
         }
 
         [HttpGet()]
-        public ActionResult<ApiResponse<ICompanyInfo>> GetCompanyByResponsablePerson([FromQuery] string responsableIdentityNumber)
+        public ActionResult<ApiResponse<CompanyInfo>> GetCompanyByResponsablePerson([FromQuery] string responsableIdentityNumber)
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.CompanyManager.GetCompanyByResponsableIdentityNumber(responsableIdentityNumber));
+                    serviceContext.CompanyManagerService.GetCompanyByResponsableIdentityNumber(responsableIdentityNumber));
         }
 
         [HttpGet()]
-        public ActionResult<ApiResponse<ICompanyInfo>> GetCompanyByTaxNumber([FromQuery] string taxNumber)
+        public ActionResult<ApiResponse<CompanyInfo>> GetCompanyByTaxNumber([FromQuery] string taxNumber)
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.CompanyManager.GetCompanyByTaxNumber(taxNumber));
+                    serviceContext.CompanyManagerService.GetCompanyByTaxNumber(taxNumber));
         }
     }
 }

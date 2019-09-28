@@ -8,3 +8,4 @@ C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydog
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api.bussiness\obj\Debug\aydoganfbank.web.api.bussiness.csproj.CoreCompileInputs.cache
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api.bussiness\obj\Debug\aydoganfbank.web.api.bussiness.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api.bussiness\obj\Debug\aydoganfbank.web.api.bussiness.pdb
+C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\API\aydoganfbank.web.api.bussiness\obj\Debug\aydoganfbank.web.api.bussiness.csprojAssemblyReference.cache

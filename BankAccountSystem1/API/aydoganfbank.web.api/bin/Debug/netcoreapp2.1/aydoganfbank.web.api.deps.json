@@ -604,7 +604,8 @@
       },
       "AydoganFBank.Service/1.0.0": {
         "dependencies": {
-          "AydoganFBank.AccountManagement": "1.0.0"
+          "AydoganFBank.AccountManagement": "1.0.0",
+          "AydoganFBank.Context": "1.0.0"
         },
         "runtime": {
           "AydoganFBank.Service.dll": {}

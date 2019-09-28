@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using aydoganfbank.web.api.bussiness.Inputs.CreditCard;
+﻿using aydoganfbank.web.api.bussiness.Inputs.CreditCard;
 using aydoganfbank.web.api.Utility;
 using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service;
-using Microsoft.AspNetCore.Http;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aydoganfbank.web.api.Controllers.Business
@@ -25,26 +21,14 @@ namespace aydoganfbank.web.api.Controllers.Business
         #endregion
 
         [HttpPost]
-        public ActionResult<ApiResponse<ICreditCardInfo>> CreateCreditCard([FromBody] CreateCreditCardMessage message)
+        public ActionResult<ApiResponse<CreditCardInfo>> CreateCreditCard([FromBody] CreateCreditCardMessage message)
         {
             switch (message.CreditCardOwner.OwnerType.ParseToEnum<CreditCardOwnerType>())
             {
                 case CreditCardOwnerType.Account:
                     return this.HandleResult(
                         () =>
-                            serviceContext.CreditCardManager.CreateAccountCreditCard(
-                                message.Limit,
-                                message.ExtreDay,
-                                message.Type,
-                                message.ValidMonth,
-                                message.ValidYear,
-                                message.SecurityCode,
-                                message.IsInternetUsageOpen,
-                                message.CreditCardOwner.OwnerId));
-                case CreditCardOwnerType.Company:
-                    return this.HandleResult(
-                        () =>
-                            serviceContext.CreditCardManager.CreateCompanyCreditCard(
+                            serviceContext.CreditCardManagerService.CreateAccountCreditCard(
                                 message.Limit,
                                 message.ExtreDay,
                                 message.Type,
@@ -59,11 +43,11 @@ namespace aydoganfbank.web.api.Controllers.Business
         }
 
         [HttpPost(ApiURLActions.Business.CreditCardsController.DO_CREDIT_CARD_PAYMENT)]
-        public ActionResult<ApiResponse<ICreditCardInfo>> DoPayment(int id, [FromBody] DoCreditCardPaymentMessage message)
+        public ActionResult<ApiResponse<CreditCardInfo>> DoPayment(int id, [FromBody] DoCreditCardPaymentMessage message)
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.CreditCardManager.DoCreditCardPayment(
+                    serviceContext.CreditCardManagerService.DoCreditCardPayment(
                         id,
                         message.Amount,
                         message.InstalmentCount,
@@ -71,11 +55,11 @@ namespace aydoganfbank.web.api.Controllers.Business
         }
 
         [HttpPost(ApiURLActions.Business.CreditCardsController.DO_CREDIT_CARD_PAYMENT_WITH_SECURITY_INFOS)]
-        public ActionResult<ApiResponse<ICreditCardInfo>> DoPaymentWithSecurityInfos([FromBody] DoPaymentWithSecurityInfosMessage message)
+        public ActionResult<ApiResponse<CreditCardInfo>> DoPaymentWithSecurityInfos([FromBody] DoPaymentWithSecurityInfosMessage message)
         {
             return this.HandleResult(
                 () =>
-                    serviceContext.CreditCardManager.DoCreditCardPayment(
+                    serviceContext.CreditCardManagerService.DoCreditCardPayment(
                         message.CreditCardNumber,
                         message.ValidMonth,
                         message.ValidYear,

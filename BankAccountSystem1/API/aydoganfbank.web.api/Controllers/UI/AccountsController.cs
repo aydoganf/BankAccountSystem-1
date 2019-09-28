@@ -1,6 +1,6 @@
 ﻿using aydoganfbank.web.api.Utility;
-using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aydoganfbank.web.api.Controllers.UI
@@ -18,35 +18,35 @@ namespace aydoganfbank.web.api.Controllers.UI
 
         // GET: api/Accounts/5
         [HttpGet(ApiURLActions.UI.AccountsController.GET_ACCOUNT_BY_ID)]
-        public ActionResult<ApiResponse<IAccountInfo>> GetAccountById(int id)
+        public ActionResult<ApiResponse<AccountInfo>> GetAccountById(int id)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.GetAccountInfo(id));
+                    serviceContext.AccountManagerService.GetAccountInfo(id));
         }
 
         [HttpGet()]
-        public ActionResult<ApiResponse<IAccountInfo>> GetAccountByAccountNumber([FromQuery] string accountNumber)
+        public ActionResult<ApiResponse<AccountInfo>> GetAccountByAccountNumber([FromQuery] string accountNumber)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.GetAccountInfoByAccountNumber(accountNumber));
+                    serviceContext.AccountManagerService.GetAccountInfoByAccountNumber(accountNumber));
         }
 
         [HttpGet(ApiURLActions.UI.AccountsController.GET_ACCOUNT_TYPE_BY_ID)]
-        public ActionResult<ApiResponse<IAccountTypeInfo>> GetAccountTypeById(int id)
+        public ActionResult<ApiResponse<AccountTypeInfo>> GetAccountTypeById(int id)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.GetAccountTypeInfo(id));
+                    serviceContext.AccountManagerService.GetAccountTypeInfo(id));
         }
 
         [HttpGet(ApiURLActions.UI.AccountsController.GET_ACCOUNT_TYPE_BY_KEY)]
-        public ActionResult<ApiResponse<IAccountTypeInfo>> GetAccountTypeByKey([FromQuery] string key)
+        public ActionResult<ApiResponse<AccountTypeInfo>> GetAccountTypeByKey([FromQuery] string key)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.GetAccountTypeByKey(key));
+                    serviceContext.AccountManagerService.GetAccountTypeByKey(key));
         }
     }
 }

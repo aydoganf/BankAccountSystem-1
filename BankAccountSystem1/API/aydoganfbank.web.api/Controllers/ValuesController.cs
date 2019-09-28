@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using aydoganfbank.web.api.Utility;
-using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service;
+﻿using aydoganfbank.web.api.Utility;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aydoganfbank.web.api.Controllers
@@ -22,9 +18,9 @@ namespace aydoganfbank.web.api.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<ApiResponse<IPersonInfo>> GetPersonById()
+        public ActionResult<ApiResponse<PersonInfo>> GetPersonById()
         {
-            return this.HandleResult(() => serviceContext.PersonManager.GetPersonInfo(1));
+            return this.HandleResult(() => serviceContext.PersonManagerService.GetPersonInfo(1));
         }
 
         // GET api/values/5

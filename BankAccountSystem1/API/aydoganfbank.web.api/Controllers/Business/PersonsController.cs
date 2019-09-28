@@ -1,7 +1,8 @@
 ﻿using aydoganfbank.web.api.bussiness.Inputs.Person;
 using aydoganfbank.web.api.Utility;
 using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aydoganfbank.web.api.Controllers.Business
@@ -20,11 +21,11 @@ namespace aydoganfbank.web.api.Controllers.Business
         #endregion
 
         [HttpPut("")]
-        public ActionResult<ApiResponse<IPersonInfo>> CreatePerson([FromBody] CreatePersonMessage message)
+        public ActionResult<ApiResponse<PersonInfo>> CreatePerson([FromBody] CreatePersonMessage message)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.PersonManager.CreatePerson(
+                    serviceContext.PersonManagerService.CreatePerson(
                         message.FirstName, 
                         message.LastName, 
                         message.EmailAddress, 
@@ -32,21 +33,21 @@ namespace aydoganfbank.web.api.Controllers.Business
         }
 
         [HttpPut(ApiURLActions.Business.PersonsController.CHANGE_LAST_NAME)]
-        public ActionResult<ApiResponse<IPersonInfo>> ChangePersonLastName(int personId, [FromBody] ChangePersonLastNameMessage message)
+        public ActionResult<ApiResponse<PersonInfo>> ChangePersonLastName(int personId, [FromBody] ChangePersonLastNameMessage message)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.PersonManager.ChangePersonLastName(
+                    serviceContext.PersonManagerService.ChangePersonLastName(
                         personId, 
                         message.LastName));
         }
 
         [HttpPut(ApiURLActions.Business.PersonsController.CHANGE_EMAIL)]
-        public ActionResult<ApiResponse<IPersonInfo>> ChangePersonEmailAddress(int personId, [FromBody] ChangePersonEmailAddressMessage message)
+        public ActionResult<ApiResponse<PersonInfo>> ChangePersonEmailAddress(int personId, [FromBody] ChangePersonEmailAddressMessage message)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.PersonManager.ChangePersonEmailAddress(
+                    serviceContext.PersonManagerService.ChangePersonEmailAddress(
                         personId, 
                         message.EmailAddress));
         }

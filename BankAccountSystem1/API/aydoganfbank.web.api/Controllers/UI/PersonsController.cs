@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using aydoganfbank.web.api.Utility;
-using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service;
-using Microsoft.AspNetCore.Http;
+﻿using aydoganfbank.web.api.Utility;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aydoganfbank.web.api.Controllers.UI
@@ -24,19 +19,19 @@ namespace aydoganfbank.web.api.Controllers.UI
         #endregion
 
         [HttpGet(ApiURLActions.UI.PersonsController.GET_PERSON_BY_ID)]
-        public ActionResult<ApiResponse<IPersonInfo>> GetPersonById(int id)
+        public ActionResult<ApiResponse<PersonInfo>> GetPersonById(int id)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.PersonManager.GetPersonInfo(id));
+                    serviceContext.PersonManagerService.GetPersonInfo(id));
         }
 
         [HttpGet()]
-        public ActionResult<ApiResponse<IPersonInfo>> GetPersonByIdentityNumber([FromQuery] string identityNumber)
+        public ActionResult<ApiResponse<PersonInfo>> GetPersonByIdentityNumber([FromQuery] string identityNumber)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.PersonManager.GetPersonByIdentityNumber(identityNumber));
+                    serviceContext.PersonManagerService.GetPersonByIdentityNumber(identityNumber));
         }
 
 

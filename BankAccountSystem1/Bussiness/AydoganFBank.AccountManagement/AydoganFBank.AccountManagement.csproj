@@ -56,10 +56,12 @@
     <Compile Include="Api\IAccountInfo.cs" />
     <Compile Include="Api\IAccountOwner.cs" />
     <Compile Include="Api\IAccountTypeInfo.cs" />
+    <Compile Include="Api\IApplicationInfo.cs" />
     <Compile Include="Api\ICompanyInfo.cs" />
     <Compile Include="Api\ICreditCardInfo.cs" />
     <Compile Include="Api\ICreditCardOwner.cs" />
     <Compile Include="Api\IPersonInfo.cs" />
+    <Compile Include="Api\ITokenInfo.cs" />
     <Compile Include="Api\ITransactionDetailInfo.cs" />
     <Compile Include="Api\ITransactionDetailOwner.cs" />
     <Compile Include="Api\ITransactionHolder.cs" />
@@ -91,12 +93,14 @@
     <Compile Include="Managers\CompanyManager.cs" />
     <Compile Include="Managers\CreditCardManager.cs" />
     <Compile Include="Managers\PersonManager.cs" />
+    <Compile Include="Managers\SecurityManager.cs" />
     <Compile Include="Managers\TransactionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IAccountManager.cs" />
     <Compile Include="Service\ICompanyManager.cs" />
     <Compile Include="Service\ICreditCardManager.cs" />
     <Compile Include="Service\IPersonManager.cs" />
+    <Compile Include="Service\ISecurityManager.cs" />
     <Compile Include="Service\ITransactionManager.cs" />
   </ItemGroup>
   <ItemGroup>

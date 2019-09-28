@@ -13,6 +13,7 @@
     <EntitySetMapping Name="Person">
       <EntityTypeMapping TypeName="AydoganFBankModel.Person">
         <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="PersonId" ColumnName="PersonId" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />

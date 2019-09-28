@@ -1,7 +1,8 @@
 ﻿using aydoganfbank.web.api.bussiness.Inputs.Account;
 using aydoganfbank.web.api.Utility;
 using AydoganFBank.AccountManagement.Api;
-using AydoganFBank.Service;
+using AydoganFBank.Service.Dispatcher.Context;
+using AydoganFBank.Service.Dispatcher.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace aydoganfbank.web.api.Controllers.Bussiness
@@ -19,21 +20,21 @@ namespace aydoganfbank.web.api.Controllers.Bussiness
 
 
         [HttpPost(ApiURLActions.Business.AccountsController.CREATE_PERSON_ACCOUNT)]
-        public ActionResult<ApiResponse<IAccountInfo>> CreatePersonAccount(int personId, [FromBody] CreatePersonAccountMessage message)
+        public ActionResult<ApiResponse<AccountInfo>> CreatePersonAccount(int personId, [FromBody] CreatePersonAccountMessage message)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.CreatePersonAccount(
+                    serviceContext.AccountManagerService.CreatePersonAccount(
                         message.AccountTypeKey, 
                         personId));
         }
 
         [HttpPost(ApiURLActions.Business.AccountsController.CREATE_COMPANY_ACCOUNT)]
-        public ActionResult<ApiResponse<IAccountInfo>> CreateCompanyAccount(int companyId, [FromBody] CreateCompanyAccountMessage message)
+        public ActionResult<ApiResponse<AccountInfo>> CreateCompanyAccount(int companyId, [FromBody] CreateCompanyAccountMessage message)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.CreateCompanyAccount(
+                    serviceContext.AccountManagerService.CreateCompanyAccount(
                         message.AccountTypeKey, 
                         companyId));
         }
@@ -45,7 +46,7 @@ namespace aydoganfbank.web.api.Controllers.Bussiness
 
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.TransferAssets(
+                    serviceContext.AccountManagerService.TransferAssets(
                         message.FromAccountId, 
                         message.ToAccountId, 
                         message.Amount, 
@@ -54,21 +55,21 @@ namespace aydoganfbank.web.api.Controllers.Bussiness
 
 
         [HttpPut(ApiURLActions.Business.AccountsController.WITHDRAW_ASSETS)]
-        public ActionResult<ApiResponse<IAccountInfo>> WithdrawMoneyFromOwn(int accountId, [FromBody] WithdrawMoneyFromOwnMessage message)
+        public ActionResult<ApiResponse<AccountInfo>> WithdrawMoneyFromOwn(int accountId, [FromBody] WithdrawMoneyFromOwnMessage message)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.WithdrawMoneyFromOwn(
+                    serviceContext.AccountManagerService.WithdrawMoneyFromOwn(
                         accountId, 
                         message.Amount));
         }
 
         [HttpPut(ApiURLActions.Business.AccountsController.DEPOSIT_ASSETS)]
-        public ActionResult<ApiResponse<IAccountInfo>> DepositToOwnAccount(int accountId, [FromBody] DepositToOwnAccountMessage message)
+        public ActionResult<ApiResponse<AccountInfo>> DepositToOwnAccount(int accountId, [FromBody] DepositToOwnAccountMessage message)
         {
             return this.HandleResult(
                 () => 
-                    serviceContext.AccountManager.DepositToOwnAccount(
+                    serviceContext.AccountManagerService.DepositToOwnAccount(
                         accountId, 
                         message.Amount));
         }

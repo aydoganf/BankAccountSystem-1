@@ -24,6 +24,6 @@ namespace AydoganFBank.Context.IoC
         //ICoreContext WithNewContext();
 
         string GetContainerInfo();
-        void SetSession(string token, bool isValid);
+        void SetSession(string token, DateTime validUntil);
     }
 }

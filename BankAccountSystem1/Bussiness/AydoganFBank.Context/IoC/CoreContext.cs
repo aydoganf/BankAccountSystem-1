@@ -101,9 +101,9 @@ namespace AydoganFBank.Context.IoC
             dbContext.SaveChanges();
         }
 
-        public void SetSession(string token, bool isValid)
+        public void SetSession(string token, DateTime validUntil)
         {
-            session.SetToken(token, isValid);
+            session.SetToken(token, validUntil);
         }
     }
 }
