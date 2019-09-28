@@ -55,6 +55,11 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<IPersonRepository>().GetByIdentityNumber(identityNumber);
         }
 
+        internal PersonDomainEntity GetPersonByEmailAndPassword(string email, string password)
+        {
+            return coreContext.Query<IPersonRepository>().GetByEmailAndPassword(email, password);
+        }
+
         internal List<PersonDomainEntity> GetAllPersons()
         {
             return coreContext.Query<IPersonRepository>().GetAll();

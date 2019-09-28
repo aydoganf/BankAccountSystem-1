@@ -19,5 +19,6 @@ namespace AydoganFBank.Database
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public string IdentityNumber { get; set; }
+        public string Password { get; set; }
     }
 }

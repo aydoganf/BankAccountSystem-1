@@ -15,6 +15,7 @@ namespace AydoganFBank.Context.IoC
         private readonly IContainer container;
         private readonly ICoreContextConfigurer coreContextConfigurer;
         private readonly ICryptographer cryptographer;
+        private readonly ISession session;
 
         private Logger logger;
 
@@ -35,14 +36,19 @@ namespace AydoganFBank.Context.IoC
         AydoganFBankDbContext ICoreContext.DBContext => dbContext;
         ILogger ICoreContext.Logger => logger;
         ICryptographer ICoreContext.Cryptographer => cryptographer;
+        ISession ICoreContext.Session => session;
 
 
         public CoreContext(
-            IContainer container, ICoreContextConfigurer coreContextConfigurer, ICryptographer cryptographer)
+            IContainer container, 
+            ICoreContextConfigurer coreContextConfigurer, 
+            ICryptographer cryptographer,
+            ISession session)
         {
             this.container = container;
             this.coreContextConfigurer = coreContextConfigurer;
             this.cryptographer = cryptographer;
+            this.session = session;
 
             logger = new Logger();
             logger.SetFilePaths(this.coreContextConfigurer.GetLogFileDirectory());
@@ -95,5 +101,9 @@ namespace AydoganFBank.Context.IoC
             dbContext.SaveChanges();
         }
 
+        public void SetSession(string token, bool isValid)
+        {
+            session.SetToken(token, isValid);
+        }
     }
 }

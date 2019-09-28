@@ -1,4 +1,5 @@
-﻿using AydoganFBank.Context.DataAccess;
+﻿using AydoganFBank.AccountManagement.Api;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Context.Exception;
 using AydoganFBank.Context.IoC;
 using AydoganFBank.Database;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class TokenDomainEntity : IDomainEntity
+    public class TokenDomainEntity : IDomainEntity, ITokenInfo
     {
         #region IoC
         private readonly ITokenRepository tokenRepository;
@@ -29,6 +30,13 @@ namespace AydoganFBank.AccountManagement.Domain
 
 
         int IDomainEntity.Id => TokenId;
+
+        int ITokenInfo.Id => TokenId;
+        string ITokenInfo.Token => Value;
+        DateTime ITokenInfo.ValidUntil => ValidUntil;
+        int ITokenInfo.ApplicationId => Application.ApplicationId;
+        bool ITokenInfo.IsValid => ValidUntil >= DateTime.Now;
+        IPersonInfo ITokenInfo.PersonInfo => Person;
 
         public TokenDomainEntity With(PersonDomainEntity person, ApplicationDomainEntity application)
         {

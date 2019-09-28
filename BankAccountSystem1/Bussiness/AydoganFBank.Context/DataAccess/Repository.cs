@@ -28,6 +28,8 @@ namespace AydoganFBank.Context.DataAccess
 
         public virtual TDomainEntity MapToDomainObject(TDbEntity dbEntity)
         {
+            CheckSession();
+
             if (dbEntity == null)
                 return default;  //throw new CommonException.EntityNotFoundInDbContextException("");
 
@@ -35,6 +37,7 @@ namespace AydoganFBank.Context.DataAccess
             MapToDomainObject(domainEnttiy, dbEntity);
             return domainEnttiy;
         }
+
         public abstract void MapToDomainObject(TDomainEntity domainEntity, TDbEntity dbEntity);
 
         public virtual List<TDomainEntity> MapToDomainObjectList(IEnumerable<TDbEntity> dbEntities)
@@ -131,24 +134,59 @@ namespace AydoganFBank.Context.DataAccess
 
         public List<TDomainEntity> GetAll()
         {
-            return MapToDomainObjectList(dbContext.Set<TDbEntity>().ToList());
+            return MapToDomainObjectList(All());
         }
 
         protected TDomainEntity GetFirstBy(Expression<Func<TDbEntity, bool>> predicate)
         {
-            return MapToDomainObject(dbContext.Set<TDbEntity>().FirstOrDefault(predicate));
+            return MapToDomainObject(FirstOrDefault(predicate));
         }
 
         protected List<TDomainEntity> GetListBy(Expression<Func<TDbEntity, bool>> predicate)
         {
-            return MapToDomainObjectList(dbContext.Set<TDbEntity>().Where(predicate));
+            return MapToDomainObjectList(Where(predicate));
         }
 
         protected bool Exists(Expression<Func<TDbEntity, bool>> predicate)
         {
+            return Any(predicate);
+        }
+
+        private void CheckSession()
+        {
+            if (coreContext.Session.IsValid == false)
+                throw new CommonException.AuthenticationRequiredException();
+        }
+
+        protected List<TDbEntity> All()
+        {
+            CheckSession();
+            return dbContext.Set<TDbEntity>().ToList();
+        }
+
+        protected bool Any(Expression<Func<TDbEntity, bool>> predicate)
+        {
+            CheckSession();
             return dbContext.Set<TDbEntity>().Any(predicate);
         }
 
+        protected TDbEntity FirstOrDefault(Expression<Func<TDbEntity, bool>> predicate)
+        {
+            CheckSession();
+            return dbContext.Set<TDbEntity>().FirstOrDefault(predicate);
+        }
+
+        protected IQueryable<TDbEntity> Where(Expression<Func<TDbEntity, bool>> predicate)
+        {
+            CheckSession();
+            return dbContext.Set<TDbEntity>().Where(predicate);
+        }
+
+        protected IOrderedQueryable<TDbEntity> OrderByDescending<TOrder>(Expression<Func<TDbEntity, TOrder>> order)
+        {
+            CheckSession();
+            return dbContext.Set<TDbEntity>().OrderByDescending(order);
+        }
         #endregion
     }
 }

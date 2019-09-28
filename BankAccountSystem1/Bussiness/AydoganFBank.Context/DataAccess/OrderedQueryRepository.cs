@@ -22,8 +22,8 @@ namespace AydoganFBank.Context.DataAccess
             Expression<Func<TDbEntity, TOrder>> ascendingOrder)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(whereCondition)
-                    .OrderBy(ascendingOrder));
+                Where(whereCondition).
+                OrderBy(ascendingOrder));
         }
 
         protected List<TDomainEntity> GetOrderedAscListBy<TOrder1, TOrder2>(
@@ -32,9 +32,9 @@ namespace AydoganFBank.Context.DataAccess
             Expression<Func<TDbEntity, TOrder2>> ascendingOrderThen)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(whereCondition)
-                    .OrderBy(ascendingOrder)
-                    .ThenBy(ascendingOrderThen));
+                Where(whereCondition).
+                OrderBy(ascendingOrder).
+                ThenBy(ascendingOrderThen));
         }
 
         protected List<TDomainEntity> GetOrderedAscListBy<TOrder1, TOrder2, TOrder3>(
@@ -44,17 +44,18 @@ namespace AydoganFBank.Context.DataAccess
             Expression<Func<TDbEntity, TOrder3>> ascendingOrderThen2)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(whereCondition)
-                    .OrderBy(ascendingOrder)
-                    .ThenBy(ascendingOrderThen1)
-                    .ThenBy(ascendingOrderThen2));
+                Where(whereCondition).
+                OrderBy(ascendingOrder).
+                ThenBy(ascendingOrderThen1).
+                ThenBy(ascendingOrderThen2));
         }
 
         protected TDomainEntity GetLastBy<TOrder>(
             Expression<Func<TDbEntity, TOrder>> descendingOrder)
         {
             return MapToDomainObject(
-                dbContext.Set<TDbEntity>().OrderByDescending(descendingOrder).FirstOrDefault());
+                OrderByDescending(descendingOrder).
+                FirstOrDefault());
         }
 
         protected TDomainEntity GetLastBy<TOrder>(
@@ -62,7 +63,9 @@ namespace AydoganFBank.Context.DataAccess
             Expression<Func<TDbEntity, TOrder>> descendingOrder)
         {
             return MapToDomainObject(
-                dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descendingOrder).FirstOrDefault());
+                Where(whereCondition).
+                OrderByDescending(descendingOrder).
+                FirstOrDefault());
         }
 
         protected List<TDomainEntity> GetLastItemCountListBy<TOrder>(
@@ -70,7 +73,8 @@ namespace AydoganFBank.Context.DataAccess
             int itemCount)
         {
             return MapToDomainObjectList(
-                dbContext.Set<TDbEntity>().OrderByDescending(descedingOrder).Take(itemCount));
+                OrderByDescending(descedingOrder).
+                Take(itemCount));
         }
 
         protected List<TDomainEntity> GetLastItemCountListBy<TOrder>(
@@ -79,7 +83,9 @@ namespace AydoganFBank.Context.DataAccess
             int itemCount)
         {
             return MapToDomainObjectList(
-                dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descedingOrder).Take(itemCount));
+                Where(whereCondition).
+                OrderByDescending(descedingOrder).
+                Take(itemCount));
         }
 
         protected List<TDomainEntity> GetOrderedDescListBy<TOrder>(
@@ -87,7 +93,8 @@ namespace AydoganFBank.Context.DataAccess
             Expression<Func<TDbEntity, TOrder>> descendingOrder)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(whereCondition).OrderByDescending(descendingOrder));
+                Where(whereCondition).
+                OrderByDescending(descendingOrder));
         }
 
         protected List<TDomainEntity> GetOrderedDescListBy<TOrder1, TOrder2>(
@@ -96,9 +103,9 @@ namespace AydoganFBank.Context.DataAccess
             Expression<Func<TDbEntity, TOrder2>> descendingOrder2)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(whereCondition)
-                    .OrderByDescending(descendingOrder1)
-                    .ThenByDescending(descendingOrder2));
+                Where(whereCondition).
+                OrderByDescending(descendingOrder1).
+                ThenByDescending(descendingOrder2));
         }
 
         protected List<TDomainEntity> GetOrderedDescListBy<TOrder1, TOrder2, TOrder3>(
@@ -108,10 +115,10 @@ namespace AydoganFBank.Context.DataAccess
             Expression<Func<TDbEntity, TOrder3>> descendingOrder3)
         {
             return MapToDomainObjectList(
-                    dbContext.Set<TDbEntity>().Where(whereCondition)
-                    .OrderByDescending(descendingOrder1)
-                    .ThenByDescending(descendingOrder2)
-                    .ThenByDescending(descendingOrder3));
+                Where(whereCondition).
+                OrderByDescending(descendingOrder1).
+                ThenByDescending(descendingOrder2).
+                ThenByDescending(descendingOrder3));
         }
     }
 }

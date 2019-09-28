@@ -123,6 +123,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="IdentityNumber" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -231,6 +232,7 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdentityNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TransactionStatus">
           <Key>
@@ -426,6 +428,7 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
           <EntitySetMapping Name="Person">
             <EntityTypeMapping TypeName="AydoganFBankModel.Person">
               <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

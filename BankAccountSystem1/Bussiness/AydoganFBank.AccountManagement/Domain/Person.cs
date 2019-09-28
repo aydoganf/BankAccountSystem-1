@@ -33,6 +33,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public string IdentityNumber { get; set; }
+        public string Password { get; set; }
 
         AccountOwnerType IAccountOwner.OwnerType => AccountOwnerType.Person;
         int IAccountOwner.OwnerId => PersonId;
@@ -103,6 +104,13 @@ namespace AydoganFBank.AccountManagement.Domain
             Save();
         }
 
+        public void SetPassword(string passwordSalt)
+        {
+            string password = coreContext.Cryptographer.GenerateMD5Hash(passwordSalt);
+            Password = password;
+            Save();
+        }
+
         public void Save()
         {
             personRepository.UpdateEntity(this);
@@ -129,6 +137,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.FirstName = domainEntity.FirstName;
             dbEntity.LastName = domainEntity.LastName;
             dbEntity.IdentityNumber = domainEntity.IdentityNumber;
+            dbEntity.Password = domainEntity.Password;
         }
 
         public override void MapToDomainObject(PersonDomainEntity domainEntity, Person dbEntity)
@@ -141,6 +150,7 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.FirstName = dbEntity.FirstName;
             domainEntity.LastName = dbEntity.LastName;
             domainEntity.IdentityNumber = dbEntity.IdentityNumber;
+            domainEntity.Password = dbEntity.Password;
         }
         #endregion
 
@@ -164,11 +174,18 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return base.GetAll();
         }
+
+        public PersonDomainEntity GetByEmailAndPassword(string email, string password)
+        {
+            return GetFirstBy(
+                p => p.EmailAddress == email && p.Password == password);
+        }
     }
 
     public interface IPersonRepository : IRepository<PersonDomainEntity>
     {
         List<PersonDomainEntity> GetAll();
         PersonDomainEntity GetByIdentityNumber(string identityNumber);
+        PersonDomainEntity GetByEmailAndPassword(string email, string password);
     }
 }

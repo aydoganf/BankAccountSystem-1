@@ -13,6 +13,14 @@ namespace AydoganFBank.Context.Exception
         {
         }
 
+        public class AuthenticationRequiredException : CommonException
+        {
+            public AuthenticationRequiredException()
+                : base(0, "Authentication required!")
+            {
+            }
+        }
+
         public class RequiredParameterMissingException : CommonException
         {
             public RequiredParameterMissingException(string message) 

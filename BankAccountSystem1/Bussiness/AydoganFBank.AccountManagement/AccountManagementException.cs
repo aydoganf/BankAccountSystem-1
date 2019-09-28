@@ -116,5 +116,13 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class PersonCouldNotFoundWithGivenEmailAndPassword : AccountManagementException
+        {
+            public PersonCouldNotFoundWithGivenEmailAndPassword(string message) 
+                : base(14, string.Format("Person could not found with given email and password. {0}", message))
+            {
+            }
+        }
     }
 }

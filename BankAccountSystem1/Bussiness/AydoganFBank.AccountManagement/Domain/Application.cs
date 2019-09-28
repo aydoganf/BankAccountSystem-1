@@ -1,4 +1,5 @@
-﻿using AydoganFBank.Context.DataAccess;
+﻿using AydoganFBank.AccountManagement.Api;
+using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Context.Exception;
 using AydoganFBank.Context.IoC;
 using AydoganFBank.Database;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class ApplicationDomainEntity : IDomainEntity
+    public class ApplicationDomainEntity : IDomainEntity, IApplicationInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -28,6 +29,12 @@ namespace AydoganFBank.AccountManagement.Domain
 
 
         int IDomainEntity.Id => ApplicationId;
+
+        int IApplicationInfo.Id => ApplicationId;
+        string IApplicationInfo.Name => Name;
+        string IApplicationInfo.Domain => Domain;
+        Guid IApplicationInfo.Guid => Guid;
+
 
         public ApplicationDomainEntity With(string name, string domain)
         {

@@ -13,6 +13,7 @@ namespace AydoganFBank.Context.IoC
         AydoganFBankDbContext DBContext { get; }
         ILogger Logger { get; }
         ICryptographer Cryptographer { get; }
+        ISession Session { get; }
 
         T New<T>();
 
@@ -23,5 +24,6 @@ namespace AydoganFBank.Context.IoC
         //ICoreContext WithNewContext();
 
         string GetContainerInfo();
+        void SetSession(string token, bool isValid);
     }
 }
