@@ -21,6 +21,11 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<IApplicationRepository>().GetById(applicationId);
         }
 
+        internal ApplicationDomainEntity GetApplicationByTokenValue(string token)
+        {
+            return coreContext.Query<IApplicationRepository>().GetByToken(token);
+        }
+
         internal TokenDomainEntity CreateToken(PersonDomainEntity person, ApplicationDomainEntity application)
         {
             var token = coreContext.New<TokenDomainEntity>().With(person, application);
@@ -46,10 +51,23 @@ namespace AydoganFBank.AccountManagement.Managers
         {
             string password = coreContext.Cryptographer.GenerateMD5Hash(passwordSalt);
             var person = personManager.GetPersonByEmailAndPassword(email, password);
-            var application = GetApplicationById(applicationId);
 
             if (person == null)
                 throw new AccountManagementException.PersonCouldNotFoundWithGivenEmailAndPassword(string.Empty);
+
+            var application = GetApplicationById(applicationId);
+            return CreateToken(person, application);
+        }
+
+        internal TokenDomainEntity LoginByIdentityNumber(string identityNumber, string passwordSalt, int applicationId)
+        {
+            string password = coreContext.Cryptographer.GenerateMD5Hash(passwordSalt);
+            var person = personManager.GetPersonByIdentityNumberAndPassword(identityNumber, password);
+            
+            if(person == null)
+                throw new AccountManagementException.PersonCouldNotFoundWithGivenIdentityNumberAndPassword(string.Empty);
+
+            var application = GetApplicationById(applicationId);
 
             return CreateToken(person, application);
         }
@@ -83,6 +101,11 @@ namespace AydoganFBank.AccountManagement.Managers
         ITokenInfo ISecurityManager.LoginByEmail(string email, string password, int applicationId)
         {
             return LoginByEmail(email, password, applicationId);
+        }
+
+        IApplicationInfo ISecurityManager.GetApplicationByToken(string token)
+        {
+            return GetApplicationByTokenValue(token);
         }
     }
 }

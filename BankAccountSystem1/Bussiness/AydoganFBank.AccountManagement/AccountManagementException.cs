@@ -124,5 +124,13 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class PersonCouldNotFoundWithGivenIdentityNumberAndPassword : AccountManagementException
+        {
+            public PersonCouldNotFoundWithGivenIdentityNumberAndPassword(string message) 
+                : base(15, string.Format("Person could not found with given identity number and password. {0}", message))
+            {
+            }
+        }
     }
 }

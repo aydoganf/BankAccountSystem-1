@@ -10,6 +10,7 @@ namespace AydoganFBank.AccountManagement.Service
         ITokenInfo LoginByEmail(string email, string password, int applicationId);
 
         IApplicationInfo GetApplicationInfo(int applicationId);
+        IApplicationInfo GetApplicationByToken(string token);
         IApplicationInfo CreateApplication(string name, string domain);
 
     }

@@ -178,7 +178,15 @@ namespace AydoganFBank.AccountManagement.Domain
         public PersonDomainEntity GetByEmailAndPassword(string email, string password)
         {
             return GetFirstBy(
-                p => p.EmailAddress == email && p.Password == password);
+                p => 
+                    p.EmailAddress == email && p.Password == password);
+        }
+
+        public PersonDomainEntity GetByIdentityNumberAndPassword(string identityNumber, string password)
+        {
+            return GetFirstBy(
+                p =>
+                    p.IdentityNumber == identityNumber && p.Password == password);
         }
     }
 
@@ -186,6 +194,7 @@ namespace AydoganFBank.AccountManagement.Domain
     {
         List<PersonDomainEntity> GetAll();
         PersonDomainEntity GetByIdentityNumber(string identityNumber);
+        PersonDomainEntity GetByIdentityNumberAndPassword(string identityNumber, string password);
         PersonDomainEntity GetByEmailAndPassword(string email, string password);
     }
 }

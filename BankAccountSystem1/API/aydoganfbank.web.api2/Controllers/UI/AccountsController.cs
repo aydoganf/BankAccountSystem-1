@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using AydoganFBank.Service.Dispatcher.Data;
 using AydoganFBank.Service.Dispatcher.Context;
+using aydoganfbank.web.api2.Middlewares;
 
 namespace aydoganfbank.web.api2.Controllers.UI
 {
+    [AuthenticationRequiredFilter()]
     [Route("api/ui/[controller]")]
     [ApiController]
     public class AccountsController : ControllerBase
