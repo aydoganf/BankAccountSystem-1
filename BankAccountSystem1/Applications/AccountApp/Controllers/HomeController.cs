@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AydoganFBank.Service.Dispatcher.Api;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,17 @@ namespace AccountApp.Controllers
 {
     public class HomeController : Controller
     {
+        private IAccountManagerService accountManagerService;
+
+        public HomeController(IAccountManagerService accountManagerService)
+        {
+            this.accountManagerService = accountManagerService;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var data = accountManagerService.GetAccountInfo(1);
+            return View(data);
         }
 
         public ActionResult About()

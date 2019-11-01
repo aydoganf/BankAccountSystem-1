@@ -45,7 +45,7 @@ namespace aydoganfbank.web.api2
                 var newFormatter = new CustomJsonOutputFormatter(oldFormatter.PublicSerializerSettings, ArrayPool<char>.Shared);
                 opt.OutputFormatters.Add(newFormatter);
 
-                opt.Filters.Add(typeof(AuthenticationRequiredFilter));
+                //opt.Filters.Add(typeof(AuthenticationRequiredFilter));
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             return ConfigureIoC(services);

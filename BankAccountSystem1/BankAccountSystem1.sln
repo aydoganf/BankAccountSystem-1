@@ -27,6 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aydoganfbank.web.api2", "AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDispatcher", "Service\ServiceDispacher\ServiceDispatcher.csproj", "{7407E841-6666-493C-9C80-826D3502D7B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{DED3AF45-B2EF-4FCE-8566-EE1C45D9A1AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountApp", "Applications\AccountApp\AccountApp.csproj", "{2EF65187-FA41-446E-BC1B-864F746BAC9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +69,10 @@ Global
 		{7407E841-6666-493C-9C80-826D3502D7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7407E841-6666-493C-9C80-826D3502D7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7407E841-6666-493C-9C80-826D3502D7B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF65187-FA41-446E-BC1B-864F746BAC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF65187-FA41-446E-BC1B-864F746BAC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF65187-FA41-446E-BC1B-864F746BAC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF65187-FA41-446E-BC1B-864F746BAC9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +86,7 @@ Global
 		{0126F903-0AB2-4643-9CA9-98E8CCC5E20C} = {4F0AA3C2-498A-4C4C-914B-B6286049BDAB}
 		{A1DB1644-E112-41B6-A4D0-0200FD194377} = {4F0AA3C2-498A-4C4C-914B-B6286049BDAB}
 		{7407E841-6666-493C-9C80-826D3502D7B9} = {343B396C-3283-4E0F-A6B4-E364EE79F0EC}
+		{2EF65187-FA41-446E-BC1B-864F746BAC9A} = {DED3AF45-B2EF-4FCE-8566-EE1C45D9A1AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1A5E257-73E3-44F0-B9AF-E5DD83594CDE}

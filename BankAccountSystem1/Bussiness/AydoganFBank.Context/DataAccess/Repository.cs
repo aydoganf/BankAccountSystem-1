@@ -154,8 +154,8 @@ namespace AydoganFBank.Context.DataAccess
 
         private void CheckSession()
         {
-            if (coreContext.Session.IsValid == false)
-                throw new CommonException.AuthenticationRequiredException();
+            //if (coreContext.Session.IsValid == false)
+            //    throw new CommonException.AuthenticationRequiredException();
         }
 
         protected List<TDbEntity> All()

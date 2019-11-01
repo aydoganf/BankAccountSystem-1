@@ -8,7 +8,7 @@ using aydoganfbank.web.api2.Middlewares;
 
 namespace aydoganfbank.web.api2.Controllers.UI
 {
-    [AuthenticationRequiredFilter()]
+    //[AuthenticationRequiredFilter()]
     [Route("api/ui/[controller]")]
     [ApiController]
     public class AccountsController : ControllerBase
