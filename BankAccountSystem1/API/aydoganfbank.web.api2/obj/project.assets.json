@@ -3621,6 +3621,9 @@
       },
       "Microsoft.DiaSymReader.Native/1.7.0": {
         "type": "package",
+        "native": {
+          "runtimes/win-x86/native/Microsoft.DiaSymReader.Native.x86.dll": {}
+        },
         "build": {
           "build/_._": {}
         }
@@ -4251,7 +4254,7 @@
           "ref/net461/Microsoft.Win32.Registry.dll": {}
         },
         "runtime": {
-          "lib/net461/Microsoft.Win32.Registry.dll": {}
+          "runtimes/win/lib/net461/Microsoft.Win32.Registry.dll": {}
         }
       },
       "Newtonsoft.Json/12.0.2": {
@@ -4482,7 +4485,7 @@
           "ref/net461/System.Data.SqlClient.dll": {}
         },
         "runtime": {
-          "lib/net461/System.Data.SqlClient.dll": {}
+          "runtimes/win/lib/net461/System.Data.SqlClient.dll": {}
         }
       },
       "System.Diagnostics.Debug/4.3.0": {
@@ -4520,7 +4523,7 @@
           "ref/net46/_._": {}
         },
         "runtime": {
-          "lib/net46/System.Diagnostics.FileVersionInfo.dll": {}
+          "runtimes/win/lib/net46/System.Diagnostics.FileVersionInfo.dll": {}
         }
       },
       "System.Diagnostics.StackTrace/4.3.0": {
@@ -4600,7 +4603,7 @@
           "ref/net46/System.IO.Compression.dll": {}
         },
         "runtime": {
-          "lib/net46/System.IO.Compression.dll": {}
+          "runtimes/win/lib/net46/System.IO.Compression.dll": {}
         }
       },
       "System.IO.FileSystem/4.3.0": {
@@ -4799,7 +4802,7 @@
           "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         },
         "runtime": {
-          "lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+          "runtimes/win/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         }
       },
       "System.Runtime.Numerics/4.3.0": {
@@ -4826,7 +4829,7 @@
           "ref/net461/System.Security.AccessControl.dll": {}
         },
         "runtime": {
-          "lib/net461/System.Security.AccessControl.dll": {}
+          "runtimes/win/lib/net461/System.Security.AccessControl.dll": {}
         }
       },
       "System.Security.Cryptography.Algorithms/4.3.0": {
@@ -4845,7 +4848,7 @@
           "ref/net463/System.Security.Cryptography.Algorithms.dll": {}
         },
         "runtime": {
-          "lib/net463/System.Security.Cryptography.Algorithms.dll": {}
+          "runtimes/win/lib/net463/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
       "System.Security.Cryptography.Cng/4.5.0": {
@@ -4858,7 +4861,7 @@
           "ref/net47/System.Security.Cryptography.Cng.dll": {}
         },
         "runtime": {
-          "lib/net47/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/net47/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Encoding/4.3.0": {
@@ -4871,7 +4874,7 @@
           "ref/net46/System.Security.Cryptography.Encoding.dll": {}
         },
         "runtime": {
-          "lib/net46/System.Security.Cryptography.Encoding.dll": {}
+          "runtimes/win/lib/net46/System.Security.Cryptography.Encoding.dll": {}
         }
       },
       "System.Security.Cryptography.Primitives/4.3.0": {
@@ -4901,7 +4904,7 @@
           "ref/net461/System.Security.Cryptography.X509Certificates.dll": {}
         },
         "runtime": {
-          "lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
+          "runtimes/win/lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
         }
       },
       "System.Security.Cryptography.Xml/4.5.0": {
@@ -4954,7 +4957,7 @@
           "ref/net461/System.Security.Principal.Windows.dll": {}
         },
         "runtime": {
-          "lib/net461/System.Security.Principal.Windows.dll": {}
+          "runtimes/win/lib/net461/System.Security.Principal.Windows.dll": {}
         }
       },
       "System.Text.Encoding/4.3.0": {
@@ -4972,7 +4975,7 @@
           "ref/netstandard1.3/_._": {}
         },
         "runtime": {
-          "lib/net46/System.Text.Encoding.CodePages.dll": {}
+          "runtimes/win/lib/netstandard1.3/System.Text.Encoding.CodePages.dll": {}
         }
       },
       "System.Text.Encoding.Extensions/4.3.0": {
@@ -10277,7 +10280,8 @@
             "target": "Package",
             "version": "[2.0.0, )"
           }
-        }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
