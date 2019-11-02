@@ -11,7 +11,6 @@ C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\Ayd
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\StructureMap.xml
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.csprojAssemblyReference.cache
-C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.csproj.CoreCompileInputs.cache
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.csproj.CopyComplete
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.dll
 C:\Users\faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.pdb
@@ -33,3 +32,5 @@ C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.csproj.CopyComplete
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\obj\Debug\AydoganFBank.Context.pdb
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Bussiness\AydoganFBank.Context\bin\Debug\Newtonsoft.Json.xml

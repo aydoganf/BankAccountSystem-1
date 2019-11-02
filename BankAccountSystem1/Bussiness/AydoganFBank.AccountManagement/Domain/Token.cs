@@ -2,9 +2,11 @@
 using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Context.Exception;
 using AydoganFBank.Context.IoC;
+using AydoganFBank.Context.Query;
 using AydoganFBank.Database;
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -110,16 +112,32 @@ namespace AydoganFBank.AccountManagement.Domain
             return dbContext.Token.FirstOrDefault(t => t.TokenId == id);
         }
 
-        public TokenDomainEntity GetByValue(string value)
+        private TokenDomainEntity Validated(Expression<Func<Token, bool>> predicate)
         {
-            return GetFirstBy(
+            return GetFirstBy(predicate.CombineWithAnd(t => t.ValidUntil > DateTime.Now));
+        } 
+
+        public TokenDomainEntity By(string value)
+        {
+            return Validated(
                 t =>
                     t.Value == value);
         }
+
+        public TokenDomainEntity By(string value, int applicationId)
+        {
+            return Validated(
+                t =>
+                    t.Value == value && t.ApplicationId == applicationId);
+        }
+
+        TokenDomainEntity ITokenRepository.GetByValue(string value) => By(value);
+        TokenDomainEntity ITokenRepository.GetByValueAndApplication(string value, int applicationId) => By(value, applicationId); 
     }
 
     public interface ITokenRepository : IRepository<TokenDomainEntity>
     {
         TokenDomainEntity GetByValue(string value);
+        TokenDomainEntity GetByValueAndApplication(string value, int applicationId);
     }
 }

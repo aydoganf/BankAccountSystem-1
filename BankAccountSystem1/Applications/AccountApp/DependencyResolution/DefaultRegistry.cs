@@ -17,6 +17,7 @@
 
 namespace AccountApp.DependencyResolution {
     using System;
+    using System.Configuration;
     using System.Linq;
     using AydoganFBank.Context.IoC;
     using AydoganFBank.Context.IoC.Lifecycle;
@@ -27,11 +28,26 @@ namespace AccountApp.DependencyResolution {
         #region Constructors and Destructors
 
         public DefaultRegistry() {
+
+            string connStr = ConfigurationManager.AppSettings["DbConnStr"];
+            string logFilePath = "";
+
+            switch (Environment.MachineName)
+            {
+                // home
+                case "DESKTOP-FL7VPQG":
+                    logFilePath = @"C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\logs";
+                    break;
+                default:
+                    logFilePath = @"C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\logs";
+                    break;
+            }
+
             For<ICoreContextConfigurer>().Use<CoreContextConfigurer>()
                     .Ctor<Action<CoreContextConfigurer>>().Is(c =>
                     {
-                        c.DBConnectionString("metadata=res://*/Model.csdl|res://*/Model.ssdl|res://*/Model.msl;provider=System.Data.SqlClient;provider connection string='data source=.\\;initial catalog=AydoganFBank;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework'");
-                        c.LogFileDirectory(@"C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\logs");
+                        c.DBConnectionString(connStr);
+                        c.LogFileDirectory(logFilePath);
                     });
 
             Scan(

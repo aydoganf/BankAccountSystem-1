@@ -30,6 +30,15 @@
     }
 
 
+    public class ApplicationInfo
+    {
+        public Int32 Id { get; set; }
+        public String Name { get; set; }
+        public String Domain { get; set; }
+        public Guid Guid { get; set; }
+    }
+
+
     public class CompanyInfo
     {
         public Int32 Id { get; set; }
@@ -76,6 +85,17 @@
         public String EmailAddress { get; set; }
         public String IdentityNumber { get; set; }
         public String FullName { get; set; }
+    }
+
+
+    public class TokenInfo
+    {
+        public Int32 Id { get; set; }
+        public String Token { get; set; }
+        public DateTime ValidUntil { get; set; }
+        public Int32 ApplicationId { get; set; }
+        public Boolean IsValid { get; set; }
+        public PersonInfo PersonInfo { get; set; }
     }
 
 
@@ -215,6 +235,26 @@ namespace AydoganFBank.Service.Dispatcher.Data.Builder
             return ret;
         }
 
+        public ApplicationInfo ApplicationInfoBuilder(IApplicationInfo iapplicationinfo)
+        {
+            if (iapplicationinfo == null) return null;
+            return new ApplicationInfo()
+            {
+                Id = iapplicationinfo.Id,
+                Name = iapplicationinfo.Name,
+                Domain = iapplicationinfo.Domain,
+                Guid = iapplicationinfo.Guid,
+            };
+        }
+
+        public List<ApplicationInfo> ApplicationInfoListBuilder(List<IApplicationInfo> iapplicationinfos)
+        {
+            List<ApplicationInfo> ret = new List<ApplicationInfo>();
+            foreach (var item in iapplicationinfos)
+                ret.Add(ApplicationInfoBuilder(item));
+            return ret;
+        }
+
         public CompanyInfo CompanyInfoBuilder(ICompanyInfo icompanyinfo)
         {
             if (icompanyinfo == null) return null;
@@ -305,6 +345,28 @@ namespace AydoganFBank.Service.Dispatcher.Data.Builder
             List<PersonInfo> ret = new List<PersonInfo>();
             foreach (var item in ipersoninfos)
                 ret.Add(PersonInfoBuilder(item));
+            return ret;
+        }
+
+        public TokenInfo TokenInfoBuilder(ITokenInfo itokeninfo)
+        {
+            if (itokeninfo == null) return null;
+            return new TokenInfo()
+            {
+                Id = itokeninfo.Id,
+                Token = itokeninfo.Token,
+                ValidUntil = itokeninfo.ValidUntil,
+                ApplicationId = itokeninfo.ApplicationId,
+                IsValid = itokeninfo.IsValid,
+                PersonInfo = PersonInfoBuilder(itokeninfo.PersonInfo),
+            };
+        }
+
+        public List<TokenInfo> TokenInfoListBuilder(List<ITokenInfo> itokeninfos)
+        {
+            List<TokenInfo> ret = new List<TokenInfo>();
+            foreach (var item in itokeninfos)
+                ret.Add(TokenInfoBuilder(item));
             return ret;
         }
 
@@ -538,6 +600,26 @@ namespace AydoganFBank.Service.Dispatcher.Api
         PersonInfo GetPersonByIdentityNumber(String identityNumber);
 
         List<PersonInfo> GetAllPersonList();
+
+    }
+
+    public interface ISecurityManagerService
+    {
+        TokenInfo GetTokenInfo(Int32 tokenId);
+
+        TokenInfo GetTokenByValue(String value);
+
+        TokenInfo GetTokenByValueAndApplication(String value, Int32 applicationId);
+
+        TokenInfo CreateToken(Int32 personId, Int32 applicationId);
+
+        TokenInfo LoginByEmail(String email, String password, Int32 applicationId);
+
+        ApplicationInfo GetApplicationInfo(Int32 applicationId);
+
+        ApplicationInfo GetApplicationByToken(String token);
+
+        ApplicationInfo CreateApplication(String name, String domain);
 
     }
 
@@ -787,6 +869,66 @@ namespace AydoganFBank.Service.Dispatcher.Services
         }
 
     }
+    public class SecurityManagerService : ISecurityManagerService
+    {
+        private readonly ISecurityManager securityManager;
+        private readonly ServiceDataBuilder serviceDataBuilder;
+
+        public SecurityManagerService(ISecurityManager securityManager, ServiceDataBuilder serviceDataBuilder)
+        {
+            this.securityManager = securityManager;
+            this.serviceDataBuilder = serviceDataBuilder;
+        }
+
+        public TokenInfo GetTokenInfo(Int32 tokenId)
+        {
+            var result = securityManager.GetTokenInfo(tokenId);
+            return serviceDataBuilder.TokenInfoBuilder(result);
+        }
+
+        public TokenInfo GetTokenByValue(String value)
+        {
+            var result = securityManager.GetTokenByValue(value);
+            return serviceDataBuilder.TokenInfoBuilder(result);
+        }
+
+        public TokenInfo GetTokenByValueAndApplication(String value, Int32 applicationId)
+        {
+            var result = securityManager.GetTokenByValueAndApplication(value, applicationId);
+            return serviceDataBuilder.TokenInfoBuilder(result);
+        }
+
+        public TokenInfo CreateToken(Int32 personId, Int32 applicationId)
+        {
+            var result = securityManager.CreateToken(personId, applicationId);
+            return serviceDataBuilder.TokenInfoBuilder(result);
+        }
+
+        public TokenInfo LoginByEmail(String email, String password, Int32 applicationId)
+        {
+            var result = securityManager.LoginByEmail(email, password, applicationId);
+            return serviceDataBuilder.TokenInfoBuilder(result);
+        }
+
+        public ApplicationInfo GetApplicationInfo(Int32 applicationId)
+        {
+            var result = securityManager.GetApplicationInfo(applicationId);
+            return serviceDataBuilder.ApplicationInfoBuilder(result);
+        }
+
+        public ApplicationInfo GetApplicationByToken(String token)
+        {
+            var result = securityManager.GetApplicationByToken(token);
+            return serviceDataBuilder.ApplicationInfoBuilder(result);
+        }
+
+        public ApplicationInfo CreateApplication(String name, String domain)
+        {
+            var result = securityManager.CreateApplication(name, domain);
+            return serviceDataBuilder.ApplicationInfoBuilder(result);
+        }
+
+    }
     public class TransactionManagerService : ITransactionManagerService
     {
         private readonly ITransactionManager transactionManager;
@@ -871,6 +1013,7 @@ namespace AydoganFBank.Service.Dispatcher.Context
         ICompanyManagerService CompanyManagerService { get; }
         ICreditCardManagerService CreditCardManagerService { get; }
         IPersonManagerService PersonManagerService { get; }
+        ISecurityManagerService SecurityManagerService { get; }
         ITransactionManagerService TransactionManagerService { get; }
     }
 
@@ -880,14 +1023,16 @@ namespace AydoganFBank.Service.Dispatcher.Context
         public ICompanyManagerService CompanyManagerService { get; private set; }
         public ICreditCardManagerService CreditCardManagerService { get; private set; }
         public IPersonManagerService PersonManagerService { get; private set; }
+        public ISecurityManagerService SecurityManagerService { get; private set; }
         public ITransactionManagerService TransactionManagerService { get; private set; }
 
-        public ServiceContext(IAccountManagerService AccountManagerService, ICompanyManagerService CompanyManagerService, ICreditCardManagerService CreditCardManagerService, IPersonManagerService PersonManagerService, ITransactionManagerService TransactionManagerService)
+        public ServiceContext(IAccountManagerService AccountManagerService, ICompanyManagerService CompanyManagerService, ICreditCardManagerService CreditCardManagerService, IPersonManagerService PersonManagerService, ISecurityManagerService SecurityManagerService, ITransactionManagerService TransactionManagerService)
         {
             this.AccountManagerService = AccountManagerService;
             this.CompanyManagerService = CompanyManagerService;
             this.CreditCardManagerService = CreditCardManagerService;
             this.PersonManagerService = PersonManagerService;
+            this.SecurityManagerService = SecurityManagerService;
             this.TransactionManagerService = TransactionManagerService;
         }
 

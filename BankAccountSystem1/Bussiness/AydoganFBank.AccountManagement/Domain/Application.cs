@@ -57,7 +57,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
     }
 
-    public class ApplicationRepository : Repository<ApplicationDomainEntity, Application>
+    public class ApplicationRepository : Repository<ApplicationDomainEntity, Application>, IApplicationRepository
     {
         public ApplicationRepository(ICoreContext coreContext) : base(coreContext)
         {

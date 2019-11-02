@@ -75,6 +75,7 @@
     <Compile Include="IoC\Lifecycle\ISingletonObject.cs" />
     <Compile Include="IoC\Lifecycle\ITransientObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\Helpers.cs" />
     <Compile Include="Utils\Cryptographer.cs" />
     <Compile Include="Utils\ICryptographer.cs" />
     <Compile Include="Utils\ILogger.cs" />

@@ -10,10 +10,12 @@ namespace AccountApp.Controllers
     public class HomeController : Controller
     {
         private IAccountManagerService accountManagerService;
+        private ISecurityManagerService securityManagerService;
 
-        public HomeController(IAccountManagerService accountManagerService)
+        public HomeController(IAccountManagerService accountManagerService, ISecurityManagerService securityManagerService)
         {
             this.accountManagerService = accountManagerService;
+            this.securityManagerService = securityManagerService;
         }
 
         public ActionResult Index()
@@ -24,9 +26,8 @@ namespace AccountApp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var token = securityManagerService.GetTokenByValueAndApplication("faruk", 1);
+            return View(token);
         }
 
         public ActionResult Contact()

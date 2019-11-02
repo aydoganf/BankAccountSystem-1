@@ -16,14 +16,8 @@ namespace AydoganFBank.Context.IoC
             action.Invoke(this);
         }
 
-        string ICoreContextConfigurer.GetConnectionString()
-        {
-            return connStr;
-        }
-        string ICoreContextConfigurer.GetLogFileDirectory()
-        {
-            return logFileDirectory;
-        }
+        string ICoreContextConfigurer.GetConnectionString() => connStr;
+        string ICoreContextConfigurer.GetLogFileDirectory() => logFileDirectory;
 
         public void DBConnectionString(string connStr)
         {
