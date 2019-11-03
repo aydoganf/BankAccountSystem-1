@@ -72,7 +72,7 @@ namespace ServiceDispacher
                 foreach (var methodInfo in managerType.GetMethods())
                 {
                     StringBuilder sb = new StringBuilder();
-                    
+
                     var mReturnType = methodInfo.ReturnType;
                     string mReturnTypeStr = mReturnType.Name;
 
@@ -166,12 +166,12 @@ namespace ServiceDispacher
             serviceDataBuilder.Append("\n\t}");
             serviceDataBuilder.Append("\n}");
             #endregion
-            
+
             #region Service API namespace
             serviceApiBuilder.Append("\n\nnamespace AydoganFBank.Service.Dispatcher.Api");
             serviceApiBuilder.Append("\n{");
 
-            NamespaceIncluder(serviceApiBuilder, new string[] 
+            NamespaceIncluder(serviceApiBuilder, new string[]
             {
                 "System",
                 "AydoganFBank.Service.Dispatcher.Data",
@@ -303,7 +303,18 @@ namespace ServiceDispacher
             #endregion
 
 
-            string outputPath = @"C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\output\test.cs";
+            string outputPath = "";
+            switch (Environment.MachineName)
+            {
+                // home
+                case "DESKTOP-FL7VPQG":
+                    outputPath = @"C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\output\test.cs";
+                    break;
+                default:
+                    outputPath = @"C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\output\test.cs";
+                    break;
+            }
+
             File.WriteAllText(outputPath, dataClassBuilder.ToString());
             File.AppendAllText(outputPath, serviceDataBuilder.ToString());
             File.AppendAllText(outputPath, serviceApiBuilder.ToString());
@@ -375,7 +386,7 @@ namespace ServiceDispacher
                     sb.Append("\n\t\t\treturn serviceDataBuilder.");
                     sb.Append(customReturnTypeName);
                     sb.Append("Builder(result);");
-                }                
+                }
             }
 
             sb.Append("\n\t\t}\n");
@@ -489,7 +500,7 @@ namespace ServiceDispacher
                     continue;
                 }
                 var customReturnType = GetCustomReturnType(returnType);
-                
+
                 sb.Append("\n\t\t");
                 sb.Append(customReturnType);
                 sb.Append(" ");

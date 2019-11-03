@@ -1,7 +1,24 @@
-﻿@{
+﻿@model AydoganFBank.Service.Dispatcher.Data.TokenInfo
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<hr />
 
-<p>Use this area to provide additional information.</p>
+
+@if (Model != null)
+{
+    <p>
+        <div>Token: @Model.Token</div>
+    </p>
+}
+else
+{
+    <p>
+        token is not valid
+    </p>
+}
+
+
+
+

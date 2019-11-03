@@ -1,4 +1,3 @@
-C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csproj.CoreCompileInputs.cache
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\AydoganFBank.Database.dll.config
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\AydoganFBank.Database.dll
 C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\bin\Debug\AydoganFBank.Database.pdb
@@ -20,3 +19,4 @@ C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\Aydoga
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.dll
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.pdb
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csprojAssemblyReference.cache
+C:\Users\Faruk\source\repos\BankAccountSystem-1\BankAccountSystem1\DB\AydoganFBank.Database\obj\Debug\AydoganFBank.Database.csprojAssemblyReference.cache

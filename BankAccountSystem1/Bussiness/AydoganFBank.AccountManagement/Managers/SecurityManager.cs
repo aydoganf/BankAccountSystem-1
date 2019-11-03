@@ -88,6 +88,11 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<ITokenRepository>().GetByValue(value);
         }
 
+        ITokenInfo ISecurityManager.GetTokenByValueAndApplication(string value, int applicationId)
+        {
+            return coreContext.Query<ITokenRepository>().GetByValueAndApplication(value, applicationId);
+        }
+
         IApplicationInfo ISecurityManager.GetApplicationInfo(int applicationId)
         {
             return GetApplicationById(applicationId);
