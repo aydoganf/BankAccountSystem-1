@@ -20,5 +20,6 @@ namespace AydoganFBank.Database
         public System.DateTime ValidUntil { get; set; }
         public int ApplicationId { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public bool CanBeUsed { get; set; }
     }
 }

@@ -9,7 +9,9 @@ namespace AydoganFBank.AccountManagement.Service
         ITokenInfo GetTokenByValue(string value);
         ITokenInfo GetTokenByValueAndApplication(string value, int applicationId);
         ITokenInfo CreateToken(int personId, int applicationId);
+        ITokenInfo ValidateToken(string tokenValue, int applicationId);
         ITokenInfo LoginByEmail(string email, string password, int applicationId);
+        ITokenInfo Login(string identity, string passwordSalt, int applicationId);
 
         IApplicationInfo GetApplicationInfo(int applicationId);
         IApplicationInfo GetApplicationByToken(string token);

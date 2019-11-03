@@ -4,6 +4,7 @@ using AydoganFBank.AccountManagement.Service;
 using AydoganFBank.Context.IoC;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Managers
 {
@@ -11,18 +12,43 @@ namespace AydoganFBank.AccountManagement.Managers
     {
         #region IoC
         private readonly ICoreContext coreContext;
-
+        private readonly PersonManager personManager;
+        private readonly CompanyManager companyManager;
 
         public AccountManager(
-            ICoreContext coreContext)
+            ICoreContext coreContext,
+            PersonManager personManager,
+            CompanyManager companyManager)
         {
             this.coreContext = coreContext;
+            this.personManager = personManager;
+            this.companyManager = companyManager;
 
             this.coreContext.Logger.Info("AccountManager created.", this.coreContext.GetContainerInfo());
         }
         #endregion
 
         #region Account
+
+        internal List<AccountDomainEntity> GetAccountsByPerson(PersonDomainEntity person)
+        {
+            List<AccountDomainEntity> accounts = coreContext.Query<IAccountRepository>().GetListByOwner(person);
+
+            var company = companyManager.GetCompanyByResponsableId(person.PersonId);
+            if (company != null)
+            {
+                // person has company
+                accounts.AddRange(coreContext.Query<IAccountRepository>().GetListByOwner(company));
+            }
+
+            return accounts;
+        }
+
+        internal List<AccountDomainEntity> GetAccountsByPerson(int personId)
+        {
+            var person = personManager.GetPersonById(personId);
+            return GetAccountsByPerson(person);
+        }
 
         internal object DeleteAccount(int accountId)
         {
@@ -324,23 +350,16 @@ namespace AydoganFBank.AccountManagement.Managers
             }
         }
         #endregion
-        
+
 
         #region API Implementations
-        object IAccountManager.DeleteAccount(int accountId)
-        {
-            return DeleteAccount(accountId);
-        }
+        List<IAccountInfo> IAccountManager.GetAccountsByPerson(int personId) => GetAccountsByPerson(personId).Cast<IAccountInfo>().ToList();
 
-        IAccountInfo IAccountManager.CreatePersonAccount(string accountTypeKey, int personId)
-        {
-            return CreatePersonAccount(accountTypeKey, personId);
-        } 
+        object IAccountManager.DeleteAccount(int accountId) => DeleteAccount(accountId);
 
-        IAccountInfo IAccountManager.CreateCompanyAccount(string accountTypeKey, int companyId)
-        {
-            return CreateCompanyAccount(accountTypeKey, companyId);
-        }
+        IAccountInfo IAccountManager.CreatePersonAccount(string accountTypeKey, int personId) => CreatePersonAccount(accountTypeKey, personId);
+
+        IAccountInfo IAccountManager.CreateCompanyAccount(string accountTypeKey, int companyId) => CreateCompanyAccount(accountTypeKey, companyId);
 
         IAccountInfo IAccountManager.GetAccountInfo(int accountId)
         {
@@ -348,20 +367,11 @@ namespace AydoganFBank.AccountManagement.Managers
             return account;
         }
 
-        IAccountInfo IAccountManager.GetAccountInfoByAccountNumber(string accountNumber)
-        {
-            return GetAccountByAccountNumber(accountNumber);
-        }
+        IAccountInfo IAccountManager.GetAccountInfoByAccountNumber(string accountNumber) => GetAccountByAccountNumber(accountNumber);
 
-        IAccountInfo IAccountManager.WithdrawMoneyFromOwn(int accountId, decimal amount)
-        {
-            return WithdrawMoneyFromOwn(accountId, amount);
-        }
+        IAccountInfo IAccountManager.WithdrawMoneyFromOwn(int accountId, decimal amount) => WithdrawMoneyFromOwn(accountId, amount);
 
-        IAccountInfo IAccountManager.DepositToOwnAccount(int accountId, decimal amount)
-        {
-            return DepositToOwnAccount(accountId, amount);
-        }
+        IAccountInfo IAccountManager.DepositToOwnAccount(int accountId, decimal amount) => DepositToOwnAccount(accountId, amount);
 
         object IAccountManager.TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType)
         {
@@ -369,15 +379,9 @@ namespace AydoganFBank.AccountManagement.Managers
             return new object();
         }
 
-        IAccountTypeInfo IAccountManager.GetAccountTypeInfo(int accountTypeId)
-        {
-            return GetAccountTypeById(accountTypeId);
-        }
+        IAccountTypeInfo IAccountManager.GetAccountTypeInfo(int accountTypeId) => GetAccountTypeById(accountTypeId);
 
-        IAccountTypeInfo IAccountManager.GetAccountTypeByKey(string key)
-        {
-            return GetAccountTypeByKey(key);
-        }
+        IAccountTypeInfo IAccountManager.GetAccountTypeByKey(string key) => GetAccountTypeByKey(key);
         #endregion
     }
 }

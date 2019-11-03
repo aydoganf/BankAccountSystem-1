@@ -19,5 +19,8 @@ namespace AydoganFBank.Database
         public string Domain { get; set; }
         public string Token { get; set; }
         public System.Guid Guid { get; set; }
+        public int TokenValidationMinute { get; set; }
+        public int TokenSlidingMinute { get; set; }
+        public int TokenSlidingCheckMinute { get; set; }
     }
 }

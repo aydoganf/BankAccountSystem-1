@@ -1,4 +1,6 @@
-﻿using AydoganFBank.Service.Dispatcher.Api;
+﻿using AccountApp.Filters;
+using AccountApp.Utility;
+using AydoganFBank.Service.Dispatcher.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,27 +9,29 @@ using System.Web.Mvc;
 
 namespace AccountApp.Controllers
 {
-    public class HomeController : Controller
+    
+    public class HomeController : RequiredAuthorizationControllerBase
     {
-        private IAccountManagerService accountManagerService;
-        private ISecurityManagerService securityManagerService;
+        #region IoC
 
-        public HomeController(IAccountManagerService accountManagerService, ISecurityManagerService securityManagerService)
+        private IAccountManagerService accountManagerService;
+
+        public HomeController(IAccountManagerService accountManagerService)
         {
             this.accountManagerService = accountManagerService;
-            this.securityManagerService = securityManagerService;
         }
+
+        #endregion
 
         public ActionResult Index()
         {
-            var data = accountManagerService.GetAccountInfo(1);
+            var data = accountManagerService.GetAccountsByPerson(LoginSession.GetPerson().Id);
             return View(data);
         }
 
         public ActionResult About()
         {
-            var token = securityManagerService.GetTokenByValueAndApplication("faruk", 1);
-            return View(token);
+            return View();
         }
 
         public ActionResult Contact()

@@ -26,6 +26,9 @@ namespace AydoganFBank.AccountManagement.Domain
         public string Domain { get; set; }
         public string Token { get; set; }
         public Guid Guid { get; set; }
+        public int TokenValidationMinute { get; set; }
+        public int TokenSlidingMinute { get; set; }
+        public int TokenSlidingCheckMinute { get; set; }
 
 
         int IDomainEntity.Id => ApplicationId;
@@ -76,6 +79,9 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.Guid = domainEntity.Guid;
             dbEntity.Name = domainEntity.Name;
             dbEntity.Token = domainEntity.Token;
+            dbEntity.TokenSlidingCheckMinute = domainEntity.TokenSlidingCheckMinute;
+            dbEntity.TokenSlidingMinute = domainEntity.TokenSlidingMinute;
+            dbEntity.TokenValidationMinute = domainEntity.TokenValidationMinute;
         }
 
         public override void MapToDomainObject(ApplicationDomainEntity domainEntity, Application dbEntity)
@@ -88,6 +94,9 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.Guid = dbEntity.Guid;
             domainEntity.Name = dbEntity.Name;
             domainEntity.Token = dbEntity.Token;
+            domainEntity.TokenSlidingCheckMinute = dbEntity.TokenSlidingCheckMinute;
+            domainEntity.TokenSlidingMinute = dbEntity.TokenSlidingMinute;
+            domainEntity.TokenValidationMinute = dbEntity.TokenValidationMinute;
         }
 
         #endregion

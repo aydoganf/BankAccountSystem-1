@@ -14,12 +14,12 @@
         <EntityTypeShape EntityType="AydoganFBankModel.CreditCardPayment" Width="1.75" PointX="5.625" PointY="11.75" />
         <EntityTypeShape EntityType="AydoganFBankModel.TransactionDetail" Width="2.25" PointX="10.5" PointY="3.75" />
         <EntityTypeShape EntityType="AydoganFBankModel.CreditCard" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="AydoganFBankModel.Application" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AydoganFBankModel.Token" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="AydoganFBankModel.AccountTransaction" Width="1.5" PointX="5.375" PointY="3.75" />
         <EntityTypeShape EntityType="AydoganFBankModel.Account" Width="1.5" PointX="7.375" PointY="3.75" />
         <EntityTypeShape EntityType="AydoganFBankModel.Company" Width="1.5" PointX="8.375" PointY="0.75" />
         <EntityTypeShape EntityType="AydoganFBankModel.TransactionOrder" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="AydoganFBankModel.Token" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AydoganFBankModel.Application" Width="1.5" PointX="0.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

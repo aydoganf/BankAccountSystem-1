@@ -29,7 +29,11 @@ namespace AydoganFBank.AccountManagement.Domain
         public DateTime ValidUntil { get; set; }
         public ApplicationDomainEntity Application { get; set; }
         public DateTime CreateDate { get; set; }
+        public bool CanBeUsed { get; set; }
 
+        #region Calculated properties
+        public bool IsValid => ValidUntil >= DateTime.Now && CanBeUsed;
+        #endregion
 
         int IDomainEntity.Id => TokenId;
 
@@ -37,7 +41,7 @@ namespace AydoganFBank.AccountManagement.Domain
         string ITokenInfo.Token => Value;
         DateTime ITokenInfo.ValidUntil => ValidUntil;
         int ITokenInfo.ApplicationId => Application.ApplicationId;
-        bool ITokenInfo.IsValid => ValidUntil >= DateTime.Now;
+        bool ITokenInfo.IsValid => IsValid;
         IPersonInfo ITokenInfo.PersonInfo => Person;
 
         public TokenDomainEntity With(PersonDomainEntity person, ApplicationDomainEntity application)
@@ -49,7 +53,8 @@ namespace AydoganFBank.AccountManagement.Domain
             Value = coreContext.Cryptographer.GenerateMD5Hash(guid.ToString());
 
             CreateDate = DateTime.Now;
-            ValidUntil = CreateDate.AddHours(1);
+            ValidUntil = CreateDate.AddMinutes(application.TokenValidationMinute);
+            CanBeUsed = true;
 
             return this;
         }
@@ -64,9 +69,15 @@ namespace AydoganFBank.AccountManagement.Domain
             tokenRepository.UpdateEntity(this);
         }
 
-        public void SlideValidDate(int minutes = 60)
+        public void SlideValidDateBy(ApplicationDomainEntity application)
         {
-            ValidUntil = ValidUntil.AddMinutes(minutes);
+            ValidUntil = ValidUntil.AddMinutes(application.TokenSlidingMinute);
+            Save();
+        }
+
+        public void MakeUnusable()
+        {
+            this.CanBeUsed = false;
             Save();
         }
     }
@@ -91,6 +102,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.PersonId = domainEntity.Person.PersonId;
             dbEntity.ValidUntil = domainEntity.ValidUntil;
             dbEntity.Value = domainEntity.Value;
+            dbEntity.CanBeUsed = domainEntity.CanBeUsed;
         }
 
         public override void MapToDomainObject(TokenDomainEntity domainEntity, Token dbEntity)
@@ -104,6 +116,7 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.TokenId = dbEntity.TokenId;
             domainEntity.ValidUntil = dbEntity.ValidUntil;
             domainEntity.Value = dbEntity.Value;
+            domainEntity.CanBeUsed = dbEntity.CanBeUsed;
         }
         #endregion
 
@@ -117,27 +130,54 @@ namespace AydoganFBank.AccountManagement.Domain
             return GetFirstBy(predicate.CombineWithAnd(t => t.ValidUntil > DateTime.Now));
         } 
 
-        public TokenDomainEntity By(string value)
+        public TokenDomainEntity ValidatedAndBy(int personId, int applicationId)
+        {
+            return Validated(
+                t =>
+                    t.PersonId == personId && t.ApplicationId == applicationId);
+        }
+
+        public TokenDomainEntity ValidatedAndBy(int personId, int applicationId, bool canBeUsed)
+        {
+            return Validated(
+                t =>
+                    t.PersonId == personId && t.ApplicationId == applicationId && t.CanBeUsed == canBeUsed);
+        }
+
+        public TokenDomainEntity ValidatedAndBy(string value)
         {
             return Validated(
                 t =>
                     t.Value == value);
         }
 
-        public TokenDomainEntity By(string value, int applicationId)
+        public TokenDomainEntity ValidatedAndBy(string value, int applicationId)
         {
             return Validated(
                 t =>
                     t.Value == value && t.ApplicationId == applicationId);
         }
 
-        TokenDomainEntity ITokenRepository.GetByValue(string value) => By(value);
-        TokenDomainEntity ITokenRepository.GetByValueAndApplication(string value, int applicationId) => By(value, applicationId); 
+        public TokenDomainEntity By(string value, int applicationId)
+        {
+            return GetFirstBy(
+                t =>
+                    t.Value == value && t.ApplicationId == applicationId);
+        }
+
+        TokenDomainEntity ITokenRepository.GetPlainByValueAndApplication(string value, int applicationId) => By(value, applicationId);
+        TokenDomainEntity ITokenRepository.GetByValue(string value) => ValidatedAndBy(value);
+        TokenDomainEntity ITokenRepository.GetByValueAndApplication(string value, int applicationId) => ValidatedAndBy(value, applicationId);
+        TokenDomainEntity ITokenRepository.GetByPersonAndApplication(int personId, int applicationId) => ValidatedAndBy(personId, applicationId);
+        TokenDomainEntity ITokenRepository.GetByPersonAndApplication(int personId, int applicationId, bool canBeUsed) => ValidatedAndBy(personId, applicationId, canBeUsed);
     }
 
     public interface ITokenRepository : IRepository<TokenDomainEntity>
     {
+        TokenDomainEntity GetPlainByValueAndApplication(string value, int applicationId);
         TokenDomainEntity GetByValue(string value);
         TokenDomainEntity GetByValueAndApplication(string value, int applicationId);
+        TokenDomainEntity GetByPersonAndApplication(int personId, int applicationId);
+        TokenDomainEntity GetByPersonAndApplication(int personId, int applicationId, bool canBeUsed);
     }
 }

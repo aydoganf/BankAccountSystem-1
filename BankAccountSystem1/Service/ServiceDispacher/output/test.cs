@@ -547,6 +547,8 @@ namespace AydoganFBank.Service.Dispatcher.Api
 
 		AccountInfo DepositToOwnAccount(Int32 accountId, Decimal amount);
 
+		List<AccountInfo> GetAccountsByPerson(Int32 personId);
+
 		Object TransferAssets(Int32 fromAccountId, Int32 toAccountId, Decimal amount, TransactionTypeEnum transactionType);
 
 		AccountTypeInfo GetAccountTypeInfo(Int32 accountTypeId);
@@ -613,7 +615,11 @@ namespace AydoganFBank.Service.Dispatcher.Api
 
 		TokenInfo CreateToken(Int32 personId, Int32 applicationId);
 
+		TokenInfo ValidateToken(String tokenValue, Int32 applicationId);
+
 		TokenInfo LoginByEmail(String email, String password, Int32 applicationId);
+
+		TokenInfo Login(String identity, String passwordSalt, Int32 applicationId);
 
 		ApplicationInfo GetApplicationInfo(Int32 applicationId);
 
@@ -704,6 +710,12 @@ namespace AydoganFBank.Service.Dispatcher.Services
 		{
 			var result = accountManager.DepositToOwnAccount(accountId, amount);
 			return serviceDataBuilder.AccountInfoBuilder(result);
+		}
+
+		public List<AccountInfo> GetAccountsByPerson(Int32 personId)
+		{
+			var result = accountManager.GetAccountsByPerson(personId);
+			return serviceDataBuilder.AccountInfoListBuilder(result);
 		}
 
 		public Object TransferAssets(Int32 fromAccountId, Int32 toAccountId, Decimal amount, TransactionTypeEnum transactionType)
@@ -904,9 +916,21 @@ namespace AydoganFBank.Service.Dispatcher.Services
 			return serviceDataBuilder.TokenInfoBuilder(result);
 		}
 
+		public TokenInfo ValidateToken(String tokenValue, Int32 applicationId)
+		{
+			var result = securityManager.ValidateToken(tokenValue, applicationId);
+			return serviceDataBuilder.TokenInfoBuilder(result);
+		}
+
 		public TokenInfo LoginByEmail(String email, String password, Int32 applicationId)
 		{
 			var result = securityManager.LoginByEmail(email, password, applicationId);
+			return serviceDataBuilder.TokenInfoBuilder(result);
+		}
+
+		public TokenInfo Login(String identity, String passwordSalt, Int32 applicationId)
+		{
+			var result = securityManager.Login(identity, passwordSalt, applicationId);
 			return serviceDataBuilder.TokenInfoBuilder(result);
 		}
 

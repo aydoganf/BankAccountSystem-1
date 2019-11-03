@@ -3,6 +3,7 @@
 using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.AccountManagement.Domain;
 using AydoganFBank.Context.DataAccess;
+using System.Collections.Generic;
 
 namespace AydoganFBank.AccountManagement.Service
 {
@@ -14,6 +15,8 @@ namespace AydoganFBank.AccountManagement.Service
         IAccountInfo GetAccountInfoByAccountNumber(string accountNumber);
         IAccountInfo WithdrawMoneyFromOwn(int accountId, decimal amount);
         IAccountInfo DepositToOwnAccount(int accountId, decimal amount);
+
+        List<IAccountInfo> GetAccountsByPerson(int personId);
 
         object TransferAssets(int fromAccountId, int toAccountId, decimal amount, TransactionTypeEnum transactionType);
 

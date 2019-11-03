@@ -17,7 +17,6 @@ C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\S
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\bin\Debug\StructureMap.xml
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\obj\Debug\ServiceDispatcher.csprojAssemblyReference.cache
-C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\obj\Debug\ServiceDispatcher.csproj.CoreCompileInputs.cache
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\obj\Debug\ServiceDispatcher.csproj.CopyComplete
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\obj\Debug\ServiceDispatcher.exe
 C:\Users\Faruk\Documents\GitHub\BankAccountSystem-1\BankAccountSystem1\Service\ServiceDispacher\obj\Debug\ServiceDispatcher.pdb

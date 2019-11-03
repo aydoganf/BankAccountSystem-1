@@ -10185,11 +10185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\aydoganfbank.web.api2.csproj",
+      "projectUniqueName": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\aydoganfbank.web.api2.csproj",
       "projectName": "aydoganfbank.web.api2",
-      "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\aydoganfbank.web.api2.csproj",
+      "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\aydoganfbank.web.api2.csproj",
       "packagesPath": "C:\\Users\\Faruk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\obj\\",
+      "outputPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10208,11 +10208,11 @@
       "frameworks": {
         "net472": {
           "projectReferences": {
-            "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj": {
-              "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj"
+            "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj": {
+              "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\API\\aydoganfbank.web.api.bussiness\\aydoganfbank.web.api.bussiness.csproj"
             },
-            "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj": {
-              "projectPath": "C:\\Users\\Faruk\\source\\repos\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj"
+            "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj": {
+              "projectPath": "C:\\Users\\Faruk\\Documents\\GitHub\\BankAccountSystem-1\\BankAccountSystem1\\Service\\AydoganFBank.Service\\AydoganFBank.Service.csproj"
             }
           }
         }

@@ -110,29 +110,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Application">
-      <EntityTypeMapping TypeName="AydoganFBankModel.Application">
-        <MappingFragment StoreEntitySet="Application">
-          <ScalarProperty Name="Guid" ColumnName="Guid" />
-          <ScalarProperty Name="Token" ColumnName="Token" />
-          <ScalarProperty Name="Domain" ColumnName="Domain" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Token">
-      <EntityTypeMapping TypeName="AydoganFBankModel.Token">
-        <MappingFragment StoreEntitySet="Token">
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-          <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
-          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-          <ScalarProperty Name="Value" ColumnName="Value" />
-          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="AccountTransaction">
       <EntityTypeMapping TypeName="AydoganFBankModel.AccountTransaction">
         <MappingFragment StoreEntitySet="AccountTransaction">
@@ -186,6 +163,33 @@
           <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
           <ScalarProperty Name="TransactionTypeId" ColumnName="TransactionTypeId" />
           <ScalarProperty Name="TransactionOrderId" ColumnName="TransactionOrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Token">
+      <EntityTypeMapping TypeName="AydoganFBankModel.Token">
+        <MappingFragment StoreEntitySet="Token">
+          <ScalarProperty Name="CanBeUsed" ColumnName="CanBeUsed" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Application">
+      <EntityTypeMapping TypeName="AydoganFBankModel.Application">
+        <MappingFragment StoreEntitySet="Application">
+          <ScalarProperty Name="TokenSlidingCheckMinute" ColumnName="TokenSlidingCheckMinute" />
+          <ScalarProperty Name="TokenSlidingMinute" ColumnName="TokenSlidingMinute" />
+          <ScalarProperty Name="TokenValidationMinute" ColumnName="TokenValidationMinute" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

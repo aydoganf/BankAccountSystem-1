@@ -11,16 +11,13 @@ namespace AydoganFBank.AccountManagement.Managers
         #region IoC
         private readonly ICoreContext coreContext;
         private readonly AccountManager accountManager;
-        private readonly CompanyManager companyManager;
 
         public CreditCardManager(
             ICoreContext coreContext, 
-            AccountManager accountManager,
-            CompanyManager companyManager)
+            AccountManager accountManager)
         {
             this.coreContext = coreContext;
             this.accountManager = accountManager;
-            this.companyManager = companyManager;
         }
         #endregion
 

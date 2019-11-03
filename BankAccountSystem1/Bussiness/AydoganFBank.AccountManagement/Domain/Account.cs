@@ -265,7 +265,7 @@ namespace AydoganFBank.AccountManagement.Domain
             return base.GetAll();
         }
 
-        public List<AccountDomainEntity> GetListByOwner(IAccountOwner accountOwner)
+        public List<AccountDomainEntity> By(IAccountOwner accountOwner)
         {
             int ownerType = accountOwner.OwnerType.ToInt();
             return GetListBy(
@@ -281,6 +281,8 @@ namespace AydoganFBank.AccountManagement.Domain
                     a.OwnerId == accountOwner.OwnerId && a.OwnerType == ownerType &&
                     a.AccountTypeId == accountType.AccountTypeId);
         }
+
+        List<AccountDomainEntity> IAccountRepository.GetListByOwner(IAccountOwner accountOwner) => By(accountOwner);
     }
 
     public interface IAccountRepository : IRepository<AccountDomainEntity>        

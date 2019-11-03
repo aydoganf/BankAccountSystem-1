@@ -44,6 +44,9 @@
     <Property Name="Domain" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Token" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TokenValidationMinute" Type="int" Nullable="false" />
+    <Property Name="TokenSlidingMinute" Type="int" Nullable="false" />
+    <Property Name="TokenSlidingCheckMinute" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -120,23 +123,17 @@
     <Property Name="IdentityNumber" Type="nvarchar" MaxLength="11" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="250" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Token">
     <Key>
       <PropertyRef Name="TokenId" />
-      <PropertyRef Name="Value" />
-      <PropertyRef Name="PersonId" />
-      <PropertyRef Name="ValidUntil" />
-      <PropertyRef Name="ApplicationId" />
-      <PropertyRef Name="CreateDate" />
     </Key>
-    <Property Name="TokenId" Type="int" Nullable="false" />
+    <Property Name="TokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Value" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="PersonId" Type="int" Nullable="false" />
     <Property Name="ValidUntil" Type="datetime" Nullable="false" />
     <Property Name="ApplicationId" Type="int" Nullable="false" />
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CanBeUsed" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TransactionDetail">
     <Key>
@@ -191,19 +188,10 @@ warning 6002: The table/view 'AydoganFBank.dbo.Token' does not have a primary ke
     <EntitySet Name="CreditCardExtreDischarge" EntityType="Self.CreditCardExtreDischarge" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CreditCardPayment" EntityType="Self.CreditCardPayment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionDetail" EntityType="Self.TransactionDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionOrder" EntityType="Self.TransactionOrder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Token" EntityType="Self.Token" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Token].[TokenId] AS [TokenId], 
-    [Token].[Value] AS [Value], 
-    [Token].[PersonId] AS [PersonId], 
-    [Token].[ValidUntil] AS [ValidUntil], 
-    [Token].[ApplicationId] AS [ApplicationId], 
-    [Token].[CreateDate] AS [CreateDate]
-    FROM [dbo].[Token] AS [Token]</DefiningQuery>
-    </EntitySet>
   </EntityContainer>
 </Schema>

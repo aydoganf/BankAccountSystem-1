@@ -132,5 +132,46 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class PersonCouldNotFoundWithGivenIdentityNumber : AccountManagementException
+        {
+            public PersonCouldNotFoundWithGivenIdentityNumber(string message)
+                :base(16, string.Format("Person could not found with given identity number. {0}", message))
+            {
+            }
+        }
+
+        public class AccountCouldNotFoundWithGivenAccountNumber : AccountManagementException
+        {
+            public AccountCouldNotFoundWithGivenAccountNumber(string message)
+                : base(17, string.Format("Account could not found with given account number. {0}", message))
+            {
+
+            }
+        }
+
+        public class LoginInformationIsNotValid : AccountManagementException
+        {
+            public LoginInformationIsNotValid(string message) 
+                : base(18, string.Format("Login information is not valid. {0}", message))
+            {
+            }
+        }
+
+        public class TokenCouldNotFoundWithGivenInformations : AccountManagementException
+        {
+            public TokenCouldNotFoundWithGivenInformations(string message) 
+                : base(19, string.Format("Token could not found with given informations. {0}", message))
+            {
+            }
+        }
+
+        public class TokenIsNotValid : AccountManagementException
+        {
+            public TokenIsNotValid(string message) 
+                : base(20, string.Format("Token is not valid. {0}", message))
+            {
+            }
+        }
     }
 }
