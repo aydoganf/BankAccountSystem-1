@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
@@ -154,10 +155,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountOverview.cs" />
+    <Compile Include="Models\Operation\OperationResult.cs" />
+    <Compile Include="Models\PersonOverview.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Application.cs" />
     <Compile Include="Utility\RequiredAuthorizationControllerBase.cs" />
     <Compile Include="Utility\Session.cs" />
+    <Compile Include="Utility\ViewExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -196,10 +201,13 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_AccountOverviewPartial.cshtml" />
+    <Content Include="Views\Shared\_HomeAccountOverviewPartial.cshtml" />
+    <Content Include="Views\Account\Deposit.cshtml" />
+    <Content Include="Views\Account\Withdraw.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

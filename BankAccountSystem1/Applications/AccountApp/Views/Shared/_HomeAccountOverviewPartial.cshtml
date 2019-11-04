@@ -1,0 +1,34 @@
+﻿@model AccountApp.Models.AccountOverview
+
+    <div class="media">
+        <div class="media-left media-heading">
+            <a href="#">
+                <img class="media-object" src="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">@Model.Account.AccountNumber</h4>
+            <span class="label label-default">
+                @Model.Account.AccountOwner.DisplayName
+            </span>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-6"><label class="bold">Balance</label></div>
+                    <div class="col-md-6">@Model.AccountBalanceWithAssetsUnit</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-6 bold"><label class="bold">Overview</label></div>
+                    <div class="col-md-6">@Model.TotalAssetWithAssetsUnit</div>
+                </div>
+                <hr />
+                <div class="col-md-12">
+
+                    @Html.ActionLink("Deposit", "Deposit", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-primary btn-xs" })
+                    @Html.ActionLink("Withdraw", "Withdraw", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-warning btn-xs" })
+                    @Html.ActionLink("Account Details", "Detail", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-default btn-xs" })
+                    @Html.ActionLink("Close Account", "Close", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-danger btn-xs" })
+
+                </div>
+            </div>
+        </div>
+    </div>

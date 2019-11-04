@@ -1,0 +1,24 @@
+﻿@model AccountApp.Models.AccountOverview
+
+
+<div class="media">
+    <div class="media-left media-heading">
+        <a href="#">
+            <img class="media-object" src="...">
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">@Model.Account.AccountNumber</h4>
+        <div>
+            <label class="bold margin-right-10">Balance</label>
+            @Model.AccountBalanceWithAssetsUnit
+        </div>
+        <div>
+            <label class="bold margin-right-10">Overview</label>
+            @Model.TotalAssetWithAssetsUnit
+        </div>
+        <div>
+            <label class="bold margin-right-10"></label>
+        </div>
+    </div>
+</div>

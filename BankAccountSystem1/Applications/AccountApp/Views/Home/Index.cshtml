@@ -1,7 +1,34 @@
-﻿
-@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model AccountApp.Models.PersonOverview
 
-<h2>Index</h2>
+
+
+<h2>Home</h2>
 <hr />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Accounts</div>
+    <div class="panel-body">
+        
+        <div class="row">
+            <div class="col-md-12">
+                @foreach (var accountOverview in Model.AccountOverviews)
+                {
+                    <div class="col-md-6">
+                        @Html.Partial("_HomeAccountOverviewPartial", accountOverview)
+                    </div>
+                }
+
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            //$('.dropdown-toggle').dropdown('toggle');
+        });
+    </script>    
+}

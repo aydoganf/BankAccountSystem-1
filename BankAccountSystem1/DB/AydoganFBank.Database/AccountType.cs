@@ -17,5 +17,6 @@ namespace AydoganFBank.Database
         public int AccountTypeId { get; set; }
         public string TypeName { get; set; }
         public string TypeKey { get; set; }
+        public string AssetsUnit { get; set; }
     }
 }

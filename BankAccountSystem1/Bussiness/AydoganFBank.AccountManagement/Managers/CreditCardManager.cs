@@ -3,6 +3,8 @@ using AydoganFBank.AccountManagement.Domain;
 using AydoganFBank.AccountManagement.Service;
 using AydoganFBank.Context.IoC;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Managers
 {
@@ -20,6 +22,42 @@ namespace AydoganFBank.AccountManagement.Managers
             this.accountManager = accountManager;
         }
         #endregion
+
+        internal CreditCardDomainEntity GetCreditCardByAccount(AccountDomainEntity account)
+        {
+            return coreContext.Query<ICreditCardRepository>().GetByCreditCardOwner(account);
+        }
+
+        internal CreditCardDomainEntity GetCreditCardByAccount(int accountId)
+        {
+            return GetCreditCardByAccount(accountManager.GetAccountById(accountId));
+        }
+
+        internal CreditCardDomainEntity GetCreditCardByAccount(string accountNumber)
+        {
+            var account = accountManager.GetAccountByAccountNumber(accountNumber);
+            return GetCreditCardByAccount(account);
+        }
+
+        internal List<CreditCardDomainEntity> GetCreditCardListByPerson(PersonDomainEntity person)
+        {
+            var accounts = accountManager.GetAccountsByPerson(person);
+            List<CreditCardDomainEntity> creditCards = new List<CreditCardDomainEntity>();
+            foreach (var account in accounts)
+            {
+                var creditCard = coreContext.Query<ICreditCardRepository>().GetByCreditCardOwner(account);
+                if(creditCard != null)
+                    creditCards.Add(creditCard);
+            }
+
+            return creditCards;
+        }
+
+        internal List<CreditCardDomainEntity> GetCreditCardListByPerson(int personId)
+        {
+            var person = coreContext.Query<IPersonRepository>().GetById(personId);
+            return GetCreditCardListByPerson(person);
+        }
 
         internal CreditCardDomainEntity GetCreditCardById(int creditCardId)
         {
@@ -131,30 +169,55 @@ namespace AydoganFBank.AccountManagement.Managers
 
         #region API Implementations
 
-        ICreditCardInfo ICreditCardManager.CreateCreditCard(decimal limit, int extreDate, int type, string validMonth, string validYear, string securityCode, bool isInternetUsageOpen, ICreditCardOwner creditCardOwner)
-        {
-            return CreateCreditCard(limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, creditCardOwner);
-        }
+        ICreditCardInfo ICreditCardManager.GetCreditCardByAccount(string accountNumber) => GetCreditCardByAccount(accountNumber);
 
-        ICreditCardInfo ICreditCardManager.CreateAccountCreditCard(decimal limit, int extreDay, int type, string validMonth, string validYear, string securityCode, bool isInternetUsageOpen, int accountId)
-        {
-            return CreateAccountCreditCard(limit, extreDay, type, validMonth, validYear, securityCode, isInternetUsageOpen, accountId);
-        }
+        List<ICreditCardInfo> ICreditCardManager.GetCreditCardListByPerson(int personId) => GetCreditCardListByPerson(personId).Cast<ICreditCardInfo>().ToList();
 
-        ICreditCardInfo ICreditCardManager.DoCreditCardPayment(int creditCardId, decimal amount, int instalmentCount, ITransactionOwner toTransactionOwner)
-        {
-            return DoCreditCardPayment(creditCardId, amount, instalmentCount, toTransactionOwner);
-        }
+        ICreditCardInfo ICreditCardManager.CreateCreditCard(
+            decimal limit, 
+            int extreDate, 
+            int type, 
+            string validMonth, 
+            string validYear, 
+            string securityCode, 
+            bool isInternetUsageOpen, 
+            ICreditCardOwner creditCardOwner) 
+                => CreateCreditCard(limit, extreDate, type, validMonth, validYear, securityCode, isInternetUsageOpen, creditCardOwner);
 
-        ICreditCardInfo ICreditCardManager.DoCreditCardPayment(int creditCardId, decimal amount, int instalmentCount, int toAccountId)
-        {
-            return DoCreditCardPayment(creditCardId, amount, instalmentCount, toAccountId);
-        }
+        ICreditCardInfo ICreditCardManager.CreateAccountCreditCard(
+            decimal limit, 
+            int extreDay, 
+            int type, 
+            string validMonth, 
+            string validYear, 
+            string securityCode, 
+            bool isInternetUsageOpen, 
+            int accountId) 
+                => CreateAccountCreditCard(limit, extreDay, type, validMonth, validYear, securityCode, isInternetUsageOpen, accountId);
 
-        ICreditCardInfo ICreditCardManager.DoCreditCardPayment(string creditCardNumber, string validMonth, string validYear, string securityCode, decimal amount, int instalmentCount, int toAccountId)
-        {
-            return DoCreditCardPayment(creditCardNumber, validMonth, validYear, securityCode, amount, instalmentCount, toAccountId);
-        }
+        ICreditCardInfo ICreditCardManager.DoCreditCardPayment(
+            int creditCardId, 
+            decimal amount, 
+            int instalmentCount, 
+            ITransactionOwner toTransactionOwner) 
+                => DoCreditCardPayment(creditCardId, amount, instalmentCount, toTransactionOwner);
+
+        ICreditCardInfo ICreditCardManager.DoCreditCardPayment(
+            int creditCardId, 
+            decimal amount, 
+            int instalmentCount, 
+            int toAccountId) 
+                => DoCreditCardPayment(creditCardId, amount, instalmentCount, toAccountId);
+
+        ICreditCardInfo ICreditCardManager.DoCreditCardPayment(
+            string creditCardNumber, 
+            string validMonth, 
+            string validYear, 
+            string securityCode, 
+            decimal amount, 
+            int instalmentCount, 
+            int toAccountId) 
+                => DoCreditCardPayment(creditCardNumber, validMonth, validYear, securityCode, amount, instalmentCount, toAccountId);
         #endregion
     }
 }

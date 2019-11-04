@@ -30,12 +30,15 @@ namespace AydoganFBank.AccountManagement.Domain
         public string PhoneNumber { get; set; }
         public string TaxNumber { get; set; }
 
+        #region Calculated properties
+        public string DisplayName => $"Company - {CompanyName}";
+        #endregion
 
         int IDomainEntity.Id => CompanyId;
 
         AccountOwnerType IAccountOwner.OwnerType => AccountOwnerType.Company;
         int IAccountOwner.OwnerId => CompanyId;
-        string IAccountOwner.DisplayName => CompanyName;
+        string IAccountOwner.DisplayName => DisplayName;
 
         public CompanyDomainEntity With(
             string companyName, 

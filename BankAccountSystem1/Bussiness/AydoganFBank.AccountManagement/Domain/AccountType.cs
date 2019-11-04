@@ -86,14 +86,14 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.AccountTypeId = dbEntity.AccountTypeId;
             domainEntity.AccountTypeKey = dbEntity.TypeKey;
             domainEntity.AccountTypeName = dbEntity.TypeName;
-            //domainEntity.AssetsUnit = dbEntity.AssestsUnit;
+            domainEntity.AssetsUnit = dbEntity.AssetsUnit;
         }
 
         public override void MapToDbEntity(AccountTypeDomainEntity domainEntity, AccountType dbEntity)
         {
             dbEntity.TypeKey = domainEntity.AccountTypeKey;
             dbEntity.TypeName = domainEntity.AccountTypeName;
-            //dbEntity.AssetsUnit = domainEntity.AssetsUnit;
+            dbEntity.AssetsUnit = domainEntity.AssetsUnit;
         }
         #endregion
     }

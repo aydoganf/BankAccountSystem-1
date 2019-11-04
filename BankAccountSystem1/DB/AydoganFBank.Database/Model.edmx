@@ -39,6 +39,7 @@
           <Property Name="AccountTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TypeKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AssetsUnit" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Application">
           <Key>
@@ -210,6 +211,7 @@
           <Property Name="AccountTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TypeKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AssetsUnit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -406,6 +408,7 @@
           <EntitySetMapping Name="AccountType">
             <EntityTypeMapping TypeName="AydoganFBankModel.AccountType">
               <MappingFragment StoreEntitySet="AccountType">
+                <ScalarProperty Name="AssetsUnit" ColumnName="AssetsUnit" />
                 <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="TypeKey" ColumnName="TypeKey" />

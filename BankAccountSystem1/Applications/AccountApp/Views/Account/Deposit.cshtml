@@ -1,0 +1,51 @@
+﻿@using AccountApp.Utility
+@using AccountApp.Models.Operation
+@model AccountApp.Models.AccountOverview
+@{
+    ViewBag.Title = "Deposit";
+}
+
+<h2>Deposit</h2>
+<hr />
+
+@Html.GetUiAlertBox(ViewBag as object)
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Account | Deposit</div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Partial("_AccountOverviewPartial", Model)
+            </div>
+            <div class="col-md-9">
+
+                @using (Html.BeginForm())
+                {
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Amount to deposit</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.TextBox("amount", null, new { @class = "form-control", placeholder = "give amount like 100.50" })
+                                    <span class="input-group-addon">@Model.Account.AccountType.AssetsUnit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-4">
+                                <input type="submit" class="btn btn-success" value="Deposit" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>

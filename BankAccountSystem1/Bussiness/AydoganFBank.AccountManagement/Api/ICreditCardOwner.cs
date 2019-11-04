@@ -9,6 +9,7 @@ namespace AydoganFBank.AccountManagement.Api
         int OwnerId { get; }
         CreditCardOwnerType CreditCardOwnerType { get; }
         string AssetsUnit { get; }
+        string DisplayText { get; }
     }
 
     public enum CreditCardOwnerType

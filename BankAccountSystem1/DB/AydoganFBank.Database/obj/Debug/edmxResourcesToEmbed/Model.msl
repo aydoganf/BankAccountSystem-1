@@ -4,6 +4,7 @@
     <EntitySetMapping Name="AccountType">
       <EntityTypeMapping TypeName="AydoganFBankModel.AccountType">
         <MappingFragment StoreEntitySet="AccountType">
+          <ScalarProperty Name="AssetsUnit" ColumnName="AssetsUnit" />
           <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
           <ScalarProperty Name="TypeName" ColumnName="TypeName" />
           <ScalarProperty Name="TypeKey" ColumnName="TypeKey" />

@@ -54,18 +54,45 @@ namespace AydoganFBank.AccountManagement.Api
             switch (transactionDirection)
             {
                 case TransactionDirection.In:
-                    message = string.Format("{0} have sent {1}{2} to you on {3}.",
-                        from.TransactionDetailDisplayName,
-                        amount,
-                        to.AssetsUnit,
-                        date);
+
+                    if (from == null)
+                    {
+                        // deposit to own account
+                        message = string.Format("You deposit {0} {1} to your account on {2}.", 
+                            amount, 
+                            to.AssetsUnit, 
+                            date);
+                    }
+                    else
+                    {
+                        message = string.Format("{0} have sent {1} {2} to you on {3}.",
+                            from.TransactionDetailDisplayName,
+                            amount,
+                            to.AssetsUnit,
+                            date);
+                    }
+
+                    
                     break;
                 case TransactionDirection.Out:
-                    message = string.Format("You sent {0}{1} to {2} on {3}",
-                        amount,
-                        from.AssetsUnit,
-                        to.TransactionDetailDisplayName,
-                        date);
+
+                    if (to == null)
+                    {
+                        message = string.Format("You withdraw {0} {1} from your account on {2}", 
+                            amount, 
+                            from.AssetsUnit, 
+                            date);
+                    }
+                    else
+                    {
+                        message = string.Format("You sent {0} {1} to {2} on {3}",
+                            amount,
+                            from.AssetsUnit,
+                            to.TransactionDetailDisplayName,
+                            date);
+                    }
+
+                    
                     break;
                 default:
                     break;

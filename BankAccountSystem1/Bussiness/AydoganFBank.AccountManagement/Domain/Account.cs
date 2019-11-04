@@ -41,6 +41,7 @@ namespace AydoganFBank.AccountManagement.Domain
         int ICreditCardOwner.OwnerId => AccountId;
         CreditCardOwnerType ICreditCardOwner.CreditCardOwnerType => CreditCardOwnerType.Account;
         string ICreditCardOwner.AssetsUnit => AccountType.AssetsUnit;
+        string ICreditCardOwner.DisplayText => AccountOwner.DisplayName;
 
         int ITransactionDetailOwner.OwnerId => AccountId;
         TransactionDetailOwnerType ITransactionDetailOwner.OwnerType => TransactionDetailOwnerType.Account;

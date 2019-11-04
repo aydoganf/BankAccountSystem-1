@@ -34,6 +34,7 @@
     <Property Name="AccountTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="TypeKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssetsUnit" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Application">
     <Key>

@@ -314,7 +314,7 @@ namespace AydoganFBank.AccountManagement.Domain
         }
         #endregion
 
-        public CreditCardDomainEntity GetByCreditCardOwner(ICreditCardOwner creditCardOwner)
+        public CreditCardDomainEntity By(ICreditCardOwner creditCardOwner)
         {
             int ownerType = creditCardOwner.CreditCardOwnerType.ToInt();
             return GetFirstBy(
@@ -338,6 +338,8 @@ namespace AydoganFBank.AccountManagement.Domain
                 cc =>
                     cc.CreditCardNumber == creditCardNumber);
         }
+
+        CreditCardDomainEntity ICreditCardRepository.GetByCreditCardOwner(ICreditCardOwner creditCardOwner) => By(creditCardOwner);
     }
 
     public interface ICreditCardRepository : IRepository<CreditCardDomainEntity>

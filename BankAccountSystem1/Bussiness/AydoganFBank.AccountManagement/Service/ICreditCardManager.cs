@@ -1,6 +1,7 @@
 ﻿using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.AccountManagement.Domain;
 using AydoganFBank.Context.DataAccess;
+using System.Collections.Generic;
 
 namespace AydoganFBank.AccountManagement.Service
 {
@@ -46,5 +47,9 @@ namespace AydoganFBank.AccountManagement.Service
             decimal amount, 
             int instalmentCount, 
             int toAccountId);
+
+        List<ICreditCardInfo> GetCreditCardListByPerson(int personId);
+
+        ICreditCardInfo GetCreditCardByAccount(string accountNumber);
     }
 }

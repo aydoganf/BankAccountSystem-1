@@ -74,6 +74,7 @@ namespace AydoganFBank.Service.Dispatcher.Data
 		public Int32 OwnerId { get; set; }
 		public CreditCardOwnerType CreditCardOwnerType { get; set; }
 		public String AssetsUnit { get; set; }
+		public String DisplayText { get; set; }
 	}
 
 
@@ -315,6 +316,7 @@ namespace AydoganFBank.Service.Dispatcher.Data.Builder
 				OwnerId = icreditcardowner.OwnerId,
 				CreditCardOwnerType = icreditcardowner.CreditCardOwnerType,
 				AssetsUnit = icreditcardowner.AssetsUnit,
+				DisplayText = icreditcardowner.DisplayText,
 			};
 		}
 
@@ -587,6 +589,10 @@ namespace AydoganFBank.Service.Dispatcher.Api
 
 		CreditCardInfo DoCreditCardPayment(String creditCardNumber, String validMonth, String validYear, String securityCode, Decimal amount, Int32 instalmentCount, Int32 toAccountId);
 
+		List<CreditCardInfo> GetCreditCardListByPerson(Int32 personId);
+
+		CreditCardInfo GetCreditCardByAccount(String accountNumber);
+
 	}
 
 	public interface IPersonManagerService
@@ -829,6 +835,18 @@ namespace AydoganFBank.Service.Dispatcher.Services
 		public CreditCardInfo DoCreditCardPayment(String creditCardNumber, String validMonth, String validYear, String securityCode, Decimal amount, Int32 instalmentCount, Int32 toAccountId)
 		{
 			var result = creditCardManager.DoCreditCardPayment(creditCardNumber, validMonth, validYear, securityCode, amount, instalmentCount, toAccountId);
+			return serviceDataBuilder.CreditCardInfoBuilder(result);
+		}
+
+		public List<CreditCardInfo> GetCreditCardListByPerson(Int32 personId)
+		{
+			var result = creditCardManager.GetCreditCardListByPerson(personId);
+			return serviceDataBuilder.CreditCardInfoListBuilder(result);
+		}
+
+		public CreditCardInfo GetCreditCardByAccount(String accountNumber)
+		{
+			var result = creditCardManager.GetCreditCardByAccount(accountNumber);
 			return serviceDataBuilder.CreditCardInfoBuilder(result);
 		}
 
