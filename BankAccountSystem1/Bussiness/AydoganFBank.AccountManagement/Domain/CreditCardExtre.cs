@@ -81,16 +81,20 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             TotalPayment += paymentAmount;
             MinPayment = TotalPayment * MIN_PAYMENT_RATIO;
+
+            Save();
         }
 
         public void Discharge()
         {
             IsDischarged = true;
+            Save();
         }
 
         public void MinDischarge()
         {
             IsMinDischarged = true;
+            Save();
         }
 
         public CreditCardExtreDischargeDomainEntity GetCreditCardExtreDischarge()
@@ -153,14 +157,14 @@ namespace AydoganFBank.AccountManagement.Domain
             return dbContext.CreditCardExtre.Single(cce => cce.CreditCardExtreId == id);
         }
 
-        public CreditCardExtreDomainEntity GetLastByCreditCard(CreditCardDomainEntity creditCard)
+        public CreditCardExtreDomainEntity LastBy(CreditCardDomainEntity creditCard)
         {
             return GetLastBy(
                 cce =>
                     cce.CreditCardId == creditCard.CreditCardId);
         }
 
-        public List<CreditCardExtreDomainEntity> GetListByCreditCard(CreditCardDomainEntity creditCard)
+        public List<CreditCardExtreDomainEntity> By(CreditCardDomainEntity creditCard)
         {
             return GetOrderedDescListBy(
                 cce =>
@@ -171,12 +175,21 @@ namespace AydoganFBank.AccountManagement.Domain
                     cce.Month);
         }
 
-        public CreditCardExtreDomainEntity GetByCreditCardAndDate(CreditCardDomainEntity creditCard, int month, int year)
+        public CreditCardExtreDomainEntity SingleBy(CreditCardDomainEntity creditCard, int month, int year)
         {
             return GetFirstBy(
                 cce =>
                     cce.CreditCardId == creditCard.CreditCardId && cce.Month == month && cce.Year == year);
         }
+
+        CreditCardExtreDomainEntity ICreditCardExtreRepository.GetByCreditCardAndDate(CreditCardDomainEntity creditCard, int month, int year)
+            => SingleBy(creditCard, month, year);
+
+        List<CreditCardExtreDomainEntity> ICreditCardExtreRepository.GetListByCreditCard(CreditCardDomainEntity creditCard)
+            => By(creditCard);
+
+        CreditCardExtreDomainEntity ICreditCardExtreRepository.GetLastByCreditCard(CreditCardDomainEntity creditCard)
+            => LastBy(creditCard);
     }
 
     public interface ICreditCardExtreRepository : IRepository<CreditCardExtreDomainEntity>

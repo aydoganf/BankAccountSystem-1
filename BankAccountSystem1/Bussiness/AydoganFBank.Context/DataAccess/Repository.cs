@@ -43,6 +43,7 @@ namespace AydoganFBank.Context.DataAccess
         public virtual List<TDomainEntity> MapToDomainObjectList(IEnumerable<TDbEntity> dbEntities)
         {
             List<TDomainEntity> domainEntities = new List<TDomainEntity>();
+
             foreach (var dbEntity in dbEntities)
             {
                 domainEntities.Add(MapToDomainObject(dbEntity));

@@ -117,6 +117,7 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="InstalmentDate" Type="datetime" Nullable="false" />
           <Property Name="AccountTransactionId" Type="int" Nullable="false" />
+          <Property Name="CreditCardId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -292,6 +293,7 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="InstalmentDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
+          <Property Name="CreditCardId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TransactionDetail">
           <Key>
@@ -474,6 +476,7 @@
           <EntitySetMapping Name="CreditCardPayment">
             <EntityTypeMapping TypeName="AydoganFBankModel.CreditCardPayment">
               <MappingFragment StoreEntitySet="CreditCardPayment">
+                <ScalarProperty Name="CreditCardId" ColumnName="CreditCardId" />
                 <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
                 <ScalarProperty Name="InstalmentDate" ColumnName="InstalmentDate" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />

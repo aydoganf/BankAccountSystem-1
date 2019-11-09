@@ -1,0 +1,61 @@
+﻿@using AccountApp.Utility
+@model AccountApp.Models.AccountOverview
+@{
+    ViewBag.Title = "TransferAssets";
+}
+
+<h2>Transfer Assets</h2>
+<hr />
+
+@Html.GetUiAlertBox(ViewBag as object)
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Account | Transfer Assets</div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Partial("_AccountOverviewPartial", Model)
+            </div>
+            <div class="col-md-9">
+
+                @using (Html.BeginForm())
+                {
+
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">To Account Number</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.TextBox("toAccountNumber", null, new { @class = "form-control", placeholder = "to account number" })
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Amount to deposit</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.TextBox("amount", null, new { @class = "form-control", placeholder = "give amount like 100.50" })
+                                    <span class="input-group-addon">@Model.Account.AccountType.AssetsUnit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-4">
+                                <input type="submit" class="btn btn-success" value="Send" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardPaymentDomainEntity : IDomainEntity, ITransactionHolder
+    public class CreditCardPaymentDomainEntity : IDomainEntity, ITransactionHolder, ICreditCardPaymentInfo
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -32,11 +32,21 @@ namespace AydoganFBank.AccountManagement.Domain
         public DateTime CreateDate { get; set; }
         public DateTime InstalmentDate { get; set; }
         public AccountTransactionDomainEntity AccountTransaction { get; set; }
+        public CreditCardDomainEntity CreditCard { get; set; }
 
         int IDomainEntity.Id => CreditCardPaymentId;
 
         ITransactionInfo ITransactionHolder.TransactionInfo => AccountTransaction;
         DateTime ITransactionHolder.CreateDate => CreateDate;
+
+
+        DateTime ICreditCardPaymentInfo.CreateDate => CreateDate;
+        int ICreditCardPaymentInfo.CreditCardPaymentId => CreditCardPaymentId;
+        int ICreditCardPaymentInfo.InstalmentIndex => InstalmentIndex;
+        decimal ICreditCardPaymentInfo.Amount => Amount;
+        string ICreditCardPaymentInfo.Description => Description;
+        DateTime ICreditCardPaymentInfo.InstalmentDate => InstalmentDate;
+        ITransactionInfo ICreditCardPaymentInfo.AccountTransaction => AccountTransaction;
 
         #region CRUD
 
@@ -125,13 +135,22 @@ namespace AydoganFBank.AccountManagement.Domain
         
         public List<CreditCardPaymentDomainEntity> GetListByCreditCardExtre(CreditCardExtreDomainEntity creditCardExtre)
         {
-            var fromDate = creditCardExtre.ExtreDate.AddMonths(-1);
+            var fromDate = creditCardExtre.ExtreDate;
             var transactions = coreContext.Query<IAccountTransactionRepository>()
-                .GetLastOutgoingDateRangeListByTransactionOwner(creditCardExtre.CreditCard, fromDate, creditCardExtre.ExtreDate);
+                .GetLastOutgoingDateRangeListByTransactionOwner(creditCardExtre.CreditCard, fromDate, creditCardExtre.ExtreDate.AddMonths(1));
+
+            if (transactions.Count == 0)
+            {
+                return new List<CreditCardPaymentDomainEntity>();
+            }
+
+            int[] transactionIds = transactions.Select(t => t.TransactionId).ToArray();
 
             return GetOrderedDescListBy(
                 ccp =>
-                    transactions.Select(t => t.TransactionId).Contains(ccp.AccountTransactionId),
+                    transactionIds.Contains(ccp.AccountTransactionId) && 
+                    ccp.InstalmentDate.Month == creditCardExtre.Month && 
+                    ccp.InstalmentDate.Year == creditCardExtre.Year,
                 ccp =>
                     ccp.InstalmentDate);
         }

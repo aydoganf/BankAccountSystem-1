@@ -1,0 +1,87 @@
+﻿@using AccountApp.Models
+@model CreditCardOverview
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Credit Card Detail</h2>
+<hr />
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Detail</div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-12">
+                
+                @Html.Partial("_CreditCardOverviewPartial", Model.CreditCard)
+
+                <div class="margin-top-10">
+
+                    @Html.ActionLink("Do Payment", "DoPayment", new { id = Model.CreditCard.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Discharge", "Discharge", new { id = Model.CreditCard.Id}, new { @class = "btn btn-success" })
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="tabbable-panel">
+            <div class="tabbable-line">
+                <ul class="nav nav-tabs ">
+                    <li class="active">
+                        <a href="#tab_default_1" data-toggle="tab">
+                            Last Payments
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab_default_2" data-toggle="tab">
+                            Credit Card Extres
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_default_1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-bordered margin-top-10">
+                                    <thead>
+                                        <tr>
+                                            <th>Detail</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var paymentInfo in Model.CreditCardPaymentList)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td>@paymentInfo.Description</td>
+                                                <td>@paymentInfo.Amount</td>
+                                                <td>@paymentInfo.InstalmentDate</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="tab_default_2">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

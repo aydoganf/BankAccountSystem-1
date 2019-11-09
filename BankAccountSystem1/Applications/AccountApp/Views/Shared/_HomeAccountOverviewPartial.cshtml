@@ -23,6 +23,7 @@
                 <hr />
                 <div class="col-md-12">
 
+                    @Html.ActionLink("Transfer Assets", "TransferAssets", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-info btn-xs" })
                     @Html.ActionLink("Deposit", "Deposit", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-primary btn-xs" })
                     @Html.ActionLink("Withdraw", "Withdraw", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-warning btn-xs" })
                     @Html.ActionLink("Account Details", "Detail", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-default btn-xs" })

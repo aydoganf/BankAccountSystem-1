@@ -126,9 +126,11 @@ namespace AydoganFBank.AccountManagement.Domain
         public List<TransactionDetailDomainEntity> GetDateRangeListByTransactionDetailOwner(
             ITransactionDetailOwner transactionDetailOwner, DateTime startDate, DateTime endDate)
         {
+            int ownerType = transactionDetailOwner.OwnerType.ToInt();
+
             return GetOrderedAscListBy(
                 td =>
-                    td.OwnerType == transactionDetailOwner.OwnerType.ToInt() && td.OwnerId == transactionDetailOwner.OwnerId &&
+                    td.OwnerType == ownerType && td.OwnerId == transactionDetailOwner.OwnerId &&
                     td.CreateDate >= startDate && td.CreateDate <= endDate,
                 td =>
                     td.CreateDate);
@@ -137,9 +139,10 @@ namespace AydoganFBank.AccountManagement.Domain
         public List<TransactionDetailDomainEntity> GetLastDateRangeListByTransactionDetailOwner(
             ITransactionDetailOwner transactionOwner, DateTime startDate, DateTime endDate)
         {
+            int ownerType = transactionOwner.OwnerType.ToInt();
             return GetOrderedDescListBy(
                 td =>
-                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId &&
+                    td.OwnerType == ownerType && td.OwnerId == transactionOwner.OwnerId &&
                     td.CreateDate >= startDate && td.CreateDate <= endDate,
                 td =>
                     td.CreateDate);        
@@ -148,9 +151,10 @@ namespace AydoganFBank.AccountManagement.Domain
         public List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionDetailOwner(
             ITransactionDetailOwner transactionOwner, TransactionDirection transactionDirection, DateTime startDate, DateTime endDate)
         {
+            int ownerType = transactionOwner.OwnerType.ToInt();
             return GetOrderedDescListBy(
                 td =>
-                    td.OwnerType == transactionOwner.OwnerType.ToInt() && td.OwnerId == transactionOwner.OwnerId &&
+                    td.OwnerType == ownerType && td.OwnerId == transactionOwner.OwnerId &&
                     td.CreateDate >= startDate && td.CreateDate <= endDate && td.TransactionDirection == transactionDirection.ToInt(),
                 td =>
                     td.CreateDate);

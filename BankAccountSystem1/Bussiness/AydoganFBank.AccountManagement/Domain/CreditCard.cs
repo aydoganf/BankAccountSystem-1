@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AydoganFBank.Context.Exception;
+using System.Globalization;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -207,7 +208,32 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public CreditCardExtreDomainEntity GetLastCreditCardExtre()
         {
-            return coreContext.Query<ICreditCardExtreRepository>().GetLastByCreditCard(this);
+            DateTime now = DateTime.Now;
+
+            var extre = coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(this, now.Month, now.Year);
+
+            if (extre == null)
+            {
+                extre = CreateExtre(now.Month, now.Year, 0);
+            }
+
+            return extre;
+        }
+
+        public CreditCardExtreDomainEntity CreateExtre(int month, int year, decimal totalPayment)
+        {
+            DateTime extreMonth = new DateTime(year, month, 1);
+            var extre = coreContext.New<CreditCardExtreDomainEntity>().With(
+                this,
+                month,
+                extreMonth.ToString("MMMM", CultureInfo.InvariantCulture),
+                year,
+                totalPayment,
+                isDischarged: false,
+                isMinDischarged: false);
+
+            extre.Insert();
+            return extre;
         }
 
         public List<CreditCardExtreDomainEntity> GetCreditCardExtres()
@@ -242,6 +268,11 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return coreContext.Query<ITransactionDetailRepository>()
                 .GetDateRangeListByTransactionDetailOwner(this, startDate, endDate);
+        }
+
+        public List<CreditCardPaymentDomainEntity> GetLastPayments(DateTime fromDate)
+        {
+            return coreContext.Query<ICreditCardPaymentRepository>().GetListByCreditCard(this, fromDate);
         }
     }
 

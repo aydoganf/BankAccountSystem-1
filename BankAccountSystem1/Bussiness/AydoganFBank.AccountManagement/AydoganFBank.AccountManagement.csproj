@@ -60,6 +60,7 @@
     <Compile Include="Api\ICompanyInfo.cs" />
     <Compile Include="Api\ICreditCardInfo.cs" />
     <Compile Include="Api\ICreditCardOwner.cs" />
+    <Compile Include="Api\ICreditCardPaymentInfo.cs" />
     <Compile Include="Api\IPersonInfo.cs" />
     <Compile Include="Api\ITokenInfo.cs" />
     <Compile Include="Api\ITransactionDetailInfo.cs" />

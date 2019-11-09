@@ -21,5 +21,6 @@ namespace AydoganFBank.Database
         public System.DateTime CreateDate { get; set; }
         public System.DateTime InstalmentDate { get; set; }
         public int AccountTransactionId { get; set; }
+        public int CreditCardId { get; set; }
     }
 }

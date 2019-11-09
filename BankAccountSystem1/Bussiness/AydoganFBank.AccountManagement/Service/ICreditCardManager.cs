@@ -1,6 +1,7 @@
 ﻿using AydoganFBank.AccountManagement.Api;
 using AydoganFBank.AccountManagement.Domain;
 using AydoganFBank.Context.DataAccess;
+using System;
 using System.Collections.Generic;
 
 namespace AydoganFBank.AccountManagement.Service
@@ -51,5 +52,11 @@ namespace AydoganFBank.AccountManagement.Service
         List<ICreditCardInfo> GetCreditCardListByPerson(int personId);
 
         ICreditCardInfo GetCreditCardByAccount(string accountNumber);
+
+        ICreditCardInfo GetCreditCardById(int creditCardId);
+
+        List<ICreditCardPaymentInfo> GetCreditCardLastPaymentList(int creditCardId, DateTime fromDate);
+
+        List<ICreditCardPaymentInfo> GetCreditCardLastExtrePayments(int creditCardId);
     }
 }

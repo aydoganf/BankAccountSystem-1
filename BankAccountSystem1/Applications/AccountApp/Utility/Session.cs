@@ -44,7 +44,7 @@ namespace AccountApp.Utility
         {
             get
             {
-                return _SessionToken != null && _SessionToken.IsValid;
+                return _SessionToken != null && _SessionToken.IsValid && _SessionToken.ValidUntil > DateTime.Now;
             }
         }
 

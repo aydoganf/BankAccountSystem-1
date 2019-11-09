@@ -144,6 +144,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CreditCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
@@ -155,7 +156,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountDetail.cs" />
     <Compile Include="Models\AccountOverview.cs" />
+    <Compile Include="Models\CreditCardOverview.cs" />
     <Compile Include="Models\Operation\OperationResult.cs" />
     <Compile Include="Models\PersonOverview.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +208,11 @@
     <Content Include="Views\Shared\_HomeAccountOverviewPartial.cshtml" />
     <Content Include="Views\Account\Deposit.cshtml" />
     <Content Include="Views\Account\Withdraw.cshtml" />
+    <Content Include="Views\Account\Detail.cshtml" />
+    <Content Include="Views\Shared\_CreditCardOverviewPartial.cshtml" />
+    <Content Include="Views\Account\TransferAssets.cshtml" />
+    <Content Include="Views\CreditCard\Detail.cshtml" />
+    <Content Include="Views\CreditCard\DoPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

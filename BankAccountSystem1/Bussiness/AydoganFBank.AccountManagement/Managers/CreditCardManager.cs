@@ -113,7 +113,7 @@ namespace AydoganFBank.AccountManagement.Managers
 
             for (int instalmentIndex = 1; instalmentIndex <= instalmentCount; instalmentIndex++)
             {
-                string paymentDescription = string.Format("{0} - {1}{2} ({3} instalment)",
+                string paymentDescription = string.Format("{0} - {1} {2} ({3} instalment)",
                     toTransactionOwner.TransactionDetailDisplayName, 
                     instalmentAmount, 
                     toTransactionOwner.AssetsUnit,
@@ -130,6 +130,12 @@ namespace AydoganFBank.AccountManagement.Managers
                         instalmentDate, 
                         transaction);
                 creditCardPayment.Insert(forceToInsertDb: false);
+
+                var extre = coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(creditCard, instalmentDate.Month, instalmentDate.Year);
+                if (extre == null)
+                {
+                    extre = creditCard.CreateExtre(instalmentDate.Month, instalmentDate.Year, instalmentAmount);
+                }
             }
 
             creditCard.Flush();
@@ -165,6 +171,16 @@ namespace AydoganFBank.AccountManagement.Managers
             var toAccount = accountManager.GetAccountById(toAccountId);
 
             return DoCreditCardPayment(creditCard, amount, instalmentCount, toAccount);
+        }
+
+        internal List<CreditCardPaymentDomainEntity> GetLastCreditCardPaymentList(int creditCardId, DateTime fromDate)
+        {
+            return GetCreditCardById(creditCardId).GetLastPayments(fromDate);
+        }
+
+        internal List<CreditCardPaymentDomainEntity> GetLastExtrePaymentsByCreditCardId(int creditCardId)
+        {
+            return GetCreditCardById(creditCardId).GetLastExtrePayments();
         }
 
         #region API Implementations
@@ -218,6 +234,14 @@ namespace AydoganFBank.AccountManagement.Managers
             int instalmentCount, 
             int toAccountId) 
                 => DoCreditCardPayment(creditCardNumber, validMonth, validYear, securityCode, amount, instalmentCount, toAccountId);
+
+        ICreditCardInfo ICreditCardManager.GetCreditCardById(int creditCardId) => GetCreditCardById(creditCardId);
+
+        List<ICreditCardPaymentInfo> ICreditCardManager.GetCreditCardLastPaymentList(int creditCardId, DateTime fromDate) 
+            => GetLastCreditCardPaymentList(creditCardId, fromDate).Cast<ICreditCardPaymentInfo>().ToList();
+
+        List<ICreditCardPaymentInfo> ICreditCardManager.GetCreditCardLastExtrePayments(int creditCardId)
+            => GetLastExtrePaymentsByCreditCardId(creditCardId).Cast<ICreditCardPaymentInfo>().ToList();
         #endregion
     }
 }

@@ -1,0 +1,76 @@
+﻿@model AydoganFBank.Service.Dispatcher.Data.CreditCardInfo
+
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Credit Card Number</label>
+            </div>
+            <div class="col-md-6">@Model.CreditCardMaskedNumber</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Limit</label>
+            </div>
+            <div class="col-md-6">@Model.Limit @Model.CreditCardOwner.AssetsUnit</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Dept</label>
+            </div>
+            <div class="col-md-6">@Model.Debt @Model.CreditCardOwner.AssetsUnit</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Usable Limit</label>
+            </div>
+            <div class="col-md-6">@Model.UsableLimit @Model.CreditCardOwner.AssetsUnit</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Extre Day</label>
+            </div>
+            <div class="col-md-6">@Model.ExtreDay</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Valid Month</label>
+            </div>
+            <div class="col-md-6">@Model.ValidMonth</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Until Valid</label>
+            </div>
+            <div class="col-md-6">@Model.UntilValidDate</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Valid Year</label>
+            </div>
+            <div class="col-md-6">@Model.ValidYear</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Is Internet Usage Opened</label>
+            </div>
+            <div class="col-md-6">@Model.IsInternetUsageOpen</div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <label class="bold">Security Code</label>
+            </div>
+            <div class="col-md-6">@Model.SecurityCode</div>
+        </div>
+       
+    </div>
