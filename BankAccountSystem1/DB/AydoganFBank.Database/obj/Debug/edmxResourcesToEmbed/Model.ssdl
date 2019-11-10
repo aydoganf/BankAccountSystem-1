@@ -112,6 +112,7 @@
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
     <Property Name="InstalmentDate" Type="datetime" Nullable="false" />
     <Property Name="AccountTransactionId" Type="int" Nullable="false" />
+    <Property Name="CreditCardId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Person">
     <Key>

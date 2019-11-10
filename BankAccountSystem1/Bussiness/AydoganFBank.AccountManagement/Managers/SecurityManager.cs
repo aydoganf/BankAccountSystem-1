@@ -72,9 +72,6 @@ namespace AydoganFBank.AccountManagement.Managers
                 // its account number
                 var account = accountManager.GetAccountByAccountNumber(identity);
 
-                if (account == null)
-                    throw new AccountManagementException.AccountCouldNotFoundWithGivenAccountNumber(identity);
-
                 if (account.AccountOwner.OwnerType == AccountOwnerType.Person)
                 {
                     person = personManager.GetPersonById(account.AccountOwner.OwnerId);

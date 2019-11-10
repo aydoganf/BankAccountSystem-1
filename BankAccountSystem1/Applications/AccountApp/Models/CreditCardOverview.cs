@@ -11,6 +11,7 @@ namespace AccountApp.Models
         public CreditCardInfo CreditCard { get; set; }
         public List<TransactionDetailInfo> TransactionDetailList { get; set; }
         public List<CreditCardPaymentInfo> CreditCardPaymentList { get; set; }
+        public List<CreditCardExtreInfo> CreditCardExtreList { get; set; }
 
         public CreditCardOverview(CreditCardInfo creditCard)
         {
@@ -25,6 +26,11 @@ namespace AccountApp.Models
         public void SetCreditCardPaymentList(List<CreditCardPaymentInfo> creditCardPayments)
         {
             CreditCardPaymentList = creditCardPayments;
+        }
+
+        public void SetCreditCardExtreList(List<CreditCardExtreInfo> creditCardExtres)
+        {
+            CreditCardExtreList = creditCardExtres;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AydoganFBank.Context;
+﻿using AydoganFBank.AccountManagement.Api;
+using AydoganFBank.Context;
 using AydoganFBank.Context.Builders;
 using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Context.Exception;
@@ -10,7 +11,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardExtreDomainEntity : IDomainEntity
+    public class CreditCardExtreDomainEntity : IDomainEntity, ICreditCardExtreInfo
     {
         private const decimal MIN_PAYMENT_RATIO = 0.25M;
 
@@ -47,7 +48,30 @@ namespace AydoganFBank.AccountManagement.Domain
                 return new DateTime(Year, Month, CreditCard.ExtreDay, 0, 0, 0);
             }
         }
+
+        public DateTime ExtreStartDate => ExtreDate;
+        public DateTime ExtreEndDate => ExtreDate.AddMonths(1);
+
         #endregion
+
+        int ICreditCardExtreInfo.Id => CreditCardExtreId;
+        int ICreditCardExtreInfo.Month => Month;
+        string ICreditCardExtreInfo.MonthName => MonthName;
+        int ICreditCardExtreInfo.Year => Year;
+        decimal ICreditCardExtreInfo.TotalPayment => TotalPayment;
+        decimal ICreditCardExtreInfo.MinPayment => MinPayment;
+        bool ICreditCardExtreInfo.IsDischarged => IsDischarged;
+        bool ICreditCardExtreInfo.IsMinDischarged => IsMinDischarged;
+        DateTime ICreditCardExtreInfo.LastPaymentDate
+        {
+            get
+            {
+                if (Month == 12)
+                    return new DateTime(Year + 1, 1, CreditCard.ExtreDay);
+                else
+                    return new DateTime(Year, Month + 1, CreditCard.ExtreDay);
+            }
+        }
 
         #region CRUD
         public void Insert()
@@ -102,9 +126,9 @@ namespace AydoganFBank.AccountManagement.Domain
             return coreContext.Query<ICreditCardExtreDischargeRepository>().GetByCreditCardExtre(this);
         }
 
-        public List<CreditCardPaymentDomainEntity> GetCreditCardPayments()
+        public List<CreditCardPaymentDomainEntity> GetPayments()
         {
-            return coreContext.Query<ICreditCardPaymentRepository>().GetListByCreditCardExtre(this);
+            return coreContext.Query<ICreditCardPaymentRepository>().GetCreditCardPaymentsByDateRange(CreditCard, ExtreStartDate, ExtreEndDate);
         }
     }
 
@@ -182,6 +206,15 @@ namespace AydoganFBank.AccountManagement.Domain
                     cce.CreditCardId == creditCard.CreditCardId && cce.Month == month && cce.Year == year);
         }
 
+        public List<CreditCardExtreDomainEntity> By(CreditCardDomainEntity creditCard, int month, int year)
+        {
+            return GetListBy(
+                cce =>
+                    cce.CreditCardId == creditCard.CreditCardId &&
+                    cce.Month >= month &&
+                    cce.Year >= year);
+        }
+
         CreditCardExtreDomainEntity ICreditCardExtreRepository.GetByCreditCardAndDate(CreditCardDomainEntity creditCard, int month, int year)
             => SingleBy(creditCard, month, year);
 
@@ -190,6 +223,9 @@ namespace AydoganFBank.AccountManagement.Domain
 
         CreditCardExtreDomainEntity ICreditCardExtreRepository.GetLastByCreditCard(CreditCardDomainEntity creditCard)
             => LastBy(creditCard);
+
+        List<CreditCardExtreDomainEntity> ICreditCardExtreRepository.GetActiveListByCreditCardExtre(CreditCardDomainEntity creditCard, int month, int year)
+            => By(creditCard, month, year);
     }
 
     public interface ICreditCardExtreRepository : IRepository<CreditCardExtreDomainEntity>
@@ -197,5 +233,6 @@ namespace AydoganFBank.AccountManagement.Domain
         CreditCardExtreDomainEntity GetLastByCreditCard(CreditCardDomainEntity creditCard);
         List<CreditCardExtreDomainEntity> GetListByCreditCard(CreditCardDomainEntity creditCard);
         CreditCardExtreDomainEntity GetByCreditCardAndDate(CreditCardDomainEntity creditCard, int month, int year);
+        List<CreditCardExtreDomainEntity> GetActiveListByCreditCardExtre(CreditCardDomainEntity creditCard, int month, int year);
     }
 }

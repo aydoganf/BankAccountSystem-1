@@ -128,7 +128,8 @@ namespace AydoganFBank.AccountManagement.Managers
                         paymentDescription,
                         transaction.TransactionDate, 
                         instalmentDate, 
-                        transaction);
+                        transaction,
+                        creditCard);
                 creditCardPayment.Insert(forceToInsertDb: false);
 
                 var extre = coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(creditCard, instalmentDate.Month, instalmentDate.Year);
@@ -173,16 +174,27 @@ namespace AydoganFBank.AccountManagement.Managers
             return DoCreditCardPayment(creditCard, amount, instalmentCount, toAccount);
         }
 
-        internal List<CreditCardPaymentDomainEntity> GetLastCreditCardPaymentList(int creditCardId, DateTime fromDate)
-        {
-            return GetCreditCardById(creditCardId).GetLastPayments(fromDate);
-        }
-
         internal List<CreditCardPaymentDomainEntity> GetLastExtrePaymentsByCreditCardId(int creditCardId)
         {
-            return GetCreditCardById(creditCardId).GetLastExtrePayments();
+            var creditCard = GetCreditCardById(creditCardId);
+            return creditCard.GetLastExtrePayments();
         }
 
+        internal List<CreditCardExtreDomainEntity> GetCreditCardActiveExtreList(int creditCardId)
+        {
+            var creditCard = GetCreditCardById(creditCardId);
+            return creditCard.GetActiveExtreList();
+        }
+
+        internal CreditCardExtreDomainEntity GetExtreById(int extreId)
+        {
+            return coreContext.Query<ICreditCardExtreRepository>().GetById(extreId);
+        }
+
+        internal List<CreditCardPaymentDomainEntity> GetExtrePaymentList(int extreId)
+        {
+            return GetExtreById(extreId).GetPayments();
+        }
         #region API Implementations
 
         ICreditCardInfo ICreditCardManager.GetCreditCardByAccount(string accountNumber) => GetCreditCardByAccount(accountNumber);
@@ -237,11 +249,14 @@ namespace AydoganFBank.AccountManagement.Managers
 
         ICreditCardInfo ICreditCardManager.GetCreditCardById(int creditCardId) => GetCreditCardById(creditCardId);
 
-        List<ICreditCardPaymentInfo> ICreditCardManager.GetCreditCardLastPaymentList(int creditCardId, DateTime fromDate) 
-            => GetLastCreditCardPaymentList(creditCardId, fromDate).Cast<ICreditCardPaymentInfo>().ToList();
-
         List<ICreditCardPaymentInfo> ICreditCardManager.GetCreditCardLastExtrePayments(int creditCardId)
             => GetLastExtrePaymentsByCreditCardId(creditCardId).Cast<ICreditCardPaymentInfo>().ToList();
+
+        List<ICreditCardExtreInfo> ICreditCardManager.GetCreditCardActiveExtreList(int creditCardId)
+            => GetCreditCardActiveExtreList(creditCardId).Cast<ICreditCardExtreInfo>().ToList();
+
+        List<ICreditCardPaymentInfo> ICreditCardManager.GetExtrePaymentList(int extreId)
+            => GetExtrePaymentList(extreId).Cast<ICreditCardPaymentInfo>().ToList();
         #endregion
     }
 }

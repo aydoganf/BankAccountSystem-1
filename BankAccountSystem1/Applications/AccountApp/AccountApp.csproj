@@ -213,6 +213,7 @@
     <Content Include="Views\Account\TransferAssets.cshtml" />
     <Content Include="Views\CreditCard\Detail.cshtml" />
     <Content Include="Views\CreditCard\DoPayment.cshtml" />
+    <Content Include="Views\Shared\_HomeCreditCardOverviewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,35 @@
+﻿@model AydoganFBank.Service.Dispatcher.Data.CreditCardInfo
+
+    <div class="media">
+        <div class="media-left media-heading">
+            <i class="glyphicon glyphicon-credit-card gi-2x"></i>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">@Model.CreditCardMaskedNumber</h4>
+            <span class="label label-default">
+                @Model.CreditCardOwner.DisplayText
+            </span>
+            <div class="row margin-top-10">
+                <div class="col-md-6">
+                    <div class="col-md-6"><label class="bold">Limit</label></div>
+                    <div class="col-md-6">@Model.Limit @Model.CreditCardOwner.AssetsUnit</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-6 bold"><label class="bold">Dept</label></div>
+                    <div class="col-md-6">@Model.Debt @Model.CreditCardOwner.AssetsUnit</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-6 bold"><label class="bold">Usable Limit</label></div>
+                    <div class="col-md-6">@Model.UsableLimit @Model.CreditCardOwner.AssetsUnit</div>
+                </div>
+                <hr />
+                <div class="col-md-12">
+
+                    @Html.ActionLink("Do Payment", "DoPayment", "CreditCard", new { id = Model.Id }, new { @class = "btn btn-primary btn-xs" })
+                    @Html.ActionLink("Discharge", "Discharge", "CreditCard", new { id = Model.Id }, new { @class = "btn btn-success btn-xs" })
+                    @Html.ActionLink("Credit Card Details", "Detail", "CreditCard", new { id = Model.Id }, new { @class = "btn btn-default btn-xs" })
+
+                </div>
+            </div>
+        </div>
+    </div>

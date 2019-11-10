@@ -70,6 +70,7 @@
     <EntitySetMapping Name="CreditCardPayment">
       <EntityTypeMapping TypeName="AydoganFBankModel.CreditCardPayment">
         <MappingFragment StoreEntitySet="CreditCardPayment">
+          <ScalarProperty Name="CreditCardId" ColumnName="CreditCardId" />
           <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
           <ScalarProperty Name="InstalmentDate" ColumnName="InstalmentDate" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />

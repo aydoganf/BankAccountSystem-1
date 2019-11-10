@@ -96,7 +96,12 @@ namespace AydoganFBank.AccountManagement.Managers
 
         internal AccountDomainEntity GetAccountByAccountNumber(string accountNumber)
         {
-            return coreContext.Query<IAccountRepository>().GetByAccountNumber(accountNumber);
+            var account = coreContext.Query<IAccountRepository>().GetByAccountNumber(accountNumber);
+
+            if (account == null)
+                throw new AccountManagementException.AccountCouldNotFoundWithGivenAccountNumber(accountNumber);
+
+            return account;
         }
 
         internal AccountDomainEntity WithdrawMoneyFromOwn(int accountId, decimal amount)

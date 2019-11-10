@@ -58,6 +58,7 @@
     <Compile Include="Api\IAccountTypeInfo.cs" />
     <Compile Include="Api\IApplicationInfo.cs" />
     <Compile Include="Api\ICompanyInfo.cs" />
+    <Compile Include="Api\ICreditCardExtreInfo.cs" />
     <Compile Include="Api\ICreditCardInfo.cs" />
     <Compile Include="Api\ICreditCardOwner.cs" />
     <Compile Include="Api\ICreditCardPaymentInfo.cs" />

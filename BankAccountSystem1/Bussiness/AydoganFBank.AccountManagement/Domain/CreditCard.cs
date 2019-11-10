@@ -254,8 +254,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public List<CreditCardPaymentDomainEntity> GetLastExtrePayments()
         {
-            var lastExtre = GetLastCreditCardExtre();
-            return coreContext.Query<ICreditCardPaymentRepository>().GetListByCreditCardExtre(lastExtre);
+            return GetLastCreditCardExtre().GetPayments();
         }
 
         public List<TransactionDetailDomainEntity> GetLastTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
@@ -270,9 +269,10 @@ namespace AydoganFBank.AccountManagement.Domain
                 .GetDateRangeListByTransactionDetailOwner(this, startDate, endDate);
         }
 
-        public List<CreditCardPaymentDomainEntity> GetLastPayments(DateTime fromDate)
+        public List<CreditCardExtreDomainEntity> GetActiveExtreList()
         {
-            return coreContext.Query<ICreditCardPaymentRepository>().GetListByCreditCard(this, fromDate);
+            DateTime now = DateTime.Now;
+            return coreContext.Query<ICreditCardExtreRepository>().GetActiveListByCreditCardExtre(this, now.Month, now.Year);
         }
     }
 

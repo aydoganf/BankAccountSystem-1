@@ -88,6 +88,7 @@
     <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="InstalmentDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
+    <Property Name="CreditCardId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="TransactionDetail">
     <Key>

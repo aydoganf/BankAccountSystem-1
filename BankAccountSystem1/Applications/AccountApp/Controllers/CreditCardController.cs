@@ -31,23 +31,12 @@ namespace AccountApp.Controllers
         {
             var creditCard = creditCardManagerService.GetCreditCardById(id);
 
-            DateTime now = DateTime.Now;
-            DateTime beforeExtreDate = now;
-            if (DateTime.Now.Day < creditCard.ExtreDay)
-                beforeExtreDate = new DateTime(now.Year, now.Month - 1, creditCard.ExtreDay);
-            else
-                beforeExtreDate = new DateTime(now.Year, now.Month, creditCard.ExtreDay);
-
-
             var payments = creditCardManagerService.GetCreditCardLastExtrePayments(creditCard.Id);
-            //var transactions = transactionManagerService.GetCreditCardLastDateRangeTransactionDetailInfoList(
-            //    creditCard.Id, 
-            //    beforeExtreDate, 
-            //    DateTime.Now);
+            var extres = creditCardManagerService.GetCreditCardActiveExtreList(creditCard.Id);
 
             CreditCardOverview overview = new CreditCardOverview(creditCard);
-            //overview.SetTransantionDetails(transactions);
             overview.SetCreditCardPaymentList(payments);
+            overview.SetCreditCardExtreList(extres);
 
             return View(overview);
         }
@@ -64,13 +53,24 @@ namespace AccountApp.Controllers
         public ActionResult DoPayment(int id, string toAccountNumber, decimal amount, int instalmentCount)
         {
             var creditCard = creditCardManagerService.GetCreditCardById(id);
-            var toAccount = accountManagerService.GetAccountInfoByAccountNumber(toAccountNumber);
-
-            creditCard = creditCardManagerService.DoCreditCardPayment(creditCard.Id, amount, instalmentCount, toAccount.Id);
-            
             CreditCardOverview overview = new CreditCardOverview(creditCard);
 
-            return View(overview);
+            try
+            {
+                var toAccount = accountManagerService.GetAccountInfoByAccountNumber(toAccountNumber);
+
+                overview.CreditCard = creditCardManagerService.DoCreditCardPayment(creditCard.Id, amount, instalmentCount, toAccount.Id);
+
+                Application.HandleOperation(ViewBag, $"{amount} {creditCard.CreditCardOwner.AssetsUnit} is successfully payed to " +
+                    $"{toAccount.AccountNumber} - {toAccount.AccountOwner.DisplayName} with {instalmentCount} instalment count.");
+
+                return View(overview);
+            }
+            catch (Exception ex)
+            {
+                Application.HandleOperation(ex, ViewBag);
+                return View(overview);
+            }
         }
     }
 }
