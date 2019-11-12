@@ -12,6 +12,9 @@ namespace AccountApp.Models
         public List<TransactionDetailInfo> TransactionDetailList { get; set; }
         public List<CreditCardPaymentInfo> CreditCardPaymentList { get; set; }
         public List<CreditCardExtreInfo> CreditCardExtreList { get; set; }
+        public CreditCardExtreInfo CurrentExtre { get; set; }
+
+        public CreditCardExtreOvierview ExtreOvierview { get; set; }
 
         public CreditCardOverview(CreditCardInfo creditCard)
         {
@@ -23,14 +26,24 @@ namespace AccountApp.Models
             TransactionDetailList = transactionDetails;
         }
 
-        public void SetCreditCardPaymentList(List<CreditCardPaymentInfo> creditCardPayments)
+        public void SetCurrentExtreCreditCardPaymentList(List<CreditCardPaymentInfo> creditCardPayments)
         {
             CreditCardPaymentList = creditCardPayments;
+        }
+
+        public void SetCurrentExtre(CreditCardExtreInfo creditCardExtre)
+        {
+            CurrentExtre = creditCardExtre;
         }
 
         public void SetCreditCardExtreList(List<CreditCardExtreInfo> creditCardExtres)
         {
             CreditCardExtreList = creditCardExtres;
+        }
+
+        public void SetExtreDetails(List<CreditCardExtreInfo> creditCardExtres, List<CreditCardPaymentInfo> creditCardPayments)
+        {
+            ExtreOvierview = new CreditCardExtreOvierview(CreditCard, creditCardExtres, creditCardPayments);
         }
     }
 }

@@ -81,19 +81,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TransactionDetail">
-      <EntityTypeMapping TypeName="AydoganFBankModel.TransactionDetail">
-        <MappingFragment StoreEntitySet="TransactionDetail">
-          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-          <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
-          <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="TransactionDirection" ColumnName="TransactionDirection" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="TransactionDetailId" ColumnName="TransactionDetailId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CreditCard">
       <EntityTypeMapping TypeName="AydoganFBankModel.CreditCard">
         <MappingFragment StoreEntitySet="CreditCard">
@@ -192,6 +179,20 @@
           <ScalarProperty Name="Domain" ColumnName="Domain" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDetail">
+      <EntityTypeMapping TypeName="AydoganFBankModel.TransactionDetail">
+        <MappingFragment StoreEntitySet="TransactionDetail">
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
+          <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TransactionDirection" ColumnName="TransactionDirection" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransactionDetailId" ColumnName="TransactionDetailId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -67,11 +67,11 @@
                                                 <td>
                                                     @if (transactionDetailInfo.TransactionDirection == AydoganFBank.AccountManagement.Api.TransactionDirection.In)
                                                     {
-                                                        @:<i class="glyphicon glyphicon-arrow-up text-danger"></i>
+                                                        @:<i class="glyphicon glyphicon-arrow-down text-success"></i>
                                                     }
                                                     else
                                                     {
-                                                        @:<i class="glyphicon glyphicon-arrow-down text-success"></i>
+                                                        @:<i class="glyphicon glyphicon-arrow-up text-danger"></i>
                                                     }
                                                 </td>
                                                 <td>@transactionDetailInfo.TransactionInfo.Amount @Model.AssetsUnit</td>

@@ -62,6 +62,8 @@ namespace AydoganFBank.AccountManagement.Domain
         decimal ICreditCardExtreInfo.MinPayment => MinPayment;
         bool ICreditCardExtreInfo.IsDischarged => IsDischarged;
         bool ICreditCardExtreInfo.IsMinDischarged => IsMinDischarged;
+        DateTime ICreditCardExtreInfo.ExtreStartDate => ExtreStartDate;
+        DateTime ICreditCardExtreInfo.ExtreEndDate => ExtreEndDate;
         DateTime ICreditCardExtreInfo.LastPaymentDate
         {
             get
@@ -211,8 +213,9 @@ namespace AydoganFBank.AccountManagement.Domain
             return GetListBy(
                 cce =>
                     cce.CreditCardId == creditCard.CreditCardId &&
-                    cce.Month >= month &&
-                    cce.Year >= year);
+                    (cce.Month >= month &&
+                    cce.Year >= year) ||
+                    cce.Year > year);
         }
 
         CreditCardExtreDomainEntity ICreditCardExtreRepository.GetByCreditCardAndDate(CreditCardDomainEntity creditCard, int month, int year)

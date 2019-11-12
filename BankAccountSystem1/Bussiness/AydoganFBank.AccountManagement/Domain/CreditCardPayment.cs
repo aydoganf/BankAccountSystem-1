@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardPaymentDomainEntity : IDomainEntity, ITransactionHolder, ICreditCardPaymentInfo
+    public class CreditCardPaymentDomainEntity : IDomainEntity, ITransactionHolder, ICreditCardPaymentInfo, ITransactionDetailOwner
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -47,6 +47,9 @@ namespace AydoganFBank.AccountManagement.Domain
         string ICreditCardPaymentInfo.Description => Description;
         DateTime ICreditCardPaymentInfo.InstalmentDate => InstalmentDate;
         ITransactionInfo ICreditCardPaymentInfo.AccountTransaction => AccountTransaction;
+
+        int ITransactionDetailOwner.OwnerId => CreditCardPaymentId;
+        TransactionDetailOwnerType ITransactionDetailOwner.OwnerType => TransactionDetailOwnerType.CreditCardPayment;
 
         #region CRUD
 

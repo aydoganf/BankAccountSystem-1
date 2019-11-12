@@ -150,6 +150,7 @@
           <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="TransactionDirection" Type="int" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="AccountTransactionId" Type="int" Nullable="false" />
           <Property Name="OwnerType" Type="int" Nullable="false" />
           <Property Name="OwnerId" Type="int" Nullable="false" />
@@ -249,7 +250,6 @@
           <EntitySet Name="CreditCardExtre" EntityType="AydoganFBankModel.CreditCardExtre" />
           <EntitySet Name="CreditCardExtreDischarge" EntityType="AydoganFBankModel.CreditCardExtreDischarge" />
           <EntitySet Name="CreditCardPayment" EntityType="AydoganFBankModel.CreditCardPayment" />
-          <EntitySet Name="TransactionDetail" EntityType="AydoganFBankModel.TransactionDetail" />
           <EntitySet Name="CreditCard" EntityType="AydoganFBankModel.CreditCard" />
           <EntitySet Name="AccountTransaction" EntityType="AydoganFBankModel.AccountTransaction" />
           <EntitySet Name="Account" EntityType="AydoganFBankModel.Account" />
@@ -257,6 +257,7 @@
           <EntitySet Name="TransactionOrder" EntityType="AydoganFBankModel.TransactionOrder" />
           <EntitySet Name="Token" EntityType="AydoganFBankModel.Token" />
           <EntitySet Name="Application" EntityType="AydoganFBankModel.Application" />
+          <EntitySet Name="TransactionDetail" EntityType="AydoganFBankModel.TransactionDetail" />
           </EntityContainer>
         <EntityType Name="CreditCardExtre">
           <Key>
@@ -294,18 +295,6 @@
           <Property Name="InstalmentDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
           <Property Name="CreditCardId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TransactionDetail">
-          <Key>
-            <PropertyRef Name="TransactionDetailId" />
-          </Key>
-          <Property Name="TransactionDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="TransactionDirection" Type="Int32" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
-          <Property Name="OwnerType" Type="Int32" Nullable="false" />
-          <Property Name="OwnerId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="CreditCard">
           <Key>
@@ -401,6 +390,19 @@
           <Property Name="TokenSlidingMinute" Type="Int32" Nullable="false" />
           <Property Name="TokenSlidingCheckMinute" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="TransactionDetail">
+          <Key>
+            <PropertyRef Name="TransactionDetailId" />
+          </Key>
+          <Property Name="TransactionDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionDirection" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
+          <Property Name="OwnerType" Type="Int32" Nullable="false" />
+          <Property Name="OwnerId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -484,19 +486,6 @@
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="InstalmentIndex" ColumnName="InstalmentIndex" />
                 <ScalarProperty Name="CreditCardPaymentId" ColumnName="CreditCardPaymentId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TransactionDetail">
-            <EntityTypeMapping TypeName="AydoganFBankModel.TransactionDetail">
-              <MappingFragment StoreEntitySet="TransactionDetail">
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
-                <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="TransactionDirection" ColumnName="TransactionDirection" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="TransactionDetailId" ColumnName="TransactionDetailId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -598,6 +587,20 @@
                 <ScalarProperty Name="Domain" ColumnName="Domain" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionDetail">
+            <EntityTypeMapping TypeName="AydoganFBankModel.TransactionDetail">
+              <MappingFragment StoreEntitySet="TransactionDetail">
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
+                <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TransactionDirection" ColumnName="TransactionDirection" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TransactionDetailId" ColumnName="TransactionDetailId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

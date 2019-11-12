@@ -28,6 +28,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public int TransactionDetailId { get; set; }
         public string Description { get; set; }
         public DateTime CreateDate { get; set; }
+        public decimal Amount { get; set; }
         public AccountTransactionDomainEntity AccountTransaction { get; set; }
         public ITransactionDetailOwner TransactionDetailOwner { get; set; }
         public TransactionDirection TransactionDirection { get; set; }
@@ -42,16 +43,20 @@ namespace AydoganFBank.AccountManagement.Domain
         string ITransactionDetailInfo.Description => Description;
         ITransactionInfo ITransactionDetailInfo.TransactionInfo => AccountTransaction;
         TransactionDirection ITransactionDetailInfo.TransactionDirection => TransactionDirection;
+        ITransactionDetailOwner ITransactionDetailInfo.TransactionDetailOwner => TransactionDetailOwner;
+        decimal ITransactionDetailInfo.Amount => Amount;
 
         public TransactionDetailDomainEntity With(
             string description,
             DateTime createDate,
+            decimal amount,
             AccountTransactionDomainEntity accountTransaction,
             ITransactionDetailOwner transactionDetailOwner,
             TransactionDirection transactionDirection)
         {
             Description = description;
             CreateDate = createDate;
+            Amount = amount;
             AccountTransaction = accountTransaction;
             TransactionDetailOwner = transactionDetailOwner;
             TransactionDirection = transactionDirection;
@@ -95,6 +100,8 @@ namespace AydoganFBank.AccountManagement.Domain
                 transactionDetailOwner = coreContext.Query<IAccountRepository>().GetById(ownerId);
             else if (ownerType == TransactionDetailOwnerType.CreditCard.ToInt())
                 transactionDetailOwner = coreContext.Query<ICreditCardRepository>().GetById(ownerId);
+            else if (ownerType == TransactionDetailOwnerType.CreditCardPayment.ToInt())
+                transactionDetailOwner = coreContext.Query<ICreditCardPaymentRepository>().GetById(ownerId);
             return transactionDetailOwner;
         }
 
@@ -107,6 +114,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.OwnerId = domainEntity.TransactionDetailOwner.OwnerId;
             dbEntity.OwnerType = domainEntity.TransactionDetailOwner.OwnerType.ToInt();
             dbEntity.TransactionDirection = domainEntity.TransactionDirection.ToInt();
+            dbEntity.Amount = domainEntity.Amount;
         }
 
         public override void MapToDomainObject(TransactionDetailDomainEntity domainEntity, TransactionDetail dbEntity)
@@ -120,6 +128,7 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.TransactionDetailId = dbEntity.TransactionDetailId;
             domainEntity.TransactionDirection = (TransactionDirection)Enum.Parse(typeof(TransactionDirection), dbEntity.TransactionDirection.ToString());
             domainEntity.TransactionDetailOwner = GetTransactionDetailOwner(dbEntity.OwnerType, dbEntity.OwnerId);
+            domainEntity.Amount = dbEntity.Amount;
         }
         #endregion
 

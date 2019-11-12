@@ -173,5 +173,13 @@ namespace AydoganFBank.AccountManagement
             {
             }
         }
+
+        public class CreditCardCouldNotFoundWithGivenIdentifier : AccountManagementException
+        {
+            public CreditCardCouldNotFoundWithGivenIdentifier(string message) 
+                : base(21, string.Format("Credit card could not found with given identifier. {0}", message))
+            {
+            }
+        }
     }
 }

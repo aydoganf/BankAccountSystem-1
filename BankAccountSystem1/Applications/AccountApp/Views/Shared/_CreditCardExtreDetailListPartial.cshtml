@@ -1,0 +1,53 @@
+﻿@model AccountApp.Models.CreditCardExtreOvierview
+
+@foreach (var creditCardExtreOverview in Model.ExtreDetailList)
+{
+    var index = Model.ExtreDetailList.IndexOf(creditCardExtreOverview);
+    var collapseClass = index == 0 ? "in" : "";
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading_extre_@creditCardExtreOverview.CreditCardExtre.Id">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion_extre"
+                   href="#collapse_extre_@creditCardExtreOverview.CreditCardExtre.Id" 
+                   aria-expanded="true" aria-controls="collapse_extre_@creditCardExtreOverview.CreditCardExtre.Id">
+                    <i class="glyphicon glyphicon-calendar"></i> @creditCardExtreOverview.CreditCardExtre.MonthName @creditCardExtreOverview.CreditCardExtre.Year
+                </a>
+            </h4>
+        </div>
+        <div id="collapse_extre_@creditCardExtreOverview.CreditCardExtre.Id" class="panel-collapse collapse @collapseClass" role="tabpanel"
+             aria-labelledby="heading_extre_@creditCardExtreOverview.CreditCardExtre.Id">
+
+            <div class="panel-body">
+
+                <div class="text-right">
+                    <label class="bold">Total amount: </label>
+                    @creditCardExtreOverview.CreditCardPaymentList.Sum(p => p.Amount) @Model.CreditCard.CreditCardOwner.AssetsUnit
+                </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Detail</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var paymentInfo in creditCardExtreOverview.CreditCardPaymentList)
+                        {
+                            <tr>
+                                <td></td>
+                                <td>@paymentInfo.Description</td>
+                                <td>@paymentInfo.Amount @paymentInfo.AccountTransaction.FromTransactionOwner.AssetsUnit</td>
+                                <td>@paymentInfo.InstalmentDate.ToString("dd.MM.yyyy hh:MM:ss")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+}

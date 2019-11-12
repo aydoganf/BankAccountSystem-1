@@ -17,5 +17,8 @@ namespace AydoganFBank.AccountManagement.Api
         bool IsDischarged { get; }
         bool IsMinDischarged { get; }
         DateTime LastPaymentDate { get; }
+
+        DateTime ExtreStartDate { get; }
+        DateTime ExtreEndDate { get; }
     }
 }

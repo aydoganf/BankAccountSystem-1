@@ -3,6 +3,7 @@
     public enum TransactionDetailOwnerType
     {
         Account = 1,
-        CreditCard
+        CreditCard = 2,
+        CreditCardPayment = 3
     }
 }

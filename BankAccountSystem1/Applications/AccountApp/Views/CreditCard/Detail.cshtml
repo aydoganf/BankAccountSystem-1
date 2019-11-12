@@ -50,6 +50,12 @@
                     <div class="tab-pane active" id="tab_default_1">
                         <div class="row">
                             <div class="col-md-12">
+
+                                <div class="text-right margin-top-10">
+                                    <label class="bold">Total amount: </label>
+                                    @Model.CreditCardPaymentList.Sum(p => p.Amount) @Model.CreditCard.CreditCardOwner.AssetsUnit
+                                </div>
+
                                 <table class="table table-bordered margin-top-10">
                                     <thead>
                                         <tr>
@@ -62,10 +68,12 @@
                                     <tbody>
                                         @foreach (var paymentInfo in Model.CreditCardPaymentList)
                                         {
+                                            var transactionDetail = Model.TransactionDetailList.FirstOrDefault(td => td.TransactionDetailOwner.OwnerId == paymentInfo.CreditCardPaymentId);
+                                            
                                             <tr>
                                                 <td></td>
-                                                <td>@paymentInfo.Description</td>
-                                                <td>@paymentInfo.Amount @Model.CreditCard.CreditCardOwner.AssetsUnit</td>
+                                                <td>@transactionDetail.Description</td>
+                                                <td>@transactionDetail.Amount @Model.CreditCard.CreditCardOwner.AssetsUnit</td>
                                                 <td>@paymentInfo.InstalmentDate.ToString("dd.MM.yyyy hh:MM:ss")</td>
                                             </tr>
                                         }
@@ -79,32 +87,7 @@
                     <div class="tab-pane" id="tab_default_2">
                         <div class="panel-group margin-top-10" id="accordion_extre" role="tablist" aria-multiselectable="true">
 
-                            @foreach (var creditCardExtre in Model.CreditCardExtreList)
-                            {
-                                var index = Model.CreditCardExtreList.IndexOf(creditCardExtre);
-                                var collapseClass = index == 0 ? "in" : "";
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="heading_extre_@creditCardExtre.Id">
-                                        <h4 class="panel-title">
-                                            <a role="button" data-toggle="collapse" data-parent="#accordion_extre" 
-                                               href="#collapse_extre_@creditCardExtre.Id" aria-expanded="true" aria-controls="collapse_extre_@creditCardExtre.Id">
-                                               <i class="glyphicon glyphicon-calendar"></i> @creditCardExtre.MonthName @creditCardExtre.Year
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse_extre_@creditCardExtre.Id" class="panel-collapse collapse @collapseClass" role="tabpanel" 
-                                         aria-labelledby="heading_extre_@creditCardExtre.Id">
-                                        
-                                        <div class="panel-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 
-                                            3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. 
-                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. 
-                                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. 
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                            @Html.Partial("_CreditCardExtreDetailListPartial", Model.ExtreOvierview)
 
                         </div>
                     </div>

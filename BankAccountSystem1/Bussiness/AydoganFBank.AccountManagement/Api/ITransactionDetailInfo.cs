@@ -10,7 +10,9 @@ namespace AydoganFBank.AccountManagement.Api
     {
         int Id { get; }
         string Description { get; }
+        decimal Amount { get; }
         ITransactionInfo TransactionInfo { get; }
         TransactionDirection TransactionDirection { get; } 
+        ITransactionDetailOwner TransactionDetailOwner { get; }
     }
 }

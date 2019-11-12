@@ -1,6 +1,7 @@
 ﻿using AccountApp.Models;
 using AccountApp.Utility;
 using AydoganFBank.Service.Dispatcher.Api;
+using AydoganFBank.Service.Dispatcher.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,13 +31,28 @@ namespace AccountApp.Controllers
         public ActionResult Detail(int id)
         {
             var creditCard = creditCardManagerService.GetCreditCardById(id);
+            List<TransactionDetailInfo> transactionDetails = new List<TransactionDetailInfo>();
 
-            var payments = creditCardManagerService.GetCreditCardLastExtrePayments(creditCard.Id);
             var extres = creditCardManagerService.GetCreditCardActiveExtreList(creditCard.Id);
+            var currentExtre = extres.OrderBy(e => e.Year).ThenBy(e => e.Month).FirstOrDefault();
+            var lastExtre = extres.OrderByDescending(e => e.Year).ThenByDescending(e => e.Month).FirstOrDefault();
+
+            if (currentExtre != null && lastExtre != null)
+            {
+                transactionDetails = creditCardManagerService.GetCreditCardTransactionDetailListByDateRange(
+                    creditCard.Id, currentExtre.ExtreStartDate, lastExtre.ExtreEndDate);
+            }
+
+            var allPayments = creditCardManagerService.GetCreditCardActivePaymentList(creditCard.Id);
+            var currentPayments = allPayments.Where(p => p.InstalmentDate >= currentExtre.ExtreStartDate && p.InstalmentDate <= currentExtre.ExtreEndDate).ToList();
+            
 
             CreditCardOverview overview = new CreditCardOverview(creditCard);
-            overview.SetCreditCardPaymentList(payments);
+            overview.SetTransantionDetails(transactionDetails);
+            overview.SetCurrentExtreCreditCardPaymentList(currentPayments);
+            overview.SetCurrentExtre(currentExtre);
             overview.SetCreditCardExtreList(extres);
+            overview.SetExtreDetails(extres, allPayments);
 
             return View(overview);
         }
@@ -71,6 +87,14 @@ namespace AccountApp.Controllers
                 Application.HandleOperation(ex, ViewBag);
                 return View(overview);
             }
+        }
+
+        public ActionResult Discharge(int id)
+        {
+            var creditCard = creditCardManagerService.GetCreditCardById(id);
+            CreditCardOverview overview = new CreditCardOverview(creditCard);
+
+            return View(overview);
         }
     }
 }

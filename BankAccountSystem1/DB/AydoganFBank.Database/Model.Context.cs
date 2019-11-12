@@ -32,7 +32,6 @@ namespace AydoganFBank.Database
         public virtual DbSet<CreditCardExtre> CreditCardExtre { get; set; }
         public virtual DbSet<CreditCardExtreDischarge> CreditCardExtreDischarge { get; set; }
         public virtual DbSet<CreditCardPayment> CreditCardPayment { get; set; }
-        public virtual DbSet<TransactionDetail> TransactionDetail { get; set; }
         public virtual DbSet<CreditCard> CreditCard { get; set; }
         public virtual DbSet<AccountTransaction> AccountTransaction { get; set; }
         public virtual DbSet<Account> Account { get; set; }
@@ -40,5 +39,6 @@ namespace AydoganFBank.Database
         public virtual DbSet<TransactionOrder> TransactionOrder { get; set; }
         public virtual DbSet<Token> Token { get; set; }
         public virtual DbSet<Application> Application { get; set; }
+        public virtual DbSet<TransactionDetail> TransactionDetail { get; set; }
     }
 }

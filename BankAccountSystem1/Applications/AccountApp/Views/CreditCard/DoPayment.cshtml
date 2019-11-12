@@ -20,49 +20,49 @@
                 @using (Html.BeginForm())
                 {
 
-                <div class="form-horizontal">
+                    <div class="form-horizontal">
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">To Account Number</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                @Html.TextBox("toAccountNumber", null, new { @class = "form-control", placeholder = "to account number" })
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">To Account Number</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.TextBox("toAccountNumber", null, new { @class = "form-control", placeholder = "to account number" })
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Amount to payment</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.TextBox("amount", null, new { @class = "form-control", placeholder = "give amount like 100.50" })
+                                    <span class="input-group-addon">@Model.CreditCard.CreditCardOwner.AssetsUnit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Instalment Count</label>
+                            <div class="col-md-4">
+                                @Html.DropDownList("instalmentCount", new List<SelectListItem>() 
+                                    {
+                                        new SelectListItem() { Text = "1", Value = "1" },
+                                        new SelectListItem() { Text = "2", Value = "2" },
+                                        new SelectListItem() { Text = "3", Value = "3" },
+                                        new SelectListItem() { Text = "4", Value = "4" },
+                                        new SelectListItem() { Text = "5", Value = "5" },
+                                        new SelectListItem() { Text = "6", Value = "6" }
+                                    }, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-4">
+                                <input type="submit" class="btn btn-success" value="Do Payment" />
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Amount to payment</label>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                @Html.TextBox("amount", null, new { @class = "form-control", placeholder = "give amount like 100.50" })
-                                <span class="input-group-addon">@Model.CreditCard.CreditCardOwner.AssetsUnit</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Instalment Count</label>
-                        <div class="col-md-4">
-                            @Html.DropDownList("instalmentCount", new List<SelectListItem>() 
-                                {
-                                    new SelectListItem() { Text = "1", Value = "1" },
-                                    new SelectListItem() { Text = "2", Value = "2" },
-                                    new SelectListItem() { Text = "3", Value = "3" },
-                                    new SelectListItem() { Text = "4", Value = "4" },
-                                    new SelectListItem() { Text = "5", Value = "5" },
-                                    new SelectListItem() { Text = "6", Value = "6" }
-                                }, new { @class = "form-control" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-md-4">
-                            <input type="submit" class="btn btn-success" value="Do Payment" />
-                        </div>
-                    </div>
-                </div>
 
                 }
 

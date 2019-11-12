@@ -61,6 +61,8 @@
         public Boolean IsDischarged { get; set; }
         public Boolean IsMinDischarged { get; set; }
         public DateTime LastPaymentDate { get; set; }
+        public DateTime ExtreStartDate { get; set; }
+        public DateTime ExtreEndDate { get; set; }
     }
 
 
@@ -130,8 +132,10 @@
     {
         public Int32 Id { get; set; }
         public String Description { get; set; }
+        public Decimal Amount { get; set; }
         public TransactionInfo TransactionInfo { get; set; }
         public TransactionDirection TransactionDirection { get; set; }
+        public TransactionDetailOwner TransactionDetailOwner { get; set; }
     }
 
 
@@ -318,6 +322,8 @@ namespace AydoganFBank.Service.Dispatcher.Data.Builder
                 IsDischarged = icreditcardextreinfo.IsDischarged,
                 IsMinDischarged = icreditcardextreinfo.IsMinDischarged,
                 LastPaymentDate = icreditcardextreinfo.LastPaymentDate,
+                ExtreStartDate = icreditcardextreinfo.ExtreStartDate,
+                ExtreEndDate = icreditcardextreinfo.ExtreEndDate,
             };
         }
 
@@ -453,8 +459,10 @@ namespace AydoganFBank.Service.Dispatcher.Data.Builder
             {
                 Id = itransactiondetailinfo.Id,
                 Description = itransactiondetailinfo.Description,
+                Amount = itransactiondetailinfo.Amount,
                 TransactionInfo = TransactionInfoBuilder(itransactiondetailinfo.TransactionInfo),
                 TransactionDirection = itransactiondetailinfo.TransactionDirection,
+                TransactionDetailOwner = TransactionDetailOwnerBuilder(itransactiondetailinfo.TransactionDetailOwner),
             };
         }
 
@@ -674,6 +682,10 @@ namespace AydoganFBank.Service.Dispatcher.Api
         List<CreditCardExtreInfo> GetCreditCardActiveExtreList(Int32 creditCardId);
 
         List<CreditCardPaymentInfo> GetExtrePaymentList(Int32 extreId);
+
+        List<CreditCardPaymentInfo> GetCreditCardActivePaymentList(Int32 creditCardId);
+
+        List<TransactionDetailInfo> GetCreditCardTransactionDetailListByDateRange(Int32 creditCardId, DateTime startDate, DateTime endDate);
 
     }
 
@@ -954,6 +966,18 @@ namespace AydoganFBank.Service.Dispatcher.Services
         {
             var result = creditCardManager.GetExtrePaymentList(extreId);
             return serviceDataBuilder.CreditCardPaymentInfoListBuilder(result);
+        }
+
+        public List<CreditCardPaymentInfo> GetCreditCardActivePaymentList(Int32 creditCardId)
+        {
+            var result = creditCardManager.GetCreditCardActivePaymentList(creditCardId);
+            return serviceDataBuilder.CreditCardPaymentInfoListBuilder(result);
+        }
+
+        public List<TransactionDetailInfo> GetCreditCardTransactionDetailListByDateRange(Int32 creditCardId, DateTime startDate, DateTime endDate)
+        {
+            var result = creditCardManager.GetCreditCardTransactionDetailListByDateRange(creditCardId, startDate, endDate);
+            return serviceDataBuilder.TransactionDetailInfoListBuilder(result);
         }
 
     }

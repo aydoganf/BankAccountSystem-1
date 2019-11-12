@@ -145,6 +145,7 @@
     <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="TransactionDirection" Type="int" Nullable="false" />
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="AccountTransactionId" Type="int" Nullable="false" />
     <Property Name="OwnerType" Type="int" Nullable="false" />
     <Property Name="OwnerId" Type="int" Nullable="false" />

@@ -98,12 +98,12 @@ namespace AydoganFBank.AccountManagement.Domain
             if (transactionDirection == TransactionDirection.In)
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, (ITransactionDetailOwner)ToTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, Amount, this, (ITransactionDetailOwner)ToTransactionOwner, transactionDirection);
             }
             else
             {
                 return coreContext.New<TransactionDetailDomainEntity>()
-                    .With(description, TransactionDate, this, (ITransactionDetailOwner)FromTransactionOwner, transactionDirection);
+                    .With(description, TransactionDate, Amount, this, (ITransactionDetailOwner)FromTransactionOwner, transactionDirection);
             }
         }
     }

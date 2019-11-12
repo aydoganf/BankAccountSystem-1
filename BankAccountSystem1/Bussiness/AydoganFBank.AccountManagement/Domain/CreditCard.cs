@@ -206,6 +206,36 @@ namespace AydoganFBank.AccountManagement.Domain
             Debt += amount;
         }
 
+        public CreditCardExtreDomainEntity GetCurrentExtre()
+        {
+            DateTime now = DateTime.Now;
+
+            int month = now.Month;
+            int year = now.Year;
+
+            // same month but earlier than extre day
+            if (now.Day < ExtreDay)
+            { 
+                month -= 1;
+            }
+
+            // for january
+            if (now.Day < ExtreDay && now.Month == 1)
+            {
+                year -= 1;
+            }
+
+            var extre = coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(this, month, year);
+
+            if (extre == null)
+            {
+                extre = CreateExtre(now.Month, now.Year, 0);
+            }
+
+            return extre;
+        }
+
+        [Obsolete]
         public CreditCardExtreDomainEntity GetLastCreditCardExtre()
         {
             DateTime now = DateTime.Now;
@@ -254,7 +284,7 @@ namespace AydoganFBank.AccountManagement.Domain
 
         public List<CreditCardPaymentDomainEntity> GetLastExtrePayments()
         {
-            return GetLastCreditCardExtre().GetPayments();
+            return GetCurrentExtre().GetPayments();
         }
 
         public List<TransactionDetailDomainEntity> GetLastTransactionDetailDateRangeList(DateTime startDate, DateTime endDate)
@@ -273,6 +303,12 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             DateTime now = DateTime.Now;
             return coreContext.Query<ICreditCardExtreRepository>().GetActiveListByCreditCardExtre(this, now.Month, now.Year);
+        }
+
+        public List<CreditCardPaymentDomainEntity> GetActivePaymentList()
+        {
+            var extre = GetCurrentExtre();
+            return coreContext.Query<ICreditCardPaymentRepository>().GetCreditCardPaymentsByDateRange(this, extre.ExtreStartDate, DateTime.MaxValue);
         }
     }
 

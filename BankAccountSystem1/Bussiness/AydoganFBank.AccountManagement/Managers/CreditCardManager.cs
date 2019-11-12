@@ -61,8 +61,12 @@ namespace AydoganFBank.AccountManagement.Managers
 
         internal CreditCardDomainEntity GetCreditCardById(int creditCardId)
         {
-            return coreContext.Query<ICreditCardRepository>()
-                .GetById(creditCardId);
+            var creditCard = coreContext.Query<ICreditCardRepository>().GetById(creditCardId);
+
+            if (creditCard == null)
+                throw new AccountManagementException.CreditCardCouldNotFoundWithGivenIdentifier(string.Empty);
+
+            return creditCard;
         }
 
         internal CreditCardDomainEntity GetCreditCardBySecurityInfos(
@@ -106,8 +110,9 @@ namespace AydoganFBank.AccountManagement.Managers
 
             var transactionDetailIn = transaction.CreateTransactionDetail(TransactionDirection.In);
             transactionDetailIn.Insert(forceToInsertDb: false);
-            var transactionDetailOut = transaction.CreateTransactionDetail(TransactionDirection.Out);
-            transactionDetailOut.Insert(forceToInsertDb: false);
+            
+            //var transactionDetailOut = transaction.CreateTransactionDetail(TransactionDirection.Out);
+            //transactionDetailOut.Insert(forceToInsertDb: false);
             
             decimal instalmentAmount = amount / instalmentCount;
 
@@ -130,7 +135,14 @@ namespace AydoganFBank.AccountManagement.Managers
                         instalmentDate, 
                         transaction,
                         creditCard);
-                creditCardPayment.Insert(forceToInsertDb: false);
+
+                //creditCardPayment.Insert(forceToInsertDb: false);
+                creditCardPayment.Insert();
+
+                var transactionDetail = coreContext.New<TransactionDetailDomainEntity>()
+                    .With(paymentDescription, DateTime.Now, instalmentAmount, transaction, creditCardPayment, TransactionDirection.Out);
+
+                transactionDetail.Insert(forceToInsertDb: false);
 
                 var extre = coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(creditCard, instalmentDate.Month, instalmentDate.Year);
                 if (extre == null)
@@ -195,6 +207,32 @@ namespace AydoganFBank.AccountManagement.Managers
         {
             return GetExtreById(extreId).GetPayments();
         }
+
+        internal List<CreditCardPaymentDomainEntity> GetCreditCardActivePaymentList(int creditCardId)
+        {
+            return GetCreditCardById(creditCardId).GetActivePaymentList();
+        }
+
+        internal List<TransactionDetailDomainEntity> GetCreditCardTransactionDetailListByDateRane(int creditCardId, DateTime startDate, DateTime endDate)
+        {
+            var creditCard = GetCreditCardById(creditCardId);
+            List<ITransactionDetailOwner> owners = new List<ITransactionDetailOwner>();
+            owners.Add(creditCard);
+            foreach (var payment in creditCard.GetActivePaymentList())
+                owners.Add(payment);
+
+            var transactionDetails = new List<TransactionDetailDomainEntity>();
+
+            foreach (var owner in owners)
+                transactionDetails.AddRange(coreContext.Query<ITransactionDetailRepository>().GetLastDateRangeListByTransactionDetailOwner(owner, startDate, endDate));
+
+            return transactionDetails;
+            //return GetCreditCardById(creditCardId).GetLastTransactionDetailDateRangeList(startDate, endDate);
+        }
+
+
+
+
         #region API Implementations
 
         ICreditCardInfo ICreditCardManager.GetCreditCardByAccount(string accountNumber) => GetCreditCardByAccount(accountNumber);
@@ -257,6 +295,12 @@ namespace AydoganFBank.AccountManagement.Managers
 
         List<ICreditCardPaymentInfo> ICreditCardManager.GetExtrePaymentList(int extreId)
             => GetExtrePaymentList(extreId).Cast<ICreditCardPaymentInfo>().ToList();
+
+        List<ICreditCardPaymentInfo> ICreditCardManager.GetCreditCardActivePaymentList(int creditCardId)
+            => GetCreditCardActivePaymentList(creditCardId).Cast<ICreditCardPaymentInfo>().ToList();
+
+        List<ITransactionDetailInfo> ICreditCardManager.GetCreditCardTransactionDetailListByDateRange(int creditCardId, DateTime startDate, DateTime endDate)
+            => GetCreditCardTransactionDetailListByDateRane(creditCardId, startDate, endDate).Cast<ITransactionDetailInfo>().ToList();
         #endregion
     }
 }
