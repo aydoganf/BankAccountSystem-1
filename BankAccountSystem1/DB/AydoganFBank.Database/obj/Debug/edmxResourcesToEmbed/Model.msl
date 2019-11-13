@@ -59,6 +59,7 @@
     <EntitySetMapping Name="CreditCardExtreDischarge">
       <EntityTypeMapping TypeName="AydoganFBankModel.CreditCardExtreDischarge">
         <MappingFragment StoreEntitySet="CreditCardExtreDischarge">
+          <ScalarProperty Name="CreditCardId" ColumnName="CreditCardId" />
           <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
           <ScalarProperty Name="CreditCardExtreId" ColumnName="CreditCardExtreId" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />

@@ -6,11 +6,12 @@ using AydoganFBank.Context.Exception;
 using AydoganFBank.Context.IoC;
 using AydoganFBank.Database;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
-    public class CreditCardExtreDischargeDomainEntity : IDomainEntity, ITransactionHolder
+    public class CreditCardExtreDischargeDomainEntity : IDomainEntity, ITransactionHolder, ITransactionDetailOwner
     {
         #region IoC
         private readonly ICoreContext coreContext;
@@ -30,6 +31,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public DateTime CreateDate { get; set; }
         public CreditCardExtreDomainEntity CreditCardExtre { get; set; }
         public AccountTransactionDomainEntity AccountTransaction { get; set; }
+        public CreditCardDomainEntity CreditCard { get; set; }
 
 
         int IDomainEntity.Id => CreditCardExtreDischargeId;
@@ -37,7 +39,8 @@ namespace AydoganFBank.AccountManagement.Domain
         ITransactionInfo ITransactionHolder.TransactionInfo => AccountTransaction;
         DateTime ITransactionHolder.CreateDate => CreateDate;
 
-        public CreditCardDomainEntity CreditCard => CreditCardExtre.CreditCard;
+        int ITransactionDetailOwner.OwnerId => CreditCardExtreDischargeId;
+        TransactionDetailOwnerType ITransactionDetailOwner.OwnerType => TransactionDetailOwnerType.CreditCardExtreDischarge;
 
         #region CRUD
         public void Insert()
@@ -52,19 +55,30 @@ namespace AydoganFBank.AccountManagement.Domain
         #endregion
 
         public CreditCardExtreDischargeDomainEntity With(
-            decimal dischargeAmount, DateTime createDate, 
-            CreditCardExtreDomainEntity creditCardExtre, AccountTransactionDomainEntity accountTransaction)
+            decimal dischargeAmount, 
+            DateTime createDate, 
+            CreditCardExtreDomainEntity creditCardExtre, 
+            AccountTransactionDomainEntity accountTransaction,
+            CreditCardDomainEntity creditCard)
         {
             DischargeAmount = dischargeAmount;
             CreateDate = createDate;
             CreditCardExtre = creditCardExtre ?? throw new CommonException.RequiredParameterMissingException(nameof(creditCardExtre));
             AccountTransaction = accountTransaction ?? throw new CommonException.RequiredParameterMissingException(nameof(accountTransaction));
+            CreditCard = creditCard ?? throw new CommonException.RequiredParameterMissingException(nameof(creditCard));
 
             return this;
         }
+
+        public TransactionDetailDomainEntity GenerateTransactionDetail(IAccountInfo fromAccount)
+        {
+            return coreContext.New<TransactionDetailDomainEntity>().With(
+                $"Discharge operation from {fromAccount.AccountNumber}", DateTime.Now, DischargeAmount, AccountTransaction, this, TransactionDirection.In);
+        }
     }
 
-    public class CreditCardExtreDischargeRepository : OrderedQueryRepository<CreditCardExtreDischargeDomainEntity, CreditCardExtreDischarge>
+    public class CreditCardExtreDischargeRepository : OrderedQueryRepository<CreditCardExtreDischargeDomainEntity, CreditCardExtreDischarge>,
+        ICreditCardExtreDischargeRepository
     {
         public CreditCardExtreDischargeRepository(
             ICoreContext coreContext) 
@@ -79,6 +93,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.CreateDate = domainEntity.CreateDate;
             dbEntity.CreditCardExtreId = domainEntity.CreditCardExtre.CreditCardExtreId;
             dbEntity.DischargeAmount = domainEntity.DischargeAmount;
+            dbEntity.CreditCardId = domainEntity.CreditCard.CreditCardId;
         }
 
         public override void MapToDomainObject(CreditCardExtreDischargeDomainEntity domainEntity, CreditCardExtreDischarge dbEntity)
@@ -91,6 +106,7 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.CreditCardExtre = coreContext.Query<ICreditCardExtreRepository>().GetById(dbEntity.CreditCardExtreId);
             domainEntity.CreditCardExtreDischargeId = dbEntity.CreditCardExtreDischargeId;
             domainEntity.DischargeAmount = dbEntity.DischargeAmount;
+            domainEntity.CreditCard = coreContext.Query<ICreditCardRepository>().GetById(dbEntity.CreditCardId);
         }
         #endregion
 
@@ -104,16 +120,32 @@ namespace AydoganFBank.AccountManagement.Domain
             return dbContext.CreditCardExtreDischarge.Single(cced => cced.CreditCardExtreDischargeId == id);
         }
 
-        public CreditCardExtreDischargeDomainEntity GetByCreditCardExtre(CreditCardExtreDomainEntity creditCardExtre)
+        public List<CreditCardExtreDischargeDomainEntity> By(CreditCardExtreDomainEntity creditCardExtre)
         {
-            return GetFirstBy(
+            return GetListBy(
                 cced =>
                     cced.CreditCardExtreId == creditCardExtre.CreditCardExtreId);
         }
+
+        public List<CreditCardExtreDischargeDomainEntity> By(CreditCardDomainEntity creditCard, DateTime startDate, DateTime endDate)
+        {
+            return GetListBy(
+                cced =>
+                    cced.CreditCardId == creditCard.CreditCardId &&
+                    cced.CreateDate >= startDate &&
+                    cced.CreateDate <= endDate);
+        }
+
+        List<CreditCardExtreDischargeDomainEntity> ICreditCardExtreDischargeRepository.GetByCreditCardExtre(CreditCardExtreDomainEntity creditCardExtre)
+            => By(creditCardExtre);
+
+        List<CreditCardExtreDischargeDomainEntity> ICreditCardExtreDischargeRepository.GetListByCreditCardAndDateRange(CreditCardDomainEntity creditCard, DateTime startDate, DateTime endDate)
+            => By(creditCard, startDate, endDate);
     }
 
     public interface ICreditCardExtreDischargeRepository : IRepository<CreditCardExtreDischargeDomainEntity>
     {
-        CreditCardExtreDischargeDomainEntity GetByCreditCardExtre(CreditCardExtreDomainEntity creditCardExtre);
+        List<CreditCardExtreDischargeDomainEntity> GetByCreditCardExtre(CreditCardExtreDomainEntity creditCardExtre);
+        List<CreditCardExtreDischargeDomainEntity> GetListByCreditCardAndDateRange(CreditCardDomainEntity creditCard, DateTime startDate, DateTime endDate);
     }
 }

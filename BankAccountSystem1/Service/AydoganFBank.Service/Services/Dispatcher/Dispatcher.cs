@@ -687,6 +687,10 @@ namespace AydoganFBank.Service.Dispatcher.Api
 
         List<TransactionDetailInfo> GetCreditCardTransactionDetailListByDateRange(Int32 creditCardId, DateTime startDate, DateTime endDate);
 
+        CreditCardExtreInfo GetCreditCardCurrentExtre(Int32 creditCardId);
+
+        CreditCardExtreInfo DischargeCreditCardExtre(Int32 creditCardId, Decimal amount, Int32 fromAccountId);
+
     }
 
     public interface IPersonManagerService
@@ -978,6 +982,18 @@ namespace AydoganFBank.Service.Dispatcher.Services
         {
             var result = creditCardManager.GetCreditCardTransactionDetailListByDateRange(creditCardId, startDate, endDate);
             return serviceDataBuilder.TransactionDetailInfoListBuilder(result);
+        }
+
+        public CreditCardExtreInfo GetCreditCardCurrentExtre(Int32 creditCardId)
+        {
+            var result = creditCardManager.GetCreditCardCurrentExtre(creditCardId);
+            return serviceDataBuilder.CreditCardExtreInfoBuilder(result);
+        }
+
+        public CreditCardExtreInfo DischargeCreditCardExtre(Int32 creditCardId, Decimal amount, Int32 fromAccountId)
+        {
+            var result = creditCardManager.DischargeCreditCardExtre(creditCardId, amount, fromAccountId);
+            return serviceDataBuilder.CreditCardExtreInfoBuilder(result);
         }
 
     }

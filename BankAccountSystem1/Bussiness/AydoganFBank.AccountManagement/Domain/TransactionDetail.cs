@@ -102,6 +102,8 @@ namespace AydoganFBank.AccountManagement.Domain
                 transactionDetailOwner = coreContext.Query<ICreditCardRepository>().GetById(ownerId);
             else if (ownerType == TransactionDetailOwnerType.CreditCardPayment.ToInt())
                 transactionDetailOwner = coreContext.Query<ICreditCardPaymentRepository>().GetById(ownerId);
+            else if (ownerType == TransactionDetailOwnerType.CreditCardExtreDischarge.ToInt())
+                transactionDetailOwner = coreContext.Query<ICreditCardExtreDischargeRepository>().GetById(ownerId);
             return transactionDetailOwner;
         }
 

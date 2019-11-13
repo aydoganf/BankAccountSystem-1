@@ -161,6 +161,7 @@
     <Compile Include="Models\CreditCardExtreOverviewItem.cs" />
     <Compile Include="Models\CreditCardExtreOvierview.cs" />
     <Compile Include="Models\CreditCardOverview.cs" />
+    <Compile Include="Models\Operation\CreditCardDischarge.cs" />
     <Compile Include="Models\Operation\OperationResult.cs" />
     <Compile Include="Models\PersonOverview.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

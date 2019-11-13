@@ -1,4 +1,5 @@
 ﻿using AccountApp.Models;
+using AccountApp.Models.Operation;
 using AccountApp.Utility;
 using AydoganFBank.Service.Dispatcher.Api;
 using AydoganFBank.Service.Dispatcher.Data;
@@ -92,9 +93,38 @@ namespace AccountApp.Controllers
         public ActionResult Discharge(int id)
         {
             var creditCard = creditCardManagerService.GetCreditCardById(id);
-            CreditCardOverview overview = new CreditCardOverview(creditCard);
+            var extre = creditCardManagerService.GetCreditCardCurrentExtre(creditCard.Id);
 
-            return View(overview);
+            var account = accountManagerService.GetAccountInfo(creditCard.CreditCardOwner.OwnerId);
+
+            CreditCardDischarge model = new CreditCardDischarge(creditCard, extre, new List<AccountInfo>() { account });
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Discharge(int id, CreditCardDischarge discharge)
+        {
+            var creditCard = creditCardManagerService.GetCreditCardById(id);
+            var extre = creditCardManagerService.GetCreditCardCurrentExtre(creditCard.Id);
+
+            var selectedAccount = accountManagerService.GetAccountInfo(discharge.SelectedAccountId);
+
+            var account = accountManagerService.GetAccountInfo(creditCard.CreditCardOwner.OwnerId);
+            CreditCardDischarge model = new CreditCardDischarge(creditCard, extre, new List<AccountInfo>() { account });
+
+            try
+            {
+                extre = creditCardManagerService.DischargeCreditCardExtre(creditCard.Id, discharge.DischargeAmount, selectedAccount.Id);
+
+                Application.HandleOperation(ViewBag, $"Successfully discharged credit card extre for {discharge.DischargeAmount} {creditCard.CreditCardOwner.AssetsUnit}");
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                Application.HandleOperation(ex, ViewBag);
+                return View(model);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿@using AccountApp.Utility
+@model AccountApp.Models.Operation.CreditCardDischarge
 @{
     ViewBag.Title = "Discharge";
 }
@@ -6,4 +7,78 @@
 <h2>Discharge</h2>
 <hr />
 
+@Html.GetUiAlertBox(ViewBag as object)
+<br />
 
+<div class="panel panel-default">
+
+    <div class="panel-heading">Discharge</div>
+    <div class="panel-body">
+
+        <div class="row">
+
+            <div class="col-md-9">
+
+                @using (Html.BeginForm())
+                {
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Credit Card</label>
+                        <div class="col-md-4">
+                            @Model.CreditCard.CreditCardMaskedNumber
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Extre</label>
+                        <div class="col-md-4">
+                            @Model.CreditCardExtre.MonthName @Model.CreditCardExtre.Year
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Total Amount</label>
+                        <div class="col-md-4">
+                            @Model.CreditCardExtre.TotalPayment @Model.CreditCard.CreditCardOwner.AssetsUnit
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Min. Amount</label>
+                        <div class="col-md-4">
+                            @Model.CreditCardExtre.MinPayment @Model.CreditCard.CreditCardOwner.AssetsUnit
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">From Account</label>
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(x => x.SelectedAccountId, Model.AccountsForUI, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Discharge Amount</label>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(x => x.DischargeAmount, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-4">
+                            <input type="submit" class="btn btn-success" value="Discharge Extre" />
+                        </div>
+                    </div>
+
+                </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

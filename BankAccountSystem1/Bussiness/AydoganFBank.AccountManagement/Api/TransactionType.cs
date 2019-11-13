@@ -11,5 +11,6 @@ namespace AydoganFBank.AccountManagement.Api
         RealEstate,
         CreditCardPayment,
         CreditPayment,
+        CreditCardDischarge
     }
 }

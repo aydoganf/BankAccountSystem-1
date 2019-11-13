@@ -111,9 +111,6 @@ namespace AydoganFBank.AccountManagement.Managers
             var transactionDetailIn = transaction.CreateTransactionDetail(TransactionDirection.In);
             transactionDetailIn.Insert(forceToInsertDb: false);
             
-            //var transactionDetailOut = transaction.CreateTransactionDetail(TransactionDirection.Out);
-            //transactionDetailOut.Insert(forceToInsertDb: false);
-            
             decimal instalmentAmount = amount / instalmentCount;
 
             for (int instalmentIndex = 1; instalmentIndex <= instalmentCount; instalmentIndex++)
@@ -139,15 +136,17 @@ namespace AydoganFBank.AccountManagement.Managers
                 //creditCardPayment.Insert(forceToInsertDb: false);
                 creditCardPayment.Insert();
 
-                var transactionDetail = coreContext.New<TransactionDetailDomainEntity>()
-                    .With(paymentDescription, DateTime.Now, instalmentAmount, transaction, creditCardPayment, TransactionDirection.Out);
-
+                var transactionDetail = creditCardPayment.CreateTransactionDetail(TransactionDirection.Out);
                 transactionDetail.Insert(forceToInsertDb: false);
 
                 var extre = coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(creditCard, instalmentDate.Month, instalmentDate.Year);
                 if (extre == null)
                 {
                     extre = creditCard.CreateExtre(instalmentDate.Month, instalmentDate.Year, instalmentAmount);
+                }
+                else
+                {
+                    extre.AddPayment(instalmentAmount);
                 }
             }
 
@@ -213,13 +212,17 @@ namespace AydoganFBank.AccountManagement.Managers
             return GetCreditCardById(creditCardId).GetActivePaymentList();
         }
 
-        internal List<TransactionDetailDomainEntity> GetCreditCardTransactionDetailListByDateRane(int creditCardId, DateTime startDate, DateTime endDate)
+        internal List<TransactionDetailDomainEntity> GetCreditCardTransactionDetailListByDateRange(int creditCardId, DateTime startDate, DateTime endDate)
         {
             var creditCard = GetCreditCardById(creditCardId);
             List<ITransactionDetailOwner> owners = new List<ITransactionDetailOwner>();
             owners.Add(creditCard);
+
             foreach (var payment in creditCard.GetActivePaymentList())
                 owners.Add(payment);
+
+            foreach (var discharge in creditCard.GetExtreDischargeList(startDate, endDate))
+                owners.Add(discharge);
 
             var transactionDetails = new List<TransactionDetailDomainEntity>();
 
@@ -230,9 +233,65 @@ namespace AydoganFBank.AccountManagement.Managers
             //return GetCreditCardById(creditCardId).GetLastTransactionDetailDateRangeList(startDate, endDate);
         }
 
+        internal CreditCardExtreDomainEntity GetCreditCardCurrentExtre(int creditCardId)
+        {
+            return GetCreditCardById(creditCardId).GetCurrentExtre();
+        }
 
+        internal CreditCardExtreDomainEntity DischargeCreditCardExtre(int creditCardId, decimal amount, int fromAccountId)
+        {
+            var creditCard = GetCreditCardById(creditCardId);
+            var extre = creditCard.GetCurrentExtre();
+            var fromAccount = accountManager.GetAccountById(fromAccountId);
 
+            fromAccount.Withdraw(amount, forceToUpdateDb: false);
 
+            var transaction = coreContext.New<AccountTransactionDomainEntity>().With(
+                fromAccount, 
+                creditCard, 
+                amount, 
+                TransactionTypeEnum.CreditCardDischarge, 
+                TransactionStatusEnum.InProgress, 
+                creditCard);
+
+            transaction.Insert();
+
+            var extreDischarge = coreContext.New<CreditCardExtreDischargeDomainEntity>().With(
+                amount, 
+                DateTime.Now, 
+                extre, 
+                transaction, 
+                creditCard);
+            
+            extreDischarge.Insert();
+
+            decimal diff = amount - extre.TotalPayment;
+
+            if (diff < 0)
+            {
+                if (amount >= extre.MinPayment)
+                    extre.MinDischarge();
+            }
+            else
+                extre.Discharge();
+
+            extre.MakeDischarge(amount);
+
+            // generate TransactionDetails
+            var accountTransactionDetail = transaction.CreateTransactionDetail(TransactionDirection.Out);
+            accountTransactionDetail.Insert(forceToInsertDb: false);
+
+            var dischargeTransactionDetail = extreDischarge.GenerateTransactionDetail(fromAccount);
+            dischargeTransactionDetail.Insert(forceToInsertDb: false);
+
+            transaction.SetStatus(TransactionStatusEnum.Succeeded);
+
+            creditCard.GetDischarge(amount);
+
+            coreContext.Commit();
+
+            return extre;
+        }
         #region API Implementations
 
         ICreditCardInfo ICreditCardManager.GetCreditCardByAccount(string accountNumber) => GetCreditCardByAccount(accountNumber);
@@ -300,7 +359,13 @@ namespace AydoganFBank.AccountManagement.Managers
             => GetCreditCardActivePaymentList(creditCardId).Cast<ICreditCardPaymentInfo>().ToList();
 
         List<ITransactionDetailInfo> ICreditCardManager.GetCreditCardTransactionDetailListByDateRange(int creditCardId, DateTime startDate, DateTime endDate)
-            => GetCreditCardTransactionDetailListByDateRane(creditCardId, startDate, endDate).Cast<ITransactionDetailInfo>().ToList();
+            => GetCreditCardTransactionDetailListByDateRange(creditCardId, startDate, endDate).Cast<ITransactionDetailInfo>().ToList();
+
+        ICreditCardExtreInfo ICreditCardManager.GetCreditCardCurrentExtre(int creditCardId)
+            => GetCreditCardCurrentExtre(creditCardId);
+
+        ICreditCardExtreInfo ICreditCardManager.DischargeCreditCardExtre(int creditCardId, decimal amount, int fromAccountId)
+            => DischargeCreditCardExtre(creditCardId, amount, fromAccountId);
         #endregion
     }
 }

@@ -64,5 +64,9 @@ namespace AydoganFBank.AccountManagement.Service
         List<ICreditCardPaymentInfo> GetCreditCardActivePaymentList(int creditCardId);
 
         List<ITransactionDetailInfo> GetCreditCardTransactionDetailListByDateRange(int creditCardId, DateTime startDate, DateTime endDate);
+
+        ICreditCardExtreInfo GetCreditCardCurrentExtre(int creditCardId);
+
+        ICreditCardExtreInfo DischargeCreditCardExtre(int creditCardId, decimal amount, int fromAccountId);
     }
 }

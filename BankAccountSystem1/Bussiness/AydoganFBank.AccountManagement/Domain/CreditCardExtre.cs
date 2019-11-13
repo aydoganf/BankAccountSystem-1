@@ -108,22 +108,28 @@ namespace AydoganFBank.AccountManagement.Domain
             TotalPayment += paymentAmount;
             MinPayment = TotalPayment * MIN_PAYMENT_RATIO;
 
-            Save();
+            creditCardExtreRepository.FlushEntity(this);
         }
 
         public void Discharge()
         {
             IsDischarged = true;
-            Save();
+            creditCardExtreRepository.FlushEntity(this);
         }
 
         public void MinDischarge()
         {
-            IsMinDischarged = true;
-            Save();
+            IsMinDischarged = true; 
+            creditCardExtreRepository.FlushEntity(this);
         }
 
-        public CreditCardExtreDischargeDomainEntity GetCreditCardExtreDischarge()
+        public void MakeDischarge(decimal amount)
+        {
+            TotalPayment -= amount;
+            creditCardExtreRepository.FlushEntity(this);
+        }
+
+        public List<CreditCardExtreDischargeDomainEntity> GetExtreDischargeList()
         {
             return coreContext.Query<ICreditCardExtreDischargeRepository>().GetByCreditCardExtre(this);
         }
@@ -218,6 +224,14 @@ namespace AydoganFBank.AccountManagement.Domain
                     cce.Year > year);
         }
 
+        public List<CreditCardExtreDomainEntity> By(CreditCardDomainEntity creditCard, DateTime startDate, DateTime endDate)
+        {
+            return GetListBy(
+                cce =>
+                    cce.CreditCardId == creditCard.CreditCardId &&
+                    ((cce.Year == startDate.Year && cce.Month >= startDate.Month) || (cce.Year == endDate.Year && cce.Month < endDate.Month)));
+        }
+
         CreditCardExtreDomainEntity ICreditCardExtreRepository.GetByCreditCardAndDate(CreditCardDomainEntity creditCard, int month, int year)
             => SingleBy(creditCard, month, year);
 
@@ -229,6 +243,9 @@ namespace AydoganFBank.AccountManagement.Domain
 
         List<CreditCardExtreDomainEntity> ICreditCardExtreRepository.GetActiveListByCreditCardExtre(CreditCardDomainEntity creditCard, int month, int year)
             => By(creditCard, month, year);
+
+        List<CreditCardExtreDomainEntity> ICreditCardExtreRepository.GetByCreditCardAndDateRange(CreditCardDomainEntity creditCard, DateTime startDate, DateTime endDate)
+            => By(creditCard, startDate, endDate);
     }
 
     public interface ICreditCardExtreRepository : IRepository<CreditCardExtreDomainEntity>
@@ -237,5 +254,6 @@ namespace AydoganFBank.AccountManagement.Domain
         List<CreditCardExtreDomainEntity> GetListByCreditCard(CreditCardDomainEntity creditCard);
         CreditCardExtreDomainEntity GetByCreditCardAndDate(CreditCardDomainEntity creditCard, int month, int year);
         List<CreditCardExtreDomainEntity> GetActiveListByCreditCardExtre(CreditCardDomainEntity creditCard, int month, int year);
+        List<CreditCardExtreDomainEntity> GetByCreditCardAndDateRange(CreditCardDomainEntity creditCard, DateTime startDate, DateTime endDate);
     }
 }

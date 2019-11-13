@@ -206,6 +206,12 @@ namespace AydoganFBank.AccountManagement.Domain
             Debt += amount;
         }
 
+        public void GetDischarge(decimal amount)
+        {
+            Debt -= amount;
+            Flush();
+        }
+
         public CreditCardExtreDomainEntity GetCurrentExtre()
         {
             DateTime now = DateTime.Now;
@@ -274,6 +280,16 @@ namespace AydoganFBank.AccountManagement.Domain
         public CreditCardExtreDomainEntity GetCreditCardExtreByDate(int month, int year)
         {
             return coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(this, month, year);
+        }
+
+        public List<CreditCardExtreDischargeDomainEntity> GetExtreDischargeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ICreditCardExtreDischargeRepository>().GetListByCreditCardAndDateRange(this, startDate, endDate);
+        }
+
+        public List<CreditCardExtreDomainEntity> GetCreditCardExtreListByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDateRange(this, startDate, endDate);
         }
 
         public List<AccountTransactionDomainEntity> GetLastDateRangeCreditCardTransactionList(DateTime startDate, DateTime endDate)

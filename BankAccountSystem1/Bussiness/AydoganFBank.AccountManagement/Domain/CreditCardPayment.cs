@@ -83,6 +83,12 @@ namespace AydoganFBank.AccountManagement.Domain
 
             return this;
         }
+
+        public TransactionDetailDomainEntity CreateTransactionDetail(TransactionDirection transactionDirection)
+        {
+            return coreContext.New<TransactionDetailDomainEntity>()
+                .With(Description, DateTime.Now, Amount, AccountTransaction, this, transactionDirection);
+        }
     }
 
     public class CreditCardPaymentRepository : OrderedQueryRepository<CreditCardPaymentDomainEntity, CreditCardPayment>,

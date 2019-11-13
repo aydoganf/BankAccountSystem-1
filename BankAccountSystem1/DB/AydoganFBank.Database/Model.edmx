@@ -105,6 +105,7 @@
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="CreditCardExtreId" Type="int" Nullable="false" />
           <Property Name="AccountTransactionId" Type="int" Nullable="false" />
+          <Property Name="CreditCardId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CreditCardPayment">
           <Key>
@@ -282,6 +283,7 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CreditCardExtreId" Type="Int32" Nullable="false" />
           <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
+          <Property Name="CreditCardId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="CreditCardPayment">
           <Key>
@@ -467,6 +469,7 @@
           <EntitySetMapping Name="CreditCardExtreDischarge">
             <EntityTypeMapping TypeName="AydoganFBankModel.CreditCardExtreDischarge">
               <MappingFragment StoreEntitySet="CreditCardExtreDischarge">
+                <ScalarProperty Name="CreditCardId" ColumnName="CreditCardId" />
                 <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
                 <ScalarProperty Name="CreditCardExtreId" ColumnName="CreditCardExtreId" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
