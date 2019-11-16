@@ -324,7 +324,12 @@ namespace AydoganFBank.AccountManagement.Domain
         public List<CreditCardPaymentDomainEntity> GetActivePaymentList()
         {
             var extre = GetCurrentExtre();
-            return coreContext.Query<ICreditCardPaymentRepository>().GetCreditCardPaymentsByDateRange(this, extre.ExtreStartDate, DateTime.MaxValue);
+            return coreContext.Query<ICreditCardPaymentRepository>().GetCreditCardPaymentsByDateRange(this, extre.ExtreStartDate, extre.ExtreEndDate);
+        }
+
+        public List<CreditCardPaymentDomainEntity> GetPaymentDateRangeList(DateTime startDate, DateTime endDate)
+        {
+            return coreContext.Query<ICreditCardPaymentRepository>().GetCreditCardPaymentsByDateRange(this, startDate, endDate);
         }
     }
 

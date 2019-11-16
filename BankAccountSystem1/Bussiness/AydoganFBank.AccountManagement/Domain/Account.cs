@@ -102,7 +102,7 @@ namespace AydoganFBank.AccountManagement.Domain
                 throw new AccountManagementException.AccountHasNotEnoughBalanceForWithdrawAmount(string.Format("{0} = {1}", nameof(amount), amount));
 
             Balance -= amount;
-            if (forceToUpdateDb == false)
+            if (forceToUpdateDb)
                 Save();
 
             accountRepository.FlushEntity(this);

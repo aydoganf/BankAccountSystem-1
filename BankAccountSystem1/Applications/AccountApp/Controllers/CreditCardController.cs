@@ -44,16 +44,24 @@ namespace AccountApp.Controllers
                     creditCard.Id, currentExtre.ExtreStartDate, lastExtre.ExtreEndDate);
             }
 
-            var allPayments = creditCardManagerService.GetCreditCardActivePaymentList(creditCard.Id);
-            var currentPayments = allPayments.Where(p => p.InstalmentDate >= currentExtre.ExtreStartDate && p.InstalmentDate <= currentExtre.ExtreEndDate).ToList();
-            
+            var allPayments = creditCardManagerService.GetCreditCardPaymentList(creditCard.Id, currentExtre.ExtreStartDate, lastExtre.ExtreEndDate);
+
+            var currentPayments = allPayments.Where(
+                p => 
+                    p.InstalmentDate >= currentExtre.ExtreStartDate && 
+                    p.InstalmentDate <= currentExtre.ExtreEndDate).ToList();
+            var currentTransactionDetails = transactionDetails.Where(
+                td =>
+                    td.OccurrenceDate >= currentExtre.ExtreStartDate &&
+                    td.OccurrenceDate <= currentExtre.ExtreEndDate).ToList();
 
             CreditCardOverview overview = new CreditCardOverview(creditCard);
             overview.SetTransantionDetails(transactionDetails);
             overview.SetCurrentExtreCreditCardPaymentList(currentPayments);
+            overview.SetCurrentTransactionDetailList(currentTransactionDetails);
             overview.SetCurrentExtre(currentExtre);
             overview.SetCreditCardExtreList(extres);
-            overview.SetExtreDetails(extres, allPayments);
+            overview.SetExtreDetails(extres, allPayments, transactionDetails);
 
             return View(overview);
         }

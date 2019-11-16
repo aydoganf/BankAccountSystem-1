@@ -132,10 +132,12 @@
     {
         public Int32 Id { get; set; }
         public String Description { get; set; }
+        public String AmountPrefix { get; set; }
         public Decimal Amount { get; set; }
         public TransactionInfo TransactionInfo { get; set; }
         public TransactionDirection TransactionDirection { get; set; }
         public TransactionDetailOwner TransactionDetailOwner { get; set; }
+        public DateTime OccurrenceDate { get; set; }
     }
 
 
@@ -459,10 +461,12 @@ namespace AydoganFBank.Service.Dispatcher.Data.Builder
             {
                 Id = itransactiondetailinfo.Id,
                 Description = itransactiondetailinfo.Description,
+                AmountPrefix = itransactiondetailinfo.AmountPrefix,
                 Amount = itransactiondetailinfo.Amount,
                 TransactionInfo = TransactionInfoBuilder(itransactiondetailinfo.TransactionInfo),
                 TransactionDirection = itransactiondetailinfo.TransactionDirection,
                 TransactionDetailOwner = TransactionDetailOwnerBuilder(itransactiondetailinfo.TransactionDetailOwner),
+                OccurrenceDate = itransactiondetailinfo.OccurrenceDate,
             };
         }
 
@@ -684,6 +688,8 @@ namespace AydoganFBank.Service.Dispatcher.Api
         List<CreditCardPaymentInfo> GetExtrePaymentList(Int32 extreId);
 
         List<CreditCardPaymentInfo> GetCreditCardActivePaymentList(Int32 creditCardId);
+
+        List<CreditCardPaymentInfo> GetCreditCardPaymentList(Int32 creditCardId, DateTime startDate, DateTime endDate);
 
         List<TransactionDetailInfo> GetCreditCardTransactionDetailListByDateRange(Int32 creditCardId, DateTime startDate, DateTime endDate);
 
@@ -975,6 +981,12 @@ namespace AydoganFBank.Service.Dispatcher.Services
         public List<CreditCardPaymentInfo> GetCreditCardActivePaymentList(Int32 creditCardId)
         {
             var result = creditCardManager.GetCreditCardActivePaymentList(creditCardId);
+            return serviceDataBuilder.CreditCardPaymentInfoListBuilder(result);
+        }
+
+        public List<CreditCardPaymentInfo> GetCreditCardPaymentList(Int32 creditCardId, DateTime startDate, DateTime endDate)
+        {
+            var result = creditCardManager.GetCreditCardPaymentList(creditCardId, startDate, endDate);
             return serviceDataBuilder.CreditCardPaymentInfoListBuilder(result);
         }
 

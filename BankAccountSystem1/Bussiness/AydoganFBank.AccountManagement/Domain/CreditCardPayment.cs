@@ -84,10 +84,16 @@ namespace AydoganFBank.AccountManagement.Domain
             return this;
         }
 
-        public TransactionDetailDomainEntity CreateTransactionDetail(TransactionDirection transactionDirection)
+        public TransactionDetailDomainEntity CreateTransactionDetail(DateTime occurrenceDate)
         {
-            return coreContext.New<TransactionDetailDomainEntity>()
-                .With(Description, DateTime.Now, Amount, AccountTransaction, this, transactionDirection);
+            return coreContext.New<TransactionDetailDomainEntity>().With(
+                Description, 
+                DateTime.Now, 
+                Amount, 
+                AccountTransaction, 
+                this, 
+                TransactionDirection.Out, 
+                occurrenceDate);
         }
     }
 

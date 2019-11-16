@@ -20,7 +20,7 @@
                 <div class="margin-top-10">
 
                     @Html.ActionLink("Do Payment", "DoPayment", new { id = Model.CreditCard.Id }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Discharge", "Discharge", new { id = Model.CreditCard.Id}, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Discharge", "Discharge", new { id = Model.CreditCard.Id }, new { @class = "btn btn-success" })
 
                 </div>
             </div>
@@ -53,7 +53,22 @@
 
                                 <div class="text-right margin-top-10">
                                     <label class="bold">Total amount: </label>
-                                    @Model.CreditCardPaymentList.Sum(p => p.Amount) @Model.CreditCard.CreditCardOwner.AssetsUnit
+                                    @{ 
+                                        decimal inWay = Model.CurrentTransactionDetailList.Where(
+                                            td =>
+                                                td.TransactionDirection == AydoganFBank.AccountManagement.Api.TransactionDirection.In)
+                                            .Sum(
+                                            td =>
+                                                td.Amount);
+
+                                        decimal outWay = Model.CurrentTransactionDetailList.Where(
+                                            td =>
+                                                td.TransactionDirection == AydoganFBank.AccountManagement.Api.TransactionDirection.Out)
+                                            .Sum(
+                                            td =>
+                                                td.Amount);
+                                    }
+                                    @(outWay - inWay) @Model.CreditCard.CreditCardOwner.AssetsUnit
                                 </div>
 
                                 <table class="table table-bordered margin-top-10">
@@ -66,15 +81,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var paymentInfo in Model.CreditCardPaymentList)
+                                        @foreach (var transactionDetail in Model.CurrentTransactionDetailList)
                                         {
-                                            var transactionDetail = Model.TransactionDetailList.FirstOrDefault(td => td.TransactionDetailOwner.OwnerId == paymentInfo.CreditCardPaymentId);
-                                            
                                             <tr>
                                                 <td></td>
                                                 <td>@transactionDetail.Description</td>
-                                                <td>@transactionDetail.Amount @Model.CreditCard.CreditCardOwner.AssetsUnit</td>
-                                                <td>@paymentInfo.InstalmentDate.ToString("dd.MM.yyyy hh:MM:ss")</td>
+                                                <td>@transactionDetail.AmountPrefix @transactionDetail.Amount @Model.CreditCard.CreditCardOwner.AssetsUnit</td>
+                                                <td>@transactionDetail.OccurrenceDate</td>
                                             </tr>
                                         }
                                     </tbody>

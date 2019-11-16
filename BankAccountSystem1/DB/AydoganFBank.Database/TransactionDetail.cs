@@ -22,5 +22,6 @@ namespace AydoganFBank.Database
         public int AccountTransactionId { get; set; }
         public int OwnerType { get; set; }
         public int OwnerId { get; set; }
+        public System.DateTime OccurrenceDate { get; set; }
     }
 }

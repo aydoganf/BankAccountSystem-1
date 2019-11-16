@@ -197,5 +197,6 @@
     <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
     <Property Name="OwnerType" Type="Int32" Nullable="false" />
     <Property Name="OwnerId" Type="Int32" Nullable="false" />
+    <Property Name="OccurrenceDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
 </Schema>

@@ -32,6 +32,7 @@ namespace AydoganFBank.AccountManagement.Domain
         public AccountTransactionDomainEntity AccountTransaction { get; set; }
         public ITransactionDetailOwner TransactionDetailOwner { get; set; }
         public TransactionDirection TransactionDirection { get; set; }
+        public DateTime OccurrenceDate { get; set; }
 
 
         int IDomainEntity.Id => TransactionDetailId;
@@ -45,6 +46,8 @@ namespace AydoganFBank.AccountManagement.Domain
         TransactionDirection ITransactionDetailInfo.TransactionDirection => TransactionDirection;
         ITransactionDetailOwner ITransactionDetailInfo.TransactionDetailOwner => TransactionDetailOwner;
         decimal ITransactionDetailInfo.Amount => Amount;
+        string ITransactionDetailInfo.AmountPrefix => TransactionDirection == TransactionDirection.In ? "+" : "-";
+        DateTime ITransactionDetailInfo.OccurrenceDate => OccurrenceDate;
 
         public TransactionDetailDomainEntity With(
             string description,
@@ -52,7 +55,8 @@ namespace AydoganFBank.AccountManagement.Domain
             decimal amount,
             AccountTransactionDomainEntity accountTransaction,
             ITransactionDetailOwner transactionDetailOwner,
-            TransactionDirection transactionDirection)
+            TransactionDirection transactionDirection,
+            DateTime occurrenceDate)
         {
             Description = description;
             CreateDate = createDate;
@@ -60,6 +64,7 @@ namespace AydoganFBank.AccountManagement.Domain
             AccountTransaction = accountTransaction;
             TransactionDetailOwner = transactionDetailOwner;
             TransactionDirection = transactionDirection;
+            OccurrenceDate = occurrenceDate;
 
             return this;
         }
@@ -117,6 +122,7 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.OwnerType = domainEntity.TransactionDetailOwner.OwnerType.ToInt();
             dbEntity.TransactionDirection = domainEntity.TransactionDirection.ToInt();
             dbEntity.Amount = domainEntity.Amount;
+            dbEntity.OccurrenceDate = domainEntity.OccurrenceDate;
         }
 
         public override void MapToDomainObject(TransactionDetailDomainEntity domainEntity, TransactionDetail dbEntity)
@@ -131,6 +137,7 @@ namespace AydoganFBank.AccountManagement.Domain
             domainEntity.TransactionDirection = (TransactionDirection)Enum.Parse(typeof(TransactionDirection), dbEntity.TransactionDirection.ToString());
             domainEntity.TransactionDetailOwner = GetTransactionDetailOwner(dbEntity.OwnerType, dbEntity.OwnerId);
             domainEntity.Amount = dbEntity.Amount;
+            domainEntity.OccurrenceDate = dbEntity.OccurrenceDate;
         }
         #endregion
 
@@ -154,9 +161,9 @@ namespace AydoganFBank.AccountManagement.Domain
             return GetOrderedDescListBy(
                 td =>
                     td.OwnerType == ownerType && td.OwnerId == transactionOwner.OwnerId &&
-                    td.CreateDate >= startDate && td.CreateDate <= endDate,
+                    td.OccurrenceDate >= startDate && td.OccurrenceDate <= endDate,
                 td =>
-                    td.CreateDate);        
+                    td.OccurrenceDate);        
         }
 
         public List<TransactionDetailDomainEntity> GetLastDateRangeAndTransactionDirectionListByTransactionDetailOwner(

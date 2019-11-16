@@ -136,7 +136,7 @@ namespace AydoganFBank.AccountManagement.Managers
                 //creditCardPayment.Insert(forceToInsertDb: false);
                 creditCardPayment.Insert();
 
-                var transactionDetail = creditCardPayment.CreateTransactionDetail(TransactionDirection.Out);
+                var transactionDetail = creditCardPayment.CreateTransactionDetail(instalmentDate);
                 transactionDetail.Insert(forceToInsertDb: false);
 
                 var extre = coreContext.Query<ICreditCardExtreRepository>().GetByCreditCardAndDate(creditCard, instalmentDate.Month, instalmentDate.Year);
@@ -212,13 +212,18 @@ namespace AydoganFBank.AccountManagement.Managers
             return GetCreditCardById(creditCardId).GetActivePaymentList();
         }
 
+        internal List<CreditCardPaymentDomainEntity> GetCreditCardPaymentList(int creditCardId, DateTime startDate, DateTime endDate)
+        {
+            return GetCreditCardById(creditCardId).GetPaymentDateRangeList(startDate, endDate);
+        }
+
         internal List<TransactionDetailDomainEntity> GetCreditCardTransactionDetailListByDateRange(int creditCardId, DateTime startDate, DateTime endDate)
         {
             var creditCard = GetCreditCardById(creditCardId);
             List<ITransactionDetailOwner> owners = new List<ITransactionDetailOwner>();
             owners.Add(creditCard);
 
-            foreach (var payment in creditCard.GetActivePaymentList())
+            foreach (var payment in creditCard.GetPaymentDateRangeList(startDate, endDate))
                 owners.Add(payment);
 
             foreach (var discharge in creditCard.GetExtreDischargeList(startDate, endDate))
@@ -366,6 +371,9 @@ namespace AydoganFBank.AccountManagement.Managers
 
         ICreditCardExtreInfo ICreditCardManager.DischargeCreditCardExtre(int creditCardId, decimal amount, int fromAccountId)
             => DischargeCreditCardExtre(creditCardId, amount, fromAccountId);
+
+        List<ICreditCardPaymentInfo> ICreditCardManager.GetCreditCardPaymentList(int creditCardId, DateTime startDate, DateTime endDate)
+            => GetCreditCardPaymentList(creditCardId, startDate, endDate).Cast<ICreditCardPaymentInfo>().ToList();
         #endregion
     }
 }

@@ -11,7 +11,11 @@ namespace AccountApp.Models
         public CreditCardInfo CreditCard { get; set; }
         public List<CreditCardExtreOverviewItem> ExtreDetailList { get; set; }
 
-        public CreditCardExtreOvierview(CreditCardInfo creditCard, List<CreditCardExtreInfo> creditCardExtres, List<CreditCardPaymentInfo> creditCardPayments)
+        public CreditCardExtreOvierview(
+            CreditCardInfo creditCard, 
+            List<CreditCardExtreInfo> creditCardExtres, 
+            List<CreditCardPaymentInfo> creditCardPayments,
+            List<TransactionDetailInfo> transactionDetails)
         {
             CreditCard = creditCard;
             ExtreDetailList = new List<CreditCardExtreOverviewItem>();
@@ -19,9 +23,15 @@ namespace AccountApp.Models
             foreach (var extre in creditCardExtres)
             {
                 CreditCardExtreOverviewItem overviewItem = new CreditCardExtreOverviewItem(extre);
+
                 overviewItem.SetPaymentList(
                     creditCardPayments.Where(p => p.InstalmentDate >= extre.ExtreStartDate && p.InstalmentDate <= extre.ExtreEndDate).
                     ToList());
+
+                overviewItem.SetTransactionDetailList(
+                    transactionDetails.Where(td => td.OccurrenceDate >= extre.ExtreStartDate && td.OccurrenceDate <= extre.ExtreEndDate)
+                    .ToList());
+
 
                 ExtreDetailList.Add(overviewItem);
             }

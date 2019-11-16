@@ -150,6 +150,7 @@
     <Property Name="AccountTransactionId" Type="int" Nullable="false" />
     <Property Name="OwnerType" Type="int" Nullable="false" />
     <Property Name="OwnerId" Type="int" Nullable="false" />
+    <Property Name="OccurrenceDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="TransactionOrder">
     <Key>

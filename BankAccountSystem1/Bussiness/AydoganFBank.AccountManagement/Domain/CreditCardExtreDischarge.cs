@@ -73,7 +73,13 @@ namespace AydoganFBank.AccountManagement.Domain
         public TransactionDetailDomainEntity GenerateTransactionDetail(IAccountInfo fromAccount)
         {
             return coreContext.New<TransactionDetailDomainEntity>().With(
-                $"Discharge operation from {fromAccount.AccountNumber}", DateTime.Now, DischargeAmount, AccountTransaction, this, TransactionDirection.In);
+                $"Discharge operation from {fromAccount.AccountNumber}", 
+                DateTime.Now, 
+                DischargeAmount, 
+                AccountTransaction, 
+                this, 
+                TransactionDirection.In,
+                DateTime.Now);
         }
     }
 

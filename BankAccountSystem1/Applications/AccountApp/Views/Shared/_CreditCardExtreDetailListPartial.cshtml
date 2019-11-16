@@ -35,13 +35,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var paymentInfo in creditCardExtreOverview.CreditCardPaymentList)
+                        @foreach (var transactionDetail in creditCardExtreOverview.TransactionDetailList)
                         {
                             <tr>
                                 <td></td>
-                                <td>@paymentInfo.Description</td>
-                                <td>@paymentInfo.Amount @paymentInfo.AccountTransaction.FromTransactionOwner.AssetsUnit</td>
-                                <td>@paymentInfo.InstalmentDate.ToString("dd.MM.yyyy hh:MM:ss")</td>
+                                <td>@transactionDetail.Description</td>
+                                <td>@transactionDetail.AmountPrefix @transactionDetail.Amount @Model.CreditCard.CreditCardOwner.AssetsUnit</td>
+                                <td>@transactionDetail.OccurrenceDate</td>
                             </tr>
                         }
                     </tbody>

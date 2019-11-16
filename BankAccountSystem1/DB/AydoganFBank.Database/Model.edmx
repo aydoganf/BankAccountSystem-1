@@ -155,6 +155,7 @@
           <Property Name="AccountTransactionId" Type="int" Nullable="false" />
           <Property Name="OwnerType" Type="int" Nullable="false" />
           <Property Name="OwnerId" Type="int" Nullable="false" />
+          <Property Name="OccurrenceDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TransactionOrder">
           <Key>
@@ -404,6 +405,7 @@
           <Property Name="AccountTransactionId" Type="Int32" Nullable="false" />
           <Property Name="OwnerType" Type="Int32" Nullable="false" />
           <Property Name="OwnerId" Type="Int32" Nullable="false" />
+          <Property Name="OccurrenceDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -596,6 +598,7 @@
           <EntitySetMapping Name="TransactionDetail">
             <EntityTypeMapping TypeName="AydoganFBankModel.TransactionDetail">
               <MappingFragment StoreEntitySet="TransactionDetail">
+                <ScalarProperty Name="OccurrenceDate" ColumnName="OccurrenceDate" />
                 <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
                 <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
                 <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />

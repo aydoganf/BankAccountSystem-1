@@ -186,6 +186,7 @@
     <EntitySetMapping Name="TransactionDetail">
       <EntityTypeMapping TypeName="AydoganFBankModel.TransactionDetail">
         <MappingFragment StoreEntitySet="TransactionDetail">
+          <ScalarProperty Name="OccurrenceDate" ColumnName="OccurrenceDate" />
           <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
           <ScalarProperty Name="OwnerType" ColumnName="OwnerType" />
           <ScalarProperty Name="AccountTransactionId" ColumnName="AccountTransactionId" />
