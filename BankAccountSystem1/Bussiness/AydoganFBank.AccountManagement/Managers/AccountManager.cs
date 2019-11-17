@@ -238,32 +238,36 @@ namespace AydoganFBank.AccountManagement.Managers
                 throw ex;
             }
         }
-        
+
 
         #endregion
-        
+
         #region AccountType
 
-        public AccountTypeDomainEntity GetAccountTypeById(int id)
+        internal AccountTypeDomainEntity GetAccountTypeById(int id)
         {
             return coreContext.Query<IAccountTypeRepository>().GetById(id);
         }
 
-        public AccountTypeDomainEntity GetAccountTypeByKey(string key)
+        internal AccountTypeDomainEntity GetAccountTypeByKey(string key)
         {
             return coreContext.Query<IAccountTypeRepository>().GetByKey(key);
         }
 
+        internal List<AccountTypeDomainEntity> GetAccountTypeList()
+        {
+            return coreContext.Query<IAccountTypeRepository>().GetAccountTypeList();
+        }
         #endregion
 
         #region TransactionStatus
 
-        public TransactionStatusDomainEntity GetTransactionStatusById(int id)
+        internal TransactionStatusDomainEntity GetTransactionStatusById(int id)
         {
             return coreContext.Query<ITransactionStatusRepository>().GetById(id);
         }
 
-        public TransactionStatusDomainEntity GetTransactionStatusByKey(string key)
+        internal TransactionStatusDomainEntity GetTransactionStatusByKey(string key)
         {
             return coreContext.Query<ITransactionStatusRepository>().GetByKey(key);
         }
@@ -272,12 +276,12 @@ namespace AydoganFBank.AccountManagement.Managers
 
         #region TransactionType
 
-        public TransactionTypeDomainEntity GetTransactionTypeById(int id)
+        internal TransactionTypeDomainEntity GetTransactionTypeById(int id)
         {
             return coreContext.Query<ITransactionTypeRepository>().GetById(id);
         }
 
-        public TransactionTypeDomainEntity GetTransactionTypeByKey(string key)
+        internal TransactionTypeDomainEntity GetTransactionTypeByKey(string key)
         {
             return coreContext.Query<ITransactionTypeRepository>().GetByKey(key);
         }
@@ -308,23 +312,23 @@ namespace AydoganFBank.AccountManagement.Managers
         }
 
 
-        public List<TransactionOrderDomainEntity> GetTransactionOrderListByAccount(int accountId)
+        internal List<TransactionOrderDomainEntity> GetTransactionOrderListByAccount(int accountId)
         {
             AccountDomainEntity account = GetAccountById(accountId);
             return GetTransactionOrderListByAccount(account);
         }
 
-        public List<TransactionOrderDomainEntity> GetAllTransactionOrders(DateTime operationDate)
+        internal List<TransactionOrderDomainEntity> GetAllTransactionOrders(DateTime operationDate)
         {
             return coreContext.Query<ITransactionOrderRepository>().GetListByOperationDate(operationDate);
         }
 
-        public List<TransactionOrderDomainEntity> GetUncompletedTransactionOrders(DateTime operationDate)
+        internal List<TransactionOrderDomainEntity> GetUncompletedTransactionOrders(DateTime operationDate)
         {
             return coreContext.Query<ITransactionOrderRepository>().GetUncompletedListByOperationDate(operationDate);
         }
 
-        public TransactionOrderDomainEntity CreateTransactionOrder(
+        internal TransactionOrderDomainEntity CreateTransactionOrder(
             TransactionTypeEnum transactionType,
             string orderDescription,
             DateTime operationDate,
@@ -387,6 +391,8 @@ namespace AydoganFBank.AccountManagement.Managers
         IAccountTypeInfo IAccountManager.GetAccountTypeInfo(int accountTypeId) => GetAccountTypeById(accountTypeId);
 
         IAccountTypeInfo IAccountManager.GetAccountTypeByKey(string key) => GetAccountTypeByKey(key);
+
+        List<IAccountTypeInfo> IAccountManager.GetAccountTypeList() => GetAccountTypeList().Cast<IAccountTypeInfo>().ToList();
         #endregion
     }
 }

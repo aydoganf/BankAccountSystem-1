@@ -22,6 +22,7 @@ namespace AydoganFBank.AccountManagement.Service
 
         IAccountTypeInfo GetAccountTypeInfo(int accountTypeId);
         IAccountTypeInfo GetAccountTypeByKey(string key);
+        List<IAccountTypeInfo> GetAccountTypeList();
 
         object DeleteAccount(int accountId);
     }

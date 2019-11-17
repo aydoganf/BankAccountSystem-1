@@ -147,5 +147,46 @@ namespace AccountApp.Controllers
                 return View(overview);
             }
         }
+
+        public ActionResult Create()
+        {
+            var accountTypes = accountManagerService.GetAccountTypeList();
+
+            AccountCreate model = new AccountCreate();
+            model.SetAccountTypeList(accountTypes);
+
+            TempData["AccountTypeList"] = accountTypes;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(AccountCreate model)
+        {
+            var accountTypes = accountManagerService.GetAccountTypeList();
+            model.SetAccountTypeList(accountTypes);
+
+            if (model.AccountTypeId == 0)
+            {
+                Application.HandleWarning(ViewBag, "Please select an account type to create new account.");
+                return View(model);
+            }
+
+            try
+            {
+                var accountType = accountManagerService.GetAccountTypeInfo(model.AccountTypeId);
+                var account = accountManagerService.CreatePersonAccount(accountType.TypeKey, LoginSession.GetPerson().Id);
+
+                Application.HandleOperation(ViewBag, $"Your account {account.AccountNumber} has been created successfully!");
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                Application.HandleOperation(ex, ViewBag);
+                return View(model);
+            }
+
+        }
     }
 }

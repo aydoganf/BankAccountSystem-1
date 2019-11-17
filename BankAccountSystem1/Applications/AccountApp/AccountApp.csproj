@@ -161,6 +161,7 @@
     <Compile Include="Models\CreditCardExtreOverviewItem.cs" />
     <Compile Include="Models\CreditCardExtreOvierview.cs" />
     <Compile Include="Models\CreditCardOverview.cs" />
+    <Compile Include="Models\Operation\AccountCreate.cs" />
     <Compile Include="Models\Operation\CreditCardDischarge.cs" />
     <Compile Include="Models\Operation\OperationResult.cs" />
     <Compile Include="Models\PersonOverview.cs" />
@@ -219,6 +220,7 @@
     <Content Include="Views\Shared\_HomeCreditCardOverviewPartial.cshtml" />
     <Content Include="Views\Shared\_CreditCardExtreDetailListPartial.cshtml" />
     <Content Include="Views\CreditCard\Discharge.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

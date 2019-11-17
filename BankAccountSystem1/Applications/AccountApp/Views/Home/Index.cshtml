@@ -6,7 +6,11 @@
 <hr />
 
 <div class="panel panel-default">
-    <div class="panel-heading">Accounts</div>
+    <div class="panel-heading">
+        Accounts
+        @Html.ActionLink("New", "Create", "Account", null, new { @class = "btn btn-default btn-xs pull-right" })
+        <div class="clearfix"></div>
+    </div>
     <div class="panel-body">
         
         <div class="row">
@@ -26,7 +30,11 @@
 </div>
 
 <div class="panel panel-default">
-    <div class="panel-heading">Credit Cards</div>
+    <div class="panel-heading">
+        Credit Cards
+        @Html.ActionLink("New", "Create", "CreditCard", null, new { @class = "btn btn-default btn-xs pull-right" })
+        <div class="clearfix"></div>
+    </div>
     <div class="panel-body">
 
         <div class="row">

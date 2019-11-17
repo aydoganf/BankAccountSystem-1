@@ -643,6 +643,8 @@ namespace AydoganFBank.Service.Dispatcher.Api
 
         AccountTypeInfo GetAccountTypeByKey(String key);
 
+        List<AccountTypeInfo> GetAccountTypeList();
+
         Object DeleteAccount(Int32 accountId);
 
     }
@@ -844,6 +846,12 @@ namespace AydoganFBank.Service.Dispatcher.Services
         {
             var result = accountManager.GetAccountTypeByKey(key);
             return serviceDataBuilder.AccountTypeInfoBuilder(result);
+        }
+
+        public List<AccountTypeInfo> GetAccountTypeList()
+        {
+            var result = accountManager.GetAccountTypeList();
+            return serviceDataBuilder.AccountTypeInfoListBuilder(result);
         }
 
         public Object DeleteAccount(Int32 accountId)

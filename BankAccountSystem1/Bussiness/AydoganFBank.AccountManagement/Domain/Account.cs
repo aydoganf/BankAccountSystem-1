@@ -56,7 +56,7 @@ namespace AydoganFBank.AccountManagement.Domain
             AccountNumber = string.IsNullOrWhiteSpace(accountNumber) ? 
                 throw new CommonException.RequiredParameterMissingException(nameof(accountNumber)) : accountNumber;
 
-            accountRepository.InsertEntity(this);
+            //accountRepository.InsertEntity(this);
             return this;
         }
 

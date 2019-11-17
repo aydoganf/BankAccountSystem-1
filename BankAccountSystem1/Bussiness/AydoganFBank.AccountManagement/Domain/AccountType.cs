@@ -5,6 +5,7 @@ using AydoganFBank.Context.DataAccess;
 using AydoganFBank.Database;
 using System.Linq;
 using AydoganFBank.AccountManagement.Api;
+using System.Collections.Generic;
 
 namespace AydoganFBank.AccountManagement.Domain
 {
@@ -79,6 +80,11 @@ namespace AydoganFBank.AccountManagement.Domain
                     at.TypeKey == typeKey);
         }
 
+        public List<AccountTypeDomainEntity> All()
+        {
+            return GetAll();
+        }
+
         #region Mapping overrides
 
         public override void MapToDomainObject(AccountTypeDomainEntity domainEntity, AccountType dbEntity)
@@ -96,10 +102,13 @@ namespace AydoganFBank.AccountManagement.Domain
             dbEntity.AssetsUnit = domainEntity.AssetsUnit;
         }
         #endregion
+
+        List<AccountTypeDomainEntity> IAccountTypeRepository.GetAccountTypeList() => All();
     }
 
     public interface IAccountTypeRepository : IRepository<AccountTypeDomainEntity>
     {
         AccountTypeDomainEntity GetByKey(string typeKey);
+        List<AccountTypeDomainEntity> GetAccountTypeList();
     }
 }

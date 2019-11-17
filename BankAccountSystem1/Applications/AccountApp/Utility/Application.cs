@@ -58,6 +58,18 @@ namespace AccountApp.Utility
             viewBag.OperationResult = operationResult;
         }
 
+        public static void HandleWarning(dynamic viewBag, string message)
+        {
+            var operationResult = new OperationResult()
+            {
+                IsSuccess = false,
+                ResultCode = "99998",
+                ResultMessage = message
+            };
+
+            viewBag.OperationResult = operationResult;
+        }
+
         public static void HandleOperation(dynamic viewBag, string message = "Operation is successfully done.")
         {
             var operationResult = new OperationResult()
