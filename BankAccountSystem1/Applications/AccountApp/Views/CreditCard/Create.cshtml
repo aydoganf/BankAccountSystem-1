@@ -1,0 +1,93 @@
+﻿@using AccountApp.Utility
+@model AccountApp.Models.Operation.CreditCardCreate
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Credit Card</h2>
+<hr />
+
+@Html.GetUiAlertBox(ViewBag as object)
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Credit Card
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                @using (Html.BeginForm())
+                {
+
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Account</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.DropDownListFor(x => x.AccountId, Model.AccountsForUI, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Limit</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.Limit, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Extre Day</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.DropDownListFor(x => x.ExtreDay, Model.ExtreDayForUI, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Valid Month</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.DropDownListFor(x => x.ValidMonth, Model.ValidMonthForUI, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Valid Year</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.DropDownListFor(x => x.ValidYear, Model.ValidYearForUI, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Is Internet Usage Open</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.CheckBoxFor(x => x.IsInternetUsageOpen)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-4">
+                                <input type="submit" class="btn btn-success" value="Create" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>

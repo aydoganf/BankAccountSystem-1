@@ -19,6 +19,9 @@ namespace AccountApp.Models
 
         public CreditCardExtreOvierview ExtreOvierview { get; set; }
 
+        public decimal CurrentTermTotalTransactionAmount { get; set; }
+
+
         public CreditCardOverview(CreditCardInfo creditCard)
         {
             CreditCard = creditCard;
@@ -37,6 +40,20 @@ namespace AccountApp.Models
         public void SetCurrentTransactionDetailList(List<TransactionDetailInfo> transactionDetails)
         {
             CurrentTransactionDetailList = transactionDetails;
+
+            decimal inWay = CurrentTransactionDetailList
+                .Where(
+                td =>
+                    td.TransactionDirection == AydoganFBank.AccountManagement.Api.TransactionDirection.In)
+                .Sum(td => td.Amount);
+
+            decimal outWay = CurrentTransactionDetailList
+                .Where(
+                td =>
+                    td.TransactionDirection == AydoganFBank.AccountManagement.Api.TransactionDirection.Out)
+                .Sum(td => td.Amount);
+
+            CurrentTermTotalTransactionAmount = outWay - inWay;
         }
 
         public void SetCurrentExtre(CreditCardExtreInfo creditCardExtre)

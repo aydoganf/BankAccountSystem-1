@@ -1,4 +1,10 @@
-﻿@model AccountApp.Models.CreditCardExtreOvierview
+﻿@using AccountApp.Utility
+@model AccountApp.Models.CreditCardExtreOvierview
+
+@if (Model.ExtreDetailList == null || Model.ExtreDetailList.Count == 0)
+{
+    @Application.BuildAlertBox(Application.AlertBoxType.Info, "No extre found")
+}
 
 @foreach (var creditCardExtreOverview in Model.ExtreDetailList)
 {
@@ -9,7 +15,7 @@
         <div class="panel-heading" role="tab" id="heading_extre_@creditCardExtreOverview.CreditCardExtre.Id">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion_extre"
-                   href="#collapse_extre_@creditCardExtreOverview.CreditCardExtre.Id" 
+                   href="#collapse_extre_@creditCardExtreOverview.CreditCardExtre.Id"
                    aria-expanded="true" aria-controls="collapse_extre_@creditCardExtreOverview.CreditCardExtre.Id">
                     <i class="glyphicon glyphicon-calendar"></i> @creditCardExtreOverview.CreditCardExtre.MonthName @creditCardExtreOverview.CreditCardExtre.Year
                 </a>

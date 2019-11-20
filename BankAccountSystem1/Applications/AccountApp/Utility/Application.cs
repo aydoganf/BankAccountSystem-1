@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace AccountApp.Utility
 {
-    public class Application
+    public static class Application
     {
         private static int _APPLICATION_ID
         {
@@ -23,6 +24,25 @@ namespace AccountApp.Utility
 
         public static readonly int APPLICATION_ID = _APPLICATION_ID;
         public static readonly string SESSION_LOGIN_KEY = "login";
+
+        #region Security codes
+        public static string GenerateCode(int length)
+        {
+            double lowerBound = Math.Pow(10, length - 1);            
+            double higherBound = Math.Pow(10, length) - 1;
+
+            if (length == 1)
+            {
+                lowerBound = 1;
+                higherBound = 9;
+            }
+
+            Random random = new Random();
+            return random.Next((int)lowerBound, (int)higherBound).ToString();
+        }
+        #endregion
+
+        #region Vievbag handling
 
         public static void HandleException(Exception exception, OperationResult operationResult)
         {
@@ -81,5 +101,61 @@ namespace AccountApp.Utility
 
             viewBag.OperationResult = operationResult;
         }
+        #endregion
+
+        #region Html helpers
+
+        public enum AlertBoxType
+        {
+            Info,
+            Warning,
+            Danger
+        }
+
+        public static string ToCss(this AlertBoxType boxType)
+        {
+            switch (boxType)
+            {
+                case AlertBoxType.Info:
+                    return "alert alert-info";
+                case AlertBoxType.Warning:
+                    return "alert alert-warning";
+                case AlertBoxType.Danger:
+                    return "alert alert-danger";
+                default:
+                    return "alert alert-default";
+            }
+        }
+
+        public static string ToIcon(this AlertBoxType boxType)
+        {
+            switch (boxType)
+            {
+                case AlertBoxType.Info:
+                    return "glyphicon glyphicon-info-sign";
+                case AlertBoxType.Warning:
+                    return "glyphicon glyphicon-warning-sign";
+                case AlertBoxType.Danger:
+                    return "glyphicon glyphicon-exclamation-sign";
+                default:
+                    return "glyphicon glyphicon-info-sign";
+            }
+        }
+
+        public static MvcHtmlString BuildAlertBox(AlertBoxType boxType, string message, bool marginTop = true)
+        {
+            TagBuilder tagBuilder = new TagBuilder("div");
+            TagBuilder iconBuilder = new TagBuilder("i");
+
+            tagBuilder.AddCssClass(boxType.ToCss());
+            if (marginTop)
+                tagBuilder.AddCssClass("margin-top-10");
+            
+            iconBuilder.AddCssClass(boxType.ToIcon());
+            tagBuilder.InnerHtml = $"{iconBuilder.ToString()} {message}";
+
+            return new MvcHtmlString(tagBuilder.ToString());
+        }
+        #endregion
     }
 }

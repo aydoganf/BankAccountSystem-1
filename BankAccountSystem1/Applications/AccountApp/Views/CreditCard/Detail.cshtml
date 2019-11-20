@@ -1,4 +1,5 @@
-﻿@using AccountApp.Models
+﻿@using AccountApp.Utility
+@using AccountApp.Models
 @model CreditCardOverview
 @{
     ViewBag.Title = "Detail";
@@ -14,7 +15,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                
+
                 @Html.Partial("_CreditCardOverviewPartial", Model.CreditCard)
 
                 <div class="margin-top-10">
@@ -51,52 +52,45 @@
                         <div class="row">
                             <div class="col-md-12">
 
-                                <div class="text-right margin-top-10">
-                                    <label class="bold">Total amount: </label>
-                                    @{ 
-                                        decimal inWay = Model.CurrentTransactionDetailList.Where(
-                                            td =>
-                                                td.TransactionDirection == AydoganFBank.AccountManagement.Api.TransactionDirection.In)
-                                            .Sum(
-                                            td =>
-                                                td.Amount);
+                                @if (Model.CurrentTransactionDetailList != null && Model.CurrentTransactionDetailList.Count != 0)
+                                {
+                                    <div class="text-right margin-top-10">
+                                        <label class="bold">Total amount: </label>                                        
+                                        @Model.CurrentTermTotalTransactionAmount @Model.CreditCard.CreditCardOwner.AssetsUnit
+                                    </div>
 
-                                        decimal outWay = Model.CurrentTransactionDetailList.Where(
-                                            td =>
-                                                td.TransactionDirection == AydoganFBank.AccountManagement.Api.TransactionDirection.Out)
-                                            .Sum(
-                                            td =>
-                                                td.Amount);
-                                    }
-                                    @(outWay - inWay) @Model.CreditCard.CreditCardOwner.AssetsUnit
-                                </div>
-
-                                <table class="table table-bordered margin-top-10">
-                                    <thead>
-                                        <tr>
-                                            <th>Detail</th>
-                                            <th>Description</th>
-                                            <th>Amount</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var transactionDetail in Model.CurrentTransactionDetailList)
-                                        {
+                                    <table class="table table-bordered margin-top-10">
+                                        <thead>
                                             <tr>
-                                                <td></td>
-                                                <td>@transactionDetail.Description</td>
-                                                <td>@transactionDetail.AmountPrefix @transactionDetail.Amount @Model.CreditCard.CreditCardOwner.AssetsUnit</td>
-                                                <td>@transactionDetail.OccurrenceDate</td>
+                                                <th>Detail</th>
+                                                <th>Description</th>
+                                                <th>Amount</th>
+                                                <th>Date</th>
                                             </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var transactionDetail in Model.CurrentTransactionDetailList)
+                                            {
+                                                <tr>
+                                                    <td></td>
+                                                    <td>@transactionDetail.Description</td>
+                                                    <td>@transactionDetail.AmountPrefix @transactionDetail.Amount @Model.CreditCard.CreditCardOwner.AssetsUnit</td>
+                                                    <td>@transactionDetail.OccurrenceDate</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                                else
+                                {
+                                    @Application.BuildAlertBox(Application.AlertBoxType.Info, "No in term transaction found")
+                                }
+
                             </div>
                         </div>
 
                     </div>
-                    
+
                     <div class="tab-pane" id="tab_default_2">
                         <div class="panel-group margin-top-10" id="accordion_extre" role="tablist" aria-multiselectable="true">
 

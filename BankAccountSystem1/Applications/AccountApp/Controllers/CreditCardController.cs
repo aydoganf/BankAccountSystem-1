@@ -38,22 +38,27 @@ namespace AccountApp.Controllers
             var currentExtre = extres.OrderBy(e => e.Year).ThenBy(e => e.Month).FirstOrDefault();
             var lastExtre = extres.OrderByDescending(e => e.Year).ThenByDescending(e => e.Month).FirstOrDefault();
 
+            List<CreditCardPaymentInfo> allPayments = new List<CreditCardPaymentInfo>();
+            List<CreditCardPaymentInfo> currentPayments = new List<CreditCardPaymentInfo>();
+            List<TransactionDetailInfo> currentTransactionDetails = new List<TransactionDetailInfo>();
+
             if (currentExtre != null && lastExtre != null)
             {
                 transactionDetails = creditCardManagerService.GetCreditCardTransactionDetailListByDateRange(
                     creditCard.Id, currentExtre.ExtreStartDate, lastExtre.ExtreEndDate);
+
+                allPayments = creditCardManagerService.GetCreditCardPaymentList(creditCard.Id, currentExtre.ExtreStartDate, lastExtre.ExtreEndDate);
+
+                currentPayments = allPayments.Where(
+                    p =>
+                        p.InstalmentDate >= currentExtre.ExtreStartDate &&
+                        p.InstalmentDate <= currentExtre.ExtreEndDate).ToList();
+                currentTransactionDetails = transactionDetails.Where(
+                    td =>
+                        td.OccurrenceDate >= currentExtre.ExtreStartDate &&
+                        td.OccurrenceDate <= currentExtre.ExtreEndDate).ToList();
             }
 
-            var allPayments = creditCardManagerService.GetCreditCardPaymentList(creditCard.Id, currentExtre.ExtreStartDate, lastExtre.ExtreEndDate);
-
-            var currentPayments = allPayments.Where(
-                p => 
-                    p.InstalmentDate >= currentExtre.ExtreStartDate && 
-                    p.InstalmentDate <= currentExtre.ExtreEndDate).ToList();
-            var currentTransactionDetails = transactionDetails.Where(
-                td =>
-                    td.OccurrenceDate >= currentExtre.ExtreStartDate &&
-                    td.OccurrenceDate <= currentExtre.ExtreEndDate).ToList();
 
             CreditCardOverview overview = new CreditCardOverview(creditCard);
             overview.SetTransantionDetails(transactionDetails);
@@ -137,8 +142,42 @@ namespace AccountApp.Controllers
 
         public ActionResult Create()
         {
+            var accounts = accountManagerService.GetAccountsByPerson(LoginSession.GetPerson().Id);
 
-            return View();
+            CreditCardCreate model = new CreditCardCreate();
+            model.SetAccountList(accounts);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreditCardCreate model)
+        {
+            var accounts = accountManagerService.GetAccountsByPerson(LoginSession.GetPerson().Id);
+            model.SetAccountList(accounts);
+
+            try
+            {
+                var securityCode = Application.GenerateCode(3);
+
+                var creditCard = creditCardManagerService.CreateAccountCreditCard(
+                    model.Limit,
+                    model.ExtreDay,
+                    type: 0,
+                    model.ValidMonth.ToString(),
+                    model.ValidYear.ToString(),
+                    securityCode,
+                    model.IsInternetUsageOpen,
+                    model.AccountId);
+
+                Application.HandleOperation(ViewBag, $"{creditCard.CreditCardMaskedNumber} credit card successfully created.");
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                Application.HandleOperation(ex, ViewBag);
+                return View(model);
+            }
         }
     }
 }
