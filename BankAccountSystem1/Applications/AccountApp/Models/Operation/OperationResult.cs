@@ -10,5 +10,7 @@ namespace AccountApp.Models.Operation
         public string ResultCode { get; set; }
         public string ResultMessage { get; set; }
         public bool IsSuccess { get; set; }
+
+        public string UIMessage => $"Error Code: {ResultCode} - Error: {ResultMessage}";
     }
 }

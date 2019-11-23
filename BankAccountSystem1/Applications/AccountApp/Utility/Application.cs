@@ -107,6 +107,7 @@ namespace AccountApp.Utility
 
         public enum AlertBoxType
         {
+            Success,
             Info,
             Warning,
             Danger
@@ -116,6 +117,8 @@ namespace AccountApp.Utility
         {
             switch (boxType)
             {
+                case AlertBoxType.Success:
+                    return "alert alert-success";
                 case AlertBoxType.Info:
                     return "alert alert-info";
                 case AlertBoxType.Warning:
@@ -131,6 +134,8 @@ namespace AccountApp.Utility
         {
             switch (boxType)
             {
+                case AlertBoxType.Success:
+                    return "glyphicon glyphicon-ok";
                 case AlertBoxType.Info:
                     return "glyphicon glyphicon-info-sign";
                 case AlertBoxType.Warning:
@@ -155,6 +160,21 @@ namespace AccountApp.Utility
             tagBuilder.InnerHtml = $"{iconBuilder.ToString()} {message}";
 
             return new MvcHtmlString(tagBuilder.ToString());
+        }
+
+        public static MvcHtmlString GetUiAlertBox(this HtmlHelper helper, object viewBag)
+        {
+            if (((dynamic)viewBag).OperationResult != null)
+            {
+                OperationResult result = ((dynamic)viewBag).OperationResult as OperationResult;
+
+                if (result.IsSuccess)
+                    return BuildAlertBox(AlertBoxType.Success, result.UIMessage);
+                else
+                    return BuildAlertBox(AlertBoxType.Danger, result.UIMessage);
+            }
+
+            return MvcHtmlString.Create(string.Empty);
         }
         #endregion
     }

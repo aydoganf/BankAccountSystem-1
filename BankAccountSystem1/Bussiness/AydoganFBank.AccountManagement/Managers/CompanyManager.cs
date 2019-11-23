@@ -55,13 +55,13 @@ namespace AydoganFBank.AccountManagement.Managers
             return coreContext.Query<ICompanyRepository>().GetById(companyId);
         }
 
-        internal CompanyDomainEntity GetCompanyByResponsableId(int responsablePersonId)
+        internal List<CompanyDomainEntity> GetCompanyByResponsableId(int responsablePersonId)
         {
             var person = personManager.GetPersonById(responsablePersonId);
             return person.GetResponsableCompany();
         }
 
-        internal CompanyDomainEntity GetCompanyByResponsableIdentityNumber(string responsableIdentityNumber)
+        internal List<CompanyDomainEntity> GetCompanyByResponsableIdentityNumber(string responsableIdentityNumber)
         {
             var person = personManager.GetPersonByIdentityNumber(responsableIdentityNumber);
             return person.GetResponsableCompany();
@@ -96,49 +96,33 @@ namespace AydoganFBank.AccountManagement.Managers
         #region API Implementations
 
         ICompanyInfo ICompanyManager.CreateCompany(
-            string companyName, 
-            int responsablePersonId, 
-            string address, 
-            string phoneNumber, 
-            string taxNumber)
-        {
-            return CreateCompany(companyName, responsablePersonId, address, phoneNumber, taxNumber);
-        }
+            string companyName,
+            int responsablePersonId,
+            string address,
+            string phoneNumber,
+            string taxNumber) 
+            => CreateCompany(companyName, responsablePersonId, address, phoneNumber, taxNumber);
 
-        ICompanyInfo ICompanyManager.GetCompanyInfo(int companyId)
-        {
-            return GetCompanyById(companyId);
-        }
+        ICompanyInfo ICompanyManager.GetCompanyInfo(int companyId) 
+            => GetCompanyById(companyId);
 
-        ICompanyInfo ICompanyManager.GetCompanyByResponsableId(int responsablePersonId)
-        {
-            return GetCompanyByResponsableId(responsablePersonId);
-        }
+        List<ICompanyInfo> ICompanyManager.GetCompanyByResponsableId(int responsablePersonId) 
+            => GetCompanyByResponsableId(responsablePersonId).Cast<ICompanyInfo>().ToList();
 
-        ICompanyInfo ICompanyManager.GetCompanyByResponsableIdentityNumber(string responsableIdentityNumber)
-        {
-            return GetCompanyByResponsableIdentityNumber(responsableIdentityNumber);
-        }
+        List<ICompanyInfo> ICompanyManager.GetCompanyByResponsableIdentityNumber(string responsableIdentityNumber) 
+            => GetCompanyByResponsableIdentityNumber(responsableIdentityNumber).Cast<ICompanyInfo>().ToList();
 
-        ICompanyInfo ICompanyManager.ChangeCompanyAddress(int companyId, string address)
-        {
-            return ChangeCompanyAddress(companyId, address);
-        }
+        ICompanyInfo ICompanyManager.ChangeCompanyAddress(int companyId, string address) 
+            => ChangeCompanyAddress(companyId, address);
 
-        ICompanyInfo ICompanyManager.ChangeCompanyPhoneNumber(int companyId, string phoneNumber)
-        {
-            return ChangeCompanyPhoneNumber(companyId, phoneNumber);
-        }
+        ICompanyInfo ICompanyManager.ChangeCompanyPhoneNumber(int companyId, string phoneNumber) 
+            => ChangeCompanyPhoneNumber(companyId, phoneNumber);
 
-        ICompanyInfo ICompanyManager.GetCompanyByTaxNumber(string taxNumber)
-        {
-            return GetCompanyByTaxNumber(taxNumber);
-        }
+        ICompanyInfo ICompanyManager.GetCompanyByTaxNumber(string taxNumber) 
+            => GetCompanyByTaxNumber(taxNumber);
 
-        List<IAccountInfo> ICompanyManager.GetCompanyAccounts(int companyId)
-        {
-            return GetCompanyAccounts(companyId).Cast<IAccountInfo>().ToList();
-        }
+        List<IAccountInfo> ICompanyManager.GetCompanyAccounts(int companyId) 
+            => GetCompanyAccounts(companyId).Cast<IAccountInfo>().ToList();
         #endregion
     }
 }

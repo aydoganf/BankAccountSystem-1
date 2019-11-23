@@ -12,8 +12,8 @@ namespace AydoganFBank.AccountManagement.Service
     {
         ICompanyInfo CreateCompany(string companyName, int responsablePersonId, string address, string phoneNumber, string taxNumber);
         ICompanyInfo GetCompanyInfo(int companyId);
-        ICompanyInfo GetCompanyByResponsableId(int responsablePersonId);
-        ICompanyInfo GetCompanyByResponsableIdentityNumber(string responsableIdentityNumber);
+        List<ICompanyInfo> GetCompanyByResponsableId(int responsablePersonId);
+        List<ICompanyInfo> GetCompanyByResponsableIdentityNumber(string responsableIdentityNumber);
         ICompanyInfo ChangeCompanyAddress(int companyId, string address);
         ICompanyInfo ChangeCompanyPhoneNumber(int companyId, string phoneNumber);
         ICompanyInfo GetCompanyByTaxNumber(string taxNumber);

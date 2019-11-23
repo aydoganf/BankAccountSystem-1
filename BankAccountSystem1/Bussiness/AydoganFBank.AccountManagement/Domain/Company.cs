@@ -137,9 +137,11 @@ namespace AydoganFBank.AccountManagement.Domain
             return dbContext.Company.FirstOrDefault(c => c.CompanyId == id);
         }
 
-        public CompanyDomainEntity GetByResponsablePerson(PersonDomainEntity person)
+        public List<CompanyDomainEntity> By(PersonDomainEntity person)
         {
-            return GetFirstBy(p => p.ResponsablePersonId == person.PersonId);
+            return GetListBy(
+                c =>
+                    c.ResponsablePersonId == person.PersonId); 
         }
 
         public List<CompanyDomainEntity> GetListLikeCompanyName(string companyName)
@@ -154,12 +156,14 @@ namespace AydoganFBank.AccountManagement.Domain
                 c =>
                     c.TaxNumber == taxNumber);
         }
+
+        List<CompanyDomainEntity> ICompanyRepository.GetListByResponsablePerson(PersonDomainEntity person) => By(person);
     }
 
     public interface ICompanyRepository : IRepository<CompanyDomainEntity>
     {
         List<CompanyDomainEntity> GetListLikeCompanyName(string companyName);
-        CompanyDomainEntity GetByResponsablePerson(PersonDomainEntity person);
+        List<CompanyDomainEntity> GetListByResponsablePerson(PersonDomainEntity person);
         CompanyDomainEntity GetByTaxNumber(string taxNumber);
     }
 }

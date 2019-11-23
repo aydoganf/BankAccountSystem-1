@@ -10,13 +10,18 @@ namespace AccountApp.Models
     {
         public List<AccountInfo> Accounts { get; private set; }
         public List<CreditCardInfo> CreditCards { get; private set; }
+        public List<CompanyInfo> Companies { get; private set; }
 
         public List<AccountOverview> AccountOverviews { get; private set; }
 
-        public PersonOverview(List<AccountInfo> accounts, List<CreditCardInfo> creditCards)
+        public PersonOverview(
+            List<AccountInfo> accounts, 
+            List<CreditCardInfo> creditCards,
+            List<CompanyInfo> companies)
         {
             Accounts = accounts;
             CreditCards = creditCards;
+            Companies = companies;
 
             ComputeAccountOverviews();
         }

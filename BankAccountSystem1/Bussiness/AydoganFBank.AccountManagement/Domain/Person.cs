@@ -116,9 +116,9 @@ namespace AydoganFBank.AccountManagement.Domain
             personRepository.UpdateEntity(this);
         }
 
-        public CompanyDomainEntity GetResponsableCompany()
+        public List<CompanyDomainEntity> GetResponsableCompany()
         {
-            return coreContext.Query<ICompanyRepository>().GetByResponsablePerson(this);
+            return coreContext.Query<ICompanyRepository>().GetListByResponsablePerson(this);
         }
     }
 

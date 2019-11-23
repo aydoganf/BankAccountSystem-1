@@ -1,0 +1,35 @@
+﻿@model AydoganFBank.Service.Dispatcher.Data.CompanyInfo
+
+<div class="media">
+    <div class="media-left media-heading">
+        <i class="glyphicon glyphicon-th gi-2x"></i>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">@Model.CompanyName</h4>
+        <span class="label label-primary">
+            company
+        </span>
+        <div class="row margin-top-10">
+            <div class="col-md-6">
+                <div class="col-md-6"><label class="bold">Tax Number</label></div>
+                <div class="col-md-6">@Model.TaxNumber</div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-6 bold"><label class="bold">Phone Number</label></div>
+                <div class="col-md-6">@Model.PhoneNumber</div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-3 bold"><label class="bold">Address</label></div>
+                <div class="col-md-9">@Model.Address</div>
+            </div>
+
+            <div class="col-md-12">
+
+                @Html.ActionLink("Company Details", "Detail", "Company", new { id = Model.Id }, new { @class = "btn btn-default btn-xs" })
+
+            </div>
+
+            <hr />
+        </div>
+    </div>
+</div>

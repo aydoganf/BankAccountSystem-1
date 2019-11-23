@@ -655,9 +655,9 @@ namespace AydoganFBank.Service.Dispatcher.Api
 
         CompanyInfo GetCompanyInfo(Int32 companyId);
 
-        CompanyInfo GetCompanyByResponsableId(Int32 responsablePersonId);
+        List<CompanyInfo> GetCompanyByResponsableId(Int32 responsablePersonId);
 
-        CompanyInfo GetCompanyByResponsableIdentityNumber(String responsableIdentityNumber);
+        List<CompanyInfo> GetCompanyByResponsableIdentityNumber(String responsableIdentityNumber);
 
         CompanyInfo ChangeCompanyAddress(Int32 companyId, String address);
 
@@ -884,16 +884,16 @@ namespace AydoganFBank.Service.Dispatcher.Services
             return serviceDataBuilder.CompanyInfoBuilder(result);
         }
 
-        public CompanyInfo GetCompanyByResponsableId(Int32 responsablePersonId)
+        public List<CompanyInfo> GetCompanyByResponsableId(Int32 responsablePersonId)
         {
             var result = companyManager.GetCompanyByResponsableId(responsablePersonId);
-            return serviceDataBuilder.CompanyInfoBuilder(result);
+            return serviceDataBuilder.CompanyInfoListBuilder(result);
         }
 
-        public CompanyInfo GetCompanyByResponsableIdentityNumber(String responsableIdentityNumber)
+        public List<CompanyInfo> GetCompanyByResponsableIdentityNumber(String responsableIdentityNumber)
         {
             var result = companyManager.GetCompanyByResponsableIdentityNumber(responsableIdentityNumber);
-            return serviceDataBuilder.CompanyInfoBuilder(result);
+            return serviceDataBuilder.CompanyInfoListBuilder(result);
         }
 
         public CompanyInfo ChangeCompanyAddress(Int32 companyId, String address)

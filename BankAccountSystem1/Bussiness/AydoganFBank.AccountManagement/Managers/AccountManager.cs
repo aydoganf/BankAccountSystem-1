@@ -34,11 +34,13 @@ namespace AydoganFBank.AccountManagement.Managers
         {
             List<AccountDomainEntity> accounts = coreContext.Query<IAccountRepository>().GetListByOwner(person);
 
-            var company = companyManager.GetCompanyByResponsableId(person.PersonId);
-            if (company != null)
+            var companies = companyManager.GetCompanyByResponsableId(person.PersonId);
+            if (companies != null)
             {
-                // person has company
-                accounts.AddRange(coreContext.Query<IAccountRepository>().GetListByOwner(company));
+                companies.ForEach(company => 
+                {
+                    accounts.AddRange(coreContext.Query<IAccountRepository>().GetListByOwner(company));
+                });
             }
 
             return accounts;
