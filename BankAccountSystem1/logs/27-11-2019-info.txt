@@ -1,0 +1,5973 @@
+[27-11-2019 21:20:56] - coreContext created.
+[27-11-2019 21:20:56] - {}
+
+[27-11-2019 21:20:56] - logger created.
+
+[27-11-2019 21:20:56] - PersonManager created.
+[27-11-2019 21:20:56] - "Nested-f0d8153e-15e7-4b15-86ff-a2f4590e80dc"
+
+[27-11-2019 21:20:56] - AccountManager created.
+[27-11-2019 21:20:56] - "Nested-f0d8153e-15e7-4b15-86ff-a2f4590e80dc"
+
+[27-11-2019 21:20:56] - AccountManager created.
+[27-11-2019 21:20:56] - "Nested-f0d8153e-15e7-4b15-86ff-a2f4590e80dc"
+
+[27-11-2019 21:20:56] - coreContext created.
+[27-11-2019 21:20:56] - {}
+
+[27-11-2019 21:20:56] - logger created.
+
+[27-11-2019 21:20:56] - PersonManager created.
+[27-11-2019 21:20:56] - "e5ef12fd-5713-492b-91b5-135e4c6e8ba9"
+
+[27-11-2019 21:20:56] - AccountManager created.
+[27-11-2019 21:20:56] - "e5ef12fd-5713-492b-91b5-135e4c6e8ba9"
+
+[27-11-2019 21:20:56] - coreContext created.
+[27-11-2019 21:20:56] - {}
+
+[27-11-2019 21:20:56] - logger created.
+
+[27-11-2019 21:20:56] - PersonManager created.
+[27-11-2019 21:20:56] - "Nested-a2b43d32-ba69-4c95-87ac-ad45d159873c"
+
+[27-11-2019 21:20:56] - AccountManager created.
+[27-11-2019 21:20:56] - "Nested-a2b43d32-ba69-4c95-87ac-ad45d159873c"
+
+[27-11-2019 21:21:01] - coreContext created.
+[27-11-2019 21:21:01] - {}
+
+[27-11-2019 21:21:01] - logger created.
+
+[27-11-2019 21:21:01] - PersonManager created.
+[27-11-2019 21:21:01] - "Nested-59bd7cdc-a39c-4b48-8b32-6b8ffa125833"
+
+[27-11-2019 21:21:01] - AccountManager created.
+[27-11-2019 21:21:01] - "Nested-59bd7cdc-a39c-4b48-8b32-6b8ffa125833"
+
+[27-11-2019 21:21:01] - PersonRepository created.
+[27-11-2019 21:21:01] - "Nested-59bd7cdc-a39c-4b48-8b32-6b8ffa125833"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-59bd7cdc-a39c-4b48-8b32-6b8ffa125833"
+
+[27-11-2019 21:21:03] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 21:21:03] - "Db context Guid: b5666006-7724-4c56-8c56-79e3ee970e2d"
+
+[27-11-2019 21:21:03] - TDbEntity inserting to context..
+[27-11-2019 21:21:03] - {"TokenId":0,"Value":"04cbfa6c738ffc033be3393725e6982c","PersonId":1,"ValidUntil":"2019-11-27T21:36:03.5062942+03:00","ApplicationId":1,"CreateDate":"2019-11-27T21:21:03.5062942+03:00","CanBeUsed":true}
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-59bd7cdc-a39c-4b48-8b32-6b8ffa125833"
+
+[27-11-2019 21:21:03] - coreContext created.
+[27-11-2019 21:21:03] - {}
+
+[27-11-2019 21:21:03] - logger created.
+
+[27-11-2019 21:21:03] - PersonManager created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - AccountManager created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - AccountManager created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - coreContext created.
+[27-11-2019 21:21:03] - {}
+
+[27-11-2019 21:21:03] - logger created.
+
+[27-11-2019 21:21:03] - PersonManager created.
+[27-11-2019 21:21:03] - "e5ef12fd-5713-492b-91b5-135e4c6e8ba9"
+
+[27-11-2019 21:21:03] - AccountManager created.
+[27-11-2019 21:21:03] - "e5ef12fd-5713-492b-91b5-135e4c6e8ba9"
+
+[27-11-2019 21:21:03] - coreContext created.
+[27-11-2019 21:21:03] - {}
+
+[27-11-2019 21:21:03] - logger created.
+
+[27-11-2019 21:21:03] - coreContext created.
+[27-11-2019 21:21:03] - {}
+
+[27-11-2019 21:21:03] - logger created.
+
+[27-11-2019 21:21:03] - coreContext created.
+[27-11-2019 21:21:03] - {}
+
+[27-11-2019 21:21:03] - logger created.
+
+[27-11-2019 21:21:03] - coreContext created.
+[27-11-2019 21:21:03] - {}
+
+[27-11-2019 21:21:03] - logger created.
+
+[27-11-2019 21:21:03] - coreContext created.
+[27-11-2019 21:21:03] - {}
+
+[27-11-2019 21:21:03] - logger created.
+
+[27-11-2019 21:21:03] - PersonRepository created.
+[27-11-2019 21:21:03] - "e5ef12fd-5713-492b-91b5-135e4c6e8ba9"
+
+[27-11-2019 21:21:03] - coreContext created.
+[27-11-2019 21:21:03] - {}
+
+[27-11-2019 21:21:03] - logger created.
+
+[27-11-2019 21:21:03] - PersonRepository created.
+[27-11-2019 21:21:03] - "e5ef12fd-5713-492b-91b5-135e4c6e8ba9"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "e5ef12fd-5713-492b-91b5-135e4c6e8ba9"
+
+[27-11-2019 21:21:03] - PersonRepository created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - AccountRepository created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:21:03] - PersonDomainEntity created.
+[27-11-2019 21:21:03] - "Nested-f63cf10e-6c57-4901-b638-61d4f58b7ae3"
+
+[27-11-2019 21:24:43] - coreContext created.
+[27-11-2019 21:24:43] - {}
+
+[27-11-2019 21:24:43] - logger created.
+
+[27-11-2019 21:24:43] - PersonManager created.
+[27-11-2019 21:24:43] - "Nested-5786c967-65d6-4424-b58d-f378a8da62bc"
+
+[27-11-2019 21:24:43] - AccountManager created.
+[27-11-2019 21:24:43] - "Nested-5786c967-65d6-4424-b58d-f378a8da62bc"
+
+[27-11-2019 21:24:43] - AccountManager created.
+[27-11-2019 21:24:43] - "Nested-5786c967-65d6-4424-b58d-f378a8da62bc"
+
+[27-11-2019 21:24:43] - coreContext created.
+[27-11-2019 21:24:43] - {}
+
+[27-11-2019 21:24:43] - logger created.
+
+[27-11-2019 21:24:43] - PersonManager created.
+[27-11-2019 21:24:43] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:43] - AccountManager created.
+[27-11-2019 21:24:43] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:43] - coreContext created.
+[27-11-2019 21:24:43] - {}
+
+[27-11-2019 21:24:43] - logger created.
+
+[27-11-2019 21:24:43] - PersonManager created.
+[27-11-2019 21:24:43] - "Nested-a4b0be3c-646d-457a-b614-aa9125a99391"
+
+[27-11-2019 21:24:43] - AccountManager created.
+[27-11-2019 21:24:43] - "Nested-a4b0be3c-646d-457a-b614-aa9125a99391"
+
+[27-11-2019 21:24:47] - coreContext created.
+[27-11-2019 21:24:47] - {}
+
+[27-11-2019 21:24:47] - logger created.
+
+[27-11-2019 21:24:47] - PersonManager created.
+[27-11-2019 21:24:47] - "Nested-32d9a226-d042-4f0b-92d1-83004e19e8f9"
+
+[27-11-2019 21:24:47] - AccountManager created.
+[27-11-2019 21:24:47] - "Nested-32d9a226-d042-4f0b-92d1-83004e19e8f9"
+
+[27-11-2019 21:24:47] - PersonRepository created.
+[27-11-2019 21:24:47] - "Nested-32d9a226-d042-4f0b-92d1-83004e19e8f9"
+
+[27-11-2019 21:24:48] - PersonDomainEntity created.
+[27-11-2019 21:24:48] - "Nested-32d9a226-d042-4f0b-92d1-83004e19e8f9"
+
+[27-11-2019 21:24:48] - PersonDomainEntity created.
+[27-11-2019 21:24:48] - "Nested-32d9a226-d042-4f0b-92d1-83004e19e8f9"
+
+[27-11-2019 21:24:48] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 21:24:48] - "Db context Guid: 325a31cb-f6de-462b-8d0c-7a4645034731"
+
+[27-11-2019 21:24:48] - TDbEntity inserting to context..
+[27-11-2019 21:24:48] - {"TokenId":0,"Value":"f56c642d583e8c46ce7fab7a7e7cab82","PersonId":1,"ValidUntil":"2019-11-27T21:39:48.8794853+03:00","ApplicationId":1,"CreateDate":"2019-11-27T21:24:48.8794853+03:00","CanBeUsed":true}
+
+[27-11-2019 21:24:48] - PersonDomainEntity created.
+[27-11-2019 21:24:48] - "Nested-32d9a226-d042-4f0b-92d1-83004e19e8f9"
+
+[27-11-2019 21:24:48] - coreContext created.
+[27-11-2019 21:24:48] - {}
+
+[27-11-2019 21:24:48] - logger created.
+
+[27-11-2019 21:24:48] - PersonManager created.
+[27-11-2019 21:24:48] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:48] - AccountManager created.
+[27-11-2019 21:24:48] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:48] - AccountManager created.
+[27-11-2019 21:24:48] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:48] - coreContext created.
+[27-11-2019 21:24:48] - {}
+
+[27-11-2019 21:24:48] - logger created.
+
+[27-11-2019 21:24:48] - PersonManager created.
+[27-11-2019 21:24:48] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:48] - AccountManager created.
+[27-11-2019 21:24:48] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:48] - coreContext created.
+[27-11-2019 21:24:48] - {}
+
+[27-11-2019 21:24:48] - logger created.
+
+[27-11-2019 21:24:48] - coreContext created.
+[27-11-2019 21:24:48] - {}
+
+[27-11-2019 21:24:48] - logger created.
+
+[27-11-2019 21:24:48] - coreContext created.
+[27-11-2019 21:24:48] - {}
+
+[27-11-2019 21:24:48] - logger created.
+
+[27-11-2019 21:24:48] - coreContext created.
+[27-11-2019 21:24:48] - {}
+
+[27-11-2019 21:24:49] - logger created.
+
+[27-11-2019 21:24:49] - coreContext created.
+[27-11-2019 21:24:49] - {}
+
+[27-11-2019 21:24:49] - logger created.
+
+[27-11-2019 21:24:49] - PersonRepository created.
+[27-11-2019 21:24:49] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:49] - coreContext created.
+[27-11-2019 21:24:49] - {}
+
+[27-11-2019 21:24:49] - logger created.
+
+[27-11-2019 21:24:49] - PersonRepository created.
+[27-11-2019 21:24:49] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:49] - PersonRepository created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - AccountRepository created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:49] - PersonDomainEntity created.
+[27-11-2019 21:24:49] - "Nested-2d86442a-dabe-455a-a556-78a59f1b60f6"
+
+[27-11-2019 21:24:51] - coreContext created.
+[27-11-2019 21:24:51] - {}
+
+[27-11-2019 21:24:51] - logger created.
+
+[27-11-2019 21:24:51] - PersonManager created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:51] - AccountManager created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:51] - AccountManager created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:51] - coreContext created.
+[27-11-2019 21:24:51] - {}
+
+[27-11-2019 21:24:51] - logger created.
+
+[27-11-2019 21:24:51] - PersonManager created.
+[27-11-2019 21:24:51] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:51] - AccountManager created.
+[27-11-2019 21:24:51] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:51] - coreContext created.
+[27-11-2019 21:24:51] - {}
+
+[27-11-2019 21:24:51] - logger created.
+
+[27-11-2019 21:24:51] - coreContext created.
+[27-11-2019 21:24:51] - {}
+
+[27-11-2019 21:24:51] - logger created.
+
+[27-11-2019 21:24:51] - coreContext created.
+[27-11-2019 21:24:51] - {}
+
+[27-11-2019 21:24:51] - logger created.
+
+[27-11-2019 21:24:51] - coreContext created.
+[27-11-2019 21:24:51] - {}
+
+[27-11-2019 21:24:51] - logger created.
+
+[27-11-2019 21:24:51] - coreContext created.
+[27-11-2019 21:24:51] - {}
+
+[27-11-2019 21:24:51] - logger created.
+
+[27-11-2019 21:24:51] - PersonRepository created.
+[27-11-2019 21:24:51] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:51] - coreContext created.
+[27-11-2019 21:24:51] - {}
+
+[27-11-2019 21:24:51] - logger created.
+
+[27-11-2019 21:24:51] - PersonRepository created.
+[27-11-2019 21:24:51] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:51] - PersonDomainEntity created.
+[27-11-2019 21:24:51] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:24:51] - AccountRepository created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:51] - PersonRepository created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:51] - PersonDomainEntity created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:51] - PersonDomainEntity created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:51] - PersonDomainEntity created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:51] - PersonDomainEntity created.
+[27-11-2019 21:24:51] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:52] - PersonDomainEntity created.
+[27-11-2019 21:24:52] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:24:52] - PersonDomainEntity created.
+[27-11-2019 21:24:52] - "Nested-13e29d24-fb47-4643-9f0a-367ba8cd9392"
+
+[27-11-2019 21:58:21] - coreContext created.
+[27-11-2019 21:58:21] - {}
+
+[27-11-2019 21:58:21] - logger created.
+
+[27-11-2019 21:58:21] - PersonManager created.
+[27-11-2019 21:58:21] - "Nested-b0b90bdf-0794-4bfb-aeb2-2365dc417a12"
+
+[27-11-2019 21:58:21] - AccountManager created.
+[27-11-2019 21:58:21] - "Nested-b0b90bdf-0794-4bfb-aeb2-2365dc417a12"
+
+[27-11-2019 21:58:21] - AccountManager created.
+[27-11-2019 21:58:21] - "Nested-b0b90bdf-0794-4bfb-aeb2-2365dc417a12"
+
+[27-11-2019 21:58:21] - coreContext created.
+[27-11-2019 21:58:21] - {}
+
+[27-11-2019 21:58:21] - logger created.
+
+[27-11-2019 21:58:21] - PersonManager created.
+[27-11-2019 21:58:21] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:21] - AccountManager created.
+[27-11-2019 21:58:21] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:21] - coreContext created.
+[27-11-2019 21:58:21] - {}
+
+[27-11-2019 21:58:21] - logger created.
+
+[27-11-2019 21:58:21] - PersonManager created.
+[27-11-2019 21:58:21] - "Nested-b7382bc2-f12d-4563-9c95-8cc4e7e818ec"
+
+[27-11-2019 21:58:21] - AccountManager created.
+[27-11-2019 21:58:21] - "Nested-b7382bc2-f12d-4563-9c95-8cc4e7e818ec"
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - PersonManager created.
+[27-11-2019 21:58:22] - "Nested-3b7f75a5-bbb2-44c1-b984-7c52d2926d34"
+
+[27-11-2019 21:58:22] - AccountManager created.
+[27-11-2019 21:58:22] - "Nested-3b7f75a5-bbb2-44c1-b984-7c52d2926d34"
+
+[27-11-2019 21:58:22] - PersonRepository created.
+[27-11-2019 21:58:22] - "Nested-3b7f75a5-bbb2-44c1-b984-7c52d2926d34"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-3b7f75a5-bbb2-44c1-b984-7c52d2926d34"
+
+[27-11-2019 21:58:22] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 21:58:22] - "Db context Guid: 09b56e2f-7f72-49bb-9ff6-117a1c840940"
+
+[27-11-2019 21:58:22] - TDbEntity inserting to context..
+[27-11-2019 21:58:22] - {"TokenId":0,"Value":"2ef12292b57a631b8e3ab281daf2942e","PersonId":1,"ValidUntil":"2019-11-27T22:13:22.7941619+03:00","ApplicationId":1,"CreateDate":"2019-11-27T21:58:22.7941619+03:00","CanBeUsed":true}
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-3b7f75a5-bbb2-44c1-b984-7c52d2926d34"
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - PersonManager created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - AccountManager created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - AccountManager created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - PersonManager created.
+[27-11-2019 21:58:22] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:22] - AccountManager created.
+[27-11-2019 21:58:22] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - PersonRepository created.
+[27-11-2019 21:58:22] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:22] - coreContext created.
+[27-11-2019 21:58:22] - {}
+
+[27-11-2019 21:58:22] - logger created.
+
+[27-11-2019 21:58:22] - PersonRepository created.
+[27-11-2019 21:58:22] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:22] - PersonRepository created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - AccountRepository created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:22] - PersonDomainEntity created.
+[27-11-2019 21:58:22] - "Nested-e647077e-60cd-45d9-8e0b-05247f3aa456"
+
+[27-11-2019 21:58:24] - coreContext created.
+[27-11-2019 21:58:24] - {}
+
+[27-11-2019 21:58:24] - logger created.
+
+[27-11-2019 21:58:24] - PersonManager created.
+[27-11-2019 21:58:24] - "Nested-eb9d5036-fe49-4493-9dc5-ddda8eaa4970"
+
+[27-11-2019 21:58:24] - AccountManager created.
+[27-11-2019 21:58:24] - "Nested-eb9d5036-fe49-4493-9dc5-ddda8eaa4970"
+
+[27-11-2019 21:58:24] - AccountManager created.
+[27-11-2019 21:58:24] - "Nested-eb9d5036-fe49-4493-9dc5-ddda8eaa4970"
+
+[27-11-2019 21:58:24] - coreContext created.
+[27-11-2019 21:58:24] - {}
+
+[27-11-2019 21:58:24] - logger created.
+
+[27-11-2019 21:58:24] - PersonManager created.
+[27-11-2019 21:58:24] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:24] - AccountManager created.
+[27-11-2019 21:58:24] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:24] - coreContext created.
+[27-11-2019 21:58:24] - {}
+
+[27-11-2019 21:58:24] - logger created.
+
+[27-11-2019 21:58:24] - coreContext created.
+[27-11-2019 21:58:24] - {}
+
+[27-11-2019 21:58:24] - logger created.
+
+[27-11-2019 21:58:24] - coreContext created.
+[27-11-2019 21:58:24] - {}
+
+[27-11-2019 21:58:24] - logger created.
+
+[27-11-2019 21:58:24] - coreContext created.
+[27-11-2019 21:58:24] - {}
+
+[27-11-2019 21:58:24] - logger created.
+
+[27-11-2019 21:58:24] - coreContext created.
+[27-11-2019 21:58:24] - {}
+
+[27-11-2019 21:58:24] - logger created.
+
+[27-11-2019 21:58:24] - PersonRepository created.
+[27-11-2019 21:58:24] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:24] - coreContext created.
+[27-11-2019 21:58:24] - {}
+
+[27-11-2019 21:58:24] - logger created.
+
+[27-11-2019 21:58:24] - PersonRepository created.
+[27-11-2019 21:58:24] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:24] - PersonDomainEntity created.
+[27-11-2019 21:58:24] - "1ace2ff1-5edc-4e96-b399-08acc5c11870"
+
+[27-11-2019 21:58:24] - AccountRepository created.
+[27-11-2019 21:58:24] - "Nested-eb9d5036-fe49-4493-9dc5-ddda8eaa4970"
+
+[27-11-2019 21:58:24] - PersonRepository created.
+[27-11-2019 21:58:24] - "Nested-eb9d5036-fe49-4493-9dc5-ddda8eaa4970"
+
+[27-11-2019 21:58:24] - PersonDomainEntity created.
+[27-11-2019 21:58:24] - "Nested-eb9d5036-fe49-4493-9dc5-ddda8eaa4970"
+
+[27-11-2019 21:58:24] - PersonDomainEntity created.
+[27-11-2019 21:58:24] - "Nested-eb9d5036-fe49-4493-9dc5-ddda8eaa4970"
+
+[27-11-2019 22:09:23] - coreContext created.
+[27-11-2019 22:09:23] - {}
+
+[27-11-2019 22:09:23] - logger created.
+
+[27-11-2019 22:09:23] - PersonManager created.
+[27-11-2019 22:09:23] - "Nested-9901ac09-ca3b-450c-a108-e2da8a01c121"
+
+[27-11-2019 22:09:23] - AccountManager created.
+[27-11-2019 22:09:23] - "Nested-9901ac09-ca3b-450c-a108-e2da8a01c121"
+
+[27-11-2019 22:09:23] - AccountManager created.
+[27-11-2019 22:09:23] - "Nested-9901ac09-ca3b-450c-a108-e2da8a01c121"
+
+[27-11-2019 22:09:23] - coreContext created.
+[27-11-2019 22:09:23] - {}
+
+[27-11-2019 22:09:23] - logger created.
+
+[27-11-2019 22:09:23] - PersonManager created.
+[27-11-2019 22:09:23] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:23] - AccountManager created.
+[27-11-2019 22:09:23] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:23] - coreContext created.
+[27-11-2019 22:09:23] - {}
+
+[27-11-2019 22:09:23] - logger created.
+
+[27-11-2019 22:09:23] - PersonManager created.
+[27-11-2019 22:09:23] - "Nested-db57ae8d-dad1-47b4-964f-98dcd9929457"
+
+[27-11-2019 22:09:23] - AccountManager created.
+[27-11-2019 22:09:23] - "Nested-db57ae8d-dad1-47b4-964f-98dcd9929457"
+
+[27-11-2019 22:09:26] - coreContext created.
+[27-11-2019 22:09:26] - {}
+
+[27-11-2019 22:09:26] - logger created.
+
+[27-11-2019 22:09:26] - PersonManager created.
+[27-11-2019 22:09:26] - "Nested-ae46c3b4-bbfc-4634-a727-96630bcaa329"
+
+[27-11-2019 22:09:26] - AccountManager created.
+[27-11-2019 22:09:26] - "Nested-ae46c3b4-bbfc-4634-a727-96630bcaa329"
+
+[27-11-2019 22:09:26] - PersonRepository created.
+[27-11-2019 22:09:26] - "Nested-ae46c3b4-bbfc-4634-a727-96630bcaa329"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-ae46c3b4-bbfc-4634-a727-96630bcaa329"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-ae46c3b4-bbfc-4634-a727-96630bcaa329"
+
+[27-11-2019 22:09:27] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:09:27] - "Db context Guid: 94985501-bab0-4f05-847e-19f08566a7b0"
+
+[27-11-2019 22:09:27] - TDbEntity inserting to context..
+[27-11-2019 22:09:27] - {"TokenId":0,"Value":"eb447f212747cb85315f007d42d697bf","PersonId":1,"ValidUntil":"2019-11-27T22:24:27.643092+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:09:27.643092+03:00","CanBeUsed":true}
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-ae46c3b4-bbfc-4634-a727-96630bcaa329"
+
+[27-11-2019 22:09:27] - coreContext created.
+[27-11-2019 22:09:27] - {}
+
+[27-11-2019 22:09:27] - logger created.
+
+[27-11-2019 22:09:27] - PersonManager created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - AccountManager created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - AccountManager created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - coreContext created.
+[27-11-2019 22:09:27] - {}
+
+[27-11-2019 22:09:27] - logger created.
+
+[27-11-2019 22:09:27] - PersonManager created.
+[27-11-2019 22:09:27] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:27] - AccountManager created.
+[27-11-2019 22:09:27] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:27] - coreContext created.
+[27-11-2019 22:09:27] - {}
+
+[27-11-2019 22:09:27] - logger created.
+
+[27-11-2019 22:09:27] - coreContext created.
+[27-11-2019 22:09:27] - {}
+
+[27-11-2019 22:09:27] - logger created.
+
+[27-11-2019 22:09:27] - coreContext created.
+[27-11-2019 22:09:27] - {}
+
+[27-11-2019 22:09:27] - logger created.
+
+[27-11-2019 22:09:27] - coreContext created.
+[27-11-2019 22:09:27] - {}
+
+[27-11-2019 22:09:27] - logger created.
+
+[27-11-2019 22:09:27] - coreContext created.
+[27-11-2019 22:09:27] - {}
+
+[27-11-2019 22:09:27] - logger created.
+
+[27-11-2019 22:09:27] - PersonRepository created.
+[27-11-2019 22:09:27] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:27] - coreContext created.
+[27-11-2019 22:09:27] - {}
+
+[27-11-2019 22:09:27] - logger created.
+
+[27-11-2019 22:09:27] - PersonRepository created.
+[27-11-2019 22:09:27] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:27] - PersonRepository created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - AccountRepository created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:27] - PersonDomainEntity created.
+[27-11-2019 22:09:27] - "Nested-20ad9dab-7bc4-4dcc-92f1-baa6d003fbd2"
+
+[27-11-2019 22:09:30] - coreContext created.
+[27-11-2019 22:09:30] - {}
+
+[27-11-2019 22:09:30] - logger created.
+
+[27-11-2019 22:09:30] - PersonManager created.
+[27-11-2019 22:09:30] - "Nested-131d0ad1-53ef-46bd-9195-74aa0d0084ed"
+
+[27-11-2019 22:09:30] - AccountManager created.
+[27-11-2019 22:09:30] - "Nested-131d0ad1-53ef-46bd-9195-74aa0d0084ed"
+
+[27-11-2019 22:09:30] - coreContext created.
+[27-11-2019 22:09:30] - {}
+
+[27-11-2019 22:09:30] - logger created.
+
+[27-11-2019 22:09:31] - PersonManager created.
+[27-11-2019 22:09:31] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:31] - AccountManager created.
+[27-11-2019 22:09:31] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:31] - coreContext created.
+[27-11-2019 22:09:31] - {}
+
+[27-11-2019 22:09:31] - logger created.
+
+[27-11-2019 22:09:31] - coreContext created.
+[27-11-2019 22:09:31] - {}
+
+[27-11-2019 22:09:31] - logger created.
+
+[27-11-2019 22:09:31] - coreContext created.
+[27-11-2019 22:09:31] - {}
+
+[27-11-2019 22:09:31] - logger created.
+
+[27-11-2019 22:09:31] - coreContext created.
+[27-11-2019 22:09:31] - {}
+
+[27-11-2019 22:09:31] - logger created.
+
+[27-11-2019 22:09:31] - coreContext created.
+[27-11-2019 22:09:31] - {}
+
+[27-11-2019 22:09:31] - logger created.
+
+[27-11-2019 22:09:31] - PersonRepository created.
+[27-11-2019 22:09:31] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:31] - coreContext created.
+[27-11-2019 22:09:31] - {}
+
+[27-11-2019 22:09:31] - logger created.
+
+[27-11-2019 22:09:31] - PersonRepository created.
+[27-11-2019 22:09:31] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:31] - PersonDomainEntity created.
+[27-11-2019 22:09:31] - "9a18ac06-204a-4753-94f4-ab5580cc8d19"
+
+[27-11-2019 22:09:31] - PersonRepository created.
+[27-11-2019 22:09:31] - "Nested-131d0ad1-53ef-46bd-9195-74aa0d0084ed"
+
+[27-11-2019 22:09:31] - PersonDomainEntity created.
+[27-11-2019 22:09:31] - "Nested-131d0ad1-53ef-46bd-9195-74aa0d0084ed"
+
+[27-11-2019 22:09:31] - PersonDomainEntity created.
+[27-11-2019 22:09:31] - "Nested-131d0ad1-53ef-46bd-9195-74aa0d0084ed"
+
+[27-11-2019 22:09:31] - AccountRepository created.
+[27-11-2019 22:09:31] - "Nested-131d0ad1-53ef-46bd-9195-74aa0d0084ed"
+
+[27-11-2019 22:12:19] - coreContext created.
+[27-11-2019 22:12:19] - {}
+
+[27-11-2019 22:12:19] - logger created.
+
+[27-11-2019 22:12:19] - PersonManager created.
+[27-11-2019 22:12:19] - "Nested-759bd780-a865-4363-be9d-2e244b78f741"
+
+[27-11-2019 22:12:19] - AccountManager created.
+[27-11-2019 22:12:19] - "Nested-759bd780-a865-4363-be9d-2e244b78f741"
+
+[27-11-2019 22:12:19] - coreContext created.
+[27-11-2019 22:12:19] - {}
+
+[27-11-2019 22:12:19] - logger created.
+
+[27-11-2019 22:12:19] - PersonManager created.
+[27-11-2019 22:12:19] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:19] - AccountManager created.
+[27-11-2019 22:12:19] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:19] - coreContext created.
+[27-11-2019 22:12:19] - {}
+
+[27-11-2019 22:12:19] - logger created.
+
+[27-11-2019 22:12:19] - PersonManager created.
+[27-11-2019 22:12:19] - "Nested-6001e004-03e2-459f-8669-3863d6d90693"
+
+[27-11-2019 22:12:19] - AccountManager created.
+[27-11-2019 22:12:19] - "Nested-6001e004-03e2-459f-8669-3863d6d90693"
+
+[27-11-2019 22:12:21] - coreContext created.
+[27-11-2019 22:12:21] - {}
+
+[27-11-2019 22:12:21] - logger created.
+
+[27-11-2019 22:12:21] - PersonManager created.
+[27-11-2019 22:12:21] - "Nested-3c55f6fc-0b69-484f-bb9e-793cad55675e"
+
+[27-11-2019 22:12:21] - AccountManager created.
+[27-11-2019 22:12:21] - "Nested-3c55f6fc-0b69-484f-bb9e-793cad55675e"
+
+[27-11-2019 22:12:21] - PersonRepository created.
+[27-11-2019 22:12:21] - "Nested-3c55f6fc-0b69-484f-bb9e-793cad55675e"
+
+[27-11-2019 22:12:22] - PersonDomainEntity created.
+[27-11-2019 22:12:22] - "Nested-3c55f6fc-0b69-484f-bb9e-793cad55675e"
+
+[27-11-2019 22:12:22] - PersonDomainEntity created.
+[27-11-2019 22:12:22] - "Nested-3c55f6fc-0b69-484f-bb9e-793cad55675e"
+
+[27-11-2019 22:12:22] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:12:22] - "Db context Guid: 8dcc6276-46eb-4e5f-8b5e-3db6d6708e5b"
+
+[27-11-2019 22:12:22] - TDbEntity inserting to context..
+[27-11-2019 22:12:22] - {"TokenId":0,"Value":"af7d2cd72bc97d91b461eaeb8f6a5a4a","PersonId":1,"ValidUntil":"2019-11-27T22:27:22.9663525+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:12:22.9663525+03:00","CanBeUsed":true}
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-3c55f6fc-0b69-484f-bb9e-793cad55675e"
+
+[27-11-2019 22:12:23] - coreContext created.
+[27-11-2019 22:12:23] - {}
+
+[27-11-2019 22:12:23] - logger created.
+
+[27-11-2019 22:12:23] - PersonManager created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - AccountManager created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - AccountManager created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - coreContext created.
+[27-11-2019 22:12:23] - {}
+
+[27-11-2019 22:12:23] - logger created.
+
+[27-11-2019 22:12:23] - PersonManager created.
+[27-11-2019 22:12:23] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:23] - AccountManager created.
+[27-11-2019 22:12:23] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:23] - coreContext created.
+[27-11-2019 22:12:23] - {}
+
+[27-11-2019 22:12:23] - logger created.
+
+[27-11-2019 22:12:23] - coreContext created.
+[27-11-2019 22:12:23] - {}
+
+[27-11-2019 22:12:23] - logger created.
+
+[27-11-2019 22:12:23] - coreContext created.
+[27-11-2019 22:12:23] - {}
+
+[27-11-2019 22:12:23] - logger created.
+
+[27-11-2019 22:12:23] - coreContext created.
+[27-11-2019 22:12:23] - {}
+
+[27-11-2019 22:12:23] - logger created.
+
+[27-11-2019 22:12:23] - coreContext created.
+[27-11-2019 22:12:23] - {}
+
+[27-11-2019 22:12:23] - logger created.
+
+[27-11-2019 22:12:23] - PersonRepository created.
+[27-11-2019 22:12:23] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:23] - coreContext created.
+[27-11-2019 22:12:23] - {}
+
+[27-11-2019 22:12:23] - logger created.
+
+[27-11-2019 22:12:23] - PersonRepository created.
+[27-11-2019 22:12:23] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:23] - PersonRepository created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - AccountRepository created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:23] - PersonDomainEntity created.
+[27-11-2019 22:12:23] - "Nested-bf732941-e6fc-4217-b9e9-4caa47975698"
+
+[27-11-2019 22:12:25] - coreContext created.
+[27-11-2019 22:12:25] - {}
+
+[27-11-2019 22:12:25] - logger created.
+
+[27-11-2019 22:12:25] - PersonManager created.
+[27-11-2019 22:12:25] - "Nested-f460506a-3ecb-4169-a688-ea0e1c734522"
+
+[27-11-2019 22:12:25] - AccountManager created.
+[27-11-2019 22:12:25] - "Nested-f460506a-3ecb-4169-a688-ea0e1c734522"
+
+[27-11-2019 22:12:25] - coreContext created.
+[27-11-2019 22:12:25] - {}
+
+[27-11-2019 22:12:25] - logger created.
+
+[27-11-2019 22:12:25] - PersonManager created.
+[27-11-2019 22:12:25] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:25] - AccountManager created.
+[27-11-2019 22:12:25] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:25] - coreContext created.
+[27-11-2019 22:12:25] - {}
+
+[27-11-2019 22:12:25] - logger created.
+
+[27-11-2019 22:12:25] - coreContext created.
+[27-11-2019 22:12:25] - {}
+
+[27-11-2019 22:12:25] - logger created.
+
+[27-11-2019 22:12:25] - coreContext created.
+[27-11-2019 22:12:25] - {}
+
+[27-11-2019 22:12:25] - logger created.
+
+[27-11-2019 22:12:25] - coreContext created.
+[27-11-2019 22:12:25] - {}
+
+[27-11-2019 22:12:25] - logger created.
+
+[27-11-2019 22:12:25] - coreContext created.
+[27-11-2019 22:12:25] - {}
+
+[27-11-2019 22:12:25] - logger created.
+
+[27-11-2019 22:12:25] - PersonRepository created.
+[27-11-2019 22:12:25] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:25] - coreContext created.
+[27-11-2019 22:12:25] - {}
+
+[27-11-2019 22:12:25] - logger created.
+
+[27-11-2019 22:12:25] - PersonRepository created.
+[27-11-2019 22:12:25] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:25] - PersonDomainEntity created.
+[27-11-2019 22:12:25] - "58934d56-8a69-4c11-a888-bb03c72e4698"
+
+[27-11-2019 22:12:25] - PersonRepository created.
+[27-11-2019 22:12:25] - "Nested-f460506a-3ecb-4169-a688-ea0e1c734522"
+
+[27-11-2019 22:12:25] - PersonDomainEntity created.
+[27-11-2019 22:12:25] - "Nested-f460506a-3ecb-4169-a688-ea0e1c734522"
+
+[27-11-2019 22:12:25] - PersonDomainEntity created.
+[27-11-2019 22:12:25] - "Nested-f460506a-3ecb-4169-a688-ea0e1c734522"
+
+[27-11-2019 22:12:25] - AccountRepository created.
+[27-11-2019 22:12:25] - "Nested-f460506a-3ecb-4169-a688-ea0e1c734522"
+
+[27-11-2019 22:23:43] - coreContext created.
+[27-11-2019 22:23:43] - {}
+
+[27-11-2019 22:23:43] - logger created.
+
+[27-11-2019 22:23:43] - PersonManager created.
+[27-11-2019 22:23:43] - "Nested-e3936ff0-fbcd-4405-82bb-ec50e4f6e593"
+
+[27-11-2019 22:23:43] - AccountManager created.
+[27-11-2019 22:23:43] - "Nested-e3936ff0-fbcd-4405-82bb-ec50e4f6e593"
+
+[27-11-2019 22:23:43] - coreContext created.
+[27-11-2019 22:23:43] - {}
+
+[27-11-2019 22:23:43] - logger created.
+
+[27-11-2019 22:23:43] - PersonManager created.
+[27-11-2019 22:23:43] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:43] - AccountManager created.
+[27-11-2019 22:23:43] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:43] - coreContext created.
+[27-11-2019 22:23:43] - {}
+
+[27-11-2019 22:23:43] - logger created.
+
+[27-11-2019 22:23:43] - PersonManager created.
+[27-11-2019 22:23:43] - "Nested-a99eb2a5-1042-4005-a3d1-48cc7316a85f"
+
+[27-11-2019 22:23:43] - AccountManager created.
+[27-11-2019 22:23:43] - "Nested-a99eb2a5-1042-4005-a3d1-48cc7316a85f"
+
+[27-11-2019 22:23:45] - coreContext created.
+[27-11-2019 22:23:45] - {}
+
+[27-11-2019 22:23:45] - logger created.
+
+[27-11-2019 22:23:45] - PersonManager created.
+[27-11-2019 22:23:45] - "Nested-df1f950e-3be9-44f5-9201-33a6d4f128bc"
+
+[27-11-2019 22:23:45] - AccountManager created.
+[27-11-2019 22:23:45] - "Nested-df1f950e-3be9-44f5-9201-33a6d4f128bc"
+
+[27-11-2019 22:23:45] - PersonRepository created.
+[27-11-2019 22:23:45] - "Nested-df1f950e-3be9-44f5-9201-33a6d4f128bc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-df1f950e-3be9-44f5-9201-33a6d4f128bc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-df1f950e-3be9-44f5-9201-33a6d4f128bc"
+
+[27-11-2019 22:23:46] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:23:46] - "Db context Guid: 6a11f5bb-d0d8-412d-95e3-b2d61332cc6f"
+
+[27-11-2019 22:23:46] - TDbEntity inserting to context..
+[27-11-2019 22:23:46] - {"TokenId":0,"Value":"8f54f8528b4cf6dcf222a836c0fd2467","PersonId":1,"ValidUntil":"2019-11-27T22:38:46.6988295+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:23:46.6988295+03:00","CanBeUsed":true}
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-df1f950e-3be9-44f5-9201-33a6d4f128bc"
+
+[27-11-2019 22:23:46] - coreContext created.
+[27-11-2019 22:23:46] - {}
+
+[27-11-2019 22:23:46] - logger created.
+
+[27-11-2019 22:23:46] - PersonManager created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - AccountManager created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - AccountManager created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - coreContext created.
+[27-11-2019 22:23:46] - {}
+
+[27-11-2019 22:23:46] - logger created.
+
+[27-11-2019 22:23:46] - PersonManager created.
+[27-11-2019 22:23:46] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:46] - AccountManager created.
+[27-11-2019 22:23:46] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:46] - coreContext created.
+[27-11-2019 22:23:46] - {}
+
+[27-11-2019 22:23:46] - logger created.
+
+[27-11-2019 22:23:46] - coreContext created.
+[27-11-2019 22:23:46] - {}
+
+[27-11-2019 22:23:46] - logger created.
+
+[27-11-2019 22:23:46] - coreContext created.
+[27-11-2019 22:23:46] - {}
+
+[27-11-2019 22:23:46] - logger created.
+
+[27-11-2019 22:23:46] - coreContext created.
+[27-11-2019 22:23:46] - {}
+
+[27-11-2019 22:23:46] - logger created.
+
+[27-11-2019 22:23:46] - coreContext created.
+[27-11-2019 22:23:46] - {}
+
+[27-11-2019 22:23:46] - logger created.
+
+[27-11-2019 22:23:46] - PersonRepository created.
+[27-11-2019 22:23:46] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:46] - coreContext created.
+[27-11-2019 22:23:46] - {}
+
+[27-11-2019 22:23:46] - logger created.
+
+[27-11-2019 22:23:46] - PersonRepository created.
+[27-11-2019 22:23:46] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:46] - PersonRepository created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - AccountRepository created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:46] - PersonDomainEntity created.
+[27-11-2019 22:23:46] - "Nested-de1a6b26-e225-4e12-ae5d-fe72b44fefdc"
+
+[27-11-2019 22:23:49] - coreContext created.
+[27-11-2019 22:23:49] - {}
+
+[27-11-2019 22:23:49] - logger created.
+
+[27-11-2019 22:23:49] - PersonManager created.
+[27-11-2019 22:23:49] - "Nested-577c56d7-f79f-44c6-b776-c2c00d95bd6f"
+
+[27-11-2019 22:23:49] - AccountManager created.
+[27-11-2019 22:23:49] - "Nested-577c56d7-f79f-44c6-b776-c2c00d95bd6f"
+
+[27-11-2019 22:23:49] - coreContext created.
+[27-11-2019 22:23:49] - {}
+
+[27-11-2019 22:23:49] - logger created.
+
+[27-11-2019 22:23:49] - PersonManager created.
+[27-11-2019 22:23:49] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:49] - AccountManager created.
+[27-11-2019 22:23:49] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:49] - coreContext created.
+[27-11-2019 22:23:49] - {}
+
+[27-11-2019 22:23:49] - logger created.
+
+[27-11-2019 22:23:49] - coreContext created.
+[27-11-2019 22:23:49] - {}
+
+[27-11-2019 22:23:49] - logger created.
+
+[27-11-2019 22:23:49] - coreContext created.
+[27-11-2019 22:23:49] - {}
+
+[27-11-2019 22:23:49] - logger created.
+
+[27-11-2019 22:23:49] - coreContext created.
+[27-11-2019 22:23:49] - {}
+
+[27-11-2019 22:23:49] - logger created.
+
+[27-11-2019 22:23:49] - coreContext created.
+[27-11-2019 22:23:49] - {}
+
+[27-11-2019 22:23:49] - logger created.
+
+[27-11-2019 22:23:49] - PersonRepository created.
+[27-11-2019 22:23:49] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:49] - coreContext created.
+[27-11-2019 22:23:49] - {}
+
+[27-11-2019 22:23:49] - logger created.
+
+[27-11-2019 22:23:49] - PersonRepository created.
+[27-11-2019 22:23:49] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:49] - PersonDomainEntity created.
+[27-11-2019 22:23:49] - "32335fd2-64ef-4b8a-bc2f-e4b445bd523f"
+
+[27-11-2019 22:23:49] - PersonRepository created.
+[27-11-2019 22:23:49] - "Nested-577c56d7-f79f-44c6-b776-c2c00d95bd6f"
+
+[27-11-2019 22:23:49] - PersonDomainEntity created.
+[27-11-2019 22:23:49] - "Nested-577c56d7-f79f-44c6-b776-c2c00d95bd6f"
+
+[27-11-2019 22:23:49] - PersonDomainEntity created.
+[27-11-2019 22:23:49] - "Nested-577c56d7-f79f-44c6-b776-c2c00d95bd6f"
+
+[27-11-2019 22:23:49] - AccountRepository created.
+[27-11-2019 22:23:49] - "Nested-577c56d7-f79f-44c6-b776-c2c00d95bd6f"
+
+[27-11-2019 22:23:51] - coreContext created.
+[27-11-2019 22:23:51] - {}
+
+[27-11-2019 22:23:51] - logger created.
+
+[27-11-2019 22:23:51] - PersonManager created.
+[27-11-2019 22:23:51] - "Nested-7a5210c5-811c-436e-843f-bce73561da3f"
+
+[27-11-2019 22:23:51] - AccountManager created.
+[27-11-2019 22:23:51] - "Nested-7a5210c5-811c-436e-843f-bce73561da3f"
+
+[27-11-2019 22:25:59] - coreContext created.
+[27-11-2019 22:25:59] - {}
+
+[27-11-2019 22:25:59] - logger created.
+
+[27-11-2019 22:25:59] - PersonManager created.
+[27-11-2019 22:25:59] - "Nested-70047c4b-3bc1-44cf-9687-85fa6a298934"
+
+[27-11-2019 22:25:59] - AccountManager created.
+[27-11-2019 22:25:59] - "Nested-70047c4b-3bc1-44cf-9687-85fa6a298934"
+
+[27-11-2019 22:26:04] - coreContext created.
+[27-11-2019 22:26:04] - {}
+
+[27-11-2019 22:26:04] - logger created.
+
+[27-11-2019 22:26:04] - PersonManager created.
+[27-11-2019 22:26:04] - "Nested-517ff389-c4b5-476b-b554-20871d17e322"
+
+[27-11-2019 22:26:04] - AccountManager created.
+[27-11-2019 22:26:04] - "Nested-517ff389-c4b5-476b-b554-20871d17e322"
+
+[27-11-2019 22:26:04] - AccountManager created.
+[27-11-2019 22:26:04] - "Nested-517ff389-c4b5-476b-b554-20871d17e322"
+
+[27-11-2019 22:26:04] - coreContext created.
+[27-11-2019 22:26:04] - {}
+
+[27-11-2019 22:26:04] - logger created.
+
+[27-11-2019 22:26:04] - PersonManager created.
+[27-11-2019 22:26:04] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:04] - AccountManager created.
+[27-11-2019 22:26:04] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:04] - coreContext created.
+[27-11-2019 22:26:04] - {}
+
+[27-11-2019 22:26:04] - logger created.
+
+[27-11-2019 22:26:04] - PersonManager created.
+[27-11-2019 22:26:04] - "Nested-f9fd197f-f0d5-4aea-b06b-ddb8ce88bd3f"
+
+[27-11-2019 22:26:04] - AccountManager created.
+[27-11-2019 22:26:04] - "Nested-f9fd197f-f0d5-4aea-b06b-ddb8ce88bd3f"
+
+[27-11-2019 22:26:07] - coreContext created.
+[27-11-2019 22:26:07] - {}
+
+[27-11-2019 22:26:07] - logger created.
+
+[27-11-2019 22:26:07] - PersonManager created.
+[27-11-2019 22:26:07] - "Nested-6930e7b6-1ec5-4ef5-8b69-47cc22fe03f9"
+
+[27-11-2019 22:26:07] - AccountManager created.
+[27-11-2019 22:26:07] - "Nested-6930e7b6-1ec5-4ef5-8b69-47cc22fe03f9"
+
+[27-11-2019 22:26:07] - PersonRepository created.
+[27-11-2019 22:26:07] - "Nested-6930e7b6-1ec5-4ef5-8b69-47cc22fe03f9"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-6930e7b6-1ec5-4ef5-8b69-47cc22fe03f9"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-6930e7b6-1ec5-4ef5-8b69-47cc22fe03f9"
+
+[27-11-2019 22:26:08] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:26:08] - "Db context Guid: f100c12d-7579-4989-9db1-8a3334847fc8"
+
+[27-11-2019 22:26:08] - TDbEntity inserting to context..
+[27-11-2019 22:26:08] - {"TokenId":0,"Value":"87d4aaa6fdade6ea97e930027595794c","PersonId":1,"ValidUntil":"2019-11-27T22:41:08.3509696+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:26:08.3509696+03:00","CanBeUsed":true}
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-6930e7b6-1ec5-4ef5-8b69-47cc22fe03f9"
+
+[27-11-2019 22:26:08] - coreContext created.
+[27-11-2019 22:26:08] - {}
+
+[27-11-2019 22:26:08] - logger created.
+
+[27-11-2019 22:26:08] - PersonManager created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - AccountManager created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - AccountManager created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - coreContext created.
+[27-11-2019 22:26:08] - {}
+
+[27-11-2019 22:26:08] - logger created.
+
+[27-11-2019 22:26:08] - PersonManager created.
+[27-11-2019 22:26:08] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:08] - AccountManager created.
+[27-11-2019 22:26:08] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:08] - coreContext created.
+[27-11-2019 22:26:08] - {}
+
+[27-11-2019 22:26:08] - logger created.
+
+[27-11-2019 22:26:08] - coreContext created.
+[27-11-2019 22:26:08] - {}
+
+[27-11-2019 22:26:08] - logger created.
+
+[27-11-2019 22:26:08] - coreContext created.
+[27-11-2019 22:26:08] - {}
+
+[27-11-2019 22:26:08] - logger created.
+
+[27-11-2019 22:26:08] - coreContext created.
+[27-11-2019 22:26:08] - {}
+
+[27-11-2019 22:26:08] - logger created.
+
+[27-11-2019 22:26:08] - coreContext created.
+[27-11-2019 22:26:08] - {}
+
+[27-11-2019 22:26:08] - logger created.
+
+[27-11-2019 22:26:08] - PersonRepository created.
+[27-11-2019 22:26:08] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:08] - coreContext created.
+[27-11-2019 22:26:08] - {}
+
+[27-11-2019 22:26:08] - logger created.
+
+[27-11-2019 22:26:08] - PersonRepository created.
+[27-11-2019 22:26:08] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:08] - PersonRepository created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - AccountRepository created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:08] - PersonDomainEntity created.
+[27-11-2019 22:26:08] - "Nested-494e6086-b5d5-4493-bfb2-8223fb4c4e68"
+
+[27-11-2019 22:26:10] - coreContext created.
+[27-11-2019 22:26:10] - {}
+
+[27-11-2019 22:26:10] - logger created.
+
+[27-11-2019 22:26:10] - PersonManager created.
+[27-11-2019 22:26:10] - "Nested-cf3d4201-9422-4447-a16c-99e40410841a"
+
+[27-11-2019 22:26:10] - AccountManager created.
+[27-11-2019 22:26:10] - "Nested-cf3d4201-9422-4447-a16c-99e40410841a"
+
+[27-11-2019 22:26:10] - coreContext created.
+[27-11-2019 22:26:10] - {}
+
+[27-11-2019 22:26:10] - logger created.
+
+[27-11-2019 22:26:10] - PersonManager created.
+[27-11-2019 22:26:10] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:10] - AccountManager created.
+[27-11-2019 22:26:10] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:10] - coreContext created.
+[27-11-2019 22:26:10] - {}
+
+[27-11-2019 22:26:10] - logger created.
+
+[27-11-2019 22:26:10] - coreContext created.
+[27-11-2019 22:26:10] - {}
+
+[27-11-2019 22:26:10] - logger created.
+
+[27-11-2019 22:26:10] - coreContext created.
+[27-11-2019 22:26:10] - {}
+
+[27-11-2019 22:26:10] - logger created.
+
+[27-11-2019 22:26:10] - coreContext created.
+[27-11-2019 22:26:10] - {}
+
+[27-11-2019 22:26:10] - logger created.
+
+[27-11-2019 22:26:10] - coreContext created.
+[27-11-2019 22:26:10] - {}
+
+[27-11-2019 22:26:10] - logger created.
+
+[27-11-2019 22:26:10] - PersonRepository created.
+[27-11-2019 22:26:10] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:10] - coreContext created.
+[27-11-2019 22:26:10] - {}
+
+[27-11-2019 22:26:10] - logger created.
+
+[27-11-2019 22:26:10] - PersonRepository created.
+[27-11-2019 22:26:10] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:10] - PersonDomainEntity created.
+[27-11-2019 22:26:10] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:10] - PersonRepository created.
+[27-11-2019 22:26:10] - "Nested-cf3d4201-9422-4447-a16c-99e40410841a"
+
+[27-11-2019 22:26:10] - PersonDomainEntity created.
+[27-11-2019 22:26:10] - "Nested-cf3d4201-9422-4447-a16c-99e40410841a"
+
+[27-11-2019 22:26:10] - PersonDomainEntity created.
+[27-11-2019 22:26:10] - "Nested-cf3d4201-9422-4447-a16c-99e40410841a"
+
+[27-11-2019 22:26:10] - AccountRepository created.
+[27-11-2019 22:26:10] - "Nested-cf3d4201-9422-4447-a16c-99e40410841a"
+
+[27-11-2019 22:26:11] - coreContext created.
+[27-11-2019 22:26:11] - {}
+
+[27-11-2019 22:26:12] - logger created.
+
+[27-11-2019 22:26:12] - PersonManager created.
+[27-11-2019 22:26:12] - "Nested-037eeb21-6892-4406-bd6b-c9881ae15594"
+
+[27-11-2019 22:26:12] - AccountManager created.
+[27-11-2019 22:26:12] - "Nested-037eeb21-6892-4406-bd6b-c9881ae15594"
+
+[27-11-2019 22:26:17] - coreContext created.
+[27-11-2019 22:26:17] - {}
+
+[27-11-2019 22:26:17] - logger created.
+
+[27-11-2019 22:26:17] - PersonManager created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - AccountManager created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - AccountManager created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - coreContext created.
+[27-11-2019 22:26:17] - {}
+
+[27-11-2019 22:26:17] - logger created.
+
+[27-11-2019 22:26:17] - PersonManager created.
+[27-11-2019 22:26:17] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:17] - AccountManager created.
+[27-11-2019 22:26:17] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:17] - coreContext created.
+[27-11-2019 22:26:17] - {}
+
+[27-11-2019 22:26:17] - logger created.
+
+[27-11-2019 22:26:17] - coreContext created.
+[27-11-2019 22:26:17] - {}
+
+[27-11-2019 22:26:17] - logger created.
+
+[27-11-2019 22:26:17] - coreContext created.
+[27-11-2019 22:26:17] - {}
+
+[27-11-2019 22:26:17] - logger created.
+
+[27-11-2019 22:26:17] - coreContext created.
+[27-11-2019 22:26:17] - {}
+
+[27-11-2019 22:26:17] - logger created.
+
+[27-11-2019 22:26:17] - coreContext created.
+[27-11-2019 22:26:17] - {}
+
+[27-11-2019 22:26:17] - logger created.
+
+[27-11-2019 22:26:17] - PersonRepository created.
+[27-11-2019 22:26:17] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:17] - coreContext created.
+[27-11-2019 22:26:17] - {}
+
+[27-11-2019 22:26:17] - logger created.
+
+[27-11-2019 22:26:17] - PersonRepository created.
+[27-11-2019 22:26:17] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:17] - PersonRepository created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - AccountRepository created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:17] - PersonDomainEntity created.
+[27-11-2019 22:26:17] - "Nested-e32f3294-cab1-4488-95f1-250877981523"
+
+[27-11-2019 22:26:19] - coreContext created.
+[27-11-2019 22:26:19] - {}
+
+[27-11-2019 22:26:20] - logger created.
+
+[27-11-2019 22:26:20] - PersonManager created.
+[27-11-2019 22:26:20] - "Nested-e4a50df7-d43c-44cd-997e-d0cb3b16ab7c"
+
+[27-11-2019 22:26:20] - AccountManager created.
+[27-11-2019 22:26:20] - "Nested-e4a50df7-d43c-44cd-997e-d0cb3b16ab7c"
+
+[27-11-2019 22:26:20] - coreContext created.
+[27-11-2019 22:26:20] - {}
+
+[27-11-2019 22:26:20] - logger created.
+
+[27-11-2019 22:26:20] - PersonManager created.
+[27-11-2019 22:26:20] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:20] - AccountManager created.
+[27-11-2019 22:26:20] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:20] - coreContext created.
+[27-11-2019 22:26:20] - {}
+
+[27-11-2019 22:26:20] - logger created.
+
+[27-11-2019 22:26:20] - coreContext created.
+[27-11-2019 22:26:20] - {}
+
+[27-11-2019 22:26:20] - logger created.
+
+[27-11-2019 22:26:20] - coreContext created.
+[27-11-2019 22:26:20] - {}
+
+[27-11-2019 22:26:20] - logger created.
+
+[27-11-2019 22:26:20] - coreContext created.
+[27-11-2019 22:26:20] - {}
+
+[27-11-2019 22:26:20] - logger created.
+
+[27-11-2019 22:26:20] - coreContext created.
+[27-11-2019 22:26:20] - {}
+
+[27-11-2019 22:26:20] - logger created.
+
+[27-11-2019 22:26:20] - PersonRepository created.
+[27-11-2019 22:26:20] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:20] - coreContext created.
+[27-11-2019 22:26:20] - {}
+
+[27-11-2019 22:26:20] - logger created.
+
+[27-11-2019 22:26:20] - PersonRepository created.
+[27-11-2019 22:26:20] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:20] - PersonDomainEntity created.
+[27-11-2019 22:26:20] - "f2325a3a-7042-4100-9ac6-64ab73e3c228"
+
+[27-11-2019 22:26:20] - PersonRepository created.
+[27-11-2019 22:26:20] - "Nested-e4a50df7-d43c-44cd-997e-d0cb3b16ab7c"
+
+[27-11-2019 22:26:20] - PersonDomainEntity created.
+[27-11-2019 22:26:20] - "Nested-e4a50df7-d43c-44cd-997e-d0cb3b16ab7c"
+
+[27-11-2019 22:26:20] - PersonDomainEntity created.
+[27-11-2019 22:26:20] - "Nested-e4a50df7-d43c-44cd-997e-d0cb3b16ab7c"
+
+[27-11-2019 22:26:20] - AccountRepository created.
+[27-11-2019 22:26:20] - "Nested-e4a50df7-d43c-44cd-997e-d0cb3b16ab7c"
+
+[27-11-2019 22:27:03] - coreContext created.
+[27-11-2019 22:27:03] - {}
+
+[27-11-2019 22:27:03] - logger created.
+
+[27-11-2019 22:27:03] - PersonManager created.
+[27-11-2019 22:27:03] - "Nested-85b18015-d048-4d29-aadb-7dbf70ef37ca"
+
+[27-11-2019 22:27:03] - AccountManager created.
+[27-11-2019 22:27:03] - "Nested-85b18015-d048-4d29-aadb-7dbf70ef37ca"
+
+[27-11-2019 22:27:03] - coreContext created.
+[27-11-2019 22:27:03] - {}
+
+[27-11-2019 22:27:03] - logger created.
+
+[27-11-2019 22:27:03] - PersonManager created.
+[27-11-2019 22:27:03] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:03] - AccountManager created.
+[27-11-2019 22:27:03] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:04] - coreContext created.
+[27-11-2019 22:27:04] - {}
+
+[27-11-2019 22:27:04] - logger created.
+
+[27-11-2019 22:27:04] - PersonManager created.
+[27-11-2019 22:27:04] - "Nested-6be9b151-ac8c-40f6-934f-1777f6ff26ab"
+
+[27-11-2019 22:27:04] - AccountManager created.
+[27-11-2019 22:27:04] - "Nested-6be9b151-ac8c-40f6-934f-1777f6ff26ab"
+
+[27-11-2019 22:27:06] - coreContext created.
+[27-11-2019 22:27:06] - {}
+
+[27-11-2019 22:27:06] - logger created.
+
+[27-11-2019 22:27:06] - PersonManager created.
+[27-11-2019 22:27:06] - "Nested-dee930dc-0ba6-4d46-9c1c-e863b443e215"
+
+[27-11-2019 22:27:06] - AccountManager created.
+[27-11-2019 22:27:06] - "Nested-dee930dc-0ba6-4d46-9c1c-e863b443e215"
+
+[27-11-2019 22:27:06] - PersonRepository created.
+[27-11-2019 22:27:06] - "Nested-dee930dc-0ba6-4d46-9c1c-e863b443e215"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-dee930dc-0ba6-4d46-9c1c-e863b443e215"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-dee930dc-0ba6-4d46-9c1c-e863b443e215"
+
+[27-11-2019 22:27:07] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:27:07] - "Db context Guid: 5d576448-57cf-4b7b-bfff-67fe19acf19d"
+
+[27-11-2019 22:27:07] - TDbEntity inserting to context..
+[27-11-2019 22:27:07] - {"TokenId":0,"Value":"d11f7378c0179dd4528f26b40adf1f20","PersonId":1,"ValidUntil":"2019-11-27T22:42:07.2730698+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:27:07.2730698+03:00","CanBeUsed":true}
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-dee930dc-0ba6-4d46-9c1c-e863b443e215"
+
+[27-11-2019 22:27:07] - coreContext created.
+[27-11-2019 22:27:07] - {}
+
+[27-11-2019 22:27:07] - logger created.
+
+[27-11-2019 22:27:07] - PersonManager created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - AccountManager created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - AccountManager created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - coreContext created.
+[27-11-2019 22:27:07] - {}
+
+[27-11-2019 22:27:07] - logger created.
+
+[27-11-2019 22:27:07] - PersonManager created.
+[27-11-2019 22:27:07] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:07] - AccountManager created.
+[27-11-2019 22:27:07] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:07] - coreContext created.
+[27-11-2019 22:27:07] - {}
+
+[27-11-2019 22:27:07] - logger created.
+
+[27-11-2019 22:27:07] - coreContext created.
+[27-11-2019 22:27:07] - {}
+
+[27-11-2019 22:27:07] - logger created.
+
+[27-11-2019 22:27:07] - coreContext created.
+[27-11-2019 22:27:07] - {}
+
+[27-11-2019 22:27:07] - logger created.
+
+[27-11-2019 22:27:07] - coreContext created.
+[27-11-2019 22:27:07] - {}
+
+[27-11-2019 22:27:07] - logger created.
+
+[27-11-2019 22:27:07] - coreContext created.
+[27-11-2019 22:27:07] - {}
+
+[27-11-2019 22:27:07] - logger created.
+
+[27-11-2019 22:27:07] - PersonRepository created.
+[27-11-2019 22:27:07] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:07] - coreContext created.
+[27-11-2019 22:27:07] - {}
+
+[27-11-2019 22:27:07] - logger created.
+
+[27-11-2019 22:27:07] - PersonRepository created.
+[27-11-2019 22:27:07] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:07] - PersonRepository created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - AccountRepository created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:07] - PersonDomainEntity created.
+[27-11-2019 22:27:07] - "Nested-18528e17-e658-4843-b812-0dd2e72675ef"
+
+[27-11-2019 22:27:09] - coreContext created.
+[27-11-2019 22:27:09] - {}
+
+[27-11-2019 22:27:09] - logger created.
+
+[27-11-2019 22:27:09] - PersonManager created.
+[27-11-2019 22:27:09] - "Nested-8527f776-f580-43f8-814a-2ded6b9ff6d5"
+
+[27-11-2019 22:27:09] - AccountManager created.
+[27-11-2019 22:27:09] - "Nested-8527f776-f580-43f8-814a-2ded6b9ff6d5"
+
+[27-11-2019 22:27:09] - coreContext created.
+[27-11-2019 22:27:09] - {}
+
+[27-11-2019 22:27:09] - logger created.
+
+[27-11-2019 22:27:09] - PersonManager created.
+[27-11-2019 22:27:09] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:09] - AccountManager created.
+[27-11-2019 22:27:09] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:09] - coreContext created.
+[27-11-2019 22:27:09] - {}
+
+[27-11-2019 22:27:09] - logger created.
+
+[27-11-2019 22:27:09] - coreContext created.
+[27-11-2019 22:27:09] - {}
+
+[27-11-2019 22:27:09] - logger created.
+
+[27-11-2019 22:27:09] - coreContext created.
+[27-11-2019 22:27:09] - {}
+
+[27-11-2019 22:27:09] - logger created.
+
+[27-11-2019 22:27:09] - coreContext created.
+[27-11-2019 22:27:09] - {}
+
+[27-11-2019 22:27:09] - logger created.
+
+[27-11-2019 22:27:09] - coreContext created.
+[27-11-2019 22:27:09] - {}
+
+[27-11-2019 22:27:09] - logger created.
+
+[27-11-2019 22:27:09] - PersonRepository created.
+[27-11-2019 22:27:09] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:09] - coreContext created.
+[27-11-2019 22:27:09] - {}
+
+[27-11-2019 22:27:09] - logger created.
+
+[27-11-2019 22:27:09] - PersonRepository created.
+[27-11-2019 22:27:09] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:09] - PersonDomainEntity created.
+[27-11-2019 22:27:09] - "bfb7c3e5-4821-4279-b2ce-9e49203ea1a5"
+
+[27-11-2019 22:27:09] - PersonRepository created.
+[27-11-2019 22:27:09] - "Nested-8527f776-f580-43f8-814a-2ded6b9ff6d5"
+
+[27-11-2019 22:27:09] - PersonDomainEntity created.
+[27-11-2019 22:27:09] - "Nested-8527f776-f580-43f8-814a-2ded6b9ff6d5"
+
+[27-11-2019 22:27:09] - PersonDomainEntity created.
+[27-11-2019 22:27:09] - "Nested-8527f776-f580-43f8-814a-2ded6b9ff6d5"
+
+[27-11-2019 22:27:09] - AccountRepository created.
+[27-11-2019 22:27:09] - "Nested-8527f776-f580-43f8-814a-2ded6b9ff6d5"
+
+[27-11-2019 22:27:10] - coreContext created.
+[27-11-2019 22:27:10] - {}
+
+[27-11-2019 22:27:10] - logger created.
+
+[27-11-2019 22:27:10] - PersonManager created.
+[27-11-2019 22:27:10] - "Nested-9dc1712d-a56c-4927-9877-189d5c9ad7cd"
+
+[27-11-2019 22:27:10] - AccountManager created.
+[27-11-2019 22:27:10] - "Nested-9dc1712d-a56c-4927-9877-189d5c9ad7cd"
+
+[27-11-2019 22:29:20] - coreContext created.
+[27-11-2019 22:29:20] - {}
+
+[27-11-2019 22:29:20] - logger created.
+
+[27-11-2019 22:29:20] - PersonManager created.
+[27-11-2019 22:29:20] - "Nested-3a123824-00a4-4257-88fc-523d863c70c0"
+
+[27-11-2019 22:29:20] - AccountManager created.
+[27-11-2019 22:29:20] - "Nested-3a123824-00a4-4257-88fc-523d863c70c0"
+
+[27-11-2019 22:29:21] - AccountManager created.
+[27-11-2019 22:29:21] - "Nested-3a123824-00a4-4257-88fc-523d863c70c0"
+
+[27-11-2019 22:29:21] - coreContext created.
+[27-11-2019 22:29:21] - {}
+
+[27-11-2019 22:29:21] - logger created.
+
+[27-11-2019 22:29:21] - PersonManager created.
+[27-11-2019 22:29:21] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:21] - AccountManager created.
+[27-11-2019 22:29:21] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:21] - coreContext created.
+[27-11-2019 22:29:21] - {}
+
+[27-11-2019 22:29:21] - logger created.
+
+[27-11-2019 22:29:21] - PersonManager created.
+[27-11-2019 22:29:21] - "Nested-3f155574-e7ca-4d6c-b4de-f954d5da69bd"
+
+[27-11-2019 22:29:21] - AccountManager created.
+[27-11-2019 22:29:21] - "Nested-3f155574-e7ca-4d6c-b4de-f954d5da69bd"
+
+[27-11-2019 22:29:23] - coreContext created.
+[27-11-2019 22:29:23] - {}
+
+[27-11-2019 22:29:23] - logger created.
+
+[27-11-2019 22:29:23] - PersonManager created.
+[27-11-2019 22:29:23] - "Nested-c936cafa-c8f1-4413-84f6-563ac0443f5b"
+
+[27-11-2019 22:29:23] - AccountManager created.
+[27-11-2019 22:29:23] - "Nested-c936cafa-c8f1-4413-84f6-563ac0443f5b"
+
+[27-11-2019 22:29:23] - PersonRepository created.
+[27-11-2019 22:29:23] - "Nested-c936cafa-c8f1-4413-84f6-563ac0443f5b"
+
+[27-11-2019 22:29:24] - PersonDomainEntity created.
+[27-11-2019 22:29:24] - "Nested-c936cafa-c8f1-4413-84f6-563ac0443f5b"
+
+[27-11-2019 22:29:24] - PersonDomainEntity created.
+[27-11-2019 22:29:24] - "Nested-c936cafa-c8f1-4413-84f6-563ac0443f5b"
+
+[27-11-2019 22:29:25] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:29:25] - "Db context Guid: aa7f9fde-c65b-46b6-ab54-e0bd15f607d6"
+
+[27-11-2019 22:29:25] - TDbEntity inserting to context..
+[27-11-2019 22:29:25] - {"TokenId":0,"Value":"64e95754b861495b45535df1a1eb1295","PersonId":1,"ValidUntil":"2019-11-27T22:44:25.1275206+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:29:25.1275206+03:00","CanBeUsed":true}
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-c936cafa-c8f1-4413-84f6-563ac0443f5b"
+
+[27-11-2019 22:29:25] - coreContext created.
+[27-11-2019 22:29:25] - {}
+
+[27-11-2019 22:29:25] - logger created.
+
+[27-11-2019 22:29:25] - PersonManager created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - AccountManager created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - AccountManager created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - coreContext created.
+[27-11-2019 22:29:25] - {}
+
+[27-11-2019 22:29:25] - logger created.
+
+[27-11-2019 22:29:25] - PersonManager created.
+[27-11-2019 22:29:25] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:25] - AccountManager created.
+[27-11-2019 22:29:25] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:25] - coreContext created.
+[27-11-2019 22:29:25] - {}
+
+[27-11-2019 22:29:25] - logger created.
+
+[27-11-2019 22:29:25] - coreContext created.
+[27-11-2019 22:29:25] - {}
+
+[27-11-2019 22:29:25] - logger created.
+
+[27-11-2019 22:29:25] - coreContext created.
+[27-11-2019 22:29:25] - {}
+
+[27-11-2019 22:29:25] - logger created.
+
+[27-11-2019 22:29:25] - coreContext created.
+[27-11-2019 22:29:25] - {}
+
+[27-11-2019 22:29:25] - logger created.
+
+[27-11-2019 22:29:25] - coreContext created.
+[27-11-2019 22:29:25] - {}
+
+[27-11-2019 22:29:25] - logger created.
+
+[27-11-2019 22:29:25] - PersonRepository created.
+[27-11-2019 22:29:25] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:25] - coreContext created.
+[27-11-2019 22:29:25] - {}
+
+[27-11-2019 22:29:25] - logger created.
+
+[27-11-2019 22:29:25] - PersonRepository created.
+[27-11-2019 22:29:25] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:25] - PersonRepository created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - AccountRepository created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:25] - PersonDomainEntity created.
+[27-11-2019 22:29:25] - "Nested-ca44d124-52fd-4f44-968b-644e195b0379"
+
+[27-11-2019 22:29:28] - coreContext created.
+[27-11-2019 22:29:28] - {}
+
+[27-11-2019 22:29:28] - logger created.
+
+[27-11-2019 22:29:28] - PersonManager created.
+[27-11-2019 22:29:28] - "Nested-01771f9e-6567-449b-9e07-fe5387456948"
+
+[27-11-2019 22:29:28] - AccountManager created.
+[27-11-2019 22:29:28] - "Nested-01771f9e-6567-449b-9e07-fe5387456948"
+
+[27-11-2019 22:29:28] - coreContext created.
+[27-11-2019 22:29:28] - {}
+
+[27-11-2019 22:29:28] - logger created.
+
+[27-11-2019 22:29:28] - PersonManager created.
+[27-11-2019 22:29:28] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:28] - AccountManager created.
+[27-11-2019 22:29:28] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:28] - coreContext created.
+[27-11-2019 22:29:28] - {}
+
+[27-11-2019 22:29:28] - logger created.
+
+[27-11-2019 22:29:28] - coreContext created.
+[27-11-2019 22:29:28] - {}
+
+[27-11-2019 22:29:28] - logger created.
+
+[27-11-2019 22:29:28] - coreContext created.
+[27-11-2019 22:29:28] - {}
+
+[27-11-2019 22:29:28] - logger created.
+
+[27-11-2019 22:29:28] - coreContext created.
+[27-11-2019 22:29:28] - {}
+
+[27-11-2019 22:29:28] - logger created.
+
+[27-11-2019 22:29:28] - coreContext created.
+[27-11-2019 22:29:28] - {}
+
+[27-11-2019 22:29:28] - logger created.
+
+[27-11-2019 22:29:28] - PersonRepository created.
+[27-11-2019 22:29:28] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:28] - coreContext created.
+[27-11-2019 22:29:28] - {}
+
+[27-11-2019 22:29:28] - logger created.
+
+[27-11-2019 22:29:28] - PersonRepository created.
+[27-11-2019 22:29:28] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:28] - PersonDomainEntity created.
+[27-11-2019 22:29:28] - "2eb6c6b8-89c0-490a-ace0-0f1a469f72dd"
+
+[27-11-2019 22:29:28] - PersonRepository created.
+[27-11-2019 22:29:28] - "Nested-01771f9e-6567-449b-9e07-fe5387456948"
+
+[27-11-2019 22:29:28] - PersonDomainEntity created.
+[27-11-2019 22:29:28] - "Nested-01771f9e-6567-449b-9e07-fe5387456948"
+
+[27-11-2019 22:29:28] - PersonDomainEntity created.
+[27-11-2019 22:29:28] - "Nested-01771f9e-6567-449b-9e07-fe5387456948"
+
+[27-11-2019 22:29:28] - AccountRepository created.
+[27-11-2019 22:29:28] - "Nested-01771f9e-6567-449b-9e07-fe5387456948"
+
+[27-11-2019 22:29:29] - coreContext created.
+[27-11-2019 22:29:29] - {}
+
+[27-11-2019 22:29:29] - logger created.
+
+[27-11-2019 22:29:29] - PersonManager created.
+[27-11-2019 22:29:29] - "Nested-a7b25e58-9e44-47d9-82cc-69a70440d983"
+
+[27-11-2019 22:29:29] - AccountManager created.
+[27-11-2019 22:29:29] - "Nested-a7b25e58-9e44-47d9-82cc-69a70440d983"
+
+[27-11-2019 22:29:35] - coreContext created.
+[27-11-2019 22:29:35] - {}
+
+[27-11-2019 22:29:35] - logger created.
+
+[27-11-2019 22:29:35] - PersonManager created.
+[27-11-2019 22:29:35] - "Nested-d914d0b8-5098-44a7-9b8e-b1bc987358f0"
+
+[27-11-2019 22:29:35] - AccountManager created.
+[27-11-2019 22:29:35] - "Nested-d914d0b8-5098-44a7-9b8e-b1bc987358f0"
+
+[27-11-2019 22:30:29] - coreContext created.
+[27-11-2019 22:30:29] - {}
+
+[27-11-2019 22:30:29] - logger created.
+
+[27-11-2019 22:30:29] - PersonManager created.
+[27-11-2019 22:30:29] - "Nested-7e390f5b-95b8-4b38-bf40-14dfc53718a1"
+
+[27-11-2019 22:30:29] - AccountManager created.
+[27-11-2019 22:30:29] - "Nested-7e390f5b-95b8-4b38-bf40-14dfc53718a1"
+
+[27-11-2019 22:30:31] - coreContext created.
+[27-11-2019 22:30:31] - {}
+
+[27-11-2019 22:30:31] - logger created.
+
+[27-11-2019 22:30:31] - PersonManager created.
+[27-11-2019 22:30:31] - "Nested-85d56d75-8d84-4ac0-b8f9-eb51cdda2ff2"
+
+[27-11-2019 22:30:31] - AccountManager created.
+[27-11-2019 22:30:31] - "Nested-85d56d75-8d84-4ac0-b8f9-eb51cdda2ff2"
+
+[27-11-2019 22:33:54] - coreContext created.
+[27-11-2019 22:33:54] - {}
+
+[27-11-2019 22:33:54] - logger created.
+
+[27-11-2019 22:33:54] - PersonManager created.
+[27-11-2019 22:33:54] - "Nested-0eafceae-4950-42fe-bc6a-fe1b221fdaf7"
+
+[27-11-2019 22:33:54] - AccountManager created.
+[27-11-2019 22:33:54] - "Nested-0eafceae-4950-42fe-bc6a-fe1b221fdaf7"
+
+[27-11-2019 22:33:55] - AccountManager created.
+[27-11-2019 22:33:55] - "Nested-0eafceae-4950-42fe-bc6a-fe1b221fdaf7"
+
+[27-11-2019 22:33:55] - coreContext created.
+[27-11-2019 22:33:55] - {}
+
+[27-11-2019 22:33:55] - logger created.
+
+[27-11-2019 22:33:55] - PersonManager created.
+[27-11-2019 22:33:55] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:33:55] - AccountManager created.
+[27-11-2019 22:33:55] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:33:55] - coreContext created.
+[27-11-2019 22:33:55] - {}
+
+[27-11-2019 22:33:55] - logger created.
+
+[27-11-2019 22:33:55] - PersonManager created.
+[27-11-2019 22:33:55] - "Nested-096877b2-b736-403a-b824-18159e5fa7cf"
+
+[27-11-2019 22:33:55] - AccountManager created.
+[27-11-2019 22:33:55] - "Nested-096877b2-b736-403a-b824-18159e5fa7cf"
+
+[27-11-2019 22:33:57] - coreContext created.
+[27-11-2019 22:33:57] - {}
+
+[27-11-2019 22:33:57] - logger created.
+
+[27-11-2019 22:33:57] - PersonManager created.
+[27-11-2019 22:33:57] - "Nested-3da4b9fd-70e1-48f7-bb3f-2252fbc2a195"
+
+[27-11-2019 22:33:57] - AccountManager created.
+[27-11-2019 22:33:57] - "Nested-3da4b9fd-70e1-48f7-bb3f-2252fbc2a195"
+
+[27-11-2019 22:33:57] - PersonRepository created.
+[27-11-2019 22:33:57] - "Nested-3da4b9fd-70e1-48f7-bb3f-2252fbc2a195"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-3da4b9fd-70e1-48f7-bb3f-2252fbc2a195"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-3da4b9fd-70e1-48f7-bb3f-2252fbc2a195"
+
+[27-11-2019 22:33:58] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:33:58] - "Db context Guid: f713da5b-30aa-4da0-9adf-f80e076d2eae"
+
+[27-11-2019 22:33:58] - TDbEntity inserting to context..
+[27-11-2019 22:33:58] - {"TokenId":0,"Value":"18ab4e358c5d58544a53af3914fd28dc","PersonId":1,"ValidUntil":"2019-11-27T22:48:58.3182001+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:33:58.3182001+03:00","CanBeUsed":true}
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-3da4b9fd-70e1-48f7-bb3f-2252fbc2a195"
+
+[27-11-2019 22:33:58] - coreContext created.
+[27-11-2019 22:33:58] - {}
+
+[27-11-2019 22:33:58] - logger created.
+
+[27-11-2019 22:33:58] - PersonManager created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - AccountManager created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - AccountManager created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - coreContext created.
+[27-11-2019 22:33:58] - {}
+
+[27-11-2019 22:33:58] - logger created.
+
+[27-11-2019 22:33:58] - PersonManager created.
+[27-11-2019 22:33:58] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:33:58] - AccountManager created.
+[27-11-2019 22:33:58] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:33:58] - coreContext created.
+[27-11-2019 22:33:58] - {}
+
+[27-11-2019 22:33:58] - logger created.
+
+[27-11-2019 22:33:58] - coreContext created.
+[27-11-2019 22:33:58] - {}
+
+[27-11-2019 22:33:58] - logger created.
+
+[27-11-2019 22:33:58] - coreContext created.
+[27-11-2019 22:33:58] - {}
+
+[27-11-2019 22:33:58] - logger created.
+
+[27-11-2019 22:33:58] - coreContext created.
+[27-11-2019 22:33:58] - {}
+
+[27-11-2019 22:33:58] - logger created.
+
+[27-11-2019 22:33:58] - coreContext created.
+[27-11-2019 22:33:58] - {}
+
+[27-11-2019 22:33:58] - logger created.
+
+[27-11-2019 22:33:58] - PersonRepository created.
+[27-11-2019 22:33:58] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:33:58] - coreContext created.
+[27-11-2019 22:33:58] - {}
+
+[27-11-2019 22:33:58] - logger created.
+
+[27-11-2019 22:33:58] - PersonRepository created.
+[27-11-2019 22:33:58] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:33:58] - PersonRepository created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - AccountRepository created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:33:58] - PersonDomainEntity created.
+[27-11-2019 22:33:58] - "Nested-b535441f-0ceb-4e17-b909-7ececdf95546"
+
+[27-11-2019 22:34:00] - coreContext created.
+[27-11-2019 22:34:00] - {}
+
+[27-11-2019 22:34:00] - logger created.
+
+[27-11-2019 22:34:00] - PersonManager created.
+[27-11-2019 22:34:00] - "Nested-7eff2dc7-711a-41b0-9713-5d5843a4c08e"
+
+[27-11-2019 22:34:00] - AccountManager created.
+[27-11-2019 22:34:00] - "Nested-7eff2dc7-711a-41b0-9713-5d5843a4c08e"
+
+[27-11-2019 22:34:00] - coreContext created.
+[27-11-2019 22:34:00] - {}
+
+[27-11-2019 22:34:00] - logger created.
+
+[27-11-2019 22:34:00] - PersonManager created.
+[27-11-2019 22:34:00] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:34:00] - AccountManager created.
+[27-11-2019 22:34:00] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:34:00] - coreContext created.
+[27-11-2019 22:34:00] - {}
+
+[27-11-2019 22:34:00] - logger created.
+
+[27-11-2019 22:34:00] - coreContext created.
+[27-11-2019 22:34:00] - {}
+
+[27-11-2019 22:34:00] - logger created.
+
+[27-11-2019 22:34:00] - coreContext created.
+[27-11-2019 22:34:00] - {}
+
+[27-11-2019 22:34:00] - logger created.
+
+[27-11-2019 22:34:00] - coreContext created.
+[27-11-2019 22:34:00] - {}
+
+[27-11-2019 22:34:00] - logger created.
+
+[27-11-2019 22:34:00] - coreContext created.
+[27-11-2019 22:34:00] - {}
+
+[27-11-2019 22:34:00] - logger created.
+
+[27-11-2019 22:34:00] - PersonRepository created.
+[27-11-2019 22:34:00] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:34:00] - coreContext created.
+[27-11-2019 22:34:00] - {}
+
+[27-11-2019 22:34:00] - logger created.
+
+[27-11-2019 22:34:00] - PersonRepository created.
+[27-11-2019 22:34:00] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:34:00] - PersonDomainEntity created.
+[27-11-2019 22:34:00] - "5072a052-c2e0-48de-9204-8fb6405ac550"
+
+[27-11-2019 22:34:00] - PersonRepository created.
+[27-11-2019 22:34:00] - "Nested-7eff2dc7-711a-41b0-9713-5d5843a4c08e"
+
+[27-11-2019 22:34:00] - PersonDomainEntity created.
+[27-11-2019 22:34:00] - "Nested-7eff2dc7-711a-41b0-9713-5d5843a4c08e"
+
+[27-11-2019 22:34:00] - PersonDomainEntity created.
+[27-11-2019 22:34:00] - "Nested-7eff2dc7-711a-41b0-9713-5d5843a4c08e"
+
+[27-11-2019 22:34:00] - AccountRepository created.
+[27-11-2019 22:34:00] - "Nested-7eff2dc7-711a-41b0-9713-5d5843a4c08e"
+
+[27-11-2019 22:34:01] - coreContext created.
+[27-11-2019 22:34:01] - {}
+
+[27-11-2019 22:34:01] - logger created.
+
+[27-11-2019 22:34:01] - PersonManager created.
+[27-11-2019 22:34:01] - "Nested-8c1d0e09-5449-4a0e-a756-67ce74a502a8"
+
+[27-11-2019 22:34:01] - AccountManager created.
+[27-11-2019 22:34:01] - "Nested-8c1d0e09-5449-4a0e-a756-67ce74a502a8"
+
+[27-11-2019 22:36:29] - coreContext created.
+[27-11-2019 22:36:29] - {}
+
+[27-11-2019 22:36:29] - logger created.
+
+[27-11-2019 22:36:29] - PersonManager created.
+[27-11-2019 22:36:29] - "Nested-dd507edd-b31f-4f49-b568-6d0e4bff3875"
+
+[27-11-2019 22:36:29] - AccountManager created.
+[27-11-2019 22:36:29] - "Nested-dd507edd-b31f-4f49-b568-6d0e4bff3875"
+
+[27-11-2019 22:36:29] - AccountManager created.
+[27-11-2019 22:36:29] - "Nested-dd507edd-b31f-4f49-b568-6d0e4bff3875"
+
+[27-11-2019 22:36:29] - coreContext created.
+[27-11-2019 22:36:29] - {}
+
+[27-11-2019 22:36:29] - logger created.
+
+[27-11-2019 22:36:29] - PersonManager created.
+[27-11-2019 22:36:29] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:29] - AccountManager created.
+[27-11-2019 22:36:29] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:29] - coreContext created.
+[27-11-2019 22:36:29] - {}
+
+[27-11-2019 22:36:29] - logger created.
+
+[27-11-2019 22:36:29] - PersonManager created.
+[27-11-2019 22:36:29] - "Nested-8b817758-6d4c-4441-9ad5-8fa9378f0dfa"
+
+[27-11-2019 22:36:29] - AccountManager created.
+[27-11-2019 22:36:29] - "Nested-8b817758-6d4c-4441-9ad5-8fa9378f0dfa"
+
+[27-11-2019 22:36:33] - coreContext created.
+[27-11-2019 22:36:33] - {}
+
+[27-11-2019 22:36:33] - logger created.
+
+[27-11-2019 22:36:33] - PersonManager created.
+[27-11-2019 22:36:33] - "Nested-d397cbd0-d289-4c86-be1e-ded023ce4b24"
+
+[27-11-2019 22:36:33] - AccountManager created.
+[27-11-2019 22:36:33] - "Nested-d397cbd0-d289-4c86-be1e-ded023ce4b24"
+
+[27-11-2019 22:36:34] - PersonRepository created.
+[27-11-2019 22:36:34] - "Nested-d397cbd0-d289-4c86-be1e-ded023ce4b24"
+
+[27-11-2019 22:36:34] - PersonDomainEntity created.
+[27-11-2019 22:36:34] - "Nested-d397cbd0-d289-4c86-be1e-ded023ce4b24"
+
+[27-11-2019 22:36:34] - PersonDomainEntity created.
+[27-11-2019 22:36:34] - "Nested-d397cbd0-d289-4c86-be1e-ded023ce4b24"
+
+[27-11-2019 22:36:35] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:36:35] - "Db context Guid: b2d7d596-e311-4cba-8a1b-4900e937904f"
+
+[27-11-2019 22:36:35] - TDbEntity inserting to context..
+[27-11-2019 22:36:35] - {"TokenId":0,"Value":"3f016d343c3c63ad76aa640fd291703c","PersonId":1,"ValidUntil":"2019-11-27T22:51:35.1266656+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:36:35.1266656+03:00","CanBeUsed":true}
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-d397cbd0-d289-4c86-be1e-ded023ce4b24"
+
+[27-11-2019 22:36:35] - coreContext created.
+[27-11-2019 22:36:35] - {}
+
+[27-11-2019 22:36:35] - logger created.
+
+[27-11-2019 22:36:35] - PersonManager created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - AccountManager created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - AccountManager created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - coreContext created.
+[27-11-2019 22:36:35] - {}
+
+[27-11-2019 22:36:35] - logger created.
+
+[27-11-2019 22:36:35] - PersonManager created.
+[27-11-2019 22:36:35] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:35] - AccountManager created.
+[27-11-2019 22:36:35] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:35] - coreContext created.
+[27-11-2019 22:36:35] - {}
+
+[27-11-2019 22:36:35] - logger created.
+
+[27-11-2019 22:36:35] - coreContext created.
+[27-11-2019 22:36:35] - {}
+
+[27-11-2019 22:36:35] - logger created.
+
+[27-11-2019 22:36:35] - coreContext created.
+[27-11-2019 22:36:35] - {}
+
+[27-11-2019 22:36:35] - logger created.
+
+[27-11-2019 22:36:35] - coreContext created.
+[27-11-2019 22:36:35] - {}
+
+[27-11-2019 22:36:35] - logger created.
+
+[27-11-2019 22:36:35] - coreContext created.
+[27-11-2019 22:36:35] - {}
+
+[27-11-2019 22:36:35] - logger created.
+
+[27-11-2019 22:36:35] - PersonRepository created.
+[27-11-2019 22:36:35] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:35] - coreContext created.
+[27-11-2019 22:36:35] - {}
+
+[27-11-2019 22:36:35] - logger created.
+
+[27-11-2019 22:36:35] - PersonRepository created.
+[27-11-2019 22:36:35] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:35] - PersonRepository created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - AccountRepository created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:35] - PersonDomainEntity created.
+[27-11-2019 22:36:35] - "Nested-b4de12df-2d02-4423-ab78-9a4889bab507"
+
+[27-11-2019 22:36:40] - coreContext created.
+[27-11-2019 22:36:40] - {}
+
+[27-11-2019 22:36:40] - logger created.
+
+[27-11-2019 22:36:40] - PersonManager created.
+[27-11-2019 22:36:40] - "Nested-135648ae-dc5b-4530-ba85-ed995af32bad"
+
+[27-11-2019 22:36:40] - AccountManager created.
+[27-11-2019 22:36:40] - "Nested-135648ae-dc5b-4530-ba85-ed995af32bad"
+
+[27-11-2019 22:36:40] - coreContext created.
+[27-11-2019 22:36:40] - {}
+
+[27-11-2019 22:36:40] - logger created.
+
+[27-11-2019 22:36:40] - PersonManager created.
+[27-11-2019 22:36:40] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:40] - AccountManager created.
+[27-11-2019 22:36:40] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:40] - coreContext created.
+[27-11-2019 22:36:40] - {}
+
+[27-11-2019 22:36:40] - logger created.
+
+[27-11-2019 22:36:40] - coreContext created.
+[27-11-2019 22:36:40] - {}
+
+[27-11-2019 22:36:40] - logger created.
+
+[27-11-2019 22:36:40] - coreContext created.
+[27-11-2019 22:36:40] - {}
+
+[27-11-2019 22:36:40] - logger created.
+
+[27-11-2019 22:36:40] - coreContext created.
+[27-11-2019 22:36:40] - {}
+
+[27-11-2019 22:36:40] - logger created.
+
+[27-11-2019 22:36:40] - coreContext created.
+[27-11-2019 22:36:40] - {}
+
+[27-11-2019 22:36:40] - logger created.
+
+[27-11-2019 22:36:40] - PersonRepository created.
+[27-11-2019 22:36:40] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:40] - coreContext created.
+[27-11-2019 22:36:40] - {}
+
+[27-11-2019 22:36:40] - logger created.
+
+[27-11-2019 22:36:40] - PersonRepository created.
+[27-11-2019 22:36:40] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:40] - PersonDomainEntity created.
+[27-11-2019 22:36:40] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:40] - PersonRepository created.
+[27-11-2019 22:36:40] - "Nested-135648ae-dc5b-4530-ba85-ed995af32bad"
+
+[27-11-2019 22:36:40] - PersonDomainEntity created.
+[27-11-2019 22:36:40] - "Nested-135648ae-dc5b-4530-ba85-ed995af32bad"
+
+[27-11-2019 22:36:40] - PersonDomainEntity created.
+[27-11-2019 22:36:40] - "Nested-135648ae-dc5b-4530-ba85-ed995af32bad"
+
+[27-11-2019 22:36:40] - AccountRepository created.
+[27-11-2019 22:36:40] - "Nested-135648ae-dc5b-4530-ba85-ed995af32bad"
+
+[27-11-2019 22:36:42] - coreContext created.
+[27-11-2019 22:36:42] - {}
+
+[27-11-2019 22:36:42] - logger created.
+
+[27-11-2019 22:36:42] - PersonManager created.
+[27-11-2019 22:36:42] - "Nested-74d788f9-c2df-4b46-b6c1-f9478da12895"
+
+[27-11-2019 22:36:42] - AccountManager created.
+[27-11-2019 22:36:42] - "Nested-74d788f9-c2df-4b46-b6c1-f9478da12895"
+
+[27-11-2019 22:36:42] - coreContext created.
+[27-11-2019 22:36:42] - {}
+
+[27-11-2019 22:36:42] - logger created.
+
+[27-11-2019 22:36:42] - PersonManager created.
+[27-11-2019 22:36:42] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:42] - AccountManager created.
+[27-11-2019 22:36:42] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:42] - coreContext created.
+[27-11-2019 22:36:42] - {}
+
+[27-11-2019 22:36:42] - logger created.
+
+[27-11-2019 22:36:42] - coreContext created.
+[27-11-2019 22:36:42] - {}
+
+[27-11-2019 22:36:42] - logger created.
+
+[27-11-2019 22:36:42] - coreContext created.
+[27-11-2019 22:36:42] - {}
+
+[27-11-2019 22:36:42] - logger created.
+
+[27-11-2019 22:36:42] - coreContext created.
+[27-11-2019 22:36:42] - {}
+
+[27-11-2019 22:36:42] - logger created.
+
+[27-11-2019 22:36:42] - coreContext created.
+[27-11-2019 22:36:42] - {}
+
+[27-11-2019 22:36:42] - logger created.
+
+[27-11-2019 22:36:42] - PersonRepository created.
+[27-11-2019 22:36:42] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:42] - coreContext created.
+[27-11-2019 22:36:42] - {}
+
+[27-11-2019 22:36:42] - logger created.
+
+[27-11-2019 22:36:42] - PersonRepository created.
+[27-11-2019 22:36:42] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:42] - PersonDomainEntity created.
+[27-11-2019 22:36:42] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:36:42] - PersonRepository created.
+[27-11-2019 22:36:42] - "Nested-74d788f9-c2df-4b46-b6c1-f9478da12895"
+
+[27-11-2019 22:36:42] - PersonDomainEntity created.
+[27-11-2019 22:36:42] - "Nested-74d788f9-c2df-4b46-b6c1-f9478da12895"
+
+[27-11-2019 22:37:13] - coreContext created.
+[27-11-2019 22:37:13] - {}
+
+[27-11-2019 22:37:13] - logger created.
+
+[27-11-2019 22:37:13] - PersonManager created.
+[27-11-2019 22:37:13] - "Nested-459a5ca2-d1fb-4d81-b7bf-da9670b64d1f"
+
+[27-11-2019 22:37:13] - AccountManager created.
+[27-11-2019 22:37:13] - "Nested-459a5ca2-d1fb-4d81-b7bf-da9670b64d1f"
+
+[27-11-2019 22:37:13] - coreContext created.
+[27-11-2019 22:37:13] - {}
+
+[27-11-2019 22:37:13] - logger created.
+
+[27-11-2019 22:37:13] - PersonManager created.
+[27-11-2019 22:37:13] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:13] - AccountManager created.
+[27-11-2019 22:37:13] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:13] - coreContext created.
+[27-11-2019 22:37:13] - {}
+
+[27-11-2019 22:37:13] - logger created.
+
+[27-11-2019 22:37:13] - coreContext created.
+[27-11-2019 22:37:13] - {}
+
+[27-11-2019 22:37:13] - logger created.
+
+[27-11-2019 22:37:13] - coreContext created.
+[27-11-2019 22:37:13] - {}
+
+[27-11-2019 22:37:13] - logger created.
+
+[27-11-2019 22:37:13] - coreContext created.
+[27-11-2019 22:37:13] - {}
+
+[27-11-2019 22:37:13] - logger created.
+
+[27-11-2019 22:37:13] - coreContext created.
+[27-11-2019 22:37:13] - {}
+
+[27-11-2019 22:37:13] - logger created.
+
+[27-11-2019 22:37:13] - PersonRepository created.
+[27-11-2019 22:37:13] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:13] - coreContext created.
+[27-11-2019 22:37:13] - {}
+
+[27-11-2019 22:37:13] - logger created.
+
+[27-11-2019 22:37:13] - PersonRepository created.
+[27-11-2019 22:37:13] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:13] - PersonDomainEntity created.
+[27-11-2019 22:37:13] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:13] - PersonRepository created.
+[27-11-2019 22:37:13] - "Nested-459a5ca2-d1fb-4d81-b7bf-da9670b64d1f"
+
+[27-11-2019 22:37:13] - PersonDomainEntity created.
+[27-11-2019 22:37:13] - "Nested-459a5ca2-d1fb-4d81-b7bf-da9670b64d1f"
+
+[27-11-2019 22:37:28] - coreContext created.
+[27-11-2019 22:37:28] - {}
+
+[27-11-2019 22:37:28] - logger created.
+
+[27-11-2019 22:37:28] - PersonManager created.
+[27-11-2019 22:37:28] - "Nested-7dbb4eb4-8fd5-4371-be65-c070bb89b141"
+
+[27-11-2019 22:37:28] - AccountManager created.
+[27-11-2019 22:37:28] - "Nested-7dbb4eb4-8fd5-4371-be65-c070bb89b141"
+
+[27-11-2019 22:37:28] - coreContext created.
+[27-11-2019 22:37:28] - {}
+
+[27-11-2019 22:37:28] - logger created.
+
+[27-11-2019 22:37:28] - PersonManager created.
+[27-11-2019 22:37:28] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:28] - AccountManager created.
+[27-11-2019 22:37:28] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:28] - coreContext created.
+[27-11-2019 22:37:28] - {}
+
+[27-11-2019 22:37:28] - logger created.
+
+[27-11-2019 22:37:28] - coreContext created.
+[27-11-2019 22:37:28] - {}
+
+[27-11-2019 22:37:28] - logger created.
+
+[27-11-2019 22:37:28] - coreContext created.
+[27-11-2019 22:37:28] - {}
+
+[27-11-2019 22:37:28] - logger created.
+
+[27-11-2019 22:37:28] - coreContext created.
+[27-11-2019 22:37:28] - {}
+
+[27-11-2019 22:37:28] - logger created.
+
+[27-11-2019 22:37:28] - coreContext created.
+[27-11-2019 22:37:28] - {}
+
+[27-11-2019 22:37:28] - logger created.
+
+[27-11-2019 22:37:28] - PersonRepository created.
+[27-11-2019 22:37:28] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:28] - coreContext created.
+[27-11-2019 22:37:28] - {}
+
+[27-11-2019 22:37:28] - logger created.
+
+[27-11-2019 22:37:28] - PersonRepository created.
+[27-11-2019 22:37:28] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:28] - PersonDomainEntity created.
+[27-11-2019 22:37:28] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:28] - PersonRepository created.
+[27-11-2019 22:37:28] - "Nested-7dbb4eb4-8fd5-4371-be65-c070bb89b141"
+
+[27-11-2019 22:37:28] - PersonDomainEntity created.
+[27-11-2019 22:37:28] - "Nested-7dbb4eb4-8fd5-4371-be65-c070bb89b141"
+
+[27-11-2019 22:37:39] - coreContext created.
+[27-11-2019 22:37:39] - {}
+
+[27-11-2019 22:37:39] - logger created.
+
+[27-11-2019 22:37:39] - PersonManager created.
+[27-11-2019 22:37:39] - "Nested-059efb16-32c1-42c5-9267-574fa7f4f268"
+
+[27-11-2019 22:37:39] - AccountManager created.
+[27-11-2019 22:37:39] - "Nested-059efb16-32c1-42c5-9267-574fa7f4f268"
+
+[27-11-2019 22:37:39] - coreContext created.
+[27-11-2019 22:37:39] - {}
+
+[27-11-2019 22:37:39] - logger created.
+
+[27-11-2019 22:37:39] - PersonManager created.
+[27-11-2019 22:37:39] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:39] - AccountManager created.
+[27-11-2019 22:37:39] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:39] - coreContext created.
+[27-11-2019 22:37:39] - {}
+
+[27-11-2019 22:37:39] - logger created.
+
+[27-11-2019 22:37:39] - coreContext created.
+[27-11-2019 22:37:39] - {}
+
+[27-11-2019 22:37:39] - logger created.
+
+[27-11-2019 22:37:39] - coreContext created.
+[27-11-2019 22:37:39] - {}
+
+[27-11-2019 22:37:39] - logger created.
+
+[27-11-2019 22:37:39] - coreContext created.
+[27-11-2019 22:37:39] - {}
+
+[27-11-2019 22:37:39] - logger created.
+
+[27-11-2019 22:37:39] - coreContext created.
+[27-11-2019 22:37:39] - {}
+
+[27-11-2019 22:37:39] - logger created.
+
+[27-11-2019 22:37:39] - PersonRepository created.
+[27-11-2019 22:37:39] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:39] - coreContext created.
+[27-11-2019 22:37:39] - {}
+
+[27-11-2019 22:37:39] - logger created.
+
+[27-11-2019 22:37:39] - PersonRepository created.
+[27-11-2019 22:37:39] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:39] - PersonDomainEntity created.
+[27-11-2019 22:37:39] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:37:39] - PersonRepository created.
+[27-11-2019 22:37:39] - "Nested-059efb16-32c1-42c5-9267-574fa7f4f268"
+
+[27-11-2019 22:37:39] - PersonDomainEntity created.
+[27-11-2019 22:37:39] - "Nested-059efb16-32c1-42c5-9267-574fa7f4f268"
+
+[27-11-2019 22:38:07] - coreContext created.
+[27-11-2019 22:38:07] - {}
+
+[27-11-2019 22:38:08] - logger created.
+
+[27-11-2019 22:38:08] - PersonManager created.
+[27-11-2019 22:38:08] - "Nested-4e178efe-7eba-4f73-aaf7-10064d0b5887"
+
+[27-11-2019 22:38:08] - AccountManager created.
+[27-11-2019 22:38:08] - "Nested-4e178efe-7eba-4f73-aaf7-10064d0b5887"
+
+[27-11-2019 22:38:08] - coreContext created.
+[27-11-2019 22:38:08] - {}
+
+[27-11-2019 22:38:08] - logger created.
+
+[27-11-2019 22:38:08] - PersonManager created.
+[27-11-2019 22:38:08] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:38:08] - AccountManager created.
+[27-11-2019 22:38:08] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:38:08] - coreContext created.
+[27-11-2019 22:38:08] - {}
+
+[27-11-2019 22:38:08] - logger created.
+
+[27-11-2019 22:38:08] - coreContext created.
+[27-11-2019 22:38:08] - {}
+
+[27-11-2019 22:38:08] - logger created.
+
+[27-11-2019 22:38:08] - coreContext created.
+[27-11-2019 22:38:08] - {}
+
+[27-11-2019 22:38:08] - logger created.
+
+[27-11-2019 22:38:08] - coreContext created.
+[27-11-2019 22:38:08] - {}
+
+[27-11-2019 22:38:08] - logger created.
+
+[27-11-2019 22:38:08] - coreContext created.
+[27-11-2019 22:38:08] - {}
+
+[27-11-2019 22:38:08] - logger created.
+
+[27-11-2019 22:38:08] - PersonRepository created.
+[27-11-2019 22:38:08] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:38:08] - coreContext created.
+[27-11-2019 22:38:08] - {}
+
+[27-11-2019 22:38:08] - logger created.
+
+[27-11-2019 22:38:08] - PersonRepository created.
+[27-11-2019 22:38:08] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:38:08] - PersonDomainEntity created.
+[27-11-2019 22:38:08] - "d7bc5945-c774-4d4f-8d47-1c5144168fc1"
+
+[27-11-2019 22:38:08] - PersonRepository created.
+[27-11-2019 22:38:08] - "Nested-4e178efe-7eba-4f73-aaf7-10064d0b5887"
+
+[27-11-2019 22:38:08] - PersonDomainEntity created.
+[27-11-2019 22:38:08] - "Nested-4e178efe-7eba-4f73-aaf7-10064d0b5887"
+
+[27-11-2019 22:39:47] - coreContext created.
+[27-11-2019 22:39:47] - {}
+
+[27-11-2019 22:39:47] - logger created.
+
+[27-11-2019 22:39:47] - PersonManager created.
+[27-11-2019 22:39:47] - "Nested-3fe4e568-06dc-4528-b079-4acc36aadd9c"
+
+[27-11-2019 22:39:47] - AccountManager created.
+[27-11-2019 22:39:47] - "Nested-3fe4e568-06dc-4528-b079-4acc36aadd9c"
+
+[27-11-2019 22:39:47] - coreContext created.
+[27-11-2019 22:39:47] - {}
+
+[27-11-2019 22:39:47] - logger created.
+
+[27-11-2019 22:39:47] - PersonManager created.
+[27-11-2019 22:39:47] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:47] - AccountManager created.
+[27-11-2019 22:39:47] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:47] - coreContext created.
+[27-11-2019 22:39:47] - {}
+
+[27-11-2019 22:39:47] - logger created.
+
+[27-11-2019 22:39:47] - PersonManager created.
+[27-11-2019 22:39:47] - "Nested-9588a1cc-2898-42e1-bdcd-107fadbfe203"
+
+[27-11-2019 22:39:47] - AccountManager created.
+[27-11-2019 22:39:47] - "Nested-9588a1cc-2898-42e1-bdcd-107fadbfe203"
+
+[27-11-2019 22:39:49] - coreContext created.
+[27-11-2019 22:39:49] - {}
+
+[27-11-2019 22:39:49] - logger created.
+
+[27-11-2019 22:39:49] - PersonManager created.
+[27-11-2019 22:39:49] - "Nested-141d8fa3-1e2f-4d34-9c44-d6923a485e6f"
+
+[27-11-2019 22:39:49] - AccountManager created.
+[27-11-2019 22:39:49] - "Nested-141d8fa3-1e2f-4d34-9c44-d6923a485e6f"
+
+[27-11-2019 22:39:49] - PersonRepository created.
+[27-11-2019 22:39:49] - "Nested-141d8fa3-1e2f-4d34-9c44-d6923a485e6f"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-141d8fa3-1e2f-4d34-9c44-d6923a485e6f"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-141d8fa3-1e2f-4d34-9c44-d6923a485e6f"
+
+[27-11-2019 22:39:50] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:39:50] - "Db context Guid: 65b0a182-0903-498f-b886-87e0eecd21e5"
+
+[27-11-2019 22:39:50] - TDbEntity inserting to context..
+[27-11-2019 22:39:50] - {"TokenId":0,"Value":"3ab4023b483364779ac2ff538deafedf","PersonId":1,"ValidUntil":"2019-11-27T22:54:50.7159974+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:39:50.7159974+03:00","CanBeUsed":true}
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-141d8fa3-1e2f-4d34-9c44-d6923a485e6f"
+
+[27-11-2019 22:39:50] - coreContext created.
+[27-11-2019 22:39:50] - {}
+
+[27-11-2019 22:39:50] - logger created.
+
+[27-11-2019 22:39:50] - PersonManager created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - AccountManager created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - AccountManager created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - coreContext created.
+[27-11-2019 22:39:50] - {}
+
+[27-11-2019 22:39:50] - logger created.
+
+[27-11-2019 22:39:50] - PersonManager created.
+[27-11-2019 22:39:50] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:50] - AccountManager created.
+[27-11-2019 22:39:50] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:50] - coreContext created.
+[27-11-2019 22:39:50] - {}
+
+[27-11-2019 22:39:50] - logger created.
+
+[27-11-2019 22:39:50] - coreContext created.
+[27-11-2019 22:39:50] - {}
+
+[27-11-2019 22:39:50] - logger created.
+
+[27-11-2019 22:39:50] - coreContext created.
+[27-11-2019 22:39:50] - {}
+
+[27-11-2019 22:39:50] - logger created.
+
+[27-11-2019 22:39:50] - coreContext created.
+[27-11-2019 22:39:50] - {}
+
+[27-11-2019 22:39:50] - logger created.
+
+[27-11-2019 22:39:50] - coreContext created.
+[27-11-2019 22:39:50] - {}
+
+[27-11-2019 22:39:50] - logger created.
+
+[27-11-2019 22:39:50] - PersonRepository created.
+[27-11-2019 22:39:50] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:50] - coreContext created.
+[27-11-2019 22:39:50] - {}
+
+[27-11-2019 22:39:50] - logger created.
+
+[27-11-2019 22:39:50] - PersonRepository created.
+[27-11-2019 22:39:50] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:50] - PersonRepository created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - AccountRepository created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:50] - PersonDomainEntity created.
+[27-11-2019 22:39:50] - "Nested-930aef73-d3fe-496f-8287-cdf3e1e8430e"
+
+[27-11-2019 22:39:52] - coreContext created.
+[27-11-2019 22:39:52] - {}
+
+[27-11-2019 22:39:52] - logger created.
+
+[27-11-2019 22:39:52] - PersonManager created.
+[27-11-2019 22:39:52] - "Nested-9208f80b-cc4d-4686-979c-0402c92317bc"
+
+[27-11-2019 22:39:52] - AccountManager created.
+[27-11-2019 22:39:52] - "Nested-9208f80b-cc4d-4686-979c-0402c92317bc"
+
+[27-11-2019 22:39:52] - coreContext created.
+[27-11-2019 22:39:52] - {}
+
+[27-11-2019 22:39:52] - logger created.
+
+[27-11-2019 22:39:52] - PersonManager created.
+[27-11-2019 22:39:52] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:52] - AccountManager created.
+[27-11-2019 22:39:52] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:52] - coreContext created.
+[27-11-2019 22:39:52] - {}
+
+[27-11-2019 22:39:52] - logger created.
+
+[27-11-2019 22:39:52] - coreContext created.
+[27-11-2019 22:39:52] - {}
+
+[27-11-2019 22:39:52] - logger created.
+
+[27-11-2019 22:39:52] - coreContext created.
+[27-11-2019 22:39:52] - {}
+
+[27-11-2019 22:39:52] - logger created.
+
+[27-11-2019 22:39:52] - coreContext created.
+[27-11-2019 22:39:52] - {}
+
+[27-11-2019 22:39:52] - logger created.
+
+[27-11-2019 22:39:52] - coreContext created.
+[27-11-2019 22:39:52] - {}
+
+[27-11-2019 22:39:52] - logger created.
+
+[27-11-2019 22:39:52] - PersonRepository created.
+[27-11-2019 22:39:52] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:52] - coreContext created.
+[27-11-2019 22:39:52] - {}
+
+[27-11-2019 22:39:52] - logger created.
+
+[27-11-2019 22:39:52] - PersonRepository created.
+[27-11-2019 22:39:52] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:52] - PersonDomainEntity created.
+[27-11-2019 22:39:52] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:52] - PersonRepository created.
+[27-11-2019 22:39:52] - "Nested-9208f80b-cc4d-4686-979c-0402c92317bc"
+
+[27-11-2019 22:39:52] - PersonDomainEntity created.
+[27-11-2019 22:39:52] - "Nested-9208f80b-cc4d-4686-979c-0402c92317bc"
+
+[27-11-2019 22:39:52] - PersonDomainEntity created.
+[27-11-2019 22:39:52] - "Nested-9208f80b-cc4d-4686-979c-0402c92317bc"
+
+[27-11-2019 22:39:52] - AccountRepository created.
+[27-11-2019 22:39:52] - "Nested-9208f80b-cc4d-4686-979c-0402c92317bc"
+
+[27-11-2019 22:39:53] - coreContext created.
+[27-11-2019 22:39:53] - {}
+
+[27-11-2019 22:39:53] - logger created.
+
+[27-11-2019 22:39:53] - PersonManager created.
+[27-11-2019 22:39:53] - "Nested-d285facd-376d-4343-ab8c-bb039076f31c"
+
+[27-11-2019 22:39:53] - AccountManager created.
+[27-11-2019 22:39:53] - "Nested-d285facd-376d-4343-ab8c-bb039076f31c"
+
+[27-11-2019 22:39:54] - coreContext created.
+[27-11-2019 22:39:54] - {}
+
+[27-11-2019 22:39:54] - logger created.
+
+[27-11-2019 22:39:54] - PersonManager created.
+[27-11-2019 22:39:54] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:54] - AccountManager created.
+[27-11-2019 22:39:54] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:54] - coreContext created.
+[27-11-2019 22:39:54] - {}
+
+[27-11-2019 22:39:54] - logger created.
+
+[27-11-2019 22:39:54] - coreContext created.
+[27-11-2019 22:39:54] - {}
+
+[27-11-2019 22:39:54] - logger created.
+
+[27-11-2019 22:39:54] - coreContext created.
+[27-11-2019 22:39:54] - {}
+
+[27-11-2019 22:39:54] - logger created.
+
+[27-11-2019 22:39:54] - coreContext created.
+[27-11-2019 22:39:54] - {}
+
+[27-11-2019 22:39:54] - logger created.
+
+[27-11-2019 22:39:54] - coreContext created.
+[27-11-2019 22:39:54] - {}
+
+[27-11-2019 22:39:54] - logger created.
+
+[27-11-2019 22:39:54] - PersonRepository created.
+[27-11-2019 22:39:54] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:54] - coreContext created.
+[27-11-2019 22:39:54] - {}
+
+[27-11-2019 22:39:54] - logger created.
+
+[27-11-2019 22:39:54] - PersonRepository created.
+[27-11-2019 22:39:54] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:54] - PersonDomainEntity created.
+[27-11-2019 22:39:54] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:54] - PersonRepository created.
+[27-11-2019 22:39:54] - "Nested-d285facd-376d-4343-ab8c-bb039076f31c"
+
+[27-11-2019 22:39:54] - PersonDomainEntity created.
+[27-11-2019 22:39:54] - "Nested-d285facd-376d-4343-ab8c-bb039076f31c"
+
+[27-11-2019 22:39:55] - coreContext created.
+[27-11-2019 22:39:55] - {}
+
+[27-11-2019 22:39:55] - logger created.
+
+[27-11-2019 22:39:55] - PersonManager created.
+[27-11-2019 22:39:55] - "Nested-3c25a319-6ecb-48cf-9289-f0d9f6cc9619"
+
+[27-11-2019 22:39:55] - AccountManager created.
+[27-11-2019 22:39:55] - "Nested-3c25a319-6ecb-48cf-9289-f0d9f6cc9619"
+
+[27-11-2019 22:39:55] - coreContext created.
+[27-11-2019 22:39:55] - {}
+
+[27-11-2019 22:39:55] - logger created.
+
+[27-11-2019 22:39:55] - PersonManager created.
+[27-11-2019 22:39:55] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:55] - AccountManager created.
+[27-11-2019 22:39:55] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:55] - coreContext created.
+[27-11-2019 22:39:55] - {}
+
+[27-11-2019 22:39:55] - logger created.
+
+[27-11-2019 22:39:55] - coreContext created.
+[27-11-2019 22:39:55] - {}
+
+[27-11-2019 22:39:55] - logger created.
+
+[27-11-2019 22:39:55] - coreContext created.
+[27-11-2019 22:39:55] - {}
+
+[27-11-2019 22:39:55] - logger created.
+
+[27-11-2019 22:39:55] - coreContext created.
+[27-11-2019 22:39:55] - {}
+
+[27-11-2019 22:39:55] - logger created.
+
+[27-11-2019 22:39:55] - coreContext created.
+[27-11-2019 22:39:55] - {}
+
+[27-11-2019 22:39:55] - logger created.
+
+[27-11-2019 22:39:55] - PersonRepository created.
+[27-11-2019 22:39:55] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:55] - coreContext created.
+[27-11-2019 22:39:55] - {}
+
+[27-11-2019 22:39:55] - logger created.
+
+[27-11-2019 22:39:55] - PersonRepository created.
+[27-11-2019 22:39:55] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:39:55] - PersonDomainEntity created.
+[27-11-2019 22:39:55] - "c4be3021-01cb-44dc-aa6f-81187a18832e"
+
+[27-11-2019 22:40:20] - coreContext created.
+[27-11-2019 22:40:20] - {}
+
+[27-11-2019 22:40:20] - logger created.
+
+[27-11-2019 22:40:20] - PersonManager created.
+[27-11-2019 22:40:20] - "Nested-6268ec4f-6e49-4ad6-96ee-d5c1226cb0c8"
+
+[27-11-2019 22:40:20] - AccountManager created.
+[27-11-2019 22:40:20] - "Nested-6268ec4f-6e49-4ad6-96ee-d5c1226cb0c8"
+
+[27-11-2019 22:40:20] - coreContext created.
+[27-11-2019 22:40:20] - {}
+
+[27-11-2019 22:40:20] - logger created.
+
+[27-11-2019 22:40:20] - PersonManager created.
+[27-11-2019 22:40:20] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:20] - AccountManager created.
+[27-11-2019 22:40:20] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:20] - coreContext created.
+[27-11-2019 22:40:20] - {}
+
+[27-11-2019 22:40:20] - logger created.
+
+[27-11-2019 22:40:20] - PersonManager created.
+[27-11-2019 22:40:20] - "Nested-23cdd720-8f15-4b25-a332-2ab0fe56b003"
+
+[27-11-2019 22:40:20] - AccountManager created.
+[27-11-2019 22:40:20] - "Nested-23cdd720-8f15-4b25-a332-2ab0fe56b003"
+
+[27-11-2019 22:40:22] - coreContext created.
+[27-11-2019 22:40:22] - {}
+
+[27-11-2019 22:40:22] - logger created.
+
+[27-11-2019 22:40:22] - PersonManager created.
+[27-11-2019 22:40:22] - "Nested-36faa940-61a2-4896-ad3c-1f8eb1e80dc5"
+
+[27-11-2019 22:40:22] - AccountManager created.
+[27-11-2019 22:40:22] - "Nested-36faa940-61a2-4896-ad3c-1f8eb1e80dc5"
+
+[27-11-2019 22:40:22] - PersonRepository created.
+[27-11-2019 22:40:22] - "Nested-36faa940-61a2-4896-ad3c-1f8eb1e80dc5"
+
+[27-11-2019 22:40:23] - PersonDomainEntity created.
+[27-11-2019 22:40:23] - "Nested-36faa940-61a2-4896-ad3c-1f8eb1e80dc5"
+
+[27-11-2019 22:40:23] - PersonDomainEntity created.
+[27-11-2019 22:40:23] - "Nested-36faa940-61a2-4896-ad3c-1f8eb1e80dc5"
+
+[27-11-2019 22:40:23] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:40:23] - "Db context Guid: a815d0da-aae6-49fd-8951-8c138bba9857"
+
+[27-11-2019 22:40:23] - TDbEntity inserting to context..
+[27-11-2019 22:40:23] - {"TokenId":0,"Value":"e8f6594e9055b08028895398da6048b5","PersonId":1,"ValidUntil":"2019-11-27T22:55:23.8876029+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:40:23.8876029+03:00","CanBeUsed":true}
+
+[27-11-2019 22:40:23] - PersonDomainEntity created.
+[27-11-2019 22:40:23] - "Nested-36faa940-61a2-4896-ad3c-1f8eb1e80dc5"
+
+[27-11-2019 22:40:23] - coreContext created.
+[27-11-2019 22:40:23] - {}
+
+[27-11-2019 22:40:23] - logger created.
+
+[27-11-2019 22:40:23] - PersonManager created.
+[27-11-2019 22:40:23] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:23] - AccountManager created.
+[27-11-2019 22:40:23] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:23] - AccountManager created.
+[27-11-2019 22:40:23] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:23] - coreContext created.
+[27-11-2019 22:40:23] - {}
+
+[27-11-2019 22:40:23] - logger created.
+
+[27-11-2019 22:40:23] - PersonManager created.
+[27-11-2019 22:40:23] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:23] - AccountManager created.
+[27-11-2019 22:40:23] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:23] - coreContext created.
+[27-11-2019 22:40:23] - {}
+
+[27-11-2019 22:40:23] - logger created.
+
+[27-11-2019 22:40:23] - coreContext created.
+[27-11-2019 22:40:23] - {}
+
+[27-11-2019 22:40:24] - logger created.
+
+[27-11-2019 22:40:24] - coreContext created.
+[27-11-2019 22:40:24] - {}
+
+[27-11-2019 22:40:24] - logger created.
+
+[27-11-2019 22:40:24] - coreContext created.
+[27-11-2019 22:40:24] - {}
+
+[27-11-2019 22:40:24] - logger created.
+
+[27-11-2019 22:40:24] - coreContext created.
+[27-11-2019 22:40:24] - {}
+
+[27-11-2019 22:40:24] - logger created.
+
+[27-11-2019 22:40:24] - PersonRepository created.
+[27-11-2019 22:40:24] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:24] - coreContext created.
+[27-11-2019 22:40:24] - {}
+
+[27-11-2019 22:40:24] - logger created.
+
+[27-11-2019 22:40:24] - PersonRepository created.
+[27-11-2019 22:40:24] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:24] - PersonRepository created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - AccountRepository created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:24] - PersonDomainEntity created.
+[27-11-2019 22:40:24] - "Nested-382a98f8-a2f3-414e-98f5-8c2a9c694a2f"
+
+[27-11-2019 22:40:26] - coreContext created.
+[27-11-2019 22:40:26] - {}
+
+[27-11-2019 22:40:26] - logger created.
+
+[27-11-2019 22:40:26] - PersonManager created.
+[27-11-2019 22:40:26] - "Nested-db649450-5699-4190-8b9f-fb84d9fbc05f"
+
+[27-11-2019 22:40:26] - AccountManager created.
+[27-11-2019 22:40:26] - "Nested-db649450-5699-4190-8b9f-fb84d9fbc05f"
+
+[27-11-2019 22:40:26] - coreContext created.
+[27-11-2019 22:40:26] - {}
+
+[27-11-2019 22:40:26] - logger created.
+
+[27-11-2019 22:40:26] - PersonManager created.
+[27-11-2019 22:40:26] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:26] - AccountManager created.
+[27-11-2019 22:40:26] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:26] - coreContext created.
+[27-11-2019 22:40:26] - {}
+
+[27-11-2019 22:40:26] - logger created.
+
+[27-11-2019 22:40:26] - coreContext created.
+[27-11-2019 22:40:26] - {}
+
+[27-11-2019 22:40:26] - logger created.
+
+[27-11-2019 22:40:26] - coreContext created.
+[27-11-2019 22:40:26] - {}
+
+[27-11-2019 22:40:26] - logger created.
+
+[27-11-2019 22:40:26] - coreContext created.
+[27-11-2019 22:40:26] - {}
+
+[27-11-2019 22:40:26] - logger created.
+
+[27-11-2019 22:40:26] - coreContext created.
+[27-11-2019 22:40:26] - {}
+
+[27-11-2019 22:40:26] - logger created.
+
+[27-11-2019 22:40:26] - PersonRepository created.
+[27-11-2019 22:40:26] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:26] - coreContext created.
+[27-11-2019 22:40:26] - {}
+
+[27-11-2019 22:40:26] - logger created.
+
+[27-11-2019 22:40:26] - PersonRepository created.
+[27-11-2019 22:40:26] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:26] - PersonDomainEntity created.
+[27-11-2019 22:40:26] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:26] - PersonRepository created.
+[27-11-2019 22:40:26] - "Nested-db649450-5699-4190-8b9f-fb84d9fbc05f"
+
+[27-11-2019 22:40:26] - PersonDomainEntity created.
+[27-11-2019 22:40:26] - "Nested-db649450-5699-4190-8b9f-fb84d9fbc05f"
+
+[27-11-2019 22:40:26] - PersonDomainEntity created.
+[27-11-2019 22:40:26] - "Nested-db649450-5699-4190-8b9f-fb84d9fbc05f"
+
+[27-11-2019 22:40:26] - AccountRepository created.
+[27-11-2019 22:40:26] - "Nested-db649450-5699-4190-8b9f-fb84d9fbc05f"
+
+[27-11-2019 22:40:27] - coreContext created.
+[27-11-2019 22:40:27] - {}
+
+[27-11-2019 22:40:27] - logger created.
+
+[27-11-2019 22:40:27] - PersonManager created.
+[27-11-2019 22:40:27] - "Nested-134c9453-cd14-4539-987c-95d3d8f5654b"
+
+[27-11-2019 22:40:27] - AccountManager created.
+[27-11-2019 22:40:27] - "Nested-134c9453-cd14-4539-987c-95d3d8f5654b"
+
+[27-11-2019 22:40:27] - coreContext created.
+[27-11-2019 22:40:27] - {}
+
+[27-11-2019 22:40:27] - logger created.
+
+[27-11-2019 22:40:27] - PersonManager created.
+[27-11-2019 22:40:27] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:27] - AccountManager created.
+[27-11-2019 22:40:27] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:27] - coreContext created.
+[27-11-2019 22:40:27] - {}
+
+[27-11-2019 22:40:27] - logger created.
+
+[27-11-2019 22:40:27] - coreContext created.
+[27-11-2019 22:40:27] - {}
+
+[27-11-2019 22:40:27] - logger created.
+
+[27-11-2019 22:40:27] - coreContext created.
+[27-11-2019 22:40:27] - {}
+
+[27-11-2019 22:40:27] - logger created.
+
+[27-11-2019 22:40:27] - coreContext created.
+[27-11-2019 22:40:27] - {}
+
+[27-11-2019 22:40:27] - logger created.
+
+[27-11-2019 22:40:27] - coreContext created.
+[27-11-2019 22:40:27] - {}
+
+[27-11-2019 22:40:27] - logger created.
+
+[27-11-2019 22:40:27] - PersonRepository created.
+[27-11-2019 22:40:27] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:27] - coreContext created.
+[27-11-2019 22:40:27] - {}
+
+[27-11-2019 22:40:27] - logger created.
+
+[27-11-2019 22:40:27] - PersonRepository created.
+[27-11-2019 22:40:27] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:27] - PersonDomainEntity created.
+[27-11-2019 22:40:27] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:27] - PersonRepository created.
+[27-11-2019 22:40:27] - "Nested-134c9453-cd14-4539-987c-95d3d8f5654b"
+
+[27-11-2019 22:40:27] - PersonDomainEntity created.
+[27-11-2019 22:40:27] - "Nested-134c9453-cd14-4539-987c-95d3d8f5654b"
+
+[27-11-2019 22:40:29] - coreContext created.
+[27-11-2019 22:40:29] - {}
+
+[27-11-2019 22:40:29] - logger created.
+
+[27-11-2019 22:40:29] - PersonManager created.
+[27-11-2019 22:40:29] - "Nested-cea0c9f2-76b0-4527-af5b-268823c5ae9f"
+
+[27-11-2019 22:40:29] - AccountManager created.
+[27-11-2019 22:40:29] - "Nested-cea0c9f2-76b0-4527-af5b-268823c5ae9f"
+
+[27-11-2019 22:40:29] - coreContext created.
+[27-11-2019 22:40:29] - {}
+
+[27-11-2019 22:40:29] - logger created.
+
+[27-11-2019 22:40:29] - PersonManager created.
+[27-11-2019 22:40:29] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:29] - AccountManager created.
+[27-11-2019 22:40:29] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:29] - coreContext created.
+[27-11-2019 22:40:29] - {}
+
+[27-11-2019 22:40:29] - logger created.
+
+[27-11-2019 22:40:29] - coreContext created.
+[27-11-2019 22:40:29] - {}
+
+[27-11-2019 22:40:29] - logger created.
+
+[27-11-2019 22:40:29] - coreContext created.
+[27-11-2019 22:40:29] - {}
+
+[27-11-2019 22:40:29] - logger created.
+
+[27-11-2019 22:40:29] - coreContext created.
+[27-11-2019 22:40:29] - {}
+
+[27-11-2019 22:40:29] - logger created.
+
+[27-11-2019 22:40:29] - coreContext created.
+[27-11-2019 22:40:29] - {}
+
+[27-11-2019 22:40:29] - logger created.
+
+[27-11-2019 22:40:29] - PersonRepository created.
+[27-11-2019 22:40:29] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:29] - coreContext created.
+[27-11-2019 22:40:29] - {}
+
+[27-11-2019 22:40:29] - logger created.
+
+[27-11-2019 22:40:29] - PersonRepository created.
+[27-11-2019 22:40:29] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:29] - PersonDomainEntity created.
+[27-11-2019 22:40:29] - "9a5261ca-9fa4-45c6-99ea-ba2db8ef55ed"
+
+[27-11-2019 22:40:38] - coreContext created.
+[27-11-2019 22:40:38] - {}
+
+[27-11-2019 22:40:38] - logger created.
+
+[27-11-2019 22:40:38] - PersonManager created.
+[27-11-2019 22:40:38] - "Nested-4abc6be0-e4fc-4911-92b5-ed83607dc395"
+
+[27-11-2019 22:40:38] - AccountManager created.
+[27-11-2019 22:40:38] - "Nested-4abc6be0-e4fc-4911-92b5-ed83607dc395"
+
+[27-11-2019 22:40:38] - AccountManager created.
+[27-11-2019 22:40:38] - "Nested-4abc6be0-e4fc-4911-92b5-ed83607dc395"
+
+[27-11-2019 22:40:38] - coreContext created.
+[27-11-2019 22:40:38] - {}
+
+[27-11-2019 22:40:38] - logger created.
+
+[27-11-2019 22:40:38] - PersonManager created.
+[27-11-2019 22:40:38] - "ec96f361-750f-414a-9d6b-cdae990fbbc0"
+
+[27-11-2019 22:40:38] - AccountManager created.
+[27-11-2019 22:40:38] - "ec96f361-750f-414a-9d6b-cdae990fbbc0"
+
+[27-11-2019 22:40:38] - coreContext created.
+[27-11-2019 22:40:38] - {}
+
+[27-11-2019 22:40:38] - logger created.
+
+[27-11-2019 22:40:38] - PersonManager created.
+[27-11-2019 22:40:38] - "Nested-e0d61373-8ce4-4879-a81b-158651f8e6dc"
+
+[27-11-2019 22:40:38] - AccountManager created.
+[27-11-2019 22:40:38] - "Nested-e0d61373-8ce4-4879-a81b-158651f8e6dc"
+
+[27-11-2019 22:40:53] - coreContext created.
+[27-11-2019 22:40:53] - {}
+
+[27-11-2019 22:40:53] - logger created.
+
+[27-11-2019 22:40:53] - PersonManager created.
+[27-11-2019 22:40:53] - "Nested-256c61d7-8e0d-4db8-a39c-7793ada77258"
+
+[27-11-2019 22:40:53] - AccountManager created.
+[27-11-2019 22:40:53] - "Nested-256c61d7-8e0d-4db8-a39c-7793ada77258"
+
+[27-11-2019 22:40:53] - AccountManager created.
+[27-11-2019 22:40:53] - "Nested-256c61d7-8e0d-4db8-a39c-7793ada77258"
+
+[27-11-2019 22:40:53] - coreContext created.
+[27-11-2019 22:40:53] - {}
+
+[27-11-2019 22:40:53] - logger created.
+
+[27-11-2019 22:40:53] - PersonManager created.
+[27-11-2019 22:40:53] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:40:53] - AccountManager created.
+[27-11-2019 22:40:53] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:40:53] - coreContext created.
+[27-11-2019 22:40:53] - {}
+
+[27-11-2019 22:40:53] - logger created.
+
+[27-11-2019 22:40:53] - PersonManager created.
+[27-11-2019 22:40:53] - "Nested-6c063f57-7e86-46d2-b29d-0cf4c71a8aba"
+
+[27-11-2019 22:40:53] - AccountManager created.
+[27-11-2019 22:40:53] - "Nested-6c063f57-7e86-46d2-b29d-0cf4c71a8aba"
+
+[27-11-2019 22:40:57] - coreContext created.
+[27-11-2019 22:40:57] - {}
+
+[27-11-2019 22:40:57] - logger created.
+
+[27-11-2019 22:40:57] - PersonManager created.
+[27-11-2019 22:40:57] - "Nested-57ac187b-98fe-44f0-8dcb-8e48f2fece30"
+
+[27-11-2019 22:40:57] - AccountManager created.
+[27-11-2019 22:40:57] - "Nested-57ac187b-98fe-44f0-8dcb-8e48f2fece30"
+
+[27-11-2019 22:40:57] - PersonRepository created.
+[27-11-2019 22:40:57] - "Nested-57ac187b-98fe-44f0-8dcb-8e48f2fece30"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-57ac187b-98fe-44f0-8dcb-8e48f2fece30"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-57ac187b-98fe-44f0-8dcb-8e48f2fece30"
+
+[27-11-2019 22:40:59] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:40:59] - "Db context Guid: d512b6fa-2c9e-438f-b279-5cdd6289a47c"
+
+[27-11-2019 22:40:59] - TDbEntity inserting to context..
+[27-11-2019 22:40:59] - {"TokenId":0,"Value":"fc48bdb93ea49e36c9bb7b50b82a74c8","PersonId":1,"ValidUntil":"2019-11-27T22:55:59.2724578+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:40:59.2724578+03:00","CanBeUsed":true}
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-57ac187b-98fe-44f0-8dcb-8e48f2fece30"
+
+[27-11-2019 22:40:59] - coreContext created.
+[27-11-2019 22:40:59] - {}
+
+[27-11-2019 22:40:59] - logger created.
+
+[27-11-2019 22:40:59] - PersonManager created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - AccountManager created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - AccountManager created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - coreContext created.
+[27-11-2019 22:40:59] - {}
+
+[27-11-2019 22:40:59] - logger created.
+
+[27-11-2019 22:40:59] - PersonManager created.
+[27-11-2019 22:40:59] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:40:59] - AccountManager created.
+[27-11-2019 22:40:59] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:40:59] - coreContext created.
+[27-11-2019 22:40:59] - {}
+
+[27-11-2019 22:40:59] - logger created.
+
+[27-11-2019 22:40:59] - coreContext created.
+[27-11-2019 22:40:59] - {}
+
+[27-11-2019 22:40:59] - logger created.
+
+[27-11-2019 22:40:59] - coreContext created.
+[27-11-2019 22:40:59] - {}
+
+[27-11-2019 22:40:59] - logger created.
+
+[27-11-2019 22:40:59] - coreContext created.
+[27-11-2019 22:40:59] - {}
+
+[27-11-2019 22:40:59] - logger created.
+
+[27-11-2019 22:40:59] - coreContext created.
+[27-11-2019 22:40:59] - {}
+
+[27-11-2019 22:40:59] - logger created.
+
+[27-11-2019 22:40:59] - PersonRepository created.
+[27-11-2019 22:40:59] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:40:59] - coreContext created.
+[27-11-2019 22:40:59] - {}
+
+[27-11-2019 22:40:59] - logger created.
+
+[27-11-2019 22:40:59] - PersonRepository created.
+[27-11-2019 22:40:59] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:40:59] - PersonRepository created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - AccountRepository created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:40:59] - PersonDomainEntity created.
+[27-11-2019 22:40:59] - "Nested-ebd0664b-c301-405f-85a5-3fb73a1c9b92"
+
+[27-11-2019 22:41:24] - coreContext created.
+[27-11-2019 22:41:24] - {}
+
+[27-11-2019 22:41:24] - logger created.
+
+[27-11-2019 22:41:24] - PersonManager created.
+[27-11-2019 22:41:24] - "Nested-891c0eb3-7bc4-48e0-a82b-026ad85ab193"
+
+[27-11-2019 22:41:24] - AccountManager created.
+[27-11-2019 22:41:24] - "Nested-891c0eb3-7bc4-48e0-a82b-026ad85ab193"
+
+[27-11-2019 22:41:24] - coreContext created.
+[27-11-2019 22:41:24] - {}
+
+[27-11-2019 22:41:24] - logger created.
+
+[27-11-2019 22:41:24] - PersonManager created.
+[27-11-2019 22:41:24] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:24] - AccountManager created.
+[27-11-2019 22:41:24] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:24] - coreContext created.
+[27-11-2019 22:41:24] - {}
+
+[27-11-2019 22:41:24] - logger created.
+
+[27-11-2019 22:41:24] - coreContext created.
+[27-11-2019 22:41:24] - {}
+
+[27-11-2019 22:41:24] - logger created.
+
+[27-11-2019 22:41:24] - coreContext created.
+[27-11-2019 22:41:24] - {}
+
+[27-11-2019 22:41:24] - logger created.
+
+[27-11-2019 22:41:24] - coreContext created.
+[27-11-2019 22:41:24] - {}
+
+[27-11-2019 22:41:24] - logger created.
+
+[27-11-2019 22:41:24] - coreContext created.
+[27-11-2019 22:41:24] - {}
+
+[27-11-2019 22:41:24] - logger created.
+
+[27-11-2019 22:41:24] - PersonRepository created.
+[27-11-2019 22:41:24] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:24] - coreContext created.
+[27-11-2019 22:41:24] - {}
+
+[27-11-2019 22:41:24] - logger created.
+
+[27-11-2019 22:41:24] - PersonRepository created.
+[27-11-2019 22:41:24] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:24] - PersonDomainEntity created.
+[27-11-2019 22:41:24] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:24] - PersonRepository created.
+[27-11-2019 22:41:24] - "Nested-891c0eb3-7bc4-48e0-a82b-026ad85ab193"
+
+[27-11-2019 22:41:24] - PersonDomainEntity created.
+[27-11-2019 22:41:24] - "Nested-891c0eb3-7bc4-48e0-a82b-026ad85ab193"
+
+[27-11-2019 22:41:24] - PersonDomainEntity created.
+[27-11-2019 22:41:24] - "Nested-891c0eb3-7bc4-48e0-a82b-026ad85ab193"
+
+[27-11-2019 22:41:24] - AccountRepository created.
+[27-11-2019 22:41:24] - "Nested-891c0eb3-7bc4-48e0-a82b-026ad85ab193"
+
+[27-11-2019 22:41:25] - coreContext created.
+[27-11-2019 22:41:25] - {}
+
+[27-11-2019 22:41:25] - logger created.
+
+[27-11-2019 22:41:25] - PersonManager created.
+[27-11-2019 22:41:25] - "Nested-c4be77b0-bb9d-4082-be11-a59dfd7b289e"
+
+[27-11-2019 22:41:25] - AccountManager created.
+[27-11-2019 22:41:25] - "Nested-c4be77b0-bb9d-4082-be11-a59dfd7b289e"
+
+[27-11-2019 22:41:25] - coreContext created.
+[27-11-2019 22:41:25] - {}
+
+[27-11-2019 22:41:25] - logger created.
+
+[27-11-2019 22:41:25] - PersonManager created.
+[27-11-2019 22:41:25] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:25] - AccountManager created.
+[27-11-2019 22:41:25] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:25] - coreContext created.
+[27-11-2019 22:41:25] - {}
+
+[27-11-2019 22:41:25] - logger created.
+
+[27-11-2019 22:41:25] - coreContext created.
+[27-11-2019 22:41:25] - {}
+
+[27-11-2019 22:41:25] - logger created.
+
+[27-11-2019 22:41:25] - coreContext created.
+[27-11-2019 22:41:25] - {}
+
+[27-11-2019 22:41:25] - logger created.
+
+[27-11-2019 22:41:25] - coreContext created.
+[27-11-2019 22:41:25] - {}
+
+[27-11-2019 22:41:25] - logger created.
+
+[27-11-2019 22:41:25] - coreContext created.
+[27-11-2019 22:41:25] - {}
+
+[27-11-2019 22:41:25] - logger created.
+
+[27-11-2019 22:41:25] - PersonRepository created.
+[27-11-2019 22:41:25] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:25] - coreContext created.
+[27-11-2019 22:41:25] - {}
+
+[27-11-2019 22:41:25] - logger created.
+
+[27-11-2019 22:41:25] - PersonRepository created.
+[27-11-2019 22:41:25] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:25] - PersonDomainEntity created.
+[27-11-2019 22:41:25] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:25] - PersonRepository created.
+[27-11-2019 22:41:25] - "Nested-c4be77b0-bb9d-4082-be11-a59dfd7b289e"
+
+[27-11-2019 22:41:25] - PersonDomainEntity created.
+[27-11-2019 22:41:25] - "Nested-c4be77b0-bb9d-4082-be11-a59dfd7b289e"
+
+[27-11-2019 22:41:26] - coreContext created.
+[27-11-2019 22:41:26] - {}
+
+[27-11-2019 22:41:26] - logger created.
+
+[27-11-2019 22:41:26] - PersonManager created.
+[27-11-2019 22:41:26] - "Nested-15c39e71-12a8-4c86-a0bd-38cdd241dbf7"
+
+[27-11-2019 22:41:26] - AccountManager created.
+[27-11-2019 22:41:26] - "Nested-15c39e71-12a8-4c86-a0bd-38cdd241dbf7"
+
+[27-11-2019 22:41:26] - coreContext created.
+[27-11-2019 22:41:26] - {}
+
+[27-11-2019 22:41:26] - logger created.
+
+[27-11-2019 22:41:26] - PersonManager created.
+[27-11-2019 22:41:26] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:26] - AccountManager created.
+[27-11-2019 22:41:26] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:26] - coreContext created.
+[27-11-2019 22:41:26] - {}
+
+[27-11-2019 22:41:26] - logger created.
+
+[27-11-2019 22:41:26] - coreContext created.
+[27-11-2019 22:41:26] - {}
+
+[27-11-2019 22:41:26] - logger created.
+
+[27-11-2019 22:41:26] - coreContext created.
+[27-11-2019 22:41:26] - {}
+
+[27-11-2019 22:41:26] - logger created.
+
+[27-11-2019 22:41:26] - coreContext created.
+[27-11-2019 22:41:26] - {}
+
+[27-11-2019 22:41:26] - logger created.
+
+[27-11-2019 22:41:26] - coreContext created.
+[27-11-2019 22:41:26] - {}
+
+[27-11-2019 22:41:26] - logger created.
+
+[27-11-2019 22:41:26] - PersonRepository created.
+[27-11-2019 22:41:26] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:26] - coreContext created.
+[27-11-2019 22:41:26] - {}
+
+[27-11-2019 22:41:26] - logger created.
+
+[27-11-2019 22:41:26] - PersonRepository created.
+[27-11-2019 22:41:26] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:26] - PersonDomainEntity created.
+[27-11-2019 22:41:26] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:41] - coreContext created.
+[27-11-2019 22:41:41] - {}
+
+[27-11-2019 22:41:41] - logger created.
+
+[27-11-2019 22:41:41] - PersonManager created.
+[27-11-2019 22:41:41] - "Nested-75ceac89-d5e9-4616-86a4-4fa5b6c0a6ca"
+
+[27-11-2019 22:41:41] - AccountManager created.
+[27-11-2019 22:41:41] - "Nested-75ceac89-d5e9-4616-86a4-4fa5b6c0a6ca"
+
+[27-11-2019 22:41:41] - coreContext created.
+[27-11-2019 22:41:41] - {}
+
+[27-11-2019 22:41:41] - logger created.
+
+[27-11-2019 22:41:41] - PersonManager created.
+[27-11-2019 22:41:41] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:41] - AccountManager created.
+[27-11-2019 22:41:41] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:41] - coreContext created.
+[27-11-2019 22:41:41] - {}
+
+[27-11-2019 22:41:41] - logger created.
+
+[27-11-2019 22:41:41] - coreContext created.
+[27-11-2019 22:41:41] - {}
+
+[27-11-2019 22:41:41] - logger created.
+
+[27-11-2019 22:41:41] - coreContext created.
+[27-11-2019 22:41:41] - {}
+
+[27-11-2019 22:41:41] - logger created.
+
+[27-11-2019 22:41:41] - coreContext created.
+[27-11-2019 22:41:41] - {}
+
+[27-11-2019 22:41:41] - logger created.
+
+[27-11-2019 22:41:41] - coreContext created.
+[27-11-2019 22:41:41] - {}
+
+[27-11-2019 22:41:41] - logger created.
+
+[27-11-2019 22:41:41] - PersonRepository created.
+[27-11-2019 22:41:41] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:41] - coreContext created.
+[27-11-2019 22:41:41] - {}
+
+[27-11-2019 22:41:41] - logger created.
+
+[27-11-2019 22:41:41] - PersonRepository created.
+[27-11-2019 22:41:41] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:41] - PersonDomainEntity created.
+[27-11-2019 22:41:41] - "dbb005be-f3b7-4c88-a33b-ad13b41aa49b"
+
+[27-11-2019 22:41:41] - PersonRepository created.
+[27-11-2019 22:41:41] - "Nested-75ceac89-d5e9-4616-86a4-4fa5b6c0a6ca"
+
+[27-11-2019 22:41:41] - PersonDomainEntity created.
+[27-11-2019 22:41:41] - "Nested-75ceac89-d5e9-4616-86a4-4fa5b6c0a6ca"
+
+[27-11-2019 22:45:26] - coreContext created.
+[27-11-2019 22:45:26] - {}
+
+[27-11-2019 22:45:26] - logger created.
+
+[27-11-2019 22:45:26] - PersonManager created.
+[27-11-2019 22:45:26] - "Nested-d6f46d64-2c61-49f9-9237-db0963bb6e76"
+
+[27-11-2019 22:45:26] - AccountManager created.
+[27-11-2019 22:45:26] - "Nested-d6f46d64-2c61-49f9-9237-db0963bb6e76"
+
+[27-11-2019 22:45:26] - coreContext created.
+[27-11-2019 22:45:26] - {}
+
+[27-11-2019 22:45:26] - logger created.
+
+[27-11-2019 22:45:26] - PersonManager created.
+[27-11-2019 22:45:26] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:26] - AccountManager created.
+[27-11-2019 22:45:26] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:26] - coreContext created.
+[27-11-2019 22:45:26] - {}
+
+[27-11-2019 22:45:26] - logger created.
+
+[27-11-2019 22:45:26] - PersonManager created.
+[27-11-2019 22:45:26] - "Nested-e4e11e74-808d-4be2-80d1-01e2cab0011e"
+
+[27-11-2019 22:45:26] - AccountManager created.
+[27-11-2019 22:45:26] - "Nested-e4e11e74-808d-4be2-80d1-01e2cab0011e"
+
+[27-11-2019 22:45:28] - coreContext created.
+[27-11-2019 22:45:28] - {}
+
+[27-11-2019 22:45:28] - logger created.
+
+[27-11-2019 22:45:28] - PersonManager created.
+[27-11-2019 22:45:28] - "Nested-6e753a03-6cd6-4dad-b0cb-23e6e7c7f272"
+
+[27-11-2019 22:45:28] - AccountManager created.
+[27-11-2019 22:45:28] - "Nested-6e753a03-6cd6-4dad-b0cb-23e6e7c7f272"
+
+[27-11-2019 22:45:28] - PersonRepository created.
+[27-11-2019 22:45:28] - "Nested-6e753a03-6cd6-4dad-b0cb-23e6e7c7f272"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6e753a03-6cd6-4dad-b0cb-23e6e7c7f272"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6e753a03-6cd6-4dad-b0cb-23e6e7c7f272"
+
+[27-11-2019 22:45:29] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:45:29] - "Db context Guid: 3253a655-afa7-4aaa-80ce-5a1d25786e79"
+
+[27-11-2019 22:45:29] - TDbEntity inserting to context..
+[27-11-2019 22:45:29] - {"TokenId":0,"Value":"7db96ca22621e9c1e6f76aeb7d927988","PersonId":1,"ValidUntil":"2019-11-27T23:00:29.6285846+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:45:29.6285846+03:00","CanBeUsed":true}
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6e753a03-6cd6-4dad-b0cb-23e6e7c7f272"
+
+[27-11-2019 22:45:29] - coreContext created.
+[27-11-2019 22:45:29] - {}
+
+[27-11-2019 22:45:29] - logger created.
+
+[27-11-2019 22:45:29] - PersonManager created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - AccountManager created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - AccountManager created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - coreContext created.
+[27-11-2019 22:45:29] - {}
+
+[27-11-2019 22:45:29] - logger created.
+
+[27-11-2019 22:45:29] - PersonManager created.
+[27-11-2019 22:45:29] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:29] - AccountManager created.
+[27-11-2019 22:45:29] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:29] - coreContext created.
+[27-11-2019 22:45:29] - {}
+
+[27-11-2019 22:45:29] - logger created.
+
+[27-11-2019 22:45:29] - coreContext created.
+[27-11-2019 22:45:29] - {}
+
+[27-11-2019 22:45:29] - logger created.
+
+[27-11-2019 22:45:29] - coreContext created.
+[27-11-2019 22:45:29] - {}
+
+[27-11-2019 22:45:29] - logger created.
+
+[27-11-2019 22:45:29] - coreContext created.
+[27-11-2019 22:45:29] - {}
+
+[27-11-2019 22:45:29] - logger created.
+
+[27-11-2019 22:45:29] - coreContext created.
+[27-11-2019 22:45:29] - {}
+
+[27-11-2019 22:45:29] - logger created.
+
+[27-11-2019 22:45:29] - PersonRepository created.
+[27-11-2019 22:45:29] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:29] - coreContext created.
+[27-11-2019 22:45:29] - {}
+
+[27-11-2019 22:45:29] - logger created.
+
+[27-11-2019 22:45:29] - PersonRepository created.
+[27-11-2019 22:45:29] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:29] - PersonRepository created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - AccountRepository created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:29] - PersonDomainEntity created.
+[27-11-2019 22:45:29] - "Nested-6b616881-3595-446e-8041-29e38e7dd890"
+
+[27-11-2019 22:45:31] - coreContext created.
+[27-11-2019 22:45:31] - {}
+
+[27-11-2019 22:45:31] - logger created.
+
+[27-11-2019 22:45:31] - PersonManager created.
+[27-11-2019 22:45:31] - "Nested-c0ccd368-7ccc-47b2-84b4-564722daddce"
+
+[27-11-2019 22:45:31] - AccountManager created.
+[27-11-2019 22:45:31] - "Nested-c0ccd368-7ccc-47b2-84b4-564722daddce"
+
+[27-11-2019 22:45:31] - coreContext created.
+[27-11-2019 22:45:31] - {}
+
+[27-11-2019 22:45:31] - logger created.
+
+[27-11-2019 22:45:31] - PersonManager created.
+[27-11-2019 22:45:31] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:31] - AccountManager created.
+[27-11-2019 22:45:31] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:31] - coreContext created.
+[27-11-2019 22:45:31] - {}
+
+[27-11-2019 22:45:31] - logger created.
+
+[27-11-2019 22:45:31] - coreContext created.
+[27-11-2019 22:45:31] - {}
+
+[27-11-2019 22:45:31] - logger created.
+
+[27-11-2019 22:45:31] - coreContext created.
+[27-11-2019 22:45:31] - {}
+
+[27-11-2019 22:45:31] - logger created.
+
+[27-11-2019 22:45:31] - coreContext created.
+[27-11-2019 22:45:31] - {}
+
+[27-11-2019 22:45:31] - logger created.
+
+[27-11-2019 22:45:31] - coreContext created.
+[27-11-2019 22:45:31] - {}
+
+[27-11-2019 22:45:31] - logger created.
+
+[27-11-2019 22:45:31] - PersonRepository created.
+[27-11-2019 22:45:31] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:31] - coreContext created.
+[27-11-2019 22:45:31] - {}
+
+[27-11-2019 22:45:31] - logger created.
+
+[27-11-2019 22:45:31] - PersonRepository created.
+[27-11-2019 22:45:31] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:31] - PersonDomainEntity created.
+[27-11-2019 22:45:31] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:31] - PersonRepository created.
+[27-11-2019 22:45:31] - "Nested-c0ccd368-7ccc-47b2-84b4-564722daddce"
+
+[27-11-2019 22:45:31] - PersonDomainEntity created.
+[27-11-2019 22:45:31] - "Nested-c0ccd368-7ccc-47b2-84b4-564722daddce"
+
+[27-11-2019 22:45:31] - PersonDomainEntity created.
+[27-11-2019 22:45:31] - "Nested-c0ccd368-7ccc-47b2-84b4-564722daddce"
+
+[27-11-2019 22:45:31] - AccountRepository created.
+[27-11-2019 22:45:31] - "Nested-c0ccd368-7ccc-47b2-84b4-564722daddce"
+
+[27-11-2019 22:45:32] - coreContext created.
+[27-11-2019 22:45:32] - {}
+
+[27-11-2019 22:45:32] - logger created.
+
+[27-11-2019 22:45:32] - PersonManager created.
+[27-11-2019 22:45:32] - "Nested-3430ce8e-2754-491f-8e13-993419db8f4d"
+
+[27-11-2019 22:45:32] - AccountManager created.
+[27-11-2019 22:45:32] - "Nested-3430ce8e-2754-491f-8e13-993419db8f4d"
+
+[27-11-2019 22:45:32] - coreContext created.
+[27-11-2019 22:45:32] - {}
+
+[27-11-2019 22:45:32] - logger created.
+
+[27-11-2019 22:45:32] - PersonManager created.
+[27-11-2019 22:45:32] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:32] - AccountManager created.
+[27-11-2019 22:45:32] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:32] - coreContext created.
+[27-11-2019 22:45:32] - {}
+
+[27-11-2019 22:45:32] - logger created.
+
+[27-11-2019 22:45:32] - coreContext created.
+[27-11-2019 22:45:32] - {}
+
+[27-11-2019 22:45:32] - logger created.
+
+[27-11-2019 22:45:32] - coreContext created.
+[27-11-2019 22:45:32] - {}
+
+[27-11-2019 22:45:32] - logger created.
+
+[27-11-2019 22:45:32] - coreContext created.
+[27-11-2019 22:45:32] - {}
+
+[27-11-2019 22:45:32] - logger created.
+
+[27-11-2019 22:45:32] - coreContext created.
+[27-11-2019 22:45:32] - {}
+
+[27-11-2019 22:45:32] - logger created.
+
+[27-11-2019 22:45:32] - PersonRepository created.
+[27-11-2019 22:45:32] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:32] - coreContext created.
+[27-11-2019 22:45:32] - {}
+
+[27-11-2019 22:45:32] - logger created.
+
+[27-11-2019 22:45:32] - PersonRepository created.
+[27-11-2019 22:45:32] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:32] - PersonDomainEntity created.
+[27-11-2019 22:45:32] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:32] - PersonRepository created.
+[27-11-2019 22:45:32] - "Nested-3430ce8e-2754-491f-8e13-993419db8f4d"
+
+[27-11-2019 22:45:32] - PersonDomainEntity created.
+[27-11-2019 22:45:32] - "Nested-3430ce8e-2754-491f-8e13-993419db8f4d"
+
+[27-11-2019 22:45:37] - coreContext created.
+[27-11-2019 22:45:37] - {}
+
+[27-11-2019 22:45:37] - logger created.
+
+[27-11-2019 22:45:37] - PersonManager created.
+[27-11-2019 22:45:37] - "Nested-38c98710-c8d5-4237-92d3-2ccedf40aac3"
+
+[27-11-2019 22:45:37] - AccountManager created.
+[27-11-2019 22:45:37] - "Nested-38c98710-c8d5-4237-92d3-2ccedf40aac3"
+
+[27-11-2019 22:45:37] - coreContext created.
+[27-11-2019 22:45:37] - {}
+
+[27-11-2019 22:45:37] - logger created.
+
+[27-11-2019 22:45:37] - PersonManager created.
+[27-11-2019 22:45:37] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:37] - AccountManager created.
+[27-11-2019 22:45:37] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:37] - coreContext created.
+[27-11-2019 22:45:37] - {}
+
+[27-11-2019 22:45:37] - logger created.
+
+[27-11-2019 22:45:37] - coreContext created.
+[27-11-2019 22:45:37] - {}
+
+[27-11-2019 22:45:37] - logger created.
+
+[27-11-2019 22:45:37] - coreContext created.
+[27-11-2019 22:45:37] - {}
+
+[27-11-2019 22:45:37] - logger created.
+
+[27-11-2019 22:45:37] - coreContext created.
+[27-11-2019 22:45:37] - {}
+
+[27-11-2019 22:45:37] - logger created.
+
+[27-11-2019 22:45:37] - coreContext created.
+[27-11-2019 22:45:37] - {}
+
+[27-11-2019 22:45:37] - logger created.
+
+[27-11-2019 22:45:37] - PersonRepository created.
+[27-11-2019 22:45:37] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:37] - coreContext created.
+[27-11-2019 22:45:37] - {}
+
+[27-11-2019 22:45:37] - logger created.
+
+[27-11-2019 22:45:37] - PersonRepository created.
+[27-11-2019 22:45:37] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:37] - PersonDomainEntity created.
+[27-11-2019 22:45:37] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:37] - PersonRepository created.
+[27-11-2019 22:45:37] - "Nested-38c98710-c8d5-4237-92d3-2ccedf40aac3"
+
+[27-11-2019 22:45:37] - PersonDomainEntity created.
+[27-11-2019 22:45:37] - "Nested-38c98710-c8d5-4237-92d3-2ccedf40aac3"
+
+[27-11-2019 22:45:40] - coreContext created.
+[27-11-2019 22:45:40] - {}
+
+[27-11-2019 22:45:40] - logger created.
+
+[27-11-2019 22:45:40] - PersonManager created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - AccountManager created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - AccountManager created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - coreContext created.
+[27-11-2019 22:45:40] - {}
+
+[27-11-2019 22:45:40] - logger created.
+
+[27-11-2019 22:45:40] - PersonManager created.
+[27-11-2019 22:45:40] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:40] - AccountManager created.
+[27-11-2019 22:45:40] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:40] - coreContext created.
+[27-11-2019 22:45:40] - {}
+
+[27-11-2019 22:45:40] - logger created.
+
+[27-11-2019 22:45:40] - coreContext created.
+[27-11-2019 22:45:40] - {}
+
+[27-11-2019 22:45:40] - logger created.
+
+[27-11-2019 22:45:40] - coreContext created.
+[27-11-2019 22:45:40] - {}
+
+[27-11-2019 22:45:40] - logger created.
+
+[27-11-2019 22:45:40] - coreContext created.
+[27-11-2019 22:45:40] - {}
+
+[27-11-2019 22:45:40] - logger created.
+
+[27-11-2019 22:45:40] - coreContext created.
+[27-11-2019 22:45:40] - {}
+
+[27-11-2019 22:45:40] - logger created.
+
+[27-11-2019 22:45:40] - PersonRepository created.
+[27-11-2019 22:45:40] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:40] - coreContext created.
+[27-11-2019 22:45:40] - {}
+
+[27-11-2019 22:45:40] - logger created.
+
+[27-11-2019 22:45:40] - PersonRepository created.
+[27-11-2019 22:45:40] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:40] - PersonRepository created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - AccountRepository created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:40] - PersonDomainEntity created.
+[27-11-2019 22:45:40] - "Nested-7bf911ec-f4b8-447b-84a0-a2fac3eb9197"
+
+[27-11-2019 22:45:41] - coreContext created.
+[27-11-2019 22:45:41] - {}
+
+[27-11-2019 22:45:41] - logger created.
+
+[27-11-2019 22:45:41] - PersonManager created.
+[27-11-2019 22:45:41] - "Nested-9186311a-84e5-4d48-a8d0-f10f55d1a679"
+
+[27-11-2019 22:45:41] - AccountManager created.
+[27-11-2019 22:45:41] - "Nested-9186311a-84e5-4d48-a8d0-f10f55d1a679"
+
+[27-11-2019 22:45:41] - coreContext created.
+[27-11-2019 22:45:41] - {}
+
+[27-11-2019 22:45:41] - logger created.
+
+[27-11-2019 22:45:41] - PersonManager created.
+[27-11-2019 22:45:41] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:41] - AccountManager created.
+[27-11-2019 22:45:41] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:41] - coreContext created.
+[27-11-2019 22:45:41] - {}
+
+[27-11-2019 22:45:41] - logger created.
+
+[27-11-2019 22:45:41] - coreContext created.
+[27-11-2019 22:45:41] - {}
+
+[27-11-2019 22:45:41] - logger created.
+
+[27-11-2019 22:45:41] - coreContext created.
+[27-11-2019 22:45:41] - {}
+
+[27-11-2019 22:45:41] - logger created.
+
+[27-11-2019 22:45:41] - coreContext created.
+[27-11-2019 22:45:41] - {}
+
+[27-11-2019 22:45:41] - logger created.
+
+[27-11-2019 22:45:41] - coreContext created.
+[27-11-2019 22:45:41] - {}
+
+[27-11-2019 22:45:41] - logger created.
+
+[27-11-2019 22:45:41] - PersonRepository created.
+[27-11-2019 22:45:41] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:41] - coreContext created.
+[27-11-2019 22:45:41] - {}
+
+[27-11-2019 22:45:41] - logger created.
+
+[27-11-2019 22:45:41] - PersonRepository created.
+[27-11-2019 22:45:41] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:41] - PersonDomainEntity created.
+[27-11-2019 22:45:41] - "03392420-3a09-422b-81b1-758d658c2bb9"
+
+[27-11-2019 22:45:41] - PersonRepository created.
+[27-11-2019 22:45:41] - "Nested-9186311a-84e5-4d48-a8d0-f10f55d1a679"
+
+[27-11-2019 22:45:41] - PersonDomainEntity created.
+[27-11-2019 22:45:41] - "Nested-9186311a-84e5-4d48-a8d0-f10f55d1a679"
+
+[27-11-2019 22:45:41] - PersonDomainEntity created.
+[27-11-2019 22:45:41] - "Nested-9186311a-84e5-4d48-a8d0-f10f55d1a679"
+
+[27-11-2019 22:45:41] - AccountRepository created.
+[27-11-2019 22:45:41] - "Nested-9186311a-84e5-4d48-a8d0-f10f55d1a679"
+
+[27-11-2019 22:46:55] - coreContext created.
+[27-11-2019 22:46:55] - {}
+
+[27-11-2019 22:46:55] - logger created.
+
+[27-11-2019 22:46:55] - PersonManager created.
+[27-11-2019 22:46:55] - "Nested-817ca7b8-b666-444f-b9cf-b41fdd309a08"
+
+[27-11-2019 22:46:55] - AccountManager created.
+[27-11-2019 22:46:55] - "Nested-817ca7b8-b666-444f-b9cf-b41fdd309a08"
+
+[27-11-2019 22:46:55] - coreContext created.
+[27-11-2019 22:46:55] - {}
+
+[27-11-2019 22:46:55] - logger created.
+
+[27-11-2019 22:46:55] - PersonManager created.
+[27-11-2019 22:46:55] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:46:55] - AccountManager created.
+[27-11-2019 22:46:55] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:46:55] - coreContext created.
+[27-11-2019 22:46:55] - {}
+
+[27-11-2019 22:46:55] - logger created.
+
+[27-11-2019 22:46:55] - PersonManager created.
+[27-11-2019 22:46:55] - "Nested-b5cd5fa4-e8e6-4bd7-bc14-c85a4e1ae411"
+
+[27-11-2019 22:46:55] - AccountManager created.
+[27-11-2019 22:46:55] - "Nested-b5cd5fa4-e8e6-4bd7-bc14-c85a4e1ae411"
+
+[27-11-2019 22:46:57] - coreContext created.
+[27-11-2019 22:46:57] - {}
+
+[27-11-2019 22:46:57] - logger created.
+
+[27-11-2019 22:46:57] - PersonManager created.
+[27-11-2019 22:46:57] - "Nested-73ef6887-b08d-4608-b71d-3c7a959031bc"
+
+[27-11-2019 22:46:57] - AccountManager created.
+[27-11-2019 22:46:57] - "Nested-73ef6887-b08d-4608-b71d-3c7a959031bc"
+
+[27-11-2019 22:46:57] - PersonRepository created.
+[27-11-2019 22:46:57] - "Nested-73ef6887-b08d-4608-b71d-3c7a959031bc"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-73ef6887-b08d-4608-b71d-3c7a959031bc"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-73ef6887-b08d-4608-b71d-3c7a959031bc"
+
+[27-11-2019 22:46:58] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:46:58] - "Db context Guid: b266f011-a57a-4891-8649-bea5e45aa25e"
+
+[27-11-2019 22:46:58] - TDbEntity inserting to context..
+[27-11-2019 22:46:58] - {"TokenId":0,"Value":"305ed8cb65c60c91c02c82814c1eff0c","PersonId":1,"ValidUntil":"2019-11-27T23:01:58.6557334+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:46:58.6557334+03:00","CanBeUsed":true}
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-73ef6887-b08d-4608-b71d-3c7a959031bc"
+
+[27-11-2019 22:46:58] - coreContext created.
+[27-11-2019 22:46:58] - {}
+
+[27-11-2019 22:46:58] - logger created.
+
+[27-11-2019 22:46:58] - PersonManager created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - AccountManager created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - AccountManager created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - coreContext created.
+[27-11-2019 22:46:58] - {}
+
+[27-11-2019 22:46:58] - logger created.
+
+[27-11-2019 22:46:58] - PersonManager created.
+[27-11-2019 22:46:58] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:46:58] - AccountManager created.
+[27-11-2019 22:46:58] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:46:58] - coreContext created.
+[27-11-2019 22:46:58] - {}
+
+[27-11-2019 22:46:58] - logger created.
+
+[27-11-2019 22:46:58] - coreContext created.
+[27-11-2019 22:46:58] - {}
+
+[27-11-2019 22:46:58] - logger created.
+
+[27-11-2019 22:46:58] - coreContext created.
+[27-11-2019 22:46:58] - {}
+
+[27-11-2019 22:46:58] - logger created.
+
+[27-11-2019 22:46:58] - coreContext created.
+[27-11-2019 22:46:58] - {}
+
+[27-11-2019 22:46:58] - logger created.
+
+[27-11-2019 22:46:58] - coreContext created.
+[27-11-2019 22:46:58] - {}
+
+[27-11-2019 22:46:58] - logger created.
+
+[27-11-2019 22:46:58] - PersonRepository created.
+[27-11-2019 22:46:58] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:46:58] - coreContext created.
+[27-11-2019 22:46:58] - {}
+
+[27-11-2019 22:46:58] - logger created.
+
+[27-11-2019 22:46:58] - PersonRepository created.
+[27-11-2019 22:46:58] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:46:58] - PersonRepository created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - AccountRepository created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:46:58] - PersonDomainEntity created.
+[27-11-2019 22:46:58] - "Nested-25d094a3-da24-4527-b8cd-092e623878c7"
+
+[27-11-2019 22:47:01] - coreContext created.
+[27-11-2019 22:47:01] - {}
+
+[27-11-2019 22:47:01] - logger created.
+
+[27-11-2019 22:47:01] - PersonManager created.
+[27-11-2019 22:47:01] - "Nested-fdc86510-5da0-418a-a2b3-75b57259c362"
+
+[27-11-2019 22:47:01] - AccountManager created.
+[27-11-2019 22:47:01] - "Nested-fdc86510-5da0-418a-a2b3-75b57259c362"
+
+[27-11-2019 22:47:01] - coreContext created.
+[27-11-2019 22:47:01] - {}
+
+[27-11-2019 22:47:01] - logger created.
+
+[27-11-2019 22:47:01] - PersonManager created.
+[27-11-2019 22:47:01] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:01] - AccountManager created.
+[27-11-2019 22:47:01] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:01] - coreContext created.
+[27-11-2019 22:47:01] - {}
+
+[27-11-2019 22:47:01] - logger created.
+
+[27-11-2019 22:47:01] - coreContext created.
+[27-11-2019 22:47:01] - {}
+
+[27-11-2019 22:47:01] - logger created.
+
+[27-11-2019 22:47:01] - coreContext created.
+[27-11-2019 22:47:01] - {}
+
+[27-11-2019 22:47:01] - logger created.
+
+[27-11-2019 22:47:01] - coreContext created.
+[27-11-2019 22:47:01] - {}
+
+[27-11-2019 22:47:01] - logger created.
+
+[27-11-2019 22:47:01] - coreContext created.
+[27-11-2019 22:47:01] - {}
+
+[27-11-2019 22:47:01] - logger created.
+
+[27-11-2019 22:47:01] - PersonRepository created.
+[27-11-2019 22:47:01] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:01] - coreContext created.
+[27-11-2019 22:47:01] - {}
+
+[27-11-2019 22:47:01] - logger created.
+
+[27-11-2019 22:47:01] - PersonRepository created.
+[27-11-2019 22:47:01] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:01] - PersonDomainEntity created.
+[27-11-2019 22:47:01] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:01] - PersonRepository created.
+[27-11-2019 22:47:01] - "Nested-fdc86510-5da0-418a-a2b3-75b57259c362"
+
+[27-11-2019 22:47:01] - PersonDomainEntity created.
+[27-11-2019 22:47:01] - "Nested-fdc86510-5da0-418a-a2b3-75b57259c362"
+
+[27-11-2019 22:47:01] - PersonDomainEntity created.
+[27-11-2019 22:47:01] - "Nested-fdc86510-5da0-418a-a2b3-75b57259c362"
+
+[27-11-2019 22:47:01] - AccountRepository created.
+[27-11-2019 22:47:01] - "Nested-fdc86510-5da0-418a-a2b3-75b57259c362"
+
+[27-11-2019 22:47:02] - coreContext created.
+[27-11-2019 22:47:02] - {}
+
+[27-11-2019 22:47:02] - logger created.
+
+[27-11-2019 22:47:02] - PersonManager created.
+[27-11-2019 22:47:02] - "Nested-d2c95644-57a9-4beb-af38-ced39ccadbe3"
+
+[27-11-2019 22:47:02] - AccountManager created.
+[27-11-2019 22:47:02] - "Nested-d2c95644-57a9-4beb-af38-ced39ccadbe3"
+
+[27-11-2019 22:47:02] - coreContext created.
+[27-11-2019 22:47:02] - {}
+
+[27-11-2019 22:47:02] - logger created.
+
+[27-11-2019 22:47:02] - PersonManager created.
+[27-11-2019 22:47:02] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:02] - AccountManager created.
+[27-11-2019 22:47:02] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:02] - coreContext created.
+[27-11-2019 22:47:02] - {}
+
+[27-11-2019 22:47:02] - logger created.
+
+[27-11-2019 22:47:02] - coreContext created.
+[27-11-2019 22:47:02] - {}
+
+[27-11-2019 22:47:02] - logger created.
+
+[27-11-2019 22:47:02] - coreContext created.
+[27-11-2019 22:47:02] - {}
+
+[27-11-2019 22:47:02] - logger created.
+
+[27-11-2019 22:47:02] - coreContext created.
+[27-11-2019 22:47:02] - {}
+
+[27-11-2019 22:47:02] - logger created.
+
+[27-11-2019 22:47:02] - coreContext created.
+[27-11-2019 22:47:02] - {}
+
+[27-11-2019 22:47:02] - logger created.
+
+[27-11-2019 22:47:02] - PersonRepository created.
+[27-11-2019 22:47:02] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:02] - coreContext created.
+[27-11-2019 22:47:02] - {}
+
+[27-11-2019 22:47:02] - logger created.
+
+[27-11-2019 22:47:02] - PersonRepository created.
+[27-11-2019 22:47:02] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:02] - PersonDomainEntity created.
+[27-11-2019 22:47:02] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:02] - PersonRepository created.
+[27-11-2019 22:47:02] - "Nested-d2c95644-57a9-4beb-af38-ced39ccadbe3"
+
+[27-11-2019 22:47:02] - PersonDomainEntity created.
+[27-11-2019 22:47:02] - "Nested-d2c95644-57a9-4beb-af38-ced39ccadbe3"
+
+[27-11-2019 22:47:10] - coreContext created.
+[27-11-2019 22:47:10] - {}
+
+[27-11-2019 22:47:10] - logger created.
+
+[27-11-2019 22:47:10] - PersonManager created.
+[27-11-2019 22:47:10] - "Nested-54a67283-2860-4237-8212-e394f2ccf7e1"
+
+[27-11-2019 22:47:10] - AccountManager created.
+[27-11-2019 22:47:10] - "Nested-54a67283-2860-4237-8212-e394f2ccf7e1"
+
+[27-11-2019 22:47:10] - coreContext created.
+[27-11-2019 22:47:10] - {}
+
+[27-11-2019 22:47:10] - logger created.
+
+[27-11-2019 22:47:10] - PersonManager created.
+[27-11-2019 22:47:10] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:10] - AccountManager created.
+[27-11-2019 22:47:10] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:10] - coreContext created.
+[27-11-2019 22:47:10] - {}
+
+[27-11-2019 22:47:10] - logger created.
+
+[27-11-2019 22:47:10] - coreContext created.
+[27-11-2019 22:47:10] - {}
+
+[27-11-2019 22:47:10] - logger created.
+
+[27-11-2019 22:47:10] - coreContext created.
+[27-11-2019 22:47:10] - {}
+
+[27-11-2019 22:47:10] - logger created.
+
+[27-11-2019 22:47:10] - coreContext created.
+[27-11-2019 22:47:10] - {}
+
+[27-11-2019 22:47:10] - logger created.
+
+[27-11-2019 22:47:10] - coreContext created.
+[27-11-2019 22:47:10] - {}
+
+[27-11-2019 22:47:10] - logger created.
+
+[27-11-2019 22:47:10] - PersonRepository created.
+[27-11-2019 22:47:10] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:10] - coreContext created.
+[27-11-2019 22:47:10] - {}
+
+[27-11-2019 22:47:10] - logger created.
+
+[27-11-2019 22:47:10] - PersonRepository created.
+[27-11-2019 22:47:10] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:10] - PersonDomainEntity created.
+[27-11-2019 22:47:10] - "0dda2c48-b0aa-4c9a-b721-b30094d90162"
+
+[27-11-2019 22:47:10] - PersonRepository created.
+[27-11-2019 22:47:10] - "Nested-54a67283-2860-4237-8212-e394f2ccf7e1"
+
+[27-11-2019 22:47:10] - PersonDomainEntity created.
+[27-11-2019 22:47:10] - "Nested-54a67283-2860-4237-8212-e394f2ccf7e1"
+
+[27-11-2019 22:48:04] - coreContext created.
+[27-11-2019 22:48:04] - {}
+
+[27-11-2019 22:48:04] - logger created.
+
+[27-11-2019 22:48:04] - PersonManager created.
+[27-11-2019 22:48:04] - "Nested-431c60f1-77d1-4278-9492-78f386b0ed5c"
+
+[27-11-2019 22:48:04] - AccountManager created.
+[27-11-2019 22:48:04] - "Nested-431c60f1-77d1-4278-9492-78f386b0ed5c"
+
+[27-11-2019 22:48:04] - coreContext created.
+[27-11-2019 22:48:04] - {}
+
+[27-11-2019 22:48:04] - logger created.
+
+[27-11-2019 22:48:04] - PersonManager created.
+[27-11-2019 22:48:04] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:04] - AccountManager created.
+[27-11-2019 22:48:04] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:04] - coreContext created.
+[27-11-2019 22:48:04] - {}
+
+[27-11-2019 22:48:04] - logger created.
+
+[27-11-2019 22:48:04] - PersonManager created.
+[27-11-2019 22:48:04] - "Nested-71c12666-b5c2-4cc4-88e1-d4b6437431f2"
+
+[27-11-2019 22:48:04] - AccountManager created.
+[27-11-2019 22:48:04] - "Nested-71c12666-b5c2-4cc4-88e1-d4b6437431f2"
+
+[27-11-2019 22:48:06] - coreContext created.
+[27-11-2019 22:48:06] - {}
+
+[27-11-2019 22:48:06] - logger created.
+
+[27-11-2019 22:48:06] - PersonManager created.
+[27-11-2019 22:48:06] - "Nested-fc1e6ca8-9f6c-42fb-8cd2-abfde3eeb568"
+
+[27-11-2019 22:48:06] - AccountManager created.
+[27-11-2019 22:48:06] - "Nested-fc1e6ca8-9f6c-42fb-8cd2-abfde3eeb568"
+
+[27-11-2019 22:48:06] - PersonRepository created.
+[27-11-2019 22:48:06] - "Nested-fc1e6ca8-9f6c-42fb-8cd2-abfde3eeb568"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-fc1e6ca8-9f6c-42fb-8cd2-abfde3eeb568"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-fc1e6ca8-9f6c-42fb-8cd2-abfde3eeb568"
+
+[27-11-2019 22:48:07] - Type of TokenDomainEntity entity will be inserted. forceToInsertDb: True
+[27-11-2019 22:48:07] - "Db context Guid: 39be34d7-5940-4f5b-a4d6-9c02976c41e2"
+
+[27-11-2019 22:48:07] - TDbEntity inserting to context..
+[27-11-2019 22:48:07] - {"TokenId":0,"Value":"91f8fba6126941a6a8333c0ec520877c","PersonId":1,"ValidUntil":"2019-11-27T23:03:07.3803275+03:00","ApplicationId":1,"CreateDate":"2019-11-27T22:48:07.3803275+03:00","CanBeUsed":true}
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-fc1e6ca8-9f6c-42fb-8cd2-abfde3eeb568"
+
+[27-11-2019 22:48:07] - coreContext created.
+[27-11-2019 22:48:07] - {}
+
+[27-11-2019 22:48:07] - logger created.
+
+[27-11-2019 22:48:07] - PersonManager created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - AccountManager created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - AccountManager created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - coreContext created.
+[27-11-2019 22:48:07] - {}
+
+[27-11-2019 22:48:07] - logger created.
+
+[27-11-2019 22:48:07] - PersonManager created.
+[27-11-2019 22:48:07] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:07] - AccountManager created.
+[27-11-2019 22:48:07] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:07] - coreContext created.
+[27-11-2019 22:48:07] - {}
+
+[27-11-2019 22:48:07] - logger created.
+
+[27-11-2019 22:48:07] - coreContext created.
+[27-11-2019 22:48:07] - {}
+
+[27-11-2019 22:48:07] - logger created.
+
+[27-11-2019 22:48:07] - coreContext created.
+[27-11-2019 22:48:07] - {}
+
+[27-11-2019 22:48:07] - logger created.
+
+[27-11-2019 22:48:07] - coreContext created.
+[27-11-2019 22:48:07] - {}
+
+[27-11-2019 22:48:07] - logger created.
+
+[27-11-2019 22:48:07] - coreContext created.
+[27-11-2019 22:48:07] - {}
+
+[27-11-2019 22:48:07] - logger created.
+
+[27-11-2019 22:48:07] - PersonRepository created.
+[27-11-2019 22:48:07] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:07] - coreContext created.
+[27-11-2019 22:48:07] - {}
+
+[27-11-2019 22:48:07] - logger created.
+
+[27-11-2019 22:48:07] - PersonRepository created.
+[27-11-2019 22:48:07] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:07] - PersonRepository created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - AccountRepository created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:07] - PersonDomainEntity created.
+[27-11-2019 22:48:07] - "Nested-12eb7e73-8949-44b1-a70f-d579db92b7a5"
+
+[27-11-2019 22:48:09] - coreContext created.
+[27-11-2019 22:48:09] - {}
+
+[27-11-2019 22:48:09] - logger created.
+
+[27-11-2019 22:48:09] - PersonManager created.
+[27-11-2019 22:48:09] - "Nested-3981fe76-6f6b-42fc-92a6-43d1f7a8b350"
+
+[27-11-2019 22:48:09] - AccountManager created.
+[27-11-2019 22:48:09] - "Nested-3981fe76-6f6b-42fc-92a6-43d1f7a8b350"
+
+[27-11-2019 22:48:09] - coreContext created.
+[27-11-2019 22:48:09] - {}
+
+[27-11-2019 22:48:09] - logger created.
+
+[27-11-2019 22:48:09] - PersonManager created.
+[27-11-2019 22:48:09] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:09] - AccountManager created.
+[27-11-2019 22:48:09] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:09] - coreContext created.
+[27-11-2019 22:48:09] - {}
+
+[27-11-2019 22:48:09] - logger created.
+
+[27-11-2019 22:48:09] - coreContext created.
+[27-11-2019 22:48:09] - {}
+
+[27-11-2019 22:48:09] - logger created.
+
+[27-11-2019 22:48:09] - coreContext created.
+[27-11-2019 22:48:09] - {}
+
+[27-11-2019 22:48:09] - logger created.
+
+[27-11-2019 22:48:09] - coreContext created.
+[27-11-2019 22:48:09] - {}
+
+[27-11-2019 22:48:09] - logger created.
+
+[27-11-2019 22:48:09] - coreContext created.
+[27-11-2019 22:48:09] - {}
+
+[27-11-2019 22:48:09] - logger created.
+
+[27-11-2019 22:48:09] - PersonRepository created.
+[27-11-2019 22:48:09] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:09] - coreContext created.
+[27-11-2019 22:48:09] - {}
+
+[27-11-2019 22:48:09] - logger created.
+
+[27-11-2019 22:48:09] - PersonRepository created.
+[27-11-2019 22:48:09] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:09] - PersonDomainEntity created.
+[27-11-2019 22:48:09] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:09] - PersonRepository created.
+[27-11-2019 22:48:09] - "Nested-3981fe76-6f6b-42fc-92a6-43d1f7a8b350"
+
+[27-11-2019 22:48:09] - PersonDomainEntity created.
+[27-11-2019 22:48:09] - "Nested-3981fe76-6f6b-42fc-92a6-43d1f7a8b350"
+
+[27-11-2019 22:48:09] - PersonDomainEntity created.
+[27-11-2019 22:48:09] - "Nested-3981fe76-6f6b-42fc-92a6-43d1f7a8b350"
+
+[27-11-2019 22:48:09] - AccountRepository created.
+[27-11-2019 22:48:09] - "Nested-3981fe76-6f6b-42fc-92a6-43d1f7a8b350"
+
+[27-11-2019 22:48:11] - coreContext created.
+[27-11-2019 22:48:11] - {}
+
+[27-11-2019 22:48:11] - logger created.
+
+[27-11-2019 22:48:11] - PersonManager created.
+[27-11-2019 22:48:11] - "Nested-2323d4e8-11ee-411d-a5fb-c0d741a0c8ac"
+
+[27-11-2019 22:48:11] - AccountManager created.
+[27-11-2019 22:48:11] - "Nested-2323d4e8-11ee-411d-a5fb-c0d741a0c8ac"
+
+[27-11-2019 22:48:11] - coreContext created.
+[27-11-2019 22:48:11] - {}
+
+[27-11-2019 22:48:11] - logger created.
+
+[27-11-2019 22:48:11] - PersonManager created.
+[27-11-2019 22:48:11] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:11] - AccountManager created.
+[27-11-2019 22:48:11] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:11] - coreContext created.
+[27-11-2019 22:48:11] - {}
+
+[27-11-2019 22:48:11] - logger created.
+
+[27-11-2019 22:48:11] - coreContext created.
+[27-11-2019 22:48:11] - {}
+
+[27-11-2019 22:48:11] - logger created.
+
+[27-11-2019 22:48:11] - coreContext created.
+[27-11-2019 22:48:11] - {}
+
+[27-11-2019 22:48:11] - logger created.
+
+[27-11-2019 22:48:11] - coreContext created.
+[27-11-2019 22:48:11] - {}
+
+[27-11-2019 22:48:11] - logger created.
+
+[27-11-2019 22:48:11] - coreContext created.
+[27-11-2019 22:48:11] - {}
+
+[27-11-2019 22:48:11] - logger created.
+
+[27-11-2019 22:48:11] - PersonRepository created.
+[27-11-2019 22:48:11] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:11] - coreContext created.
+[27-11-2019 22:48:11] - {}
+
+[27-11-2019 22:48:11] - logger created.
+
+[27-11-2019 22:48:11] - PersonRepository created.
+[27-11-2019 22:48:11] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:11] - PersonDomainEntity created.
+[27-11-2019 22:48:11] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:11] - PersonRepository created.
+[27-11-2019 22:48:11] - "Nested-2323d4e8-11ee-411d-a5fb-c0d741a0c8ac"
+
+[27-11-2019 22:48:11] - PersonDomainEntity created.
+[27-11-2019 22:48:11] - "Nested-2323d4e8-11ee-411d-a5fb-c0d741a0c8ac"
+
+[27-11-2019 22:48:13] - coreContext created.
+[27-11-2019 22:48:13] - {}
+
+[27-11-2019 22:48:13] - logger created.
+
+[27-11-2019 22:48:13] - PersonManager created.
+[27-11-2019 22:48:13] - "Nested-0e665982-a535-4571-a41c-dd9f21716d50"
+
+[27-11-2019 22:48:13] - AccountManager created.
+[27-11-2019 22:48:13] - "Nested-0e665982-a535-4571-a41c-dd9f21716d50"
+
+[27-11-2019 22:48:13] - coreContext created.
+[27-11-2019 22:48:13] - {}
+
+[27-11-2019 22:48:13] - logger created.
+
+[27-11-2019 22:48:13] - PersonManager created.
+[27-11-2019 22:48:13] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:13] - AccountManager created.
+[27-11-2019 22:48:13] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:13] - coreContext created.
+[27-11-2019 22:48:13] - {}
+
+[27-11-2019 22:48:13] - logger created.
+
+[27-11-2019 22:48:13] - coreContext created.
+[27-11-2019 22:48:13] - {}
+
+[27-11-2019 22:48:13] - logger created.
+
+[27-11-2019 22:48:13] - coreContext created.
+[27-11-2019 22:48:13] - {}
+
+[27-11-2019 22:48:13] - logger created.
+
+[27-11-2019 22:48:13] - coreContext created.
+[27-11-2019 22:48:13] - {}
+
+[27-11-2019 22:48:13] - logger created.
+
+[27-11-2019 22:48:13] - coreContext created.
+[27-11-2019 22:48:13] - {}
+
+[27-11-2019 22:48:13] - logger created.
+
+[27-11-2019 22:48:13] - PersonRepository created.
+[27-11-2019 22:48:13] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:13] - coreContext created.
+[27-11-2019 22:48:13] - {}
+
+[27-11-2019 22:48:13] - logger created.
+
+[27-11-2019 22:48:13] - PersonRepository created.
+[27-11-2019 22:48:13] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:13] - PersonDomainEntity created.
+[27-11-2019 22:48:13] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:13] - PersonRepository created.
+[27-11-2019 22:48:13] - "Nested-0e665982-a535-4571-a41c-dd9f21716d50"
+
+[27-11-2019 22:48:13] - PersonDomainEntity created.
+[27-11-2019 22:48:13] - "Nested-0e665982-a535-4571-a41c-dd9f21716d50"
+
+[27-11-2019 22:48:19] - coreContext created.
+[27-11-2019 22:48:19] - {}
+
+[27-11-2019 22:48:19] - logger created.
+
+[27-11-2019 22:48:19] - PersonManager created.
+[27-11-2019 22:48:19] - "Nested-3963515c-56be-434c-b562-ad5022c6582e"
+
+[27-11-2019 22:48:19] - AccountManager created.
+[27-11-2019 22:48:19] - "Nested-3963515c-56be-434c-b562-ad5022c6582e"
+
+[27-11-2019 22:48:19] - coreContext created.
+[27-11-2019 22:48:19] - {}
+
+[27-11-2019 22:48:19] - logger created.
+
+[27-11-2019 22:48:19] - PersonManager created.
+[27-11-2019 22:48:19] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:19] - AccountManager created.
+[27-11-2019 22:48:19] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:19] - coreContext created.
+[27-11-2019 22:48:19] - {}
+
+[27-11-2019 22:48:19] - logger created.
+
+[27-11-2019 22:48:19] - coreContext created.
+[27-11-2019 22:48:19] - {}
+
+[27-11-2019 22:48:19] - logger created.
+
+[27-11-2019 22:48:19] - coreContext created.
+[27-11-2019 22:48:19] - {}
+
+[27-11-2019 22:48:19] - logger created.
+
+[27-11-2019 22:48:19] - coreContext created.
+[27-11-2019 22:48:19] - {}
+
+[27-11-2019 22:48:19] - logger created.
+
+[27-11-2019 22:48:19] - coreContext created.
+[27-11-2019 22:48:19] - {}
+
+[27-11-2019 22:48:19] - logger created.
+
+[27-11-2019 22:48:19] - PersonRepository created.
+[27-11-2019 22:48:19] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:19] - coreContext created.
+[27-11-2019 22:48:19] - {}
+
+[27-11-2019 22:48:19] - logger created.
+
+[27-11-2019 22:48:19] - PersonRepository created.
+[27-11-2019 22:48:19] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:19] - PersonDomainEntity created.
+[27-11-2019 22:48:19] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:19] - PersonRepository created.
+[27-11-2019 22:48:19] - "Nested-3963515c-56be-434c-b562-ad5022c6582e"
+
+[27-11-2019 22:48:19] - PersonDomainEntity created.
+[27-11-2019 22:48:19] - "Nested-3963515c-56be-434c-b562-ad5022c6582e"
+
+[27-11-2019 22:48:22] - coreContext created.
+[27-11-2019 22:48:22] - {}
+
+[27-11-2019 22:48:22] - logger created.
+
+[27-11-2019 22:48:22] - PersonManager created.
+[27-11-2019 22:48:22] - "Nested-e4a27ec6-5f4e-4dbf-aae2-8ca8d79a1c1d"
+
+[27-11-2019 22:48:22] - AccountManager created.
+[27-11-2019 22:48:22] - "Nested-e4a27ec6-5f4e-4dbf-aae2-8ca8d79a1c1d"
+
+[27-11-2019 22:48:22] - coreContext created.
+[27-11-2019 22:48:22] - {}
+
+[27-11-2019 22:48:22] - logger created.
+
+[27-11-2019 22:48:22] - PersonManager created.
+[27-11-2019 22:48:22] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:22] - AccountManager created.
+[27-11-2019 22:48:22] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:22] - coreContext created.
+[27-11-2019 22:48:22] - {}
+
+[27-11-2019 22:48:22] - logger created.
+
+[27-11-2019 22:48:22] - coreContext created.
+[27-11-2019 22:48:22] - {}
+
+[27-11-2019 22:48:22] - logger created.
+
+[27-11-2019 22:48:22] - coreContext created.
+[27-11-2019 22:48:22] - {}
+
+[27-11-2019 22:48:22] - logger created.
+
+[27-11-2019 22:48:22] - coreContext created.
+[27-11-2019 22:48:22] - {}
+
+[27-11-2019 22:48:22] - logger created.
+
+[27-11-2019 22:48:22] - coreContext created.
+[27-11-2019 22:48:22] - {}
+
+[27-11-2019 22:48:22] - logger created.
+
+[27-11-2019 22:48:22] - PersonRepository created.
+[27-11-2019 22:48:22] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:22] - coreContext created.
+[27-11-2019 22:48:22] - {}
+
+[27-11-2019 22:48:22] - logger created.
+
+[27-11-2019 22:48:22] - PersonRepository created.
+[27-11-2019 22:48:22] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:22] - PersonDomainEntity created.
+[27-11-2019 22:48:22] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:48:22] - PersonRepository created.
+[27-11-2019 22:48:22] - "Nested-e4a27ec6-5f4e-4dbf-aae2-8ca8d79a1c1d"
+
+[27-11-2019 22:48:22] - PersonDomainEntity created.
+[27-11-2019 22:48:22] - "Nested-e4a27ec6-5f4e-4dbf-aae2-8ca8d79a1c1d"
+
+[27-11-2019 22:48:22] - PersonDomainEntity created.
+[27-11-2019 22:48:22] - "Nested-e4a27ec6-5f4e-4dbf-aae2-8ca8d79a1c1d"
+
+[27-11-2019 22:48:22] - AccountRepository created.
+[27-11-2019 22:48:22] - "Nested-e4a27ec6-5f4e-4dbf-aae2-8ca8d79a1c1d"
+
+[27-11-2019 22:49:00] - coreContext created.
+[27-11-2019 22:49:00] - {}
+
+[27-11-2019 22:49:00] - logger created.
+
+[27-11-2019 22:49:00] - PersonManager created.
+[27-11-2019 22:49:00] - "Nested-02f418ae-7412-44e0-8300-e6f99bbdbb4f"
+
+[27-11-2019 22:49:00] - AccountManager created.
+[27-11-2019 22:49:00] - "Nested-02f418ae-7412-44e0-8300-e6f99bbdbb4f"
+
+[27-11-2019 22:49:00] - coreContext created.
+[27-11-2019 22:49:00] - {}
+
+[27-11-2019 22:49:00] - logger created.
+
+[27-11-2019 22:49:00] - PersonManager created.
+[27-11-2019 22:49:00] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:00] - AccountManager created.
+[27-11-2019 22:49:00] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:00] - coreContext created.
+[27-11-2019 22:49:00] - {}
+
+[27-11-2019 22:49:00] - logger created.
+
+[27-11-2019 22:49:00] - coreContext created.
+[27-11-2019 22:49:00] - {}
+
+[27-11-2019 22:49:00] - logger created.
+
+[27-11-2019 22:49:00] - coreContext created.
+[27-11-2019 22:49:00] - {}
+
+[27-11-2019 22:49:00] - logger created.
+
+[27-11-2019 22:49:00] - coreContext created.
+[27-11-2019 22:49:00] - {}
+
+[27-11-2019 22:49:00] - logger created.
+
+[27-11-2019 22:49:00] - coreContext created.
+[27-11-2019 22:49:00] - {}
+
+[27-11-2019 22:49:00] - logger created.
+
+[27-11-2019 22:49:00] - PersonRepository created.
+[27-11-2019 22:49:00] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:00] - coreContext created.
+[27-11-2019 22:49:00] - {}
+
+[27-11-2019 22:49:00] - logger created.
+
+[27-11-2019 22:49:00] - PersonRepository created.
+[27-11-2019 22:49:00] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:00] - PersonDomainEntity created.
+[27-11-2019 22:49:00] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:00] - PersonRepository created.
+[27-11-2019 22:49:00] - "Nested-02f418ae-7412-44e0-8300-e6f99bbdbb4f"
+
+[27-11-2019 22:49:00] - PersonDomainEntity created.
+[27-11-2019 22:49:00] - "Nested-02f418ae-7412-44e0-8300-e6f99bbdbb4f"
+
+[27-11-2019 22:49:00] - PersonDomainEntity created.
+[27-11-2019 22:49:00] - "Nested-02f418ae-7412-44e0-8300-e6f99bbdbb4f"
+
+[27-11-2019 22:49:00] - AccountRepository created.
+[27-11-2019 22:49:00] - "Nested-02f418ae-7412-44e0-8300-e6f99bbdbb4f"
+
+[27-11-2019 22:49:06] - coreContext created.
+[27-11-2019 22:49:06] - {}
+
+[27-11-2019 22:49:06] - logger created.
+
+[27-11-2019 22:49:06] - PersonManager created.
+[27-11-2019 22:49:06] - "Nested-4b5c4dbc-02b9-415f-bdeb-a9ea7d45f417"
+
+[27-11-2019 22:49:06] - AccountManager created.
+[27-11-2019 22:49:06] - "Nested-4b5c4dbc-02b9-415f-bdeb-a9ea7d45f417"
+
+[27-11-2019 22:49:06] - coreContext created.
+[27-11-2019 22:49:06] - {}
+
+[27-11-2019 22:49:06] - logger created.
+
+[27-11-2019 22:49:06] - PersonManager created.
+[27-11-2019 22:49:06] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:06] - AccountManager created.
+[27-11-2019 22:49:06] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:06] - coreContext created.
+[27-11-2019 22:49:06] - {}
+
+[27-11-2019 22:49:06] - logger created.
+
+[27-11-2019 22:49:06] - coreContext created.
+[27-11-2019 22:49:06] - {}
+
+[27-11-2019 22:49:06] - logger created.
+
+[27-11-2019 22:49:06] - coreContext created.
+[27-11-2019 22:49:06] - {}
+
+[27-11-2019 22:49:06] - logger created.
+
+[27-11-2019 22:49:06] - coreContext created.
+[27-11-2019 22:49:06] - {}
+
+[27-11-2019 22:49:06] - logger created.
+
+[27-11-2019 22:49:06] - coreContext created.
+[27-11-2019 22:49:06] - {}
+
+[27-11-2019 22:49:06] - logger created.
+
+[27-11-2019 22:49:06] - PersonRepository created.
+[27-11-2019 22:49:06] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:06] - coreContext created.
+[27-11-2019 22:49:06] - {}
+
+[27-11-2019 22:49:06] - logger created.
+
+[27-11-2019 22:49:06] - PersonRepository created.
+[27-11-2019 22:49:06] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:06] - PersonDomainEntity created.
+[27-11-2019 22:49:06] - "ac24e67d-93df-42a7-8929-e2d28d7efef0"
+
+[27-11-2019 22:49:06] - PersonRepository created.
+[27-11-2019 22:49:06] - "Nested-4b5c4dbc-02b9-415f-bdeb-a9ea7d45f417"
+
+[27-11-2019 22:49:06] - PersonDomainEntity created.
+[27-11-2019 22:49:06] - "Nested-4b5c4dbc-02b9-415f-bdeb-a9ea7d45f417"
+
+[27-11-2019 22:49:06] - PersonDomainEntity created.
+[27-11-2019 22:49:06] - "Nested-4b5c4dbc-02b9-415f-bdeb-a9ea7d45f417"
+
+[27-11-2019 22:49:06] - AccountRepository created.
+[27-11-2019 22:49:06] - "Nested-4b5c4dbc-02b9-415f-bdeb-a9ea7d45f417"
+

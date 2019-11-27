@@ -159,10 +159,12 @@
     </Compile>
     <Compile Include="Models\AccountDetail.cs" />
     <Compile Include="Models\AccountOverview.cs" />
+    <Compile Include="Models\CompanyDetail.cs" />
     <Compile Include="Models\CreditCardExtreOverviewItem.cs" />
     <Compile Include="Models\CreditCardExtreOvierview.cs" />
     <Compile Include="Models\CreditCardOverview.cs" />
     <Compile Include="Models\Operation\AccountCreate.cs" />
+    <Compile Include="Models\Operation\CompanyAddressChange.cs" />
     <Compile Include="Models\Operation\CompanyCreate.cs" />
     <Compile Include="Models\Operation\CreditCardCreate.cs" />
     <Compile Include="Models\Operation\CreditCardDischarge.cs" />
@@ -227,6 +229,9 @@
     <Content Include="Views\CreditCard\Create.cshtml" />
     <Content Include="Views\Shared\_HomeCompanyOverviewPartial.cshtml" />
     <Content Include="Views\Company\Create.cshtml" />
+    <Content Include="Views\Company\Detail.cshtml" />
+    <Content Include="Views\Shared\_CompanyOverviewPartial.cshtml" />
+    <Content Include="Views\Company\ChangeAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

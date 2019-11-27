@@ -1,0 +1,31 @@
+﻿@model AccountApp.Models.CompanyDetail
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Company Detail</h2>
+<hr />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Detail</div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                @Html.Partial("_CompanyOverviewPartial", Model.Company)
+
+                <div class="margin-top-10">
+
+                    <a href="~/Company/@Model.Company.Id/ChangePhoneNumber" class="btn btn-primary">Change Phone Number</a>
+                    <a href="~/Company/@Model.Company.Id/ChangeAddress" class="btn btn-primary">Change Address</a>
+
+                    @*@Html.ActionLink("Change Phone Number", "ChangePhoneNumber", new { id = Model.Company.Id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Change Address", "ChangeAddress", new { id = Model.Company.Id }, new { @class = "btn btn-default" })*@
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

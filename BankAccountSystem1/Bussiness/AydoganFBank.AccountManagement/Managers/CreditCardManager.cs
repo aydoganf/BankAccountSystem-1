@@ -13,13 +13,16 @@ namespace AydoganFBank.AccountManagement.Managers
         #region IoC
         private readonly ICoreContext coreContext;
         private readonly AccountManager accountManager;
+        private readonly CompanyManager companyManager;
 
         public CreditCardManager(
             ICoreContext coreContext, 
-            AccountManager accountManager)
+            AccountManager accountManager,
+            CompanyManager companyManager)
         {
             this.coreContext = coreContext;
             this.accountManager = accountManager;
+            this.companyManager = companyManager;
         }
         #endregion
 
@@ -37,6 +40,16 @@ namespace AydoganFBank.AccountManagement.Managers
         {
             var account = accountManager.GetAccountByAccountNumber(accountNumber);
             return GetCreditCardByAccount(account);
+        }
+
+        internal CreditCardDomainEntity GetCreditCardByCompany(int companyId)
+        {
+            var company = companyManager.GetCompanyById(companyId);
+            var accounts = coreContext.Query<IAccountRepository>().GetListByOwner(company);
+
+            var companyAccount = accounts?.SingleOrDefault(a => a.AccountOwner.OwnerType == AccountOwnerType.Company);
+
+            return coreContext.Query<ICreditCardRepository>().GetByCreditCardOwner(companyAccount);
         }
 
         internal List<CreditCardDomainEntity> GetCreditCardListByPerson(PersonDomainEntity person)
@@ -374,6 +387,7 @@ namespace AydoganFBank.AccountManagement.Managers
 
         List<ICreditCardPaymentInfo> ICreditCardManager.GetCreditCardPaymentList(int creditCardId, DateTime startDate, DateTime endDate)
             => GetCreditCardPaymentList(creditCardId, startDate, endDate).Cast<ICreditCardPaymentInfo>().ToList();
+
         #endregion
     }
 }
