@@ -1,0 +1,59 @@
+﻿@using AccountApp.Utility
+@model AccountApp.Models.Operation.CompanyPhoneNumberChange
+@{
+    ViewBag.Title = "ChangePhoneNumber";
+}
+
+<h2>Change Phone Number</h2>
+<hr />
+
+@Html.GetUiAlertBox(ViewBag as object)
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Company Phone Number
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                @using (Html.BeginForm())
+                {
+
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Company Name</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Model.CompanyName
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Phone Number</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-4">
+                                <input type="submit" class="btn btn-success" value="Update" />
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

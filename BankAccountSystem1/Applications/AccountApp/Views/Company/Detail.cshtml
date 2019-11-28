@@ -1,4 +1,5 @@
-﻿@model AccountApp.Models.CompanyDetail
+﻿@using AccountApp.Utility
+@model AccountApp.Models.CompanyDetail
 @{
     ViewBag.Title = "Detail";
 }
@@ -17,13 +18,114 @@
 
                 <div class="margin-top-10">
 
-                    <a href="~/Company/@Model.Company.Id/ChangePhoneNumber" class="btn btn-primary">Change Phone Number</a>
-                    <a href="~/Company/@Model.Company.Id/ChangeAddress" class="btn btn-primary">Change Address</a>
-
-                    @*@Html.ActionLink("Change Phone Number", "ChangePhoneNumber", new { id = Model.Company.Id }, new { @class = "btn btn-default" })
-                    @Html.ActionLink("Change Address", "ChangeAddress", new { id = Model.Company.Id }, new { @class = "btn btn-default" })*@
+                    @Html.BuildLink("Company", Model.Company.Id, "ChangePhoneNumber", "Change Phone Number", Application.ButtonType.Primary)
+                    @Html.BuildLink("Company", Model.Company.Id, "ChangeAddress", "Change Address", Application.ButtonType.Primary)
 
                 </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="tabbable-panel">
+            <div class="tabbable-line">
+
+                <ul class="nav nav-tabs ">
+                    <li class="active">
+                        <a href="#tab_default_1" data-toggle="tab">
+                            Accounts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab_default_2" data-toggle="tab">
+                            Credit Cards
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="tab_default_1">
+
+                        <div class="text-right margin-top-10">
+                            @Html.BuildLink("Company", Model.Company.Id, "CreateAccount", "Create Account", Application.ButtonType.Primary, Application.ButtonSize.XSmall)
+                        </div>
+
+                        @if (Model.AccountList.Count == 0)
+                        {
+                            @Application.BuildAlertBox(Application.AlertBoxType.Info, "No account found");
+                        }
+                        else
+                        {
+                            <table class="table table-bordered margin-top-10">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Account Number</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var account in Model.AccountList)
+                                    {
+                                        <tr>
+                                            <td></td>
+                                            <td>@account.AccountNumber</td>
+                                            <td>@account.Balance @account.AccountType.AssetsUnit</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+
+
+                    </div>
+
+                    <div class="tab-pane" id="tab_default_2">
+
+                        <div class="text-right margin-top-10">
+                            @Html.BuildLink("Company", Model.Company.Id, "CreateCreditCard", "Create Credit Card", Application.ButtonType.Primary, Application.ButtonSize.XSmall)
+                        </div>
+
+                        @if (Model.CreditCardList.Count == 0)
+                        {
+                            @Application.BuildAlertBox(Application.AlertBoxType.Info, "No credit card found");
+                        }
+                        else
+                        {
+                            <table class="table table-bordered margin-top-10">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Credit Card Number</th>
+                                        <th>Owner</th>
+                                        <th>Valid Date</th>
+                                        <th>Limit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var creditCard in Model.CreditCardList)
+                                    {
+                                        <tr>
+                                            <td></td>
+                                            <td>@creditCard.CreditCardMaskedNumber</td>
+                                            <td>@creditCard.CreditCardOwner.DisplayText</td>
+                                            <td>@creditCard.ValidMonth/@creditCard.ValidYear</td>
+                                            <td>@creditCard.Limit</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+
+                    </div>
+
+                </div>
+
             </div>
         </div>
 

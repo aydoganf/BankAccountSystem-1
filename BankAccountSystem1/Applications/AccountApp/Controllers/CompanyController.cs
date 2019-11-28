@@ -103,5 +103,36 @@ namespace AccountApp.Controllers
                 return View(model);
             }            
         }
+
+        [HttpGet]
+        [Route("{companyId:int}/ChangePhoneNumber")]
+        public ActionResult ChangePhoneNumber(int companyId)
+        {
+            var company = companyManagerService.GetCompanyInfo(companyId);
+
+            CompanyPhoneNumberChange model = new CompanyPhoneNumberChange(company.CompanyName, company.PhoneNumber);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Route("{companyId:int}/ChangePhoneNumber")]
+        public ActionResult ChangePhoneNumber(int companyId, CompanyPhoneNumberChange model)
+        {
+            try
+            {
+                var company = companyManagerService.ChangeCompanyPhoneNumber(companyId, model.PhoneNumber);
+
+                model.CompanyName = company.CompanyName;
+
+                Application.HandleOperation(ViewBag, $"{company.CompanyName} company phone number successfully updated.");
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                Application.HandleOperation(ex, ViewBag);
+                return View(model);
+            }
+        }
     }
 }

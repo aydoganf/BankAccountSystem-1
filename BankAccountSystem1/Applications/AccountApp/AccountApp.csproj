@@ -166,6 +166,7 @@
     <Compile Include="Models\Operation\AccountCreate.cs" />
     <Compile Include="Models\Operation\CompanyAddressChange.cs" />
     <Compile Include="Models\Operation\CompanyCreate.cs" />
+    <Compile Include="Models\Operation\CompanyPhoneNumberChange.cs" />
     <Compile Include="Models\Operation\CreditCardCreate.cs" />
     <Compile Include="Models\Operation\CreditCardDischarge.cs" />
     <Compile Include="Models\Operation\OperationResult.cs" />
@@ -232,6 +233,7 @@
     <Content Include="Views\Company\Detail.cshtml" />
     <Content Include="Views\Shared\_CompanyOverviewPartial.cshtml" />
     <Content Include="Views\Company\ChangeAddress.cshtml" />
+    <Content Include="Views\Company\ChangePhoneNumber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

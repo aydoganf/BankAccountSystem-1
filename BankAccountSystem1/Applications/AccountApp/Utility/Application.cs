@@ -104,6 +104,61 @@ namespace AccountApp.Utility
         #endregion
 
         #region Html helpers
+        public enum ButtonType
+        {
+            Success,
+            Info,
+            Warning,
+            Danger,
+            Primary,
+            Default
+        }
+
+        public enum ButtonSize
+        {
+            Normal,
+            Large,
+            Small,
+            XSmall
+        }
+
+        public static string ToCss(this ButtonType buttonType)
+        {
+            switch (buttonType)
+            {
+                case ButtonType.Success:
+                    return "btn btn-success";
+                case ButtonType.Info:
+                    return "btn btn-info";
+                case ButtonType.Warning:
+                    return "btn btn-warning";
+                case ButtonType.Danger:
+                    return "btn btn-danger";
+                case ButtonType.Primary:
+                    return "btn btn-primary";
+                case ButtonType.Default:
+                    return "btn btn-default";
+                default:
+                    return "btn btn-default";
+            }
+        }
+
+        public static string ToCss(this ButtonSize buttonSize)
+        {
+            switch (buttonSize)
+            {
+                case ButtonSize.Normal:
+                    return string.Empty;
+                case ButtonSize.Large:
+                    return "btn-lg";
+                case ButtonSize.Small:
+                    return "btn-sm";
+                case ButtonSize.XSmall:
+                    return "btn-xs";
+                default:
+                    return string.Empty;
+            }
+        }
 
         public enum AlertBoxType
         {
@@ -175,6 +230,26 @@ namespace AccountApp.Utility
             }
 
             return MvcHtmlString.Create(string.Empty);
+        }
+
+        public static MvcHtmlString BuildLink(
+            this HtmlHelper helper,
+            string controller, 
+            object modelId, 
+            string actionName, 
+            string text, 
+            ButtonType buttonType = ButtonType.Default, 
+            ButtonSize buttonSize = ButtonSize.Normal)
+        {
+            TagBuilder tagBuilder = new TagBuilder("a");
+
+            tagBuilder.AddCssClass(buttonType.ToCss());
+            tagBuilder.AddCssClass(buttonSize.ToCss());
+
+            tagBuilder.Attributes.Add("href", $"/{controller}/{modelId}/{actionName}");
+            tagBuilder.SetInnerText(text);
+
+            return new MvcHtmlString(tagBuilder.ToString());
         }
         #endregion
     }
