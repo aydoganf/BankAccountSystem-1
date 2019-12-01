@@ -42,14 +42,20 @@ namespace AydoganFBank.AccountManagement.Managers
             return GetCreditCardByAccount(account);
         }
 
-        internal CreditCardDomainEntity GetCreditCardByCompany(int companyId)
+        internal List<CreditCardDomainEntity> GetCreditCardListByCompany(int companyId)
         {
             var company = companyManager.GetCompanyById(companyId);
             var accounts = coreContext.Query<IAccountRepository>().GetListByOwner(company);
 
-            var companyAccount = accounts?.SingleOrDefault(a => a.AccountOwner.OwnerType == AccountOwnerType.Company);
+            List<CreditCardDomainEntity> creditCards = new List<CreditCardDomainEntity>();
+            foreach (var account in accounts)
+            {
+                var creditCard = coreContext.Query<ICreditCardRepository>().GetByCreditCardOwner(account);
+                if (creditCard != null)
+                    creditCards.Add(creditCard);
+            }
 
-            return coreContext.Query<ICreditCardRepository>().GetByCreditCardOwner(companyAccount);
+            return creditCards;
         }
 
         internal List<CreditCardDomainEntity> GetCreditCardListByPerson(PersonDomainEntity person)
@@ -165,6 +171,7 @@ namespace AydoganFBank.AccountManagement.Managers
 
             creditCard.Flush();
 
+            toTransactionOwner.DoTransaction(amount, TransactionDirection.In);
             transaction.SetStatus(TransactionStatusEnum.Succeeded);
 
             coreContext.Commit();
@@ -387,6 +394,9 @@ namespace AydoganFBank.AccountManagement.Managers
 
         List<ICreditCardPaymentInfo> ICreditCardManager.GetCreditCardPaymentList(int creditCardId, DateTime startDate, DateTime endDate)
             => GetCreditCardPaymentList(creditCardId, startDate, endDate).Cast<ICreditCardPaymentInfo>().ToList();
+
+        List<ICreditCardInfo> ICreditCardManager.GetCreditCardsByCompany(int companyId) 
+            => GetCreditCardListByCompany(companyId).Cast<ICreditCardInfo>().ToList();
 
         #endregion
     }

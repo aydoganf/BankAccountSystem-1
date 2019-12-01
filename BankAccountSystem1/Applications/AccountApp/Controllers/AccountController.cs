@@ -1,5 +1,6 @@
 ﻿using AccountApp.Models;
 using AccountApp.Models.Operation;
+using AccountApp.Models.Operation.Account;
 using AccountApp.Utility;
 using AydoganFBank.Service.Dispatcher.Api;
 using AydoganFBank.Service.Dispatcher.Data;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace AccountApp.Controllers
 {
+    [RoutePrefix("Account")]
     public class AccountController : RequiredAuthorizationControllerBase
     {
         #region IoC
@@ -38,69 +40,84 @@ namespace AccountApp.Controllers
 
             return new AccountOverview(account, creditCard);
         }
+
+        private AccountOverview CreateAccountOverview(int accountId)
+        {
+            var account = accountManagerService.GetAccountInfo(accountId);
+            var creditCard = creditCardManagerService.GetCreditCardByAccount(account.AccountNumber);
+
+            return new AccountOverview(account, creditCard);
+        }
         #endregion
 
-        public ActionResult Index()
+        [HttpGet]
+        [Route("{accountId:int}/Deposit")]
+        public ActionResult Deposit(int accountId)
         {
-            return View();
-        }
-
-        public ActionResult Deposit(string accountNumber)
-        {
-            AccountOverview model = CreateAccountOverview(accountNumber);
+            Deposit model = new Deposit();
+            model.AccountOverview = CreateAccountOverview(accountId);
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Deposit(string accountNumber, decimal amount)
+        [Route("{accountId:int}/Deposit")]
+        public ActionResult Deposit(int accountId, Deposit model)
         {
-            AccountOverview overview = CreateAccountOverview(accountNumber);
+            AccountOverview overview = CreateAccountOverview(accountId);
+            model.AccountOverview = overview;
 
             try
             {
-                overview.Account = accountManagerService.DepositToOwnAccount(overview.Account.Id, amount);
-                Application.HandleOperation(ViewBag, $"{amount} {overview.AssetsUnit} is successfully deposit to your account.");
+                overview.Account = accountManagerService.DepositToOwnAccount(overview.Account.Id, model.Amount);
+                Application.HandleOperation(ViewBag, $"{model.Amount} {overview.AssetsUnit} is successfully deposit to your account.");
 
-                return View(overview);
+                return View(model);
             }
             catch (Exception ex)
             {
                 Application.HandleOperation(ex, ViewBag);
-                return View(overview);
+                return View(model);
             }            
         }
 
-        public ActionResult Withdraw(string accountNumber)
+        [HttpGet]
+        [Route("{accountId:int}/Withdraw")]
+        public ActionResult Withdraw(int accountId)
         {
-            AccountOverview model = CreateAccountOverview(accountNumber);
+            Withdraw model = new Withdraw();
+            model.AccountOverview = CreateAccountOverview(accountId);
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Withdraw(string accountNumber, decimal amount)
+        [Route("{accountId:int}/Withdraw")]
+        public ActionResult Withdraw(int accountId, Withdraw model)
         {
-            AccountOverview overview = CreateAccountOverview(accountNumber);
+            AccountOverview overview = CreateAccountOverview(accountId);
+            model.AccountOverview = overview;
 
             try
             {
-                overview.Account = accountManagerService.WithdrawMoneyFromOwn(overview.Account.Id, amount);
+                overview.Account = accountManagerService.WithdrawMoneyFromOwn(overview.Account.Id, model.Amount);
 
-                Application.HandleOperation(ViewBag, $"{amount} {overview.AssetsUnit} is successfully withrawed from your account.");
-
-                return View(overview);
+                Application.HandleOperation(ViewBag, $"{model.Amount} {overview.AssetsUnit} is successfully withrawed from your account.");
+                
+                return View(model);
             }
             catch (Exception ex)
             {
                 Application.HandleOperation(ex, ViewBag);
-                return View(overview);
+                return View(model);
             }
         }
 
-        public ActionResult Detail(string accountNumber)
+        [HttpGet]
+        [Route("{accountId:int}/Detail")]
+        public ActionResult Detail(int accountId)
         {
-            AccountOverview overview = CreateAccountOverview(accountNumber);
+            AccountOverview overview = CreateAccountOverview(accountId);
 
             var transactionDetails = transactionManagerService.GetAccountLastDateRangeTransactionDetailInfoList(
                 overview.Account.Id,
@@ -112,41 +129,47 @@ namespace AccountApp.Controllers
             return View(overview);
         }
 
-        public ActionResult TransferAssets(string accountNumber)
+        [HttpGet]
+        [Route("{accountId:int}/TransferAssets")]
+        public ActionResult TransferAssets(int accountId)
         {
-            AccountOverview overview = CreateAccountOverview(accountNumber);
+            TransferAssets model = new TransferAssets();
+            model.AccountOverview = CreateAccountOverview(accountId);
 
-            return View(overview);
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult TransferAssets(string accountNumber, string toAccountNumber, decimal amount)
+        [Route("{accountId:int}/TransferAssets")]
+        public ActionResult TransferAssets(int accountId, TransferAssets model)
         {
-            AccountOverview overview = CreateAccountOverview(accountNumber);
- 
+            AccountOverview overview = CreateAccountOverview(accountId);
+            model.AccountOverview = overview;
+
             try
             {
-                AccountInfo toAccount = accountManagerService.GetAccountInfoByAccountNumber(toAccountNumber);
+                AccountInfo toAccount = accountManagerService.GetAccountInfoByAccountNumber(model.ToAccountNumber);
 
                 var obj = accountManagerService.TransferAssets(
                     overview.Account.Id,
                     toAccount.Id,
-                    amount,
+                    model.Amount,
                     AydoganFBank.AccountManagement.Api.TransactionTypeEnum.FromAccountToAccount);
 
-                overview.Account.Balance -= amount;
+                overview.Account.Balance -= model.Amount;
 
                 Application.HandleOperation(ViewBag, 
-                    $"{amount} {overview.AssetsUnit} is successfully transferred to account {toAccount.AccountNumber} - {toAccount.AccountOwner.DisplayName}.");
+                    $"{model.Amount} {overview.AssetsUnit} is successfully transferred to account {toAccount.AccountNumber} - {toAccount.AccountOwner.DisplayName}.");
 
-                return View(overview);
+                return View(model);
             }
             catch (Exception ex)
             {
                 Application.HandleOperation(ex, ViewBag);
-                return View(overview);
+                return View(model);
             }
         }
+
 
         public ActionResult Create()
         {

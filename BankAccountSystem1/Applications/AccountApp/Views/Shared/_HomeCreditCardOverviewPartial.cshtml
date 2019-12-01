@@ -1,4 +1,5 @@
-﻿@model AydoganFBank.Service.Dispatcher.Data.CreditCardInfo
+﻿@using AccountApp.Utility
+@model AydoganFBank.Service.Dispatcher.Data.CreditCardInfo
 
     <div class="media">
         <div class="media-left media-heading">
@@ -25,9 +26,9 @@
                 <hr />
                 <div class="col-md-12">
 
-                    @Html.ActionLink("Do Payment", "DoPayment", "CreditCard", new { id = Model.Id }, new { @class = "btn btn-primary btn-xs" })
-                    @Html.ActionLink("Discharge", "Discharge", "CreditCard", new { id = Model.Id }, new { @class = "btn btn-success btn-xs" })
-                    @Html.ActionLink("Credit Card Details", "Detail", "CreditCard", new { id = Model.Id }, new { @class = "btn btn-default btn-xs" })
+                    @Html.BuildLink("CreditCard", Model.Id, "DoPayment", "Do Payment", Application.ButtonType.Primary, Application.ButtonSize.XSmall)
+                    @Html.BuildLink("CreditCard", Model.Id, "Discharge", "Discharge", Application.ButtonType.Success, Application.ButtonSize.XSmall)
+                    @Html.BuildLink("CreditCard", Model.Id, "Detail", "Credit Card Details", Application.ButtonType.Default, Application.ButtonSize.XSmall)
 
                 </div>
             </div>

@@ -1,5 +1,5 @@
 ﻿using AccountApp.Models;
-using AccountApp.Models.Operation;
+using AccountApp.Models.Operation.Company;
 using AccountApp.Utility;
 using AydoganFBank.Service.Dispatcher.Api;
 using AydoganFBank.Service.Dispatcher.Data;
@@ -16,13 +16,16 @@ namespace AccountApp.Controllers
     {
         private readonly ICompanyManagerService companyManagerService;
         private readonly ICreditCardManagerService creditCardManagerService;
+        private readonly IAccountManagerService accountManagerService;
 
         public CompanyController(
             ICompanyManagerService companyManagerService,
-            ICreditCardManagerService creditCardManagerService)
+            ICreditCardManagerService creditCardManagerService,
+            IAccountManagerService accountManagerService)
         {
             this.companyManagerService = companyManagerService;
             this.creditCardManagerService = creditCardManagerService;
+            this.accountManagerService = accountManagerService;
         }
 
         public ActionResult Index()
@@ -59,12 +62,7 @@ namespace AccountApp.Controllers
         {
             var company = companyManagerService.GetCompanyInfo(id);
             var accounts = companyManagerService.GetCompanyAccounts(company.Id);
-
-            List<CreditCardInfo> creditCards = new List<CreditCardInfo>();
-            foreach (var account in accounts)
-            {
-                creditCards.Add(creditCardManagerService.GetCreditCardByAccount(account.AccountNumber));
-            }
+            var creditCards = creditCardManagerService.GetCreditCardsByCompany(company.Id);
 
             CompanyDetail model = new CompanyDetail(company, accounts, creditCards); 
 
@@ -133,6 +131,47 @@ namespace AccountApp.Controllers
                 Application.HandleOperation(ex, ViewBag);
                 return View(model);
             }
+        }
+
+
+        [HttpGet]
+        [Route("{companyId:int}/CreateAccount")]
+        public ActionResult CreateAccount(int companyId)
+        {
+            var company = companyManagerService.GetCompanyInfo(companyId);
+            var accountTypes = accountManagerService.GetAccountTypeList();
+
+            AccountCreate model = new AccountCreate();
+            model.SetCompanyName(company.CompanyName);
+            model.SetAccountTypeList(accountTypes);
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [Route("{companyId:int}/CreateAccount")]
+        public ActionResult CreateAccount(int companyId, AccountCreate model)
+        {
+            try
+            {
+                var company = companyManagerService.GetCompanyInfo(companyId);
+                var accountTypes = accountManagerService.GetAccountTypeList();
+                var accountType = accountTypes.FirstOrDefault(at => at.Id == model.AccountTypeId);
+
+                var account = accountManagerService.CreateCompanyAccount(accountType.TypeKey, company.Id);
+
+                Application.HandleOperation(ViewBag, $"{account.AccountNumber} successfully created for {company.CompanyName}!");
+
+                model.SetCompanyName(company.CompanyName);
+                model.SetAccountTypeList(accountTypes);
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                Application.HandleOperation(ex, ViewBag);
+                return View(model);
+            }            
         }
     }
 }

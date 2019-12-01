@@ -683,6 +683,8 @@ namespace AydoganFBank.Service.Dispatcher.Api
 
         CreditCardInfo GetCreditCardById(Int32 creditCardId);
 
+        List<CreditCardInfo> GetCreditCardsByCompany(Int32 companyId);
+
         List<CreditCardPaymentInfo> GetCreditCardLastExtrePayments(Int32 creditCardId);
 
         List<CreditCardExtreInfo> GetCreditCardActiveExtreList(Int32 creditCardId);
@@ -966,6 +968,12 @@ namespace AydoganFBank.Service.Dispatcher.Services
         {
             var result = creditCardManager.GetCreditCardById(creditCardId);
             return serviceDataBuilder.CreditCardInfoBuilder(result);
+        }
+
+        public List<CreditCardInfo> GetCreditCardsByCompany(Int32 companyId)
+        {
+            var result = creditCardManager.GetCreditCardsByCompany(companyId);
+            return serviceDataBuilder.CreditCardInfoListBuilder(result);
         }
 
         public List<CreditCardPaymentInfo> GetCreditCardLastExtrePayments(Int32 creditCardId)

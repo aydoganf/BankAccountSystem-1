@@ -10,6 +10,8 @@ namespace AydoganFBank.AccountManagement.Api
         TransactionOwnerType OwnerType { get; }
         string TransactionDetailDisplayName { get; }
         string AssetsUnit { get; }
+
+        void DoTransaction(decimal amount, TransactionDirection direction);
     }
 
     public interface ITransactionOwnerWithDetails : ITransactionOwner

@@ -331,6 +331,21 @@ namespace AydoganFBank.AccountManagement.Domain
         {
             return coreContext.Query<ICreditCardPaymentRepository>().GetCreditCardPaymentsByDateRange(this, startDate, endDate);
         }
+
+        void ITransactionOwner.DoTransaction(decimal amount, TransactionDirection direction)
+        {
+            switch (direction)
+            {
+                case TransactionDirection.In:
+                    GetDischarge(amount);
+                    break;
+                case TransactionDirection.Out:
+                    DoPayment(amount);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public class CreditCardRepository : Repository<CreditCardDomainEntity, CreditCard>, ICreditCardRepository

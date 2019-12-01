@@ -163,12 +163,17 @@
     <Compile Include="Models\CreditCardExtreOverviewItem.cs" />
     <Compile Include="Models\CreditCardExtreOvierview.cs" />
     <Compile Include="Models\CreditCardOverview.cs" />
-    <Compile Include="Models\Operation\AccountCreate.cs" />
-    <Compile Include="Models\Operation\CompanyAddressChange.cs" />
-    <Compile Include="Models\Operation\CompanyCreate.cs" />
-    <Compile Include="Models\Operation\CompanyPhoneNumberChange.cs" />
-    <Compile Include="Models\Operation\CreditCardCreate.cs" />
-    <Compile Include="Models\Operation\CreditCardDischarge.cs" />
+    <Compile Include="Models\Operation\Account\AccountCreate.cs" />
+    <Compile Include="Models\Operation\Account\Deposit.cs" />
+    <Compile Include="Models\Operation\Account\TransferAssets.cs" />
+    <Compile Include="Models\Operation\Account\Withdraw.cs" />
+    <Compile Include="Models\Operation\Company\CompanyAddressChange.cs" />
+    <Compile Include="Models\Operation\Company\CompanyCreate.cs" />
+    <Compile Include="Models\Operation\Company\CompanyPhoneNumberChange.cs" />
+    <Compile Include="Models\Operation\Company\AccountCreate.cs" />
+    <Compile Include="Models\Operation\CreditCard\CreditCardCreate.cs" />
+    <Compile Include="Models\Operation\CreditCard\CreditCardDischarge.cs" />
+    <Compile Include="Models\Operation\CreditCard\DoPayment.cs" />
     <Compile Include="Models\Operation\OperationResult.cs" />
     <Compile Include="Models\PersonOverview.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -234,6 +239,7 @@
     <Content Include="Views\Shared\_CompanyOverviewPartial.cshtml" />
     <Content Include="Views\Company\ChangeAddress.cshtml" />
     <Content Include="Views\Company\ChangePhoneNumber.cshtml" />
+    <Content Include="Views\Company\CreateAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

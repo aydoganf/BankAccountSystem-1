@@ -1,5 +1,6 @@
 ﻿using AccountApp.Models;
 using AccountApp.Models.Operation;
+using AccountApp.Models.Operation.CreditCard;
 using AccountApp.Utility;
 using AydoganFBank.Service.Dispatcher.Api;
 using AydoganFBank.Service.Dispatcher.Data;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace AccountApp.Controllers
 {
+    [RoutePrefix("CreditCard")]
     public class CreditCardController : RequiredAuthorizationControllerBase
     {
         #region IoC
@@ -29,9 +31,11 @@ namespace AccountApp.Controllers
         }
         #endregion
 
-        public ActionResult Detail(int id)
+        [HttpGet]
+        [Route("{creditCardId:int}/Detail")]
+        public ActionResult Detail(int creditCardId)
         {
-            var creditCard = creditCardManagerService.GetCreditCardById(id);
+            var creditCard = creditCardManagerService.GetCreditCardById(creditCardId);
             List<TransactionDetailInfo> transactionDetails = new List<TransactionDetailInfo>();
 
             var extres = creditCardManagerService.GetCreditCardActiveExtreList(creditCard.Id);
@@ -71,41 +75,49 @@ namespace AccountApp.Controllers
             return View(overview);
         }
 
-        public ActionResult DoPayment(int id)
-        {
-            var creditCard = creditCardManagerService.GetCreditCardById(id);
-            CreditCardOverview overview = new CreditCardOverview(creditCard);
 
-            return View(overview);
+        [HttpGet]
+        [Route("{creditCardId:int}/DoPayment")]
+        public ActionResult DoPayment(int creditCardId)
+        {
+            var creditCard = creditCardManagerService.GetCreditCardById(creditCardId);
+            DoPayment model = new DoPayment();
+            model.CreditCardOverview = new CreditCardOverview(creditCard);
+
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult DoPayment(int id, string toAccountNumber, decimal amount, int instalmentCount)
+        [Route("{creditCardId:int}/DoPayment")]
+        public ActionResult DoPayment(int creditCardId, DoPayment model)
         {
-            var creditCard = creditCardManagerService.GetCreditCardById(id);
+            var creditCard = creditCardManagerService.GetCreditCardById(creditCardId);
             CreditCardOverview overview = new CreditCardOverview(creditCard);
+            model.CreditCardOverview = overview;
 
             try
             {
-                var toAccount = accountManagerService.GetAccountInfoByAccountNumber(toAccountNumber);
+                var toAccount = accountManagerService.GetAccountInfoByAccountNumber(model.ToAccountNumber);
 
-                overview.CreditCard = creditCardManagerService.DoCreditCardPayment(creditCard.Id, amount, instalmentCount, toAccount.Id);
+                overview.CreditCard = creditCardManagerService.DoCreditCardPayment(creditCard.Id, model.Amount, model.InstalmentCount, toAccount.Id);
 
-                Application.HandleOperation(ViewBag, $"{amount} {creditCard.CreditCardOwner.AssetsUnit} is successfully payed to " +
-                    $"{toAccount.AccountNumber} - {toAccount.AccountOwner.DisplayName} with {instalmentCount} instalment count.");
+                Application.HandleOperation(ViewBag, $"{model.Amount} {creditCard.CreditCardOwner.AssetsUnit} is successfully payed to " +
+                    $"{toAccount.AccountNumber} - {toAccount.AccountOwner.DisplayName} with {model.InstalmentCount} instalment count.");
 
-                return View(overview);
+                return View(model);
             }
             catch (Exception ex)
             {
                 Application.HandleOperation(ex, ViewBag);
-                return View(overview);
+                return View(model);
             }
         }
 
-        public ActionResult Discharge(int id)
+        [HttpGet]
+        [Route("{creditCardId:int}/Discharge")]
+        public ActionResult Discharge(int creditCardId)
         {
-            var creditCard = creditCardManagerService.GetCreditCardById(id);
+            var creditCard = creditCardManagerService.GetCreditCardById(creditCardId);
             var extre = creditCardManagerService.GetCreditCardCurrentExtre(creditCard.Id);
 
             var account = accountManagerService.GetAccountInfo(creditCard.CreditCardOwner.OwnerId);
@@ -116,9 +128,10 @@ namespace AccountApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Discharge(int id, CreditCardDischarge discharge)
+        [Route("{creditCardId:int}/Discharge")]
+        public ActionResult Discharge(int creditCardId, CreditCardDischarge discharge)
         {
-            var creditCard = creditCardManagerService.GetCreditCardById(id);
+            var creditCard = creditCardManagerService.GetCreditCardById(creditCardId);
             var extre = creditCardManagerService.GetCreditCardCurrentExtre(creditCard.Id);
 
             var selectedAccount = accountManagerService.GetAccountInfo(discharge.SelectedAccountId);
@@ -140,6 +153,7 @@ namespace AccountApp.Controllers
             }
         }
 
+        
         public ActionResult Create()
         {
             var accounts = accountManagerService.GetAccountsByPerson(LoginSession.GetPerson().Id);

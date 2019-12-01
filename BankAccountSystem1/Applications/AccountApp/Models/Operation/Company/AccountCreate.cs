@@ -1,18 +1,21 @@
 ﻿using AydoganFBank.Service.Dispatcher.Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace AccountApp.Models.Operation
+namespace AccountApp.Models.Operation.Company
 {
     public class AccountCreate
     {
+        public string CompanyName { get; set; }
         public int AccountTypeId { get; set; }
 
         public List<AccountTypeInfo> AccountTypeList { get; set; }
         public List<SelectListItem> AccountTypesForUI { get; set; }
+
+        public void SetCompanyName(string companyName)
+        {
+            CompanyName = companyName;
+        }
 
         public void SetAccountTypeList(List<AccountTypeInfo> accountTypes)
         {

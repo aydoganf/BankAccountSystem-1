@@ -55,6 +55,8 @@ namespace AydoganFBank.AccountManagement.Service
 
         ICreditCardInfo GetCreditCardById(int creditCardId);
 
+        List<ICreditCardInfo> GetCreditCardsByCompany(int companyId);
+
         List<ICreditCardPaymentInfo> GetCreditCardLastExtrePayments(int creditCardId);
 
         List<ICreditCardExtreInfo> GetCreditCardActiveExtreList(int creditCardId);

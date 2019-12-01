@@ -1,4 +1,5 @@
-﻿@model AccountApp.Models.AccountOverview
+﻿@using AccountApp.Utility
+@model AccountApp.Models.AccountOverview
 
     <div class="media">
         <div class="media-left media-heading">
@@ -29,11 +30,11 @@
                 <hr />
                 <div class="col-md-12">
 
-                    @Html.ActionLink("Transfer Assets", "TransferAssets", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-info btn-xs" })
-                    @Html.ActionLink("Deposit", "Deposit", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-primary btn-xs" })
-                    @Html.ActionLink("Withdraw", "Withdraw", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-warning btn-xs" })
-                    @Html.ActionLink("Account Details", "Detail", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-default btn-xs" })
-                    @Html.ActionLink("Close Account", "Close", "Account", new { accountNumber = Model.Account.AccountNumber }, new { @class = "btn btn-danger btn-xs" })
+                    @Html.BuildLink("Account", Model.Account.Id, "TransferAssets", "Transfer Assets", Application.ButtonType.Info, Application.ButtonSize.XSmall)
+                    @Html.BuildLink("Account", Model.Account.Id, "Deposit", "Deposit", Application.ButtonType.Primary, Application.ButtonSize.XSmall)
+                    @Html.BuildLink("Account", Model.Account.Id, "Withdraw", "Withdraw", Application.ButtonType.Warning, Application.ButtonSize.XSmall)
+                    @Html.BuildLink("Account", Model.Account.Id, "Detail", "Account Details", Application.ButtonType.Default, Application.ButtonSize.XSmall)
+                    @Html.BuildLink("Account", Model.Account.Id, "CloseAccount", "Close Account", Application.ButtonType.Danger, Application.ButtonSize.XSmall)
 
                 </div>
             </div>

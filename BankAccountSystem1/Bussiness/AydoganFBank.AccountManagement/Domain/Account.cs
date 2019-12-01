@@ -155,6 +155,21 @@ namespace AydoganFBank.AccountManagement.Domain
                 .GetLastDateRangeAndTransactionDirectionListByTransactionDetailOwner(this, transactionDirection, startDate, endDate);
         }
 
+        void ITransactionOwner.DoTransaction(decimal amount, TransactionDirection direction)
+        {
+            switch (direction)
+            {
+                case TransactionDirection.In:
+                    Deposit(amount, forceToUpdateDb: false);
+                    break;
+                case TransactionDirection.Out:
+                    Withdraw(amount, forceToUpdateDb: false);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         #region Api
         int IAccountInfo.Id => AccountId;
         string IAccountInfo.AccountNumber => AccountNumber;

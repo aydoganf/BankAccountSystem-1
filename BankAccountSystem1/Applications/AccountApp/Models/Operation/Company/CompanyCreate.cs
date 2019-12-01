@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace AccountApp.Models.Operation
+﻿namespace AccountApp.Models.Operation.Company
 {
     public class CompanyCreate
     {
